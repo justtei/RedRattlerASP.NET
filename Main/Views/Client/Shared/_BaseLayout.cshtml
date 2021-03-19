@@ -180,6 +180,46 @@
         (function (w, d, s, l, i) { w[l] = w[l] || []; w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' }); var f = d.getElementsByTagName(s)[0], j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f); })(window, document, 'script', 'dataLayer', 'GTM-KN7G89D');
     </script>
     <!-- End Google Tag Manager -->
+    <header class="header">
+        <div class="grid-row">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <nav class="navbar navbar-expand-lg">
+                            <a class="navbar-brand" href="@MslcUrlBuilder.BaseUrl" itemprop="url">
+                                <img class="img-fluid" src="~/Content/images/logo/mslc-logo-search.png"
+                                     alt="Senior Living Choices"
+                                     itemprop="logo" />
+                            </a>
+                            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+                                <ul class="navbar-nav m-auto">
+                                    @foreach (var searchType in Model.SearchBar.SearchTypeList)
+                                    {
+                                        <li class="nav-item" @(searchType.Selected ? "style=color:#013f7a;" : string.Empty)>
+                                            <a class="nav-link" href="@searchType.UrlValue">
+                                                @searchType.Text
+                                            </a>
+                                        </li>
+
+                                    }
+                                </ul>
+                            </div>
+                            <div class="d-flex align-items-center add-listing">
+                                <div class="search mr-md-3 mr-1">
+                                    <a class="btn btn-md btn-secondary" href="#"><i class="fab fa-facebook-f"></i></a>
+                                </div>
+                                <div class="login-btn mr-md-3 mr-1">
+                                    <a class="btn btn-md btn-primary" href="@Url.Action("LogIn", "Account")"><i class="far fa-user-circle pr-2"></i>Advertiser Login</a>
+                                </div>
+                            </div>
+                            <button type="button" class="navbar-toggler" data-toggle="collapse" data-target=".navbar-collapse"><i class="fas fa-align-left text-primary"></i></button>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
     @RenderBody()
     @{ Html.RenderPartial("~/Views/Client/Partial/Footer.cshtml"); }
     <div class="modal fade" id="pop-up-lead-form" tabindex="-1" role="dialog" aria-hidden="true">
@@ -221,7 +261,7 @@
             }, 'ga-out-links-tracking');
     </script>
     <script>
-        
+
         var select = $('#exampleFormControlSelect2');
         if (select != undefined) {
             select.on('change', function () {

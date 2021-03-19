@@ -1,0 +1,28 @@
+﻿<script id="photo-tour" type="text/html">
+    <div class="photo-tour-wrapper">
+        <div class="photo-tour"
+             data-bind="click: startLoading">
+            <strong class="empty"
+                data-bind="if: !images().length">
+                Sorry, no photo tour available
+            </strong>
+            <div class="rectangle"
+                 data-bind="linkNode: $data, if: images().length">
+                <div class="list"
+                     data-bind="foreach: images, style: {left: active().listOffset}">
+                    <img data-bind="src: src
+                                            , linkNode: $data
+                                            , click: $parent.moveTo
+                                            , event: { load: $parent.handleLoad, error: $parent.handleError }
+                                            , attr: { 'data-sqc': sqc }
+                                            , css: { active: sqc === $parent.active().sqc }" />
+                </div>
+            </div>
+            <div class="tour-control prev icon-arrow-left"
+                 data-bind="visible: isPrev, click: prev"></div>
+            <div class="tour-control next icon-arrow-right"
+                 data-bind="visible: isNext, click: next">
+            </div>
+        </div>
+    </div>
+</script>

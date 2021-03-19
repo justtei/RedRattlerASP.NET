@@ -34,14 +34,14 @@
 }
 
 <div class="row">
-    <div class="col-any-17">
-        <div class="clearfix">
+    <div class="col-12">
+        <div class="clearfix text-center">
             <h1 class="header-brand-blue inline-block">@Model.Seo.Header</h1>
         </div>
 
-        <p class="ind">@Model.Seo.MarketCopy</p>
+        <p class="p-4">@Model.Seo.MarketCopy</p>
         
-        <div class="map ind">
+        <div class="map p-4">
             @{ Html.RenderPartial("~/Views/Client/Controls/Map.cshtml"); }
         </div>
         

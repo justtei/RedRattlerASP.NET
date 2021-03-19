@@ -23,21 +23,17 @@
     @Url.Script("legacy/custom/grids/editableGrid.js")
     @Url.Script("legacy/custom/grids/communityGrid.js")
     @Url.Script("legacy/custom/datepicker.js")
-<script type="text/javascript">
+    <script type="text/javascript">
         $(function () {
-            @{var serializer = new System.Web.Script.Serialization.JavaScriptSerializer();
-    serializer.MaxJsonLength = Int32.MaxValue;
-    var jsonModel = serializer.Serialize(Model);
-}
-        @*initializeCommunityGrid(@Html.Raw(new JavaScriptSerializer().Serialize(Model)), '@Model.SortBy', '@Model.OrderBy');*@
-            initializeCommunityGrid(@Html.Raw(jsonModel), '@Model.SortBy', '@Model.OrderBy');
+            console.log("28 Ran");
+            initializeCommunityGrid(@Html.Raw(new JavaScriptSerializer().Serialize(Model)), '@Model.SortBy', '@Model.OrderBy');
         });
         console.log(@ViewBag.GL);
-</script>
+    </script>
 }
 
     <div id="communityGridContainer">
-        @{ Html.RenderPartial("Partial/_AjaxServerError"); }
+        @*@{ Html.RenderPartial("Partial/_AjaxServerError"); }*@
         <script>console.log("36 Ran");</script>
         <div id="dialogConfirm" title="@StaticContent.Tlt_DeleteCommunityQuestion" class="display-none">
             <span class="ui-icon ui-icon-alert"></span>
