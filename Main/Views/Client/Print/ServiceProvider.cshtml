@@ -1,0 +1,47 @@
+﻿@using MSLivingChoices.Mvc.Uipc.Client.Helpers
+@model MSLivingChoices.Mvc.Uipc.Client.ViewModels.ServiceProviderDetailsVm
+
+@{
+    Layout = "~/Views/Client/Shared/_PrintLayout.cshtml";
+}
+
+@section scripts
+{
+    <script>
+        mslc.resolve([], function() {
+            window.print();
+        });
+    </script>
+}
+
+<div class="row details">
+    @{ Html.RenderPartial("~/Views/Client/Print/Partial/ServiceProviderHeader.cshtml"); }
+
+    <div class="ind">
+        <div class="primary-photo">
+            @RenderHelper.ImageWithMicrodata(Model.ServiceProvider.Image)
+        </div>
+    </div>
+
+    @{ Html.RenderPartial("~/Views/Client/Print/Partial/ServiceProviderInfo.cshtml"); }
+
+    @if (Model.ServiceProvider.DisplayProperties.Description)
+    {
+        <p class="ind avoid-break">
+            @Model.ServiceProvider.Description
+        </p>
+    }
+
+    @if (Model.ServiceProvider.DisplayProperties.ServiceCategories)
+    {
+        <div class="ind avoid-break">
+            <h4 >Service Categories</h4>
+            <ul class="list-col-any-3 ind-s amenities">
+                @foreach (var category in Model.ServiceProvider.ServiceCategories)
+                {
+                    <li>@category</li>
+                }
+            </ul>
+        </div>
+    }
+</div>

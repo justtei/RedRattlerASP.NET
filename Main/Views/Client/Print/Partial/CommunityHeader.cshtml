@@ -1,0 +1,42 @@
+﻿@model MSLivingChoices.Mvc.Uipc.Client.ViewModels.CommunityDetailsVm
+
+<div class="row">
+    <div class="col-any-20">
+        <h1 class="name">
+            @Model.Seo.Header
+        </h1>
+        <ul class="list-unstyled">
+
+            @if (Model.Community.DisplayProperties.Price)
+            {
+                <li class="price h1">
+                    @Model.Community.Price
+                </li>
+            }
+
+            <li>
+                <ul class="list-inline comma">
+                    @if (Model.Community.DisplayProperties.ApplicationFee)
+                    {
+                        <li>Fees: @Model.ApplicationFee</li>
+                    }
+                    @if (Model.Community.DisplayProperties.Deposit)
+                    {
+                        <li>Deposit: @Model.Deposit</li>
+                    }
+                    @if (Model.Community.DisplayProperties.PetDeposit)
+                    {
+                        <li>Pet Deposit: @Model.PetDeposit</li>
+                    }
+                </ul>
+            </li>
+        </ul>
+    </div>
+
+    @if (!string.IsNullOrWhiteSpace(Model.Seo.CanonicalUrl))
+    {
+        <div class="col-any-4 txt-right">
+            <img src="@("https://api.qrserver.com/v1/create-qr-code/?size=90x90&data=" + Model.Seo.CanonicalUrl)"/>
+        </div>
+    }
+</div>

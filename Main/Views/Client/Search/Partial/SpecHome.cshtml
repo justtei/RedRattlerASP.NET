@@ -1,0 +1,83 @@
+﻿<script type="text/html" id="spec-home">
+    <div class="floor-plan">
+        <div class="grid-row header">
+            <div class="col-any-7">
+                Floor Plan
+            </div>
+            <div class="col-any-5">
+                Status
+            </div>
+            <div class="col-any-4">
+                Layout
+            </div>
+            <div class="col-any-5 txt-center">
+                Price
+            </div>
+            <div class="col-any-3 txt-center">
+                Availability
+            </div>
+        </div>
+        <ul class="list-unstyled"
+            data-bind="foreach: $data">
+            <li class="grid-row vpad-s"
+                data-toggle="community-unit"
+                data-bind="attr: { 'data-unit-id': id }">
+                <div class="col-any-3"
+                     data-bind="css: { 'view-large icon-search': image }">
+                    <!-- ko if: image-->
+                    <img data-bind="image: image" />
+                    <!-- /ko -->
+                </div>
+                <div class="col-any-4">
+                    <!-- ko if: name -->
+                    <strong data-bind="text: name"></strong>
+                    <!-- /ko -->
+                    <!-- ko if: saleType -->
+                    <div class="txt-black"
+                         data-bind="text: saleType"></div>
+                    <!-- /ko -->
+                </div>
+                <div class="col-any-5">
+                    <!-- ko if: status -->
+                    <strong data-bind="text: status"></strong>
+                    <!-- /ko -->
+                </div>
+                <div class="col-any-4">
+                    <!-- ko if: beds.isValued -->
+                    <div class="txt-black">
+                        <span class="txt-bold"
+                              data-bind="text: beds.value"></span>
+                        <span data-bind="text: beds.unit"></span>
+                    </div>
+                    <!-- /ko -->
+                    <!-- ko if: bathes.isValued -->
+                    <div class="txt-black">
+                        <span class="txt-bold"
+                              data-bind="text: bathes.value"></span>
+                        <span data-bind="text: bathes.unit"></span>
+                    </div>
+                    <!-- /ko -->
+                    <!-- ko if: area.isValued -->
+                    <div class="txt-black">
+                        <strong data-bind="text: area.value"></strong>
+                        <span data-bind="text: area.unit"></span>
+                    </div>
+                    <!-- /ko -->
+                </div>
+                <div class="col-any-5 txt-center">
+                    <!-- ko if: price -->
+                    <strong data-bind="text: price"></strong>
+                    <!-- /ko -->
+                </div>
+                <div class="col-any-3">
+                    <!-- ko if: displayProperties.leadForm -->
+                    <button class="btn btn-block btn-brand-red cropped"
+                            data-toggle="lead-form">
+                        Check
+                    </button>
+                    <!-- /ko -->
+                </div>
+            </li>
+        </ul>
+    </div>
+</script>

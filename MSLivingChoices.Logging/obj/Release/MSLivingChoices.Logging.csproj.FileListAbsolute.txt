@@ -1,0 +1,8 @@
+C:\Users\Administrator\Desktop\SeniorLiving1\SeniorLiving1\MSLivingChoices.Logging\obj\Release\MSLivingChoices.Logging.csprojAssemblyReference.cache
+C:\Users\Administrator\Desktop\SeniorLiving1\SeniorLiving1\MSLivingChoices.Logging\obj\Release\MSLivingChoices.Logging.csproj.CoreCompileInputs.cache
+C:\Users\Administrator\Desktop\SeniorLiving1\SeniorLiving1\MSLivingChoices.Logging\bin\Release\MSLivingChoices.Logging.dll
+C:\Users\Administrator\Desktop\SeniorLiving1\SeniorLiving1\MSLivingChoices.Logging\bin\Release\MSLivingChoices.Logging.pdb
+C:\Users\Administrator\Desktop\SeniorLiving1\SeniorLiving1\MSLivingChoices.Logging\bin\Release\log4net.dll
+C:\Users\Administrator\Desktop\SeniorLiving1\SeniorLiving1\MSLivingChoices.Logging\obj\Release\MSLivingChoices.Logging.csproj.CopyComplete
+C:\Users\Administrator\Desktop\SeniorLiving1\SeniorLiving1\MSLivingChoices.Logging\obj\Release\MSLivingChoices.Logging.dll
+C:\Users\Administrator\Desktop\SeniorLiving1\SeniorLiving1\MSLivingChoices.Logging\obj\Release\MSLivingChoices.Logging.pdb

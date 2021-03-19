@@ -1,0 +1,3 @@
+User-agent: *
+Disallow: /iList
+Sitemap: https://www.seniorlivingchoices.com/sitemap.xml

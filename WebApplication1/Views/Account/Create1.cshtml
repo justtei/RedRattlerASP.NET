@@ -1,0 +1,253 @@
+﻿@using UserManagementSystem.Localization;
+@using UserManagementSystem.Web.Helpers;
+@using UserManagementSystem.Web.Models;
+@model CreateUserViewModel
+@{
+    ViewBag.Title = StaticContent.Ttl_CreateUser;
+}
+@section scripts
+{
+
+    @Url.Script("jquery/jquery.validate.min.js")
+    @Url.Script("jquery/jquery.validate.unobtrusive.min.js")
+    @Url.Script("custom/common.js")
+    @Url.Script("custom/account.js")
+    @Url.Script("custom/requiredCheckBoxList.js")
+}
+<style>
+    .row {
+        margin-left: 0px;
+    }
+</style>
+<div class="container">
+    <h2>@StaticContent.Ttl_CreateUser</h2>
+    <p>@StaticContent.WtrMrk_Create</p>
+    @using (Html.BeginForm())
+    {
+        @Html.ValidationSummary(true, @ErrorMessages.UnsuccessfulEdit, new { @class = "alert alert-block alert-error" })
+        <legend>@StaticContent.Lgd_LogOn </legend>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="control-label">
+                    @Html.LabelFor(model => model.FirstName)
+                    <span class="asterisk">*</span>
+                </div>
+                <div class="controls">
+                    @Html.TextBoxFor(model => model.FirstName ,new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.FirstName)
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="control-label">
+                    @Html.LabelFor(model => model.LastName)
+                    <span class="asterisk">*</span>
+                </div>
+                <div class="controls">
+                    @Html.TextBoxFor(model => model.LastName,new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.LastName)
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="control-label">
+                    @Html.LabelFor(model => model.PrimaryEmail)
+                    <span class="asterisk">*</span>
+                </div>
+                <div class="controls">
+                    @Html.EditorFor(model => model.PrimaryEmail, new { @class = "alert alert-block alert-error form-control" })
+                    @Html.ValidationMessageFor(model => model.PrimaryEmail)
+                    @Html.ValidationMessage(ModelErrorKey.UnsuccesessfulPrimaryEmail.ToString())
+                </div>
+            </div>
+            <div class="col-md-12 address-part">
+                <div class="row">
+                            @for (int i = 0; i < Model.Addresses.Count; i++)
+                            {
+                                <div class="col-md-12 address-line">
+                                    @{
+                                        Html.RenderPartialFor(model => model.Addresses[i], "Partials/_Address");
+                                    }
+                                </div>
+                            }
+                </div>
+            </div>
+            <div class="phones col-md-12">
+	            <div class="row">
+                    @for (int i = 0; i < Model.Phones.Count; i++)
+                    {
+                        <div class="phone col-md-12">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="control-label">
+                                        @Html.LabelFor(m => m.Phones[i].SelectedPhoneTypeId)
+                                    </div>
+                                    <div class="controls">
+                                        @Html.DropDownListFor(m => m.Phones[i].SelectedPhoneTypeId, Model.Phones[i].PhoneTypes,new { @class = "form-control" })
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="control-label">
+                                        @Html.LabelFor(m => m.Phones[i].Number)
+                                    </div>
+                                    <div class="controls">
+                                        @Html.TextBoxFor(m => m.Phones[i].Number,new { @class = "form-control" })
+                                        @Html.ValidationMessageFor(m => m.Phones[i].Number)
+                                    </div>
+                                </div>
+                                <div class="col-md-6 text-center">
+                                    @if (Model.Phones.Count > 1)
+                                    {
+                                        <span class="link delete-phone btn btn-mini btn-warning">@StaticContent.Btn_Delete </span>
+                                    }
+                                    else
+                                    {
+                                        <span class="link delete-phone btn btn-mini btn-warning display-none">@StaticContent.Btn_Delete </span>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+            <div class="col-md-6 text-center">
+                <span class="link add-phone btn btn-small btn-info">@StaticContent.Txt_AddPhoneNumber </span>
+            </div>
+            <div class="col-md-12">
+                <div class="emails col-md-12">
+                    @for (int i = 0; i < Model.Emails.Count; i++)
+                    {
+                        <div class="row">
+                            <div class="email col-md-6">
+                                <div class="col-md-6">
+                                    <div class="control-label">
+                                        @Html.LabelFor(m => m.Emails[i].SelectedEmailTypeId)
+                                    </div>
+                                    <div class="controls">
+                                        @Html.DropDownListFor(m => m.Emails[i].SelectedEmailTypeId, Model.Emails[i].EmailTypes,new { @class = "form-control" })
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="control-label">
+                                        @Html.LabelFor(m => m.Emails[i].Value)
+                                    </div>
+                                    <div class="controls">
+                                        @Html.TextBoxFor(m => m.Emails[i].Value,new { @class = "form-control" })
+                                        @Html.ValidationMessageFor(m => m.Emails[i].Value)
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    @if (Model.Emails.Count > 1)
+                                    {
+                                        <span class="link delete-email btn btn-mini btn-warning">@StaticContent.Btn_Delete </span>
+                                    }
+                                    else
+                                    {
+                                        <span class="link delete-email btn btn-mini btn-warning display-none">@StaticContent.Btn_Delete </span>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                    }
+                <span class="link add-email btn btn-small btn-info">@StaticContent.Txt_AddEmail</span>
+            </div>
+            <div class="publication-part col-md-6">
+                <div id="brands-area">
+                    <div class="control-label">
+                        @Html.Label(StaticContent.Lbl_Brands)
+                        <span class="asterisk">*</span>
+                    </div>
+                    <div class="controls brand-editor checkbox-list">
+                        @for (int i = 0; i < Model.Publications.Count; i++)
+                        {
+                            <div class="controls">
+                                <label class="checkbox">
+                                    @Html.CheckBoxFor(model => model.Publications[i].BrandSelected, new ViewDataDictionary { 
+                                        new KeyValuePair<string, object>("data-url", Url.Action("GetPublications", "Publication")),
+                                        new KeyValuePair<string, object>("brand-index", i) })
+                                    @Html.Label(Model.Publications[i].Brand.Description)
+                                    @Html.HiddenFor(model => model.Publications[i].Brand.Id)
+                                    @Html.HiddenFor(model => model.Publications[i].Brand.Description)
+                                </label>
+                            </div>
+                        }
+                        <input name="userBrandsValidation" type="hidden" data-val="true" data-val-requiredcheckboxlist="@ErrorMessages.NoBrandsSelected" />
+                    </div>
+                    <div class="checkbox-list-error-message">
+                        @Html.ValidationMessageFor(m => m.Publications)
+                    </div>
+                </div>
+                <div id="publications-area">
+                    <div class="control-label">
+                        @Html.Label(StaticContent.Lbl_Publication)
+                        <span class="asterisk">*</span>
+                    </div>
+                    <div class="controls publication-editor checkbox-list">
+                        @for (int i = 0; i < Model.Publications.Count; i++)
+                        {
+                            if (Model.Publications[i].BrandSelected)
+                            {
+                                <div brand-type="@Model.Publications[i].Brand.Id">
+                                    @for(int j = 0; j < Model.Publications[i].Publications.Count; j++)
+                                    {
+                                        <div class="controls">
+                                            <label class="checkbox">
+                                                @Html.CheckBoxFor(model => model.Publications[i].Publications[j].Selected)
+                                                @Html.Label(Model.Publications[i].Publications[j].Text)
+                                                @Html.HiddenFor(model => model.Publications[i].Publications[j].Value)
+                                            </label>
+                                        </div>
+                                    }
+                                </div>
+                            }
+                        }
+                        <input name="userPublicationsValidation" type="hidden" data-val="true" data-val-requiredcheckboxlist="@ErrorMessages.NoPublicationSelected" />
+                    </div>
+                    <div class="checkbox-list-error-message">
+                        @Html.ValidationMessageFor(m => m.Publications)
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="control-label">
+                    @Html.LabelFor(model => model.SelectedRoleName)
+                    <span class="asterisk">*</span>
+                </div>
+                <div class="controls">
+                    @Html.DropDownListFor(model => model.SelectedRoleName, Model.Roles, StaticContent.WtrMrk_SelectRole,new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.SelectedRoleName)
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="control-label">
+                    @Html.LabelFor(model => model.CommunicationSettings)
+                </div>
+                <div class="controls">
+                    <label class="checkbox">
+                        @Html.CheckBoxFor(model => model.CommunicationSettings.Leads)
+                        @Html.LabelFor(model => model.CommunicationSettings.Leads)
+                    </label>
+                    <label class="checkbox">
+                        @Html.CheckBoxFor(model => model.CommunicationSettings.Notifications)
+                        @Html.LabelFor(model => model.CommunicationSettings.Notifications)
+                    </label>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="control-label">
+                    @Html.LabelFor(model => model.IsActive)
+                </div>
+                <div class="controls">
+                    <label class="radio">
+                        @Html.RadioButtonFor(model => model.IsActive, true)
+                        @StaticContent.RdBtn_Active
+                        <br />
+                        @Html.RadioButtonFor(model => model.IsActive, false)
+                        @StaticContent.RdBtn_BlockLogin
+                    </label>
+                </div>
+                <div class="form-actions">
+                    <input type="submit" value="@StaticContent.Btn_Create" class="btn btn-primary" />
+                </div>
+            </div>
+        </div>
+    }
+</div>

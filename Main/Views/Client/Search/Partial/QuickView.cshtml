@@ -1,0 +1,49 @@
+﻿<script type="text/html" id="quick">
+    <div class="quick-view vpad-s">
+        <div class="row">
+            <!-- ko ifnot: images.length -->
+            <p class="col-any-14" data-bind="text:description"></p>
+            <!-- /ko -->
+            <!-- ko if: images.length -->
+            <div class="col-any-16">
+                <div data-bind="photoTour: images"></div>
+            </div>
+            <!-- /ko -->
+            <div class="col-any-8"
+                 data-bind="css:{'col-any-10': !images.length, 'col-any-8': images.length }, with: leadForm">
+                <!-- ko if: $parent.displayProperties.leadForm -->
+                @{Html.RenderPartial("~/Views/Client/Controls/LeadForm/QuickViewInline.cshtml");}
+                <!-- /ko -->
+            </div>
+        </div>
+        <!-- ko if: description && images.length-->
+        <p class="ind-s" data-bind="text: description"></p>
+        <!-- /ko -->
+        <!-- ko if: amenities.length -->
+        <div class="col-any-24 ind">
+            <h5 class="header-brand-red">
+                <span data-bind="text:name"></span>
+                <span>Features & Amenities</span>
+            </h5>
+            <ul class="list-col-any-3 amenities ind-s" data-bind="foreach: amenities">
+                <li data-bind="text: $data"></li>
+            </ul>
+        </div>
+        <!-- /ko -->
+
+        <!-- ko if: amenities.length && communityServices.length -->
+        <hr />
+        <!-- /ko -->
+
+        <!-- ko if: communityServices.length -->
+        <div class="col-any-24 ind">
+            <h5 class="header-brand-red">
+                <span data-bind="text:name"></span>Services
+            </h5>
+            <ul class="list-col-any-3 amenities ind-s" data-bind="foreach: communityServices">
+                <li data-bind="text: $data"></li>
+            </ul>
+        </div>
+        <!-- /ko -->
+    </div>
+</script>

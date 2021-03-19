@@ -1,0 +1,703 @@
+﻿@using MSLivingChoices.Entities.Client.Search.Criteria
+@using MSLivingChoices.Mvc.Uipc.Client.Helpers
+@using MSLivingChoices.Mvc.Uipc.Client.ViewModelsProviders
+@using MSLivingChoices.Mvc.Uipc.Enums
+@model MSLivingChoices.Mvc.Uipc.Client.ViewModels.CommunityDetailsVm
+
+@{
+    Layout = "~/Views/Client/Shared/_PageLayout.cshtml";
+}
+
+@section scripts
+{
+    @{ Html.RenderPartial("~/Views/Client/Search/Partial/PhotoTour.cshtml"); }
+    @{ Html.RenderPartial("~/Views/Client/Controls/LeadForm/CommunityUnitPopUp.cshtml"); }
+
+    <script type="text/javascript" src="https://s7.addthis.com/js/300/addthis_widget.js#pubid=xa-51f632df2d7a5c98"></script>
+    <script type="text/javascript">
+        mslc.resolve(['lib/ko'], function(ko) {
+            ko.applyBindings(@Html.Json(Model.Community.Images), document.getElementById('photo'));
+        });
+
+        mslc.resolve(['client/widgets/leadForm'], function(leadForm) {
+            leadForm.initInline(@Html.Json(ClientViewModelsProvider.GetLeadFormVm(Model)));
+            leadForm.initPopUpSharedData(@Html.Json(ClientViewModelsProvider.GetLeadFormVm(Model)));
+        });
+
+        mslc.resolve(['client/widgets/googlePublisherTag'], function(gpt) {
+            gpt.initDetailsSlots({
+                country: '@Model.Criteria.CountryCode()',
+                state: '@Model.Criteria.StateCode()',
+                city: '@Model.Criteria.City()'
+            });
+        }, 'init-gpt');
+
+        mslc.resolve(['client/analytics/google', 'lib/jQuery'], function(ga, $) {
+            var dimensions = {
+                communityId: @Model.Community.Id,
+                bookNumber: '@Model.Community.BookNumber'
+            };
+
+            ga.trackPageView(dimensions);
+
+            $('a[data-community-link-type]').on('click', function() {
+                var linkType = $(this).data('community-link-type');
+
+                ga.trackCommunityEvent('LinkVisit', linkType, dimensions);
+            });
+        }, 'ga-tracking');
+
+        mslc.resolve(['client/widgets/communityUnit'], function(units) {
+            units.addCollectionToStorage(@Html.Json(Model.FloorPlans));
+            units.addCollectionToStorage(@Html.Json(Model.SpecHomes));
+            units.addCollectionToStorage(@Html.Json(Model.Homes));
+        });
+    </script>
+
+    @if (Model.DisplayProperties.Map)
+    {
+        <script type="text/javascript">
+            mslc.resolve(['lib/jQuery', 'lib/ko', 'client/controls/maps/directions'], function($, ko, DirectionsMap) {
+                var $target = $('[data-container="map"]'),
+                    data = {
+                        latitude: @Model.Community.Address.Latitude,
+                        longitude: @Model.Community.Address.Longitude,
+                        endingAddress: '@Html.Raw(Model.Community.Address.ToString())',
+                        printDirectionBaseUrl: '@Model.Community.PrintDirectionBaseUrl'
+                    },
+                    model = new DirectionsMap(data, $target);
+
+                ko.applyBindings(model, $target[0]);
+            }, 'google-map-init');
+        </script>
+    }
+}
+
+<div class="head-search-bar">
+    <div class="container">
+        <div class="row">
+            @{ Html.RenderPartial("~/Views/Client/Partial/SearchBarForm.cshtml"); }
+            @* ReSharper disable UnknownCssClass *@
+            <div class="addthis_toolbox social col-any-16">
+                @* We should use the previous step link in breadcrumb *@
+                <a class="icon-arrow-follow-back link-txt"
+                   href="@Model.Breadcrumbs[Model.Breadcrumbs.Count - 2].Href">Back to Search Results</a>
+                @if (Model.DisplayProperties.SocialButtons)
+                {
+                    <a class="addthis_button_facebook icon-facebook link-icon"></a>
+                    <a class="addthis_button_twitter icon-twitter link-icon"></a>
+                    <a class="addthis_button_google_plusone_share icon-google link-icon"></a>
+                    <a class="addthis_button_pinterest_share icon-pinterest link-icon"></a>
+                }
+                <a class="icon-print link-icon"
+                   href="@Model.Community.PrintUrl"
+                   target="_blank"></a>
+            </div>
+            @* ReSharper restore UnknownCssClass *@
+        </div>
+    </div>
+</div>
+
+@{ Html.RenderPartial("~/Views/Client/Partial/Breadcrumbs.cshtml", new ViewDataDictionary(Model.Breadcrumbs)); }
+
+@{
+    string communityItemType = Model.PageType.ToSearchType() == SearchType.ActiveAdultHomes
+        ? "http://schema.org/GatedResidenceCommunity"
+        : "http://schema.org/Residence";
+}
+<div class="inner-header">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12 text-center">
+                <h1 class="inner-title text-white">Property Details</h1>
+            </div>
+        </div>
+    </div>
+</div>
+
+<section class="space-pt" itemscope itemtype="@communityItemType">
+    <div class="container">
+        <div class="row" id="photo">
+            <div class="col-lg-7 mb-4 mb-md-5 mb-lg-0" data-bind="photoTour: $data">
+
+            </div>
+            <div class="col-lg-5">
+                <div class="property-detail p-0">
+                    <h2 class="property-title">@Model.Seo.Header</h2>
+                    <ul class="pl-0 property-info">
+                        <li class="">
+                            <i class="fas fa-map-marker-alt fa-1x mr-1 text-primary"></i>
+                            <span>
+                                EXACT - @Model.Community.Address.City, @Model.Community.Address.StateCode @Model.Community.Address.Zip
+                            </span>
+                        </li>
+                        <li class="">
+                            <i class="fas fa-building fa-1x text-primary mr-1"></i><span>
+                                Housing Provided:
+                                <a href="#">55+ Community</a>  •  <a href="#">Apartments (EXPLAIN THIS)</a>
+                            </span>
+                        </li>
+                        <li class="">
+                            <p class="mb-0">
+                                <address itemprop="address" itemscope itemtype="http://schema.org/PostalAddress">
+                                    <span class="address-line" itemprop="streetAddress">@Model.Community.Address.Line</span> <br />
+                                    <span class="city" itemprop="addressLocality">@Model.Community.Address.City</span>
+                                    <span class="state" itemprop="addressRegion">@Model.Community.Address.StateCode</span>
+                                    <span itemprop="postalCode">@Model.Community.Address.Zip</span>
+                                </address>
+                            </p>
+                        </li>
+                        <li class="price text-primary">
+                            @if (Model.Community.DisplayProperties.Price)
+                            {
+                                <b>
+                                    @Model.Community.Price
+                                </b>
+                            }
+                        </li>
+                        <li class="sqft"><b>$6,500/Sqft</b></li>
+                        <li class="reviews"><i class="fas fa-star text-primary"></i><i class="fas fa-star text-primary"></i><i class="fas fa-star text-primary"></i><i class="fas fa-star text-primary"></i><i class="fas fa-star-half-alt text-primary"></i><span class="pl-2">(2 customer reviews)</span></li>
+                        <li class=""><i class="fas fa-compress-alt text-primary"></i><span>Compare</span></li>
+                    </ul>
+            </div>
+        </div>
+    </div>
+        <div class="row justify-content-start mt-4 mt-lg-5">
+        <div class="col-12">
+            <div class="row">
+                <div class="col-lg-4">
+                    <h3>Property Details</h3>
+                </div>
+                <div class="col-lg-8">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <ul class="property-list  list-unstyled mb-0">
+                                @if (Model.Community.Beds.IsValued)
+                                {
+                                    <li>
+                                        <strong class="value icon-bed">
+                                            @Model.Community.Beds.Value
+                                        </strong>
+                                        <span class="unit">
+                                            @Model.Community.Beds.Unit
+                                        </span>
+                                    </li>
+                                }
+                                @if (Model.Community.Bathes.IsValued)
+                                {
+                                    <li>
+                                        <strong class="value icon-bath">
+                                            @Model.Community.Bathes.Value
+                                        </strong>
+                                        <span class="unit">
+                                            @Model.Community.Bathes.Unit
+                                        </span>
+                                    </li>
+                                }
+                                @if (Model.Community.Area.IsValued)
+                                {
+                                    <li>
+                                        <strong class="value icon-square">
+                                            @Model.Community.Area.Value
+                                        </strong>
+                                        <span class="unit">
+                                            @Model.Community.Area.Unit
+                                        </span>
+                                    </li>
+                                }
+                            </ul>
+                        </div>
+                        <div class="col-md-6">
+                            <ul class="property-list list-unstyled mb-0">
+                                @foreach (var service in Model.Community.CommunityServices)
+                                {
+                                    <li><b>@service</b></li>
+                                }
+                            </ul>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <hr class="my-4 my-md-5">
+            <div class="row">
+                <div class="col-lg-4">
+                    <h3>Description</h3>
+                </div>
+                <div class="col-lg-8">
+                    <p>
+                        @if (Model.Community.DisplayProperties.Logo)
+                        {
+                            @RenderHelper.Thumbnail(Model.Logo, "pull-right", "hpad-s", "logo")
+                        }
+                        @if (Model.Community.DisplayProperties.Description)
+                        {
+                            @Model.Community.Description
+                        }
+                    </p>
+                    @*<p class="mb-0">Floor-to-ceiling windows accentuate the panoramic vistas that sweep across the Golden Gate Bridge, the downtown skyline, the artfully lit Bay Bridge and beyond. The floor plan features two bedroom suites, kitchen, living/dining room, two view terraces and ample storage space.</p>*@
+                </div>
+            </div>
+            <hr class="my-4 my-md-5">
+            <div class="row">
+                <div class="col-12">
+                    <h3>Features</h3>
+                </div>
+                <div class="col-12">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <style>
+                                ul.property-list li{display:inline-block;margin:20px;}
+                            </style>
+                            <div class="row">
+                                @foreach (var amenity in Model.Community.Amenities)
+                                {
+                                    <div class="col-6">@amenity</div>
+                                }
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="row">
+                                @if (Model.Community.DisplayProperties.ApplicationFee)
+                                {
+                                    <div class="col-md-4">
+                                        Fees:
+                                        <b>@Model.ApplicationFee</b>
+                                    </div>
+                                }
+                                @if (Model.Community.DisplayProperties.Deposit)
+                                {
+                                    <div class="col-md-4">
+                                        Deposit:
+                                        <b>@Model.Deposit</b>
+                                    </div>
+                                }
+                                @if (Model.Community.DisplayProperties.PetDeposit)
+                                {
+                                    <div class="co-md-4">
+                                        Pet Deposit:
+                                        <b>@Model.PetDeposit</b>
+                                    </div>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12">
+
+
+                    @if (Model.Community.DisplayProperties.ShcCategories)
+                    {
+                        <hr class="my-4 my-md-5">
+                        <h2 class="header-brand-blue h4">Senior Housing & Care Categories</h2>
+                        <div class="row">
+
+                            @foreach (var category in Model.ShcCategories)
+                            {
+                                <div class="col-md-6">@category</div>
+                            }
+                        </div>
+                    }
+
+                    @if (Model.Community.DisplayProperties.FloorPlans)
+                    {
+                        <hr class="my-4 my-md-5" />
+                        <div class="row">
+                            <h4 class="header-brand-blue">Floor Plans</h4>
+                            <div class="col-md-12">
+                                @{ Html.RenderPartial("Details/Partial/FloorPlan", Model.FloorPlans); }
+                            </div>
+                        </div>
+                    }
+
+                    @if (Model.Community.DisplayProperties.Homes)
+                    {
+                        <div class="col-md-12">
+                            <h4 class="header-brand-blue">Homes</h4>
+
+                            @{ Html.RenderPartial("Details/Partial/Home", Model.Homes); }
+
+                        </div>
+                    }
+
+                    @if (Model.Community.DisplayProperties.SpecHomes)
+                    {
+                        <div class="col-md-6">
+                            <h4 class="header-brand-blue">Spec homes</h4>
+                            <div class="col-any-24">
+                                @{ Html.RenderPartial("Details/Partial/SpecHome", Model.SpecHomes); }
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+</section>
+@*
+        @if (Model.Community.DisplayProperties.Phone)
+                                        {
+                                            <li><b>Phone:</b> @Model.Community.Phone</li>
+                                        }
+                                        @if (Model.Community.DisplayProperties.PaymentsAccepted)
+                                        {
+                                            <li><b>Payments Accepted:</b> @string.Join(", ", Model.PaymentsAccepted)</li>
+                                        }
+                                        @if (Model.Community.DisplayProperties.AgeRestrictions)
+                                        {
+                                            <li><b>Age Restrictions:</b> @string.Join(", ", Model.AgeRestrictions)</li>
+                                        }
+                                        @if (Model.OfficeHours.Any())
+                                        {
+                                            <li>
+                                                <b>Office Hours:</b>
+                                                <ul style="list-style:none;">
+                                                    @foreach (var hour in Model.OfficeHours)
+                                                    {
+                                                        <li>@hour</li>
+                                                    }
+                                                </ul>
+                                            </li>
+                                        }
+                                        @if (Model.Community.DisplayProperties.VirtualTourUrl)
+                                        {
+                                            <li>
+                                                <b>Virtual Tour:</b>
+                                                <a href="@Model.VirtualTourUrl"
+                                                   target="_blank"
+                                                   rel="nofollow"
+                                                   data-community-link-type="Virtual Tour">
+                                                    Virtual tour
+                                                </a>
+                                            </li>
+
+                                        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <div class="ind-s container content">
+        <div class="row details"
+             itemscope itemtype="@communityItemType">
+            <div class="col-any-17">
+                <div class="row">
+                    <h1 class="header-brand-blue name col-any-16" itemprop="name">
+                        @Model.Seo.Header
+                    </h1>
+                    @if (Model.Community.DisplayProperties.Price)
+                    {
+                        <div class="col-any-8 txt-right price header-brand-blue h1">
+                            @Model.Community.Price
+                        </div>
+                    }
+                </div>
+
+                <div class="ind">
+                    @if (Model.Community.DisplayProperties.Image)
+                    {
+                        <div class="js-disabled-show">
+                            @RenderHelper.ImageWithMicrodata(Model.Community.Image)
+                        </div>
+                    }
+                    @if (Model.Community.DisplayProperties.PhotoTour)
+                    {
+                        <div class="js-disabled-hide photo pad-l" id="photo">
+                            <div data-bind="photoTour: $data"></div>
+                        </div>
+                    }
+                </div>
+
+                <div class="row ind-s">
+                    <div class="col-any-12">
+                        @if (Model.Community.DisplayProperties.Address)
+                        {
+                            <address itemprop="address" itemscope itemtype="http://schema.org/PostalAddress">
+                                <span class="address-line" itemprop="streetAddress">@Model.Community.Address.Line</span>
+                                <span class="city" itemprop="addressLocality">@Model.Community.Address.City</span>
+                                <span class="state" itemprop="addressRegion">@Model.Community.Address.StateCode</span>
+                                <span itemprop="postalCode">@Model.Community.Address.Zip</span>
+                            </address>
+                        }
+                    </div>
+                    <div class="col-any-12">
+                        <ul class="list-unstyled txt-right">
+                            @if (Model.Community.DisplayProperties.Phone)
+                            {
+                                <li class="phone icon-phone" itemtype="phone">
+                                    @Model.Community.Phone
+                                </li>
+                            }
+                            @if (Model.Community.DisplayProperties.PaymentsAccepted)
+                            {
+                                <li>
+                                    <span class="txt-black">Payments Accepted:</span>
+                                    <span class="txt-black txt-bold">@string.Join(", ", Model.PaymentsAccepted)</span>
+                                </li>
+                            }
+                            @if (Model.Community.DisplayProperties.AgeRestrictions)
+                            {
+                                <li>
+                                    <span>Age Restrictions:</span>
+                                    <span class="txt-black">@string.Join(", ", Model.AgeRestrictions)</span>
+                                </li>
+                            }
+                            @if (Model.OfficeHours.Any())
+                            {
+                                <li>
+                                    <ul class="list-unstyled office-hours">
+                                        @foreach (var hour in Model.OfficeHours)
+                                        {
+                                            <li>@hour</li>
+                                        }
+                                    </ul>
+                                </li>
+                            }
+                            @if (Model.Community.DisplayProperties.VirtualTourUrl)
+                            {
+                                <li>
+                                    <a href="@Model.VirtualTourUrl"
+                                       target="_blank"
+                                       rel="nofollow"
+                                       data-community-link-type="Virtual Tour">
+                                        Virtual tour
+                                    </a>
+                                </li>
+                            }
+                        </ul>
+                    </div>
+                </div>
+
+                <ul class="list-inline comma ind-s indent">
+                    @if (Model.Community.DisplayProperties.ApplicationFee)
+                    {
+                        <li>
+                            Fees:
+                            <strong>@Model.ApplicationFee</strong>
+                        </li>
+                    }
+                    @if (Model.Community.DisplayProperties.Deposit)
+                    {
+                        <li>
+                            Deposit:
+                            <strong>@Model.Deposit</strong>
+                        </li>
+                    }
+                    @if (Model.Community.DisplayProperties.PetDeposit)
+                    {
+                        <li>
+                            Pet Deposit:
+                            <strong>@Model.PetDeposit</strong>
+                        </li>
+                    }
+                </ul>
+
+                <ul class="list-inline txt-black indent txt-incr ind properties">
+                    @if (Model.Community.Beds.IsValued)
+                    {
+                        <li>
+                            <strong class="value icon-bed">
+                                @Model.Community.Beds.Value
+                            </strong>
+                            <span class="unit">
+                                @Model.Community.Beds.Unit
+                            </span>
+                        </li>
+                    }
+                    @if (Model.Community.Bathes.IsValued)
+                    {
+                        <li>
+                            <strong class="value icon-bath">
+                                @Model.Community.Bathes.Value
+                            </strong>
+                            <span class="unit">
+                                @Model.Community.Bathes.Unit
+                            </span>
+                        </li>
+                    }
+                    @if (Model.Community.Area.IsValued)
+                    {
+                        <li>
+                            <strong class="value icon-square">
+                                @Model.Community.Area.Value
+                            </strong>
+                            <span class="unit">
+                                @Model.Community.Area.Unit
+                            </span>
+                        </li>
+                    }
+                </ul>
+
+                @if (Model.Community.DisplayProperties.Logo || Model.Community.DisplayProperties.Description)
+                {
+                    <div class="ind">
+                        <p>
+                            @if (Model.Community.DisplayProperties.Logo)
+                            {
+                                @RenderHelper.Thumbnail(Model.Logo, "pull-right", "hpad-s", "logo")
+                            }
+                            @if (Model.Community.DisplayProperties.Description)
+                            {
+                                @Model.Community.Description
+                            }
+                        </p>
+                    </div>
+                }
+
+                @if (Model.Community.DisplayProperties.Amenities)
+                {
+                    <div class="ind">
+                        <h2 class="header-brand-blue h4">Community Features & Amenities</h2>
+                        <ul class="list-col-any-3 ind-s amenities col-any-24">
+                            @foreach (var amenity in Model.Community.Amenities)
+                            {
+                                <li>@amenity</li>
+                            }
+                        </ul>
+                    </div>
+                }
+
+                @if (Model.Community.DisplayProperties.CommunityServices)
+                {
+                    <hr class="ind" />
+
+                    <div class="ind clearfix">
+                        <h2 class="header-brand-blue h4">Community Services</h2>
+                        <ul class="list-col-any-3 ind-s amenities col-any-24">
+                            @foreach (var service in Model.Community.CommunityServices)
+                            {
+                                <li>@service</li>
+                            }
+                        </ul>
+                    </div>
+                }
+
+                @if (Model.Community.DisplayProperties.ShcCategories)
+                {
+                    <hr class="ind" />
+
+                    <div class="ind clearfix">
+                        <h2 class="header-brand-blue h4">Senior Housing & Care Categories</h2>
+                        <ul class="list-col-any-3 ind-s amenities col-any-24">
+                            @foreach (var category in Model.ShcCategories)
+                            {
+                                <li>@category</li>
+                            }
+                        </ul>
+                    </div>
+                }
+
+                @if (Model.Community.DisplayProperties.FloorPlans)
+                {
+                    <div class="ind clearfix">
+                        <h4 class="header-brand-blue">Floor Plans</h4>
+                        <div class="col-any-24">
+                            @{ Html.RenderPartial("Details/Partial/FloorPlan", Model.FloorPlans); }
+                        </div>
+                    </div>
+                }
+
+                @if (Model.Community.DisplayProperties.Homes)
+                {
+                    <div class="ind">
+                        <h4 class="header-brand-blue">Homes</h4>
+                        <div class="col-any-24">
+                            @{ Html.RenderPartial("Details/Partial/Home", Model.Homes); }
+                        </div>
+                    </div>
+                }
+
+                @if (Model.Community.DisplayProperties.SpecHomes)
+                {
+                    <div class="ind">
+                        <h4 class="header-brand-blue">Spec homes</h4>
+                        <div class="col-any-24">
+                            @{ Html.RenderPartial("Details/Partial/SpecHome", Model.SpecHomes); }
+                        </div>
+                    </div>
+                }
+
+                @if (Model.Community.DisplayProperties.Map)
+                {
+                    <div class="ind clearfix map" data-container="map">
+                        @{ Html.RenderPartial("~/Views/Client/Controls/DirectionsMap.cshtml"); }
+                    </div>
+                }
+
+                @if (Model.Community.DisplayProperties.Pmc)
+                {
+                    <div class="ind">Professionally Managed By: @Model.Pmc.Name</div>
+                }
+
+                @if (Model.Community.DisplayProperties.WebsiteUrl)
+                {
+                    <div class="ind">
+                        <a href="@Model.WebsiteUrl"
+                           target="_blank"
+                           rel="nofollow"
+                           data-community-link-type="Website">
+                            Visit @Model.Community.Name's Website
+                        </a>
+                    </div>
+                }
+            </div>
+            <div class="col-any-7">
+                @if (Model.Community.DisplayProperties.LeadForm)
+                {
+                    Html.RenderPartial("~/Views/Client/Controls/LeadForm/DetailsInline.cshtml");
+                }
+
+                @if (Model.DisplayProperties.BookOrder)
+                {
+                    Html.RenderPartial("~/Views/Client/Search/Partial/Order.cshtml");
+                }
+
+                @if (Model.Community.DisplayProperties.Coupon)
+                {
+                    <div class="ind">
+                        <h4 class="header-brand-blue">@Model.Community.Name Special</h4>
+                        @{ Html.RenderPartial("Details/Partial/Coupon", Model.Coupon); }
+                    </div>
+                }
+
+                @if (Model.DisplayProperties.FeaturedProviders)
+                {
+                    <div class="ind">
+                        @{ Html.RenderPartial("~/Views/Client/Partial/FeaturedProviders.cshtml", Model.FeaturedServices); }
+                    </div>
+                }
+
+                @if (Model.DisplayProperties.PartnerAds)
+                {
+                    <div class="ind">
+                        <div id="div-gpt-ad-1355770323094-0" class="ad-160x600"></div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>*@

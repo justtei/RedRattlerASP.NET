@@ -1,0 +1,346 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="UMSModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+  <EntityContainer Name="UMSEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Addresses" EntityType="UMSModel.Address" />
+    <EntitySet Name="Books" EntityType="UMSModel.Book" />
+    <EntitySet Name="Brands" EntityType="UMSModel.Brand" />
+    <EntitySet Name="Cities" EntityType="UMSModel.City" />
+    <EntitySet Name="Countries" EntityType="UMSModel.Country" />
+    <EntitySet Name="Emails" EntityType="UMSModel.Email" />
+    <EntitySet Name="EmailTypes" EntityType="UMSModel.EmailType" />
+    <EntitySet Name="Phones" EntityType="UMSModel.Phone" />
+    <EntitySet Name="PhoneTypes" EntityType="UMSModel.PhoneType" />
+    <EntitySet Name="States" EntityType="UMSModel.State" />
+    <EntitySet Name="Users" EntityType="UMSModel.User" />
+    <EntitySet Name="UserToBooks" EntityType="UMSModel.UserToBook" />
+    <AssociationSet Name="FK_Address_City" Association="UMSModel.FK_Address_City">
+      <End Role="City" EntitySet="Cities" />
+      <End Role="Address" EntitySet="Addresses" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Address_User" Association="UMSModel.FK_Address_User">
+      <End Role="User" EntitySet="Users" />
+      <End Role="Address" EntitySet="Addresses" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Book_Brand" Association="UMSModel.FK_Book_Brand">
+      <End Role="Brand" EntitySet="Brands" />
+      <End Role="Book" EntitySet="Books" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UserToBook_Book" Association="UMSModel.FK_UserToBook_Book">
+      <End Role="Book" EntitySet="Books" />
+      <End Role="UserToBook" EntitySet="UserToBooks" />
+    </AssociationSet>
+    <AssociationSet Name="FK_City_State" Association="UMSModel.FK_City_State">
+      <End Role="State" EntitySet="States" />
+      <End Role="City" EntitySet="Cities" />
+    </AssociationSet>
+    <AssociationSet Name="FK_State_Country" Association="UMSModel.FK_State_Country">
+      <End Role="Country" EntitySet="Countries" />
+      <End Role="State" EntitySet="States" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Email_EmailType" Association="UMSModel.FK_Email_EmailType">
+      <End Role="EmailType" EntitySet="EmailTypes" />
+      <End Role="Email" EntitySet="Emails" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Email_User" Association="UMSModel.FK_Email_User">
+      <End Role="User" EntitySet="Users" />
+      <End Role="Email" EntitySet="Emails" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Phone_PhoneType" Association="UMSModel.FK_Phone_PhoneType">
+      <End Role="PhoneType" EntitySet="PhoneTypes" />
+      <End Role="Phone" EntitySet="Phones" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Phone_User" Association="UMSModel.FK_Phone_User">
+      <End Role="User" EntitySet="Users" />
+      <End Role="Phone" EntitySet="Phones" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UserToBook_User" Association="UMSModel.FK_UserToBook_User">
+      <End Role="User" EntitySet="Users" />
+      <End Role="UserToBook" EntitySet="UserToBooks" />
+    </AssociationSet>
+    <FunctionImport Name="ChangeUserName">
+      <Parameter Name="OldUserName" Mode="In" Type="String" />
+      <Parameter Name="NewUserName" Mode="In" Type="String" />
+    </FunctionImport>
+  </EntityContainer>
+  <EntityType Name="Address">
+    <Key>
+      <PropertyRef Name="AddressId" />
+    </Key>
+    <Property Name="AddressId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="AddressLine1" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+    <Property Name="AddressLine2" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+    <Property Name="CityId" Type="Int32" Nullable="false" />
+    <Property Name="PostalCode" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="UserId" Type="Guid" Nullable="false" />
+    <Property Name="Sequence" Type="Int32" Nullable="false" />
+    <Property Name="CreateUserId" Type="Guid" Nullable="false" />
+    <Property Name="CreateDate" Type="DateTime" Nullable="false" />
+    <Property Name="ModifyUserId" Type="Guid" Nullable="false" />
+    <Property Name="ModifyDate" Type="DateTime" Nullable="false" />
+    <NavigationProperty Name="City" Relationship="UMSModel.FK_Address_City" FromRole="Address" ToRole="City" />
+    <NavigationProperty Name="User" Relationship="UMSModel.FK_Address_User" FromRole="Address" ToRole="User" />
+  </EntityType>
+  <EntityType Name="Book">
+    <Key>
+      <PropertyRef Name="BookId" />
+    </Key>
+    <Property Name="BookId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="BookNumber" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="BrandId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Brand" Relationship="UMSModel.FK_Book_Brand" FromRole="Book" ToRole="Brand" />
+    <NavigationProperty Name="UserToBooks" Relationship="UMSModel.FK_UserToBook_Book" FromRole="Book" ToRole="UserToBook" />
+    <Property Type="String" Name="BookName" MaxLength="100" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="Brand">
+    <Key>
+      <PropertyRef Name="BrandId" />
+    </Key>
+    <Property Name="BrandId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Description" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+    <NavigationProperty Name="Books" Relationship="UMSModel.FK_Book_Brand" FromRole="Brand" ToRole="Book" />
+  </EntityType>
+  <EntityType Name="City">
+    <Key>
+      <PropertyRef Name="CityId" />
+    </Key>
+    <Property Name="CityId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="StateId" Type="Int32" Nullable="false" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+    <NavigationProperty Name="Addresses" Relationship="UMSModel.FK_Address_City" FromRole="City" ToRole="Address" />
+    <NavigationProperty Name="State" Relationship="UMSModel.FK_City_State" FromRole="City" ToRole="State" />
+  </EntityType>
+  <EntityType Name="Country">
+    <Key>
+      <PropertyRef Name="CountryId" />
+    </Key>
+    <Property Name="CountryId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Code" Type="String" Nullable="false" MaxLength="3" Unicode="false" FixedLength="false" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+    <NavigationProperty Name="States" Relationship="UMSModel.FK_State_Country" FromRole="Country" ToRole="State" />
+  </EntityType>
+  <EntityType Name="Email">
+    <Key>
+      <PropertyRef Name="EmailId" />
+    </Key>
+    <Property Name="EmailId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Email1" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="EmailTypeId" Type="Int32" Nullable="false" />
+    <Property Name="UserId" Type="Guid" Nullable="false" />
+    <Property Name="Sequence" Type="Int32" Nullable="false" />
+    <Property Name="CreateUserId" Type="Guid" Nullable="false" />
+    <Property Name="CreateDate" Type="DateTime" Nullable="false" />
+    <Property Name="ModifyUserId" Type="Guid" Nullable="false" />
+    <Property Name="ModifyDate" Type="DateTime" Nullable="false" />
+    <NavigationProperty Name="EmailType" Relationship="UMSModel.FK_Email_EmailType" FromRole="Email" ToRole="EmailType" />
+    <NavigationProperty Name="User" Relationship="UMSModel.FK_Email_User" FromRole="Email" ToRole="User" />
+  </EntityType>
+  <EntityType Name="EmailType">
+    <Key>
+      <PropertyRef Name="EmailTypeId" />
+    </Key>
+    <Property Name="EmailTypeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Description" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="Sequence" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Emails" Relationship="UMSModel.FK_Email_EmailType" FromRole="EmailType" ToRole="Email" />
+  </EntityType>
+  <EntityType Name="Phone">
+    <Key>
+      <PropertyRef Name="PhoneId" />
+    </Key>
+    <Property Name="PhoneId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Phone1" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="PhoneTypeId" Type="Int32" Nullable="false" />
+    <Property Name="UserId" Type="Guid" Nullable="false" />
+    <Property Name="Sequence" Type="Int32" Nullable="false" />
+    <Property Name="CreateUserId" Type="Guid" Nullable="false" />
+    <Property Name="CreateDate" Type="DateTime" Nullable="false" />
+    <Property Name="ModifyUserId" Type="Guid" Nullable="false" />
+    <Property Name="ModifyDate" Type="DateTime" Nullable="false" />
+    <NavigationProperty Name="PhoneType" Relationship="UMSModel.FK_Phone_PhoneType" FromRole="Phone" ToRole="PhoneType" />
+    <NavigationProperty Name="User" Relationship="UMSModel.FK_Phone_User" FromRole="Phone" ToRole="User" />
+  </EntityType>
+  <EntityType Name="PhoneType">
+    <Key>
+      <PropertyRef Name="PhoneTypeId" />
+    </Key>
+    <Property Name="PhoneTypeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Description" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="Sequence" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Phones" Relationship="UMSModel.FK_Phone_PhoneType" FromRole="PhoneType" ToRole="Phone" />
+  </EntityType>
+  <EntityType Name="State">
+    <Key>
+      <PropertyRef Name="StateId" />
+    </Key>
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="StateId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CountryId" Type="Int32" Nullable="false" />
+    <Property Name="Code" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+    <NavigationProperty Name="Cities" Relationship="UMSModel.FK_City_State" FromRole="State" ToRole="City" />
+    <NavigationProperty Name="Country" Relationship="UMSModel.FK_State_Country" FromRole="State" ToRole="Country" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="UserId" Type="Guid" Nullable="false" />
+    <Property Name="FirstName" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="LastName" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="HasLeadsNotifications" Type="Boolean" Nullable="false" />
+    <Property Name="HasNotifications" Type="Boolean" Nullable="false" />
+    <Property Name="CreateUserId" Type="Guid" Nullable="false" />
+    <Property Name="CreateDate" Type="DateTime" Nullable="false" />
+    <Property Name="ModifyUserId" Type="Guid" Nullable="false" />
+    <Property Name="ModifyDate" Type="DateTime" Nullable="false" />
+    <Property Name="PrimaryEmail" Type="String" MaxLength="20" Unicode="false" FixedLength="false" />
+    <NavigationProperty Name="Addresses" Relationship="UMSModel.FK_Address_User" FromRole="User" ToRole="Address" />
+    <NavigationProperty Name="Emails" Relationship="UMSModel.FK_Email_User" FromRole="User" ToRole="Email" />
+    <NavigationProperty Name="Phones" Relationship="UMSModel.FK_Phone_User" FromRole="User" ToRole="Phone" />
+    <NavigationProperty Name="UserToBooks" Relationship="UMSModel.FK_UserToBook_User" FromRole="User" ToRole="UserToBook" />
+    <Property Type="Guid" Name="TempContactId" />
+    <Property Type="Guid" Name="TempAddressId" />
+  </EntityType>
+  <EntityType Name="UserToBook">
+    <Key>
+      <PropertyRef Name="UserToBookId" />
+    </Key>
+    <Property Name="UserId" Type="Guid" Nullable="false" />
+    <Property Name="BookId" Type="Int32" Nullable="false" />
+    <Property Name="UserToBookId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <NavigationProperty Name="Book" Relationship="UMSModel.FK_UserToBook_Book" FromRole="UserToBook" ToRole="Book" />
+    <NavigationProperty Name="User" Relationship="UMSModel.FK_UserToBook_User" FromRole="UserToBook" ToRole="User" />
+    <Property Type="Int32" Name="TempUserGroupId" />
+  </EntityType>
+  <Association Name="FK_Address_City">
+    <End Role="City" Type="UMSModel.City" Multiplicity="1" />
+    <End Role="Address" Type="UMSModel.Address" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="City">
+        <PropertyRef Name="CityId" />
+      </Principal>
+      <Dependent Role="Address">
+        <PropertyRef Name="CityId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Address_User">
+    <End Role="User" Type="UMSModel.User" Multiplicity="1" />
+    <End Role="Address" Type="UMSModel.Address" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="Address">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Book_Brand">
+    <End Role="Brand" Type="UMSModel.Brand" Multiplicity="1" />
+    <End Role="Book" Type="UMSModel.Book" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Brand">
+        <PropertyRef Name="BrandId" />
+      </Principal>
+      <Dependent Role="Book">
+        <PropertyRef Name="BrandId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UserToBook_Book">
+    <End Role="Book" Type="UMSModel.Book" Multiplicity="1" />
+    <End Role="UserToBook" Type="UMSModel.UserToBook" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Book">
+        <PropertyRef Name="BookId" />
+      </Principal>
+      <Dependent Role="UserToBook">
+        <PropertyRef Name="BookId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_City_State">
+    <End Role="State" Type="UMSModel.State" Multiplicity="1" />
+    <End Role="City" Type="UMSModel.City" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="State">
+        <PropertyRef Name="StateId" />
+      </Principal>
+      <Dependent Role="City">
+        <PropertyRef Name="StateId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_State_Country">
+    <End Role="Country" Type="UMSModel.Country" Multiplicity="1" />
+    <End Role="State" Type="UMSModel.State" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Country">
+        <PropertyRef Name="CountryId" />
+      </Principal>
+      <Dependent Role="State">
+        <PropertyRef Name="CountryId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Email_EmailType">
+    <End Role="EmailType" Type="UMSModel.EmailType" Multiplicity="1" />
+    <End Role="Email" Type="UMSModel.Email" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EmailType">
+        <PropertyRef Name="EmailTypeId" />
+      </Principal>
+      <Dependent Role="Email">
+        <PropertyRef Name="EmailTypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Email_User">
+    <End Role="User" Type="UMSModel.User" Multiplicity="1" />
+    <End Role="Email" Type="UMSModel.Email" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="Email">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Phone_PhoneType">
+    <End Role="PhoneType" Type="UMSModel.PhoneType" Multiplicity="1" />
+    <End Role="Phone" Type="UMSModel.Phone" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PhoneType">
+        <PropertyRef Name="PhoneTypeId" />
+      </Principal>
+      <Dependent Role="Phone">
+        <PropertyRef Name="PhoneTypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Phone_User">
+    <End Role="User" Type="UMSModel.User" Multiplicity="1" />
+    <End Role="Phone" Type="UMSModel.Phone" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="Phone">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UserToBook_User">
+    <End Role="User" Type="UMSModel.User" Multiplicity="1" />
+    <End Role="UserToBook" Type="UMSModel.UserToBook" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="UserToBook">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

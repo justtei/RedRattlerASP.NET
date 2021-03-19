@@ -1,0 +1,27 @@
+﻿@model MSLivingChoices.Mvc.Uipc.Client.ViewModels.ServiceProviderDetailsVm
+
+@{
+    Layout = "~/Views/Client/Shared/_PrintLayout.cshtml";
+}
+
+@section scripts
+{
+    <script>
+        mslc.resolve([], function() {
+            window.print();
+        });
+    </script>
+}
+
+<div class="row details">
+    @{ Html.RenderPartial("~/Views/Client/Print/Partial/ServiceProviderHeader.cshtml"); }
+
+    @{ Html.RenderPartial("~/Views/Client/Print/Partial/ServiceProviderInfo.cshtml"); }
+
+    @if (Model.ServiceProvider.DisplayProperties.Coupon)
+    {
+        <div class="ind avoid-break">
+            @{ Html.RenderPartial("~/Views/Client/Print/Partial/Coupon.cshtml", Model.Coupon); }
+        </div>
+    }
+</div>

@@ -1,0 +1,27 @@
+﻿<script type="text/html" id="provider">
+    <div class="quick-view vpad-s">
+        <div class="row">
+            <div class="col-any-16">
+                <div data-bind="photoTour: images"></div>
+            </div>
+            <div class="col-any-8"
+                 data-bind="with: leadForm">
+                @{Html.RenderPartial("~/Views/Client/Controls/LeadForm/QuickViewInline.cshtml");}
+            </div>
+        </div>
+        <!-- ko if: description -->
+        <p class="ind-s" data-bind="text: description"></p>
+        <!-- /ko -->
+        <!-- ko if: serviceCategories.length -->
+        <div class="col-any-24 ind">
+            <h5 class="header-brand-red">
+                <span data-bind="text:name"></span>
+                <span>Categories</span>
+            </h5>
+            <ul class="list-col-any-3 amenities" data-bind="foreach: serviceCategories">
+                <li data-bind="text: $data"></li>
+            </ul>
+        </div>
+        <!-- /ko -->
+    </div>
+</script>

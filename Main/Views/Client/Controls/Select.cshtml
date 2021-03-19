@@ -1,0 +1,14 @@
+﻿@model string
+
+<div class="select"
+     data-bind="with: @Model"
+     data-select="single">
+    <span class="caption form-control"
+          data-bind="text: caption, title: caption"
+          data-select="caption"></span>
+    <ul class="items single"
+        data-bind="foreach: items"
+        data-select="target">
+        <li data-bind="css: {'active': selected }, click: $parent.selectItem, text: formatted"></li>
+    </ul>
+</div>

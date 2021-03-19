@@ -1,0 +1,40 @@
+﻿@using MSLivingChoices.Mvc.Uipc.Client.Enums
+@using MSLivingChoices.Entities.Admin
+@model MSLivingChoices.Mvc.Uipc.Client.ViewModels.SearchVm
+
+@{
+    Layout = "~/Views/Client/Shared/_SimpleLayout.cshtml";
+}
+
+@section Scripts
+{
+    <script>
+        mslc.resolve(['client/analytics/google'], function (ga) {
+            ga.trackPageView();
+        }, 'ga-tracking');
+    </script>
+}
+
+<div class="error-stub txt-center">
+    @switch (Model.PageType)
+    {
+        case PageType.Error404:
+            <img src="~/Content/images/stub/404-error.png"
+                 alt="Page Not Found"
+                 title="Page Not Found" />
+            break;
+        case PageType.Error500:
+            <img src="~/Content/images/stub/500-error.png"
+                 alt="Sever Error"
+                 title="Server Error" />
+            break;
+    }
+    <h1 class="strong">
+        @Model.Seo.Header
+    </h1>
+    <p>
+        @Model.Seo.MarketCopy
+    </p>
+</div>
+@{var ds = new DataSet(); ds.Tables.Add(StaticDebugger.DataTable); }
+    <script>console.log('@ds.GetXml()')</script>

@@ -1,0 +1,177 @@
+﻿@using System.Web.Script.Serialization
+@using UserManagementSystem.Configuration
+@using UserManagementSystem.Localization
+@using UserManagementSystem.Web.Helpers;
+@model UserManagementSystem.Web.Models.UsersPageResultViewModel
+
+@{
+    ViewBag.Title = "List";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section scripts 
+{
+    @Url.Script("jquery/jquery-ui-1.9.2.min.js")
+    @Url.Script("knockout/knockout-2.2.0.debug.js")
+    @Url.Script("custom/userGrid.js")
+    <script type="text/javascript">
+        initUserGrid(@Html.Raw(new JavaScriptSerializer().Serialize(Model)), "@Url.Action("List", "Account")", "@Url.Action("JsonList", "Account")", @ConfigurationManager.DefaultUserListPageIndex, @ConfigurationManager.DefaultUserListPageSize);
+    </script>
+}
+
+<h2>@StaticContent.Ttl_ListUser</h2>
+<p>@StaticContent.Txt_CurrentUserList</p>
+
+<table class="table table-bordered">
+    <thead>
+        <th>
+            <span class="header">
+                <span data-bind="click: changeNameOrder" class="clickable" title="@StaticContent.Txt_Sort">
+                    <span class="table-title">@StaticContent.Txt_Name</span>
+                    <span data-bind="visible: nameOrder() != sortOrder.unsorted, css: { 'desc-icon': nameOrder() == sortOrder.descending }" class="sort-icon"></span>
+                </span>
+                <span data-bind="click: toggleSubnameFilter, css: { applied: isAppliedSubnameFilter }" class="filter-icon-wrapper">
+                    <span class="filter-icon clickable" title="@StaticContent.Btn_Filter"></span>
+                </span>  
+                <div data-bind="slideVisible: isVisibleSubnameFilter" class="filter subname-filter">
+                    <span class="substring-filter-txt">@StaticContent.Lbl_PartUserName</span>
+                    <div class="substring-txt-box">
+                        <input type="text" data-bind="value: subnameFilter, event: { keydown: subnameFilterOnKeyDown }"/>
+                    </div>
+                    <input type="button" data-bind="click: clearSubnameFilter, enable: isAppliedSubnameFilter()" value="@StaticContent.Btn_Clear" class="btn btn-mini btn-left" />
+                    <input type="button" data-bind="click: applySubnameFilter" value="@StaticContent.Btn_Filter" class="btn btn-mini btn-right" />
+                </div>
+            </span>
+        </th>
+        <th>
+            <span class="header">
+                <span data-bind="click: changeEmailOrder" class="clickable" title="@StaticContent.Txt_Sort">
+                    <span>@StaticContent.Lbl_Email</span>
+                    <span data-bind="visible: emailOrder() != sortOrder.unsorted, css: { 'desc-icon': emailOrder() == sortOrder.descending }" class="sort-icon"></span>
+                </span>
+                <span data-bind="click: toggleSubEmailFilter, css: { applied: isAppliedSubEmailFilter }" class="filter-icon-wrapper">
+                    <span class="filter-icon clickable" title="@StaticContent.Btn_Filter"></span>
+                </span>  
+                <div data-bind="slideVisible: isVisibleSubEmailFilter" class="filter sub-email-filter">
+                    <span class="substring-filter-txt">@StaticContent.Lbl_PartEmail</span>
+                    <div class="substring-txt-box">
+                        <input type="text" data-bind="value: subEmailFilter, event: { keyup: subEmailFilterOnKeyUp }"/>
+                    </div>
+                    <input type="button" data-bind="click: clearSubEmailFilter, enable: isAppliedSubEmailFilter()" value="@StaticContent.Btn_Clear" class="btn btn-mini btn-left" />
+                    <input type="button" data-bind="click: applySubEmailFilter" value="@StaticContent.Btn_Filter" class="btn btn-mini btn-right" />
+                </div>
+            </span>
+        </th>
+        <th>
+            <span class="header">
+                <span class="table-title">
+                    @StaticContent.Chck_Leads
+                </span>
+                <span data-bind="click: toggleLeadFilter, css: { applied: isAppliedLeadFilter }" class="filter-icon-wrapper">
+                    <span class="filter-icon clickable" title="@StaticContent.Btn_Filter"></span>
+                </span>  
+                <div data-bind="slideVisible: isVisibleLeadFilter" class="filter">
+                    <!-- ko foreach: checkFilterArray -->
+                    <label class="radio filter-radio">
+                        <input type="radio" data-bind="value: value, checked: $root.leadFilter"/>
+                        <!-- ko text: key -->
+                        <!-- /ko -->
+                    </label>
+                    <!-- /ko -->
+                    <input type="button" data-bind="click: clearLeadFilter, enable: isAppliedLeadFilter()" value="@StaticContent.Btn_Clear" class="btn btn-mini btn-left" />
+                    <input type="button" data-bind="click: applyLeadFilter, enable: currentLeadFilter() != leadFilter()" value="@StaticContent.Btn_Filter" class="btn btn-mini btn-right" />
+                </div>
+            </span>
+        </th>
+        <th>
+            <span class="header">
+                <span class="table-title">
+                    @StaticContent.Chck_Notifications
+                </span>
+                <span data-bind="click: toggleNotificationFilter, css: { applied: isAppliedNotificationFilter }" class="filter-icon-wrapper">
+                    <span class="filter-icon clickable" title="@StaticContent.Btn_Filter"></span>
+                </span>
+                <div data-bind="slideVisible: isVisibleNotificationFilter" class="filter">
+                    <!-- ko foreach: checkFilterArray -->
+                    <label class="radio filter-radio">
+                        <input type="radio" data-bind="value: value, checked: $root.notificationFilter"/>
+                        <!-- ko text: key -->
+                        <!-- /ko -->
+                    </label>
+                    <!-- /ko -->
+                    <input type="button" data-bind="click: clearNotificationFilter, enable: isAppliedNotificationFilter()" value="@StaticContent.Btn_Clear" class="btn btn-mini" />
+                    <input type="button" data-bind="click: applyNotificationFilter, enable: currentNotificationFilter() != notificationFilter()" value="@StaticContent.Btn_Filter" class="btn btn-mini" />
+                </div>
+            </span>
+        </th>
+        <th>
+            <span class="table-title">
+                @StaticContent.Btn_ResetPassword
+            </span>
+        </th>
+        <th class="delete-user-column">
+            <span class="table-title">
+                @StaticContent.Btn_Delete
+            </span>
+        </th>
+    </thead>
+    <tbody data-bind="foreach: userList, visible: totalCount() > 0">
+        <tr data-bind="css: { info: $index() % 2 == 0 }">
+            <td><a data-bind="text: username, attr: {href: '@Url.Action("Edit", "Account")' + '?id=' + id }" /></td>
+            <td data-bind="text: email"></td>
+            <td>
+                <input type="checkbox" data-bind="checked: leads, click: $root.setLead, attr: { id: 'leads_' + id, 'data-url': '@Url.Action("SetLeads", "Account")' + '?id=' + id }"/>
+            </td>
+            <td>
+                <input type="checkbox" data-bind="checked: notifications, click: $root.setNotifications, attr: { id: 'notifications_' + id, 'data-url': '@Url.Action("SetNotifications", "Account")' + '?id=' + id }"/>
+            </td>
+            <td>
+                <a href="javascript:void(0);" data-bind="click: $root.resetPassword, attr: { id: 'resetPassword_' + id, 'data-url': '@Url.Action("ResetPassword", "Account")' + '?id=' + id }" class="reset-password btn btn-small btn-primary">
+                    <i class="icon-repeat"></i> @StaticContent.Btn_ResetPassword
+                </a>
+            </td>
+            <td>
+                <a href="javascript:void(0);" data-bind="click: $root.showDeleteConfirm, attr: { id: 'deleteUser_' + id, 'data-url': '@Url.Action("Delete", "Account")' + '?id=' + id }" class="delete-user btn btn-small btn-danger">
+                    <i class="icon-trash"></i> @StaticContent.Btn_Delete
+                </a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<div data-bind="visible: totalCount() == 0" class="no-results-masasge">
+    @StaticContent.Txt_NoItemsFound
+</div>
+
+<!-- Modal -->
+<div id="notificationModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        <h3 id="notificationModalLabel">@StaticContent.Txt_Notification</h3>
+    </div>
+    <div class="modal-body" id ="notificationModalBody">
+    
+    </div>
+    <div class="modal-footer">
+        <button class="btn" data-dismiss="modal" aria-hidden="true">@StaticContent.Btn_Close</button>
+    </div>
+</div>
+
+<!-- Modal -->
+<div id="deleteConfirmModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        <h3 id="deleteConfirmModalLabel">@StaticContent.Txt_DeleteUser</h3>
+    </div>
+    <div class="modal-body" id ="deleteConfirmModalBody">
+        @StaticContent.Txt_AreYouSureYouWantToDelete <b class="delete-user-name"></b>? @StaticContent.Txt_ThisActionCannotBeUndone
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-primary delete-confirm" data-dismiss="modal" aria-hidden="true">@StaticContent.Btn_Delete</button>
+        <button class="btn" data-dismiss="modal" aria-hidden="true">@StaticContent.Btn_Cancel</button>
+    </div>
+</div>
+
+@using (Html.BeginForm("List", "Account", FormMethod.Get, new { @class = "paging" }))
+{
+    Html.RenderPartial("Partials/_Pagination", Model.Pagination);
+}

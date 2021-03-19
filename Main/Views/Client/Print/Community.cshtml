@@ -1,0 +1,77 @@
+﻿@using MSLivingChoices.Mvc.Uipc.Client.Helpers
+@model MSLivingChoices.Mvc.Uipc.Client.ViewModels.CommunityDetailsVm
+
+@{
+    Layout = "~/Views/Client/Shared/_PrintLayout.cshtml";
+}
+
+@section scripts
+{
+    <script>
+        mslc.resolve([], function() {
+            window.print();
+        });
+    </script>
+}
+
+<div class="row details">
+    @{ Html.RenderPartial("~/Views/Client/Print/Partial/CommunityHeader.cshtml"); }
+
+    <div class="ind">
+        @if (Model.Community.DisplayProperties.Image)
+        {
+            <div class="primary-photo">
+                @RenderHelper.ImageWithMicrodata(Model.Community.Image)
+            </div>
+        }
+    </div>
+
+    @{ Html.RenderPartial("~/Views/Client/Print/Partial/CommunityInfo.cshtml"); }
+
+    @if (Model.Community.DisplayProperties.Logo || Model.Community.DisplayProperties.Description)
+    {
+        <div class="ind avoid-break">
+            <p>
+                @if (Model.Community.DisplayProperties.Logo)
+                {
+                    @RenderHelper.Thumbnail(Model.Logo, "pull-right", "hpad-s", "logo")
+                }
+                @if (Model.Community.DisplayProperties.Description)
+                {
+                    @Model.Community.Description
+                }
+            </p>
+        </div>
+    }
+
+    @if (Model.Community.DisplayProperties.Amenities)
+    {
+        <div class="ind avoid-break">
+            <h2 class="h4">Community Features & Amenities</h2>
+            <ul class="list-col-any-2 ind-s amenities col-any-24">
+                @foreach (var amenity in Model.Community.Amenities)
+                {
+                    <li>@amenity</li>
+                }
+            </ul>
+        </div>
+    }
+
+    @if (Model.Community.DisplayProperties.CommunityServices)
+    {
+        <div class="ind clearfix avoid-break">
+            <h2 class="h4">Community Services</h2>
+            <ul class="list-col-any-2 ind-s amenities col-any-24">
+                @foreach (var service in Model.Community.CommunityServices)
+                {
+                    <li>@service</li>
+                }
+            </ul>
+        </div>
+    }
+
+    @if (Model.Community.DisplayProperties.Pmc)
+    {
+        <div class="ind">Professionaly Managed By: @Model.Pmc.Name</div>
+    }
+</div>

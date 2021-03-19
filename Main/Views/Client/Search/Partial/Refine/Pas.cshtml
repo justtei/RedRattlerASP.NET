@@ -1,0 +1,44 @@
+﻿<form id="refine" data-bind="event: { 'submit': apply }" class=" col-any-16 row-wrap">
+    <ul class="refine"
+        data-bind="with: controls">
+        <li class="col-any-8"
+            data-bind="with: categories"
+            data-select="multi">
+            <div class="tile"
+                 data-select="caption">
+                <span class="header">
+                    Service Categories
+                    <i class="icon-arrow-down"></i>
+                </span>
+                <div data-bind="text:caption"></div>
+            </div>
+            <ul class="items multi list-col-any-3 extra"
+                data-bind="foreach: items"
+                data-select="target">
+                <li data-bind="css: { 'active': selected }">
+                    <label>
+                        <input type="checkbox" class="custom-control-input" data-bind="checked: selected" />
+                        <span class="custom-control-label" data-bind="text: text"></span>
+                    </label>
+                </li>
+            </ul>
+        </li>
+        <li class="col-any-4 submit" style="display: none"
+            data-bind="visible: $data">
+            <!-- ko if: $root.isEmpty() || !$root.isInitial() -->
+            <button class="btn btn-brand-red"
+                type="submit"
+                data-bind="css: { 'disabled': $root.isInitial, 'in-progress': $root.pending }">
+                <span>Apply</span>
+            </button>
+            <!-- /ko -->
+            <!-- ko if: !$root.isEmpty() && $root.isInitial() -->
+            <button class="btn btn-brand-red"
+                type="button"
+                data-bind="click: $root.clear, css: { 'in-progress': $root.pending }">
+                <span>Clear</span>
+            </button>
+            <!-- /ko -->
+        </li>
+    </ul>
+</form>

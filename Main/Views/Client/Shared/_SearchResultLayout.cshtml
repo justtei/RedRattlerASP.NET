@@ -1,0 +1,63 @@
+﻿@using MSLivingChoices.Mvc.Uipc.Client.Enums
+@using MSLivingChoices.Mvc.Uipc.Client.Helpers
+@model MSLivingChoices.Mvc.Uipc.Client.ViewModels.SearchVm
+
+@{
+    Layout = "~/Views/Client/Shared/_PageLayout.cshtml";
+}
+
+@section scripts
+{
+    @if (IsSectionDefined("scripts"))
+    {
+        @RenderSection("Scripts")
+    }
+    <script>
+        
+            setTimeout(() => {
+                var items = document.getElementsByClassName('clk');
+                for (var i = 0; i < items.length; i++) {
+                    items[i].click();
+                }
+            }, 100);
+        
+    </script>
+}
+
+@*<div class="head-search-bar">
+        <div class="container">
+            <div class="row">
+                @{ Html.RenderPartial("~/Views/Client/Partial/SearchBarForm.cshtml"); }
+                @switch (Model.PageType.ToRefineType())
+                {
+                    case RefineType.SeniorHousing:
+                    {
+                        Html.RenderPartial("~/Views/Client/Search/Partial/Refine/Shc.cshtml");
+                        break;
+                    }
+                    case RefineType.ActiveCommunity:
+                    case RefineType.ActiveHome:
+                    {
+                        Html.RenderPartial("~/Views/Client/Search/Partial/Refine/AacAah.cshtml");
+                        break;
+                    }
+                    case RefineType.Service:
+                    {
+                        Html.RenderPartial("~/Views/Client/Search/Partial/Refine/Pas.cshtml");
+                        break;
+                    }
+                }
+            </div>
+        </div>
+    </div>*@
+
+<div class="inner-header">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12 text-center">
+                <h1 class="inner-title text-white">Search  Results</h1>
+            </div>
+        </div>
+    </div>
+</div>
+@RenderBody()

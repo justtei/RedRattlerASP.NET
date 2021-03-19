@@ -1,0 +1,252 @@
+﻿@using MSLivingChoices.Localization
+@{
+    Layout = "~/Views/Client/Shared/_SimpleLayout.cshtml";
+}
+
+@section Scripts
+{
+    <script type="text/javascript">
+        mslc.resolve(['client/analytics/google'], function(ga) {
+            ga.trackPageView();
+        }, 'ga-tracking');
+    </script>
+}
+
+
+<div class="inner-header">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12 text-center">
+                <h1 class="inner-title text-white">@StaticContent.Static_TermsOfUse</h1>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<section class="space-ptb">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <h4 class="text-secondary"><i class="fas fa-angle-right pr-3"></i>@Copyright.Header_General</h4>
+                <p>@Copyright.General_1</p>
+                <p>@Copyright.General_2</p>
+                <p>@Copyright.General_3</p>
+
+                <h4 class="text-secondary"><i class="fas fa-angle-right pr-3"></i>@Copyright.Header_Privacy</h4>
+                <p>@Copyright.Privacy_1&nbsp;<a href="@Url.RouteUrl("PrivacyPolicy")">Privacy Policy</a></p>
+                <p>@Copyright.Registration_2&nbsp;<a href="@Url.RouteUrl("PrivacyPolicy")">Privacy Policy</a></p>
+
+                <h4 class="text-secondary"><i class="fas fa-angle-right pr-3"></i>@Copyright.Header_AccountInfo</h4>
+                <p>@Copyright.AccountInfo_1</p>
+
+                <h4 class="text-secondary"><i class="fas fa-angle-right pr-3"></i>@Copyright.Header_Using</h4>
+                <p>@Copyright.Using_1</p>
+
+                <h4 class="text-secondary"><i class="fas fa-angle-right pr-3"></i>@Copyright.Header_NoLicense</h4>
+                <p>@Copyright.NoLicense_1</p>
+
+                <h4 class="text-secondary"><i class="fas fa-angle-right pr-3"></i>@Copyright.Header_Orders</h4>
+                <p>@Copyright.Header_Children</p>
+                <p>@Copyright.Children_1</p>
+
+                <h4 class="text-secondary"><i class="fas fa-angle-right pr-3"></i>@Copyright.Header_Conduct</h4>
+                <p>
+                    @Copyright.Conduct_1
+                </p>
+
+                <h4 class="text-secondary"><i class="fas fa-angle-right pr-3"></i>Protecting Children</h4>
+                <p>SLC strives to create a truly safe place for children on the Internet and over the airwaves. Parental control protections (such as computer hardware, software or filtering services) are commercially available that may assist parents in limiting access to content that may be harmful to minors.</p>
+
+                <h4 class="text-secondary"><i class="fas fa-angle-right pr-3"></i>@Copyright.Header_Conduct</h4>
+                <p>@Copyright.Conduct_1</p>
+                <ul class="mb-2 pl-0">
+                    <li class="d-flex"><i class="fas fa-check pr-3"></i>@Copyright.Conduct_2</li>
+                    <li class="d-flex"><i class="fas fa-check pr-3"></i>@Copyright.Conduct_3</li>
+                    <li class="d-flex"><i class="fas fa-check pr-3"></i>@Copyright.Conduct_4</li>
+                    <li class="d-flex"><i class="fas fa-check pr-3"></i>@Copyright.Conduct_5</li>
+                    <li class="d-flex"><i class="fas fa-check pr-3"></i>@Copyright.Conduct_6</li>
+                    <li class="d-flex"><i class="fas fa-check pr-3"></i>@Copyright.Conduct_7</li>
+                    <li class="d-flex"><i class="fas fa-check pr-3"></i>@Copyright.Conduct_8</li>
+                    <li class="d-flex"><i class="fas fa-check pr-3"></i>@Copyright.Conduct_9</li>
+                    <li class="d-flex"><i class="fas fa-check pr-3"></i>@Copyright.Conduct_10</li>
+                    <li class="d-flex"><i class="fas fa-check pr-3"></i>@Copyright.Conduct_11</li>
+                </ul>
+                <p>
+                    @Copyright.Conduct_12&nbsp;<a href="mailto:webmaster@seniorlivingchoices.com">webmaster@seniorlivingchoices.com</a>
+                </p>
+                <p>@Copyright.Conduct_13</p>
+                <h4 class="text-secondary"><i class="fas fa-angle-right pr-3"></i>@Copyright.Header_Disclosure</h4>
+                <p>
+                    @Copyright.Disclosure_1 &nbsp;<a href="@Url.RouteUrl("PrivacyPolicy")">Privacy Policy</a>.
+                </p>
+                <p>@Copyright.Disclaimer_2</p>
+
+                <h4 class="text-secondary"><i class="fas fa-angle-right pr-3"></i>@Copyright.Header_Indemnity</h4>
+                <p>@Copyright.Indemnity_1</p>
+                <h4 class="text-secondary"><i class="fas fa-angle-right pr-3"></i>@Copyright.Header_Disclaimer</h4>
+                <p>
+                    @Copyright.Disclaimer_1
+                </p>
+                <p>
+                    @Copyright.Disclaimer_2
+                </p>
+
+                <h4 class="text-secondary"><i class="fas fa-angle-right pr-3"></i>@Copyright.Header_Liability</h4>
+                <p>@Copyright.Liabilty_1</p>
+
+                <h4 class="text-secondary"><i class="fas fa-angle-right pr-3"></i>@Copyright.Header_Access</h4>
+                <p>@Copyright.Access_1</p>
+                <p>@Copyright.Access_2</p>
+
+                <h4 class="text-secondary"><i class="fas fa-angle-right pr-3"></i>@Copyright.Header_Sitedown</h4>
+                <p>@Copyright.Sitedown_1 <a href="mailto:webmaster@seniorlivingchoices.com">webmaster@seniorlivingchoices.com</a></p>
+
+                <h4 class="text-secondary"><i class="fas fa-angle-right pr-3"></i>@Copyright.Header_Copyrights</h4>
+                <p>@Copyright.Copyrights_1</p>
+                <p>@Copyright.Copyrights_2</p>
+                <p>
+                    <b>
+                        @Copyright.Copyrights_3<br>
+                        @Copyright.Copyrights_4<br>
+                        @Copyright.Copyrights_5<br>
+                        @Copyright.Copyrights_6<br>
+                        @Copyright.Copyrights_7<br>
+                        @Copyright.Copyrights_8<br>
+                        <a href="mailto:webmaster@seniorlivingchoices.com">webmaster@seniorlivingchoices.com</a>
+                    </b>
+                </p>
+
+                <p class="lead font-weight-bold">@Copyright.Copyrights_9</p>
+                <p class="mt-3">
+                    @Copyright.Copyrights_10<br>
+                    @Copyright.Copyrights_11<br>
+                    @Copyright.Copyrights_12<br>
+                    @Copyright.Copyrights_13<br>
+                    @Copyright.Copyrights_14<br>
+                    @Copyright.Copyrights_15<br>
+                    @Copyright.Copyrights_16<br>
+                    @Copyright.Copyrights_17<br>
+                    @Copyright.Copyrights_18<br>
+                    @Copyright.Copyrights_19
+                </p>
+
+                <p>
+                    @Copyright.Copyrights_20<br>
+                    @Copyright.Copyrights_21
+                </p>
+
+                <h4 class="text-secondary"><i class="fas fa-angle-right pr-3"></i>@Copyright.Header_Opportunity</h4>
+                <p>@Copyright.Opportunity_1</p>
+                <p>@Copyright.Opportunity_2</p>
+
+                <h4 class="text-secondary"><i class="fas fa-angle-right pr-3"></i>@Copyright.Header_Trademarks</h4>
+                <p>@Copyright.Trademarks_1</p>
+
+                <h4 class="text-secondary"><i class="fas fa-angle-right pr-3"></i>@Copyright.Header_Miscellaneous</h4>
+                <p>@Copyright.Miscellaneous_1</p>
+
+                <h4 class="text-secondary"><i class="fas fa-angle-right pr-3"></i>@Copyright.Miscellaneous_2</h4>
+                <p>
+                    <b>
+                        @Copyright.Miscellaneous_3<br>
+                        @Copyright.Miscellaneous_4 <br>
+                        @Copyright.Miscellaneous_5<br>
+                        @Copyright.Miscellaneous_6
+                    </b>
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+@*<h4>@Copyright.Header_General</h4>*@
+@*<p>@Copyright.General_1</p>
+<p>@Copyright.General_2</p>
+<p>@Copyright.General_3</p>
+<h4 class="ind-s">@Copyright.Header_Privacy</h4>*@
+@*<p>@Copyright.Privacy_1&nbsp;<a href="@Url.RouteUrl("PrivacyPolicy")">Privacy Policy</a></p>
+<p>@Copyright.Registration_2&nbsp;<a href="@Url.RouteUrl("PrivacyPolicy")">Privacy Policy</a></p>*@
+@*<h4 class="ind-s">@Copyright.Header_AccountInfo</h4>*@
+@*<p>@Copyright.AccountInfo_1</p>
+<h4 class="ind-s">@Copyright.Header_Using</h4>
+<p>@Copyright.Using_1</p>
+<h4 class="ind-s">@Copyright.Header_NoLicense</h4>
+<p>@Copyright.NoLicense_1</p>*@
+@*<h4 class="ind-s">@Copyright.Header_Orders</h4>
+<p>@Copyright.Orders_1</p>
+<h4 class="ind-s">@Copyright.Header_Children</h4>
+<p>@Copyright.Children_1</p>
+<h4 class="ind-s">@Copyright.Header_Conduct</h4>
+<p>@Copyright.Conduct_1</p>
+<ul class="padded">
+    <li>@Copyright.Conduct_2</li>
+    <li>@Copyright.Conduct_3</li>
+    <li>@Copyright.Conduct_4</li>
+    <li>@Copyright.Conduct_5</li>
+    <li>@Copyright.Conduct_6</li>
+    <li>@Copyright.Conduct_7</li>
+    <li>@Copyright.Conduct_8</li>
+    <li>@Copyright.Conduct_9</li>
+    <li>@Copyright.Conduct_10</li>
+    <li>@Copyright.Conduct_11</li>
+</ul>
+<p>
+    @Copyright.Conduct_12&nbsp;<a href="mailto:webmaster@seniorlivingchoices.com">webmaster@seniorlivingchoices.com</a>
+</p>
+<p>@Copyright.Conduct_13</p>
+<h4 class="ind-s">@Copyright.Header_Disclosure</h4>
+<p>@Copyright.Disclosure_1 &nbsp;<a href="@Url.RouteUrl("PrivacyPolicy")">Privacy Policy</a>.</p>*@
+@*<h4 class="ind-s">@Copyright.Header_Indemnity</h4>
+<p>@Copyright.Indemnity_1</p>
+<h4 class="ind-s">@Copyright.Header_Disclaimer</h4>
+<p>@Copyright.Disclaimer_1</p>
+<p>@Copyright.Disclaimer_2</p>*@
+@*<h4 class="ind-s">@Copyright.Header_Liability</h4>
+<p>@Copyright.Liabilty_1</p>
+<h4 class="ind-s">@Copyright.Header_Access</h4>
+<p>@Copyright.Access_1</p>
+<p>@Copyright.Access_2</p>
+<h4 class="ind-s">@Copyright.Header_Sitedown</h4>
+<p>@Copyright.Sitedown_1 <a href="mailto:webmaster@seniorlivingchoices.com">webmaster@seniorlivingchoices.com</a>
+</p>
+<h4 class="ind-s">@Copyright.Header_Copyrights</h4>*@
+@*<p>@Copyright.Copyrights_1</p>
+<p>@Copyright.Copyrights_2</p>
+<p>@Copyright.Copyrights_3<br>
+    @Copyright.Copyrights_4<br>
+    @Copyright.Copyrights_5<br>
+    @Copyright.Copyrights_6<br>
+    @Copyright.Copyrights_7<br>
+    @Copyright.Copyrights_8<br>
+    <a href="mailto:webmaster@seniorlivingchoices.com">webmaster@seniorlivingchoices.com</a>
+</p>
+<p>@Copyright.Copyrights_9</p>
+<ul class="padded">
+    <li>@Copyright.Copyrights_10</li>
+    <li>@Copyright.Copyrights_11</li>
+    <li>@Copyright.Copyrights_12</li>
+    <li>@Copyright.Copyrights_13</li>
+    <li>@Copyright.Copyrights_14</li>
+    <li>@Copyright.Copyrights_15</li>
+</ul>
+<p>@Copyright.Copyrights_16</p>
+<p>@Copyright.Copyrights_17</p>
+<ul class="padded">
+    <li>@Copyright.Copyrights_18</li>
+    <li>@Copyright.Copyrights_19</li>
+    <li>@Copyright.Copyrights_20</li>
+    <li>@Copyright.Copyrights_21</li>
+</ul>
+<h4 class="ind-s">@Copyright.Header_Opportunity</h4>
+<p>@Copyright.Opportunity_1</p>
+<p>@Copyright.Opportunity_2</p>
+<h4 class="ind-s">@Copyright.Header_Trademarks</h4>
+<p>@Copyright.Trademarks_1</p>
+<h4 class="ind-s">@Copyright.Header_Miscellaneous</h4>
+<p>@Copyright.Miscellaneous_1</p>
+<p class="indent-bottom-s">@Copyright.Miscellaneous_2<br>
+    @Copyright.Miscellaneous_3<br>
+    @Copyright.Miscellaneous_4<br>
+    @Copyright.Miscellaneous_5<br>
+    @Copyright.Miscellaneous_6
+</p>*@

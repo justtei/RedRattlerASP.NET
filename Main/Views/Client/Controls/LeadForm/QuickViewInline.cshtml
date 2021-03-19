@@ -1,0 +1,20 @@
+﻿@using MSLivingChoices.Localization
+
+<div class="active"
+    data-bind="slideVisible: !showConfirmation() ">
+    @{ Html.RenderPartial("~/Views/Client/Controls/LeadForm/Inline.cshtml"); }
+</div>
+<div class="lead-confirmation"
+    data-bind="slideVisible: showConfirmation, slideDelay: 400 ">
+    <span class="h4 txt-brand-red txt-bold">@StaticContent.Txt_LeadConfirmationMessage</span>
+    <span class="txt-black txt-bold">
+        In addition you can 
+        <a href="http://bookorder.realestatebook.com/default.aspx?refer=SLC"
+           rel="nofollow"
+           target="_blank"
+           data-ga="book-order">
+            Order a Free Senior Living Choices Book
+        </a>
+        .
+    </span>
+</div>

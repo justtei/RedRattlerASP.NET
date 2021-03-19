@@ -1,0 +1,161 @@
+﻿@using MSLivingChoices.Mvc.Uipc.Client.Helpers
+@using MSLivingChoices.Mvc.Uipc.Enums
+@using MSLivingChoices.Mvc.Uipc.Client.ViewModels
+@model Dictionary<SearchType,List<LinkVm>>
+
+<ul class="index-description">
+    <li class="left">
+        <div class="clearfix">
+            <div class="description">
+                <h2 class="h4 header-brand-blue txt-upper"><a href="@MslcUrlBuilder.AbsoluteUrl("/senior-housing/")">Senior Housing & Care</a></h2>
+                <p class="ind-s">
+                    Senior housing provides residents with a comfortable and safe environment that feels just like home, offering customized
+                    personal care depending on one’s specific needs. Search assisted living communities, residential and personal care homes,
+                    memory care communities, rehabilitation and skilled nursing homes, hospice care, and respite care which offer different
+                </p>
+                <div class="ind-s">
+                    <h3 class="ind-s header-brand-blue h5">Assisted Living Amenities</h3>
+                    <ul class="padded ind-s">
+                        <li>Balanced meals daily</li>
+                        <li>Social events and activities</li>
+                        <li>Exercise and wellness programs</li>
+                        <li>Transportation services</li>
+                        <li>Assistance with daily tasks</li>
+                        <li>24 hour medical care</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="icon-type icon-shc"></div>
+        </div>
+        <ul class="list-inline indent ind">
+            <li>
+                <a href="@MslcUrlBuilder.AbsoluteUrl("/senior-housing/ga/atlanta")">Atlanta, GA</a>
+            </li>
+            <li>
+                <a href="@MslcUrlBuilder.AbsoluteUrl("/senior-housing/tx/austin")">Austin, TX</a>
+            </li>
+            <li>
+                <a href="@MslcUrlBuilder.AbsoluteUrl("/senior-housing/tx/dallas")">Dallas, TX</a>
+            </li>
+            <li>
+                <a href="@MslcUrlBuilder.AbsoluteUrl("/senior-housing/tx/san-antonio")">San Antonio, TX</a>
+            </li>
+        </ul>
+    </li>
+    <li class="right">
+        <div class="clearfix">
+            <div class="description">
+                <h2 class="h4 header-brand-blue txt-upper"><a href="@MslcUrlBuilder.AbsoluteUrl("/communities/")">Active Adult Communities</a></h2>
+                <p class="ind-s">
+                    Retirement and independent living communities are a great choice for those who are 55 years or older are capable of caring
+                    for themselves. Active adult communities allow you to maintain an independent lifestyle while surrounding yourself with
+                    amenities designed to provide easy access to social and recreational activities. Retirement communities can be found all
+                    over the nation and offer a wide variety of services designed to attract residents to their specific properties.
+                </p>
+                <div class="ind-s">
+                    <h3 class="ind-s header-brand-blue h5">Retirement Community Services </h3>
+                    <ul class="padded ind-s">
+                        <li>Recreational activities and services including swimming pools, fitness centers, golf and tennis facilities and hiking
+                            and biking trails</li>
+                        <li>Social, educational and cultural activities</li>
+                        <li>Nearby access to dining, education and medical facilities</li>
+                        <li>Relative maintenance-free living</li>
+                        <li>Transportation services</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="icon-type icon-aac"></div>
+        </div>
+        <ul class="list-inline indent ind">
+            <li>
+                <a href="@MslcUrlBuilder.AbsoluteUrl("/communities/ga/atlanta")">Atlanta, GA</a>
+            </li>
+            <li>
+                <a href="@MslcUrlBuilder.AbsoluteUrl("/communities/tx/austin")">Austin, TX</a>
+            </li>
+            <li>
+                <a href="@MslcUrlBuilder.AbsoluteUrl("/communities/tx/dallas")">Dallas, TX</a>
+            </li>
+            <li>
+                <a href="@MslcUrlBuilder.AbsoluteUrl("/communities/tx/san-antonio")">San Antonio, TX</a>
+            </li>
+        </ul>
+    </li>
+    <li class="left">
+        <div class="clearfix">
+            <div class="description">
+                <h2 class="h4 header-brand-blue txt-upper"><a href="@MslcUrlBuilder.AbsoluteUrl("/homes/")">Active Adult Homes</a></h2>
+                <p class="ind-s">
+                    Active Adult Homes are designed for mature adults who are looking for low-maintenance properties that provide easy access
+                    to shared amenities. Similar to retirement communities, these neighborhoods are typically designed for retirement-aged home
+                    buyers. These independent homes can include single-floor living or floorplans with the master bedroom, bathroom and laundry
+                    on the first floor. To keep residents occupied, 55+ communities are located close to recreational, cultural and social centers
+                    and activities.
+                </p>
+                <div class="ind-s">
+                    <h3 class="ind-s header-brand-blue h5">55+ Real Estate Amenities</h3>
+                    <ul class="padded ind-s">
+                        <li>Parks, and recreational trails</li>
+                        <li>Lifestyle center with social events and activities</li>
+                        <li>Sports facilities like tennis, golf, shuffleboard</li>
+                        <li>Meeting clubs focusing interests and hobbies</li>
+                        <li>Homecare services</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="icon-type icon-aah"></div>
+        </div>
+        <ul class="list-inline indent ind">
+            <li>
+                <a href="@MslcUrlBuilder.AbsoluteUrl("/homes/ga/atlanta")">Atlanta, GA</a>
+            </li>
+            <li>
+                <a href="@MslcUrlBuilder.AbsoluteUrl("/homes/tx/austin")">Austin, TX</a>
+            </li>
+            <li>
+                <a href="@MslcUrlBuilder.AbsoluteUrl("/homes/tx/dallas")">Dallas, TX</a>
+            </li>
+            <li>
+                <a href="@MslcUrlBuilder.AbsoluteUrl("/homes/tx/san-antonio")">San Antonio, TX</a>
+            </li>
+        </ul>
+    </li>
+    <li class="right">
+        <div class="clearfix">
+            <div class="description">
+                <h2 class="h4 header-brand-blue txt-upper"><a href="@MslcUrlBuilder.AbsoluteUrl("/senior-care/")">Products & Services</a></h2>
+                <p class="ind-s">
+                    We have compiled an extensive set of senior care providers, services and caregiving products to assist for each individual's
+                    specific needs. This includes licensed health care professionals who fulfill medical care needs and professional caregivers
+                    who ensure that daily living tasks and activities are met. Our REALTORS® and moving services specialize in assisting seniors
+                    and their families with relocating. Search this section to find the best senior service providers and caregiving products.
+                </p>
+                <div class="ind-s">
+                    <h3 class="ind-s header-brand-blue h5">Senior Care Providers</h3>
+                    <ul class="padded ind-s">
+                        <li>In-home care, home health care and hospice</li>
+                        <li>Wills, trusts and financial planning</li>
+                        <li>Realtors, senior care auditors, locators and moving services</li>
+                        <li>Medical facilities and pharmacies</li>
+                        <li>and much more!</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="icon-type icon-pc"></div>
+        </div>
+        <ul class="list-inline indent ind">
+            <li>
+                <a href="@MslcUrlBuilder.AbsoluteUrl("/senior-care/ga/atlanta")">Atlanta, GA</a>
+            </li>
+            <li>
+                <a href="@MslcUrlBuilder.AbsoluteUrl("/senior-care/tx/austin")">Austin, TX</a>
+            </li>
+            <li>
+                <a href="@MslcUrlBuilder.AbsoluteUrl("/senior-care/tx/dallas")">Dallas, TX</a>
+            </li>
+            <li>
+                <a href="@MslcUrlBuilder.AbsoluteUrl("/senior-care/tx/san-antonio")">San Antonio, TX</a>
+            </li>
+        </ul>
+    </li>
+</ul>

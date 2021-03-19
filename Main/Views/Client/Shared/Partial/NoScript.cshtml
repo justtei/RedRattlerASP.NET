@@ -1,0 +1,26 @@
+﻿@* This script needed for preventing showing search results for search robots *@
+
+<!--[if !IE]><!-->
+<script>
+    var css = document.createElement("style");
+    css.type = "text/css";
+    css.innerHTML =
+        "div.js-disabled-hide, ul.js-disabled-hide {display:block;}" +
+            "div.js-disabled-show, ul.js-disabled-show {display: none;}" +
+            "div.js-prevent-hide, div.js-prevent-hide-once { display: none; } " +
+            "div.js-prevent-loader {display: block} ";
+    document.head.appendChild(css);
+</script>
+<!--<![endif]-->
+<!--[if IE]>
+    <script>
+        var css = document.createElement("style");
+        css.type = "text/css";
+        css.styleSheet.cssText =
+            "div.js-disabled-hide, ul.js-disabled-hide {display:block}" +
+                "div.js-disabled-show, ul.js-disabled-show {display: none;}" +
+                "div.js-prevent-hide, div.js-prevent-hide-once { display: none; } " +
+                "div.js-prevent-loader {display: block} ";
+        document.getElementsByTagName("head")[0].appendChild(css);
+    </script>
+<![endif]-->

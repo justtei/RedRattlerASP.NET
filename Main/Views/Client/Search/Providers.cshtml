@@ -1,0 +1,511 @@
+﻿@using MSLivingChoices.Entities.Client.Search.Criteria
+@using MSLivingChoices.Mvc.Uipc.Client.Enums
+@using MSLivingChoices.Mvc.Uipc.Client.Helpers
+@using MSLivingChoices.Mvc.Uipc.Client.ViewModels
+@using MSLivingChoices.Mvc.Uipc.Enums
+@using MSLivingChoices.Utilities
+@model ServiceProvidersSearchVm
+
+@{
+    Layout = "~/Views/Client/Shared/_SearchResultLayout.cshtml";
+}
+<style>
+    .refine {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+    }
+
+        .refine li {
+            font-weight: 700;
+        }
+</style>
+
+@section scripts
+{
+    <script type="text/html" id="qv-widget">
+        <section class="quick"
+                 data-bind="slideVisible: isShow">
+            <div class="container"
+                 data-bind="template: { name: tab().template, data: tab().model, afterRender: tab().afterRender }">
+            </div>
+            <div class="control txt-center">
+                <button class="btn btn-close"
+                        data-bind="click: hide">
+                    Close
+                    <i class="icon-arrow-top"></i>
+                </button>
+            </div>
+        </section>
+    </script>
+
+    @{ Html.RenderPartial("~/Views/Client/Search/Partial/NearbyPopover.cshtml"); }
+    @{ Html.RenderPartial("Search/Partial/ProviderQuickView"); }
+    @{ Html.RenderPartial("Search/Partial/MapView"); }
+    @{ Html.RenderPartial("Search/Partial/PhotoTour"); }
+
+    <script type="text/javascript">
+        mslc.resolve(['client/widgets/qvInitializer'], function(initQv) {
+            initQv(@((int) Model.PageType.ToSearchType()), 'serviceProviderId');
+        }, 'init-qv');
+
+        mslc.resolve(['client/widgets/leadForm'], function(leadForm) {
+            leadForm.initPopUpSharedData(@Html.Json(Model.LeadForm));
+        }, 'init-lead-form');
+
+        mslc.resolve(['client/widgets/googlePublisherTag'], function(gpt) {
+            gpt.initSearchResultsSlots({
+                country: '@Model.Criteria.CountryCode()',
+                state: '@Model.Criteria.StateCode()',
+                city: '@Model.Criteria.City()'
+            });
+        }, 'init-gpt');
+
+        mslc.resolve(['client/analytics/google'], function(ga) {
+            ga.trackPageView(@Html.Json(Model.Dimensions));
+        }, 'ga-tracking');
+
+        mslc.resolve(['client/ui/hintsManager'], function() {
+        }, 'init-hints');
+
+        mslc.resolve([
+            'lib/ko'
+            , 'client/widgets/refine'
+            , 'client/widgets/refine/pas'
+        ], function(ko, Refine, Pas) {
+            var refine = new Refine(@Html.Json(Model), Pas);
+            ko.applyBindings(refine, document.getElementById("refine"));
+            ko.applyBindings(refine, document.getElementById("sort"));
+        }, 'init-refine');
+    </script>
+}
+@{ Html.RenderPartial("~/Views/Client/Partial/SearchBarForm.cshtml"); }
+@{ Html.RenderPartial("~/Views/Client/Partial/Breadcrumbs.cshtml", new ViewDataDictionary(Model.Breadcrumbs)); }
+<div class="row">
+    <div class="col-md-12">
+        @*<div class="clearfix">
+                <h1 class="header-brand-blue inline-block">@Model.Seo.Header</h1>
+            </div>
+
+
+
+            @if (!Model.Seo.MarketCopy.IsNullOrEmpty())
+            {
+                <div class="row">
+                    <div class="col-12">
+                        <p class="ind">@Model.Seo.MarketCopy</p>
+                    </div>
+                </div>
+
+            }*@
+
+        @if (!Model.Result.Any())
+        {
+            <div class="row">
+                <div class="col-6">
+                    <img alt="No results" src="~/Content/images/stub/no-result.png" />
+                </div>
+                <p class="col-6">
+                    We could not find any listings in this area or your search filters may be too strict. Please try to clear all filters or
+                    search for nearby locations with listings. Our information is updated daily so please check back soon.
+                </p>
+            </div>
+        }
+
+        @if (Model.Result.Any())
+        {
+            @*  <ul class="sorting list-inline indent ind" id="sort">
+                     <!-- ko foreach: sort.items -->
+                     <li data-bind="css: {'active': selected }">
+                         <strong data-bind="text: text, click: $root.sort.selectItem"></strong>
+                     </li>
+                     <!-- /ko -->
+                     <li class="pull-right txt-black txt-decr">@Model.Paging.Status</li>
+                </ul>*@
+
+
+            <section class="space-ptb bg-light">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-lg-3">
+                            <div class="sidebar">
+                                <div class="widget">
+                                    @if (Model.DisplayProperties.BookOrder)
+                                    {
+                                        Html.RenderPartial("~/Views/Client/Search/Partial/Order.cshtml");
+                                    }
+                                </div>
+                                <div class="widget">
+                                    <div class="widget-title">
+                                        <h3 class="text-white mb-0">Refine Your Search</h3>
+                                    </div>
+                                    <div class="widget-content">
+                                        <h6>Choose Listing Types</h6>
+                                        @switch (Model.PageType.ToRefineType())
+                                        {
+                                            case RefineType.SeniorHousing:
+                                                {
+                                                    Html.RenderPartial("~/Views/Client/Search/Partial/Refine/Shc.cshtml");
+                                                    break;
+                                                }
+                                            case RefineType.ActiveCommunity:
+                                            case RefineType.ActiveHome:
+                                                {
+                                                    Html.RenderPartial("~/Views/Client/Search/Partial/Refine/AacAah.cshtml");
+                                                    break;
+                                                }
+                                            case RefineType.Service:
+                                                {
+                                                    Html.RenderPartial("~/Views/Client/Search/Partial/Refine/Pas.cshtml");
+                                                    break;
+                                                }
+                                        }
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-9">
+                            <div class="row mb-5">
+                                <div class="col-lg-12">
+                                    <div class="property-filter d-sm-flex d-block">
+                                        <div class="d-sm-flex d-block mb-0">
+                                            <h2>Product and Service Listing</h2>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            @foreach (var provider in Model.Result)
+                            {
+                                <div class="row">
+                                    <div class="col-lg-12 mb-4">
+                                        <div class="property-list bg-white">
+                                            <div class="row no-gutters">
+                                                <div class="col-md-5">
+                                                    <div class="property-image h-100 bg-overlay-gradient-04">
+                                                        @if (provider.DisplayProperties.Image)
+                                                        {
+                                                            <div class="img-bg">
+                                                                @RenderHelper.ThumbnailWithMicrodata(provider.Image, "img-fluid")
+                                                            </div>
+                                                        }
+
+                                                        <div class="property-lable">
+                                                            <!-- <span class="badge badge-md">SALE</span> -->
+                                                        </div>
+                                                        <div class="property-view">
+                                                            @*<i class="fas fa-eye"></i>*@
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-7">
+                                                    <div class="property-detail p-4">
+                                                        <h3 class="property-title"><a href="@provider.DetailsUrl">@(provider.DisplayProperties.Name ? provider.Name : "View details")</a></h3>
+                                                        <ul class="pl-0">
+                                                            <li class="property-address mb-1">
+                                                                @if (provider.DisplayProperties.Address)
+                                                                {
+                                                                    <i class="fas fa-map-marker-alt fa-1x mr-1 text-primary"></i> <span>EXACT -</span><span>provider.Address.City, @provider.Address.StateCode @provider.Address.Zip</span>
+                                                                }
+                                                            </li>
+
+
+                                                            <li class="property-address mb-1">
+                                                                @if (provider.DisplayProperties.Phone)
+                                                                {
+                                                                    <i class="fas fa-phone-alt fa-1x text-primary mr-1"></i>
+                                                                    @provider.Phone
+                                                                }
+                                                            </li>
+                                                        </ul>
+                                                        <p>
+                                                            <address class="ind-s" itemprop="address" itemscope itemtype="http://schema.org/PostalAddress">
+                                                                <span class="address-line">
+                                                                    <span itemprop="streetAddress">@provider.Address.Line</span>
+                                                                    @if (provider.DisplayProperties.RadiusDesignation)
+                                                                    {
+                                                                        <span class="txt-lower txt-decr txt-brand-blue txt-bold radius-designation"
+                                                                              data-hint="#radius-designation-hint">@provider.SearchRadiusDesignation</span>
+                                                                        }
+                                                                </span>
+                                                                <br />
+                                                                <span class="city" itemprop="addressLocality">@provider.Address.City</span>
+                                                                <span class="state" itemprop="addressRegion">@provider.Address.StateCode</span>
+                                                                <span itemprop="postalCode">@provider.Address.Zip</span>
+                                                            </address>
+                                                        </p>
+                                                        <div class="mb-3">
+                                                            <a href="@provider.DetailsUrl">Read More <i class="fas fa-angle-right"></i></a>
+                                                        </div>
+                                                        <a class="btn btn-outline btn-sm mb-1 mr-2 ml-0 mt-1" href="@provider.DetailsUrl">View Profile</a>
+                                                        @if (provider.DisplayProperties.LeadForm)
+                                                        {
+                                                            <button class="btn btn-primary btn-sm ml-0"
+                                                                    data-toggle="lead-form"
+                                                                    data-accessor="attr"
+                                                                    data-listing-id="@provider.Id"
+                                                                    data-listing-name="@provider.Name"
+                                                                    data-message="@provider.GetLeadFormMessage()">
+                                                                Request Information
+                                                            </button>
+                                                        }
+
+                                                        @if (provider.DisplayProperties.ServiceCategories)
+                                                        {
+                                                            <div class="mt-3 mb-3">
+                                                                <h4 class="txt-brand-red">Service Categories</h4>
+                                                                <div class="row">
+                                                                    @foreach (var category in provider.ServiceCategories)
+                                                                    {
+                                                                        <div class="col-6 text-center"><span>@category</span></div>
+                                                                    }
+                                                                </div>
+                                                            </div>
+                                                        }
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+
+                            @*<ul class="result-list">
+                                    @foreach (var provider in Model.Result)
+                                    {
+                                        <li>
+                                            <article class="vpad"
+                                                     itemscope itemtype="http://schema.org/ProfessionalService">
+                                                <div class="col-any-8">
+                                                    <a href="@provider.DetailsUrl">
+                                                        <div class="img-wrapper">
+                                                            @if (provider.DisplayProperties.Image)
+                                                            {
+                                                                <div class="img-bg">
+                                                                    @RenderHelper.ThumbnailWithMicrodata(provider.Image)
+                                                                </div>
+                                                            }
+
+                                                            @if (provider.DisplayProperties.PhotoCount)
+                                                            {
+                                                                <span class="photo-count icon-photo">
+                                                                    @provider.PhotoCount
+                                                                </span>
+                                                            }
+                                                        </div>
+                                                    </a>
+                                                    @if (provider.DisplayProperties.AdditionalImages)
+                                                    {
+                                                        <ul class="ind-s list-col-any-3">
+                                                            @foreach (var img in provider.Images)
+                                                            {
+                                                                <li>
+                                                                    @RenderHelper.Thumbnail(img)
+                                                                </li>
+                                                            }
+                                                        </ul>
+                                                    }
+                                                </div>
+                                                <div class="col-any-16 col-follow">
+                                                    <div class="row">
+                                                        <div class="col-any-16">
+                                                            <a href="@provider.DetailsUrl"
+                                                               class="name"
+                                                               itemprop="name">
+                                                                @(provider.DisplayProperties.Name ? provider.Name : "View details")
+                                                            </a>
+                                                            @if (provider.DisplayProperties.Address)
+                                                            {
+                                                                <address class="ind-s"
+                                                                         itemprop="address" itemscope itemtype="http://schema.org/PostalAddress">
+                                                                    <span class="address-line">
+                                                                        <span itemprop="streetAddress">@provider.Address.Line</span>
+                                                                        @if (provider.DisplayProperties.RadiusDesignation)
+                                                                        {
+                                                                            <span class="txt-lower txt-decr txt-brand-blue txt-bold radius-designation"
+                                                                                  data-hint="#radius-designation-hint">@provider.SearchRadiusDesignation</span>
+                                                                            }
+                                                                    </span>
+                                                                    <span class="city" itemprop="addressLocality">@provider.Address.City</span>
+                                                                    <span class="state" itemprop="addressRegion">@provider.Address.StateCode</span>
+                                                                    <span itemprop="postalCode">@provider.Address.Zip</span>
+                                                                </address>
+                                                            }
+                                                        </div>
+                                                        <div class="col-any-8">
+                                                            <div class="row">
+                                                                <div class="col-any-offset-2 col-any-22">
+                                                                    @if (provider.DisplayProperties.LeadForm)
+                                                                    {
+                                                                        <button class="btn btn-block btn-brand-red cropped"
+                                                                                data-toggle="lead-form"
+                                                                                data-accessor="attr"
+                                                                                data-listing-id="@provider.Id"
+                                                                                data-listing-name="@provider.Name"
+                                                                                data-message="@provider.GetLeadFormMessage()">
+                                                                            Get more info
+                                                                        </button>
+                                                                    }
+                                                                </div>
+                                                            </div>
+                                                            @if (provider.DisplayProperties.Phone)
+                                                            {
+                                                                <div class="row ind-s txt-right">
+                                                                    <div class="col-any-24">
+                                                                        <span class="phone icon-phone" itemprop="telephone">
+                                                                            @provider.Phone
+                                                                        </span>
+                                                                    </div>
+                                                                </div>
+                                                            }
+                                                        </div>
+                                                    </div>
+
+                                                    @if (provider.DisplayProperties.ServiceCategories)
+                                                    {
+                                                        <div class="ind">
+                                                            <h4 class="txt-brand-red">Service Categories</h4>
+                                                            <ul class="list-col-any-2 amenities one-line">
+                                                                @foreach (var category in provider.ServiceCategories)
+                                                                {
+                                                                    <li>@category</li>
+                                                                }
+                                                            </ul>
+                                                        </div>
+                                                    }
+                                                </div>
+                                            </article>
+                                            <section data-qv="@provider.Id">
+                                                <ul class="control list-inline">
+                                                    @if (provider.DisplayProperties.QuickView)
+                                                    {
+                                                        <li class="icon-quickview"
+                                                            data-bind="click: tabs('provider')
+                                                                       , css: {
+                                                                           'active': tab().template === 'provider' && !!isShow().flag
+                                                                           , 'disabled': isLoading() || isInAnimation() }"
+                                                            data-qv-action="provider">
+                                                            Quick View
+                                                        </li>
+                                                    }
+                                                    @if (provider.DisplayProperties.Map)
+                                                    {
+                                                        <li class="icon-mapview"
+                                                            data-qv-action="map"
+                                                            data-bind="click: tabs('map')
+                                                                       , css: {
+                                                                           'active': tab().template === 'map-view' && !!isShow().flag
+                                                                           , 'disabled': isLoading() || isInAnimation() }">
+                                                            Map View
+                                                        </li>
+                                                    }
+
+                                                    <li class="pull-right">
+                                                        <a href="@provider.DetailsUrl">View details >></a>
+                                                    </li>
+                                                    <li class="nanobar" data-bind="linkNode: $data">
+                                                        <div class="bar"></div>
+                                                    </li>
+                                                </ul>
+                                            </section>
+                                        </li>
+                                    }
+                                </ul>*@
+
+                            @*@if (Model.Paging.Pages.Any())
+                                {
+                                    <div class="txt-center">
+                                        <ul class="pagination">
+                                            @foreach (var page in Model.Paging.Pages)
+                                            {
+                                                <li class="@page.Css">
+                                                    <a href="@page.Href">@page.InnerText</a>
+                                                </li>
+                                            }
+                                        </ul>
+                                    </div>
+                                }*@
+
+                            @if (Model.Paging.Pages.Any())
+                            {
+                                <ul class="pagination mt-4 mb-0">
+                                    @foreach (var page in Model.Paging.Pages)
+                                    {
+                                        <li class="page-item"><a class="page-link" href="@page.Href">@page.InnerText</a></li>
+                                    }
+                                </ul>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        }
+
+    </div>
+    <div class="col-md-12">
+        <div class="col-12">
+            @*@if (Model.DisplayProperties.BookOrder)
+                {
+                    Html.RenderPartial("~/Views/Client/Search/Partial/Order.cshtml");
+                }*@
+            @if (Model.DisplayProperties.NearbyCategories || Model.DisplayProperties.NearbyCities)
+            {
+                <div class="row">
+                    <div class="col-6">
+                        @if (Model.SearchBar.Crosslinks.Cities.Any())
+                        {
+                            <h4 class="header-brand-blue">Nearby Cities</h4>
+                            <ul class="list-col-any-3 vpad-s">
+                                @foreach (var link in Model.SearchBar.Crosslinks.Cities)
+                                {
+                                    <li>
+                                        <a href="@link.Href">@link.InnerText</a>
+                                    </li>
+                                }
+                            </ul>
+                        }
+                    </div>
+                    <div class="col-6">
+                        @if (Model.SearchBar.Crosslinks.Categories.Any())
+                        {
+                            <h4 class="header-brand-blue">Categories</h4>
+                            <ul class="list-unstyled vpad-s">
+                                @foreach (var link in Model.SearchBar.Crosslinks.Categories)
+                                {
+                                    <li>
+                                        <a href="@link.Href">@link.InnerText</a>
+                                    </li>
+                                }
+                            </ul>
+                        }
+                    </div>
+                </div>
+            }
+            @if (Model.DisplayProperties.FeaturedServiceProviders)
+            {
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12 text-center">
+                            @{ Html.RenderPartial("~/Views/Client/Partial/FeaturedProviders.cshtml", new ViewDataDictionary(Model.FeaturedServices)); }
+                        </div>
+                    </div>
+                </div>
+            }
+
+            @*@if (Model.DisplayProperties.PartnerAds)
+                {
+                    <div class="row">
+                        <div class="col-12">
+                            <div id="div-gpt-ad-1355770323094-0" class="ad-160x600"></div>
+                        </div>
+                    </div>
+
+
+                    <div class="ind">
+                        <div id="div-gpt-ad-1355770777438-0" class="ad-300x250"></div>
+                    </div>
+                }*@
+        </div>
+    </div>
+</div>

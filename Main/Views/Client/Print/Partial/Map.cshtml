@@ -1,0 +1,41 @@
+﻿<div class="ind clearfix map" data-container="map">
+    <div class="tab-content">
+        <div class="tab-pane active">
+            <div class="map-canvas"></div>
+        </div>
+    </div>
+    <div class="ind direction page"
+         data-bind="'with': direction">
+        <div class="strong txt-incr">
+            <span>Drive</span>
+            <span data-bind="text: distance"></span>
+            <span data-bind="text: duration"></span>
+        </div>
+        <ul class="list-unstyled steps">
+            <li class="txt-bold icon-startpoint vpad"
+                data-bind="text: start"></li>
+            <!-- ko foreach: steps -->
+            <li class="step">
+                <div class="grid-row">
+                    <div class="col-any-2" data-bind="'if': icon">
+                        <img class="step-icon"
+                             data-bind="attr: { src: icon, alt: maneuver }" />
+                    </div>
+                    <div class="col-any-22 col-follow">
+                        <span class="instruction"
+                              data-bind="html: instructions"></span>
+                    </div>
+                </div>
+                <div class="grid-row">
+                    <div class="col-any-offset-4 col-any-20 line"></div>
+                    <div class="distance">
+                        <span data-bind="text: distance"></span>/<span data-bind="    text: duration"></span>
+                    </div>
+                </div>
+            </li>
+            <!-- /ko -->
+            <li class="txt-bold icon-endpoint"
+                data-bind="text: end"></li>
+        </ul>
+    </div>
+</div>

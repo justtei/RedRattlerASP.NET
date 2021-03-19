@@ -1,0 +1,49 @@
+﻿@using System.Web.Optimization
+@using MSLivingChoices.Localization
+@using MSLivingChoices.Utilities
+
+@model MSLivingChoices.Mvc.Uipc.Client.ViewModels.SearchVm
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>@Model.Seo.Title</title>
+        <link rel="canonical" href="@Model.Seo.CanonicalUrl"/>
+        @if (!Model.Seo.Description.IsNullOrEmpty())
+        {
+            <meta name="description" content="@Model.Seo.Description"/>
+        }
+        @Styles.Render("~/content/less/bundles/shared")
+        @Styles.Render("~/content/less/bundles/client")
+        @if (IsSectionDefined("css"))
+        {
+            @RenderSection("css")
+        }
+    </head>
+    <body>
+        <div class="print">
+            <div class="txt-center pad-l">
+                <img src="~/Content/images/logo/mslc-logo-black.png" />
+            </div>
+            @RenderBody()
+            <div class="row avoid-break ind-s">
+                <hr />
+                <div class="txt-bold ind-s">@StaticContent.Info_PrintDisclaimerHeader</div>
+                <div class="ind-s">@StaticContent.Info_PrintDisclaimerDescription</div>
+            </div>
+        </div>
+        <div class="notifications-area"></div>
+        @{ Html.RenderPartial("~/Views/Client/Partial/Notification.cshtml"); }
+        @Scripts.Render("~/scripts/bundle/lib")
+        <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?v=3&client=gme-newpointmediagroup&sensor=false"> </script>
+        @Scripts.Render("~/scripts/bundle/client")
+        @if (IsSectionDefined("scripts"))
+        {
+            @RenderSection("scripts")
+        }
+    </body>
+</html>

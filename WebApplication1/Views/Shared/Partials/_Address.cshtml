@@ -1,0 +1,56 @@
+﻿@using UserManagementSystem.Localization
+@model UserManagementSystem.Web.Models.AddressViewModel
+<div id="FullAddress" class="control-group row">
+    @Html.HiddenFor(model => model.AddressId)
+    @Html.HiddenFor(model => model.CreateUserId)
+<div class="col-md-6">
+    <div class="control-label">
+        @Html.LabelFor(model => model.SelectedCountryID)
+        <span class="asterisk">*</span>
+    </div>
+    <div class="controls">
+        @Html.DropDownListFor(model => model.SelectedCountryID, Model.Countries, StaticContent.WtrMrk_SelectCountry, new{ @data_url=Url.Action("GetStates", "Location"),@class = "form-control"})
+        @Html.ValidationMessageFor(model => model.SelectedCountryID)
+    </div>
+</div>
+<div class="col-md-6">
+    <div class="control-label">
+        @Html.LabelFor(model => model.SelectedStateID)
+        <span class="asterisk">*</span>
+    </div>
+    <div class="controls">
+        @Html.DropDownListFor(model => model.SelectedStateID, Model.States, StaticContent.WtrMrk_SelectState, new{ @data_url=Url.Action("GetCities", "Location"),@class = "form-control"})
+        @Html.ValidationMessageFor(model => model.SelectedStateID)
+    </div>
+</div>
+<div class="col-md-6">
+    <div class="control-label">
+        @Html.LabelFor(model => model.SelectedCityID)
+        <span class="asterisk">*</span>
+    </div>
+    <div class="controls">
+        @Html.DropDownListFor(model => model.SelectedCityID, Model.Cities, StaticContent.WtrMrk_SelectCity,new {@class="form-control"})
+        @Html.ValidationMessageFor(model => model.SelectedCityID)
+    </div>
+</div>
+<div class="col-md-6">
+    <div class="control-label">
+        @Html.LabelFor(model => model.Zip)
+        <span class="asterisk">*</span>
+    </div>
+    <div class="controls">
+        @Html.TextBoxFor(model => model.Zip,new {@class = "form-control"})
+        @Html.ValidationMessageFor(model => model.Zip)
+    </div>
+</div>
+<div class="col-md-12">
+    <div class="control-label">
+        @Html.LabelFor(model => model.Address)
+        <span class="asterisk">*</span>
+    </div>
+    <div class="controls">
+        @Html.TextBoxFor(model => model.Address,new {@class = "form-control"})
+        @Html.ValidationMessageFor(model => model.Address)
+    </div>
+</div>
+</div>

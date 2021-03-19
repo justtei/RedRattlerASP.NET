@@ -1,0 +1,15 @@
+﻿@using MSLivingChoices.Localization
+
+<div id="inline-lead-form" 
+     class="container pad bordered indent-bottom"
+     data-bind="css: {'no-border': showConfirmation()}">
+    <div class="active"
+         data-bind="slideVisible: !showConfirmation()">
+        @{ Html.RenderPartial("~/Views/Client/Controls/LeadForm/Inline.cshtml"); }
+    </div>
+    <div class="lead-confirmation"
+         data-bind="slideVisible: showConfirmation, slideDelay: 450">
+        <span class="h4 txt-brand-red txt-bold">@StaticContent.Txt_LeadConfirmationMessage</span>
+        <span class="txt-black txt-bold">In addition you can Order a Free Senior Living Choices Book.</span>
+    </div>
+</div>

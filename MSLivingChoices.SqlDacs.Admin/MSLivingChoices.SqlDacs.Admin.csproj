@@ -1,0 +1,146 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{10764C77-0BBE-415F-B207-B65CC23C509B}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>MSLivingChoices.SqlDacs.Admin</RootNamespace>
+    <AssemblyName>MSLivingChoices.SqlDacs.Admin</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="MSLivingChoices.Configuration">
+      <HintPath>..\NewSLNS\MSLivingChoices.SqlDacs.Admin\MSLivingChoices.SqlDacs.AdminReferences\MSLivingChoices.Configuration.dll</HintPath>
+    </Reference>
+    <Reference Include="MSLivingChoices.IDacs">
+      <HintPath>..\NewSLNS\MSLivingChoices.SqlDacs.Admin\MSLivingChoices.SqlDacs.AdminReferences\MSLivingChoices.IDacs.dll</HintPath>
+    </Reference>
+    <Reference Include="MSLivingChoices.SqlDacs">
+      <HintPath>..\NewSLNS\MSLivingChoices.SqlDacs.Admin\MSLivingChoices.SqlDacs.AdminReferences\MSLivingChoices.SqlDacs.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AdditionalInfo.cs" />
+    <Compile Include="BooleanShell.cs" />
+    <Compile Include="Components\SqlAmenityDac.cs" />
+    <Compile Include="Components\SqlCallTrackingDac.cs" />
+    <Compile Include="Components\SqlCommunityDac.cs" />
+    <Compile Include="Components\SqlCommunityServiceDac.cs" />
+    <Compile Include="Components\SqlItemTypeDac.cs" />
+    <Compile Include="Components\SqlLocationDac.cs" />
+    <Compile Include="Components\SqlOwnerDac.cs" />
+    <Compile Include="Components\SqlProcessingDac.cs" />
+    <Compile Include="Components\SqlSeoDac.cs" />
+    <Compile Include="Components\SqlServiceProviderDac.cs" />
+    <Compile Include="Helpers\AdditionalInfoHelper.cs" />
+    <Compile Include="Helpers\DataReaderHelper.cs" />
+    <Compile Include="Helpers\DefaultItemsProvider.cs" />
+    <Compile Include="Helpers\TableParamsExtensions.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SqlAdminDacFactory.cs" />
+    <Compile Include="SqlCommands\AdminStoredProcedures.cs" />
+    <Compile Include="SqlCommands\ChangeFeatureDatesCommand.cs" />
+    <Compile Include="SqlCommands\ChangeListingTypeStateCommand.cs" />
+    <Compile Include="SqlCommands\ChangePackageTypeForCommunityCommand.cs" />
+    <Compile Include="SqlCommands\ChangePackageTypeForServiceProviderCommand.cs" />
+    <Compile Include="SqlCommands\ChangePublishDatesForCommunityCommand.cs" />
+    <Compile Include="SqlCommands\ChangePublishDatesForServiceProviderCommand.cs" />
+    <Compile Include="SqlCommands\ChangeSeniorHousingAndCareCategoriesForCommunityCommand.cs" />
+    <Compile Include="SqlCommands\ChangeServiceCategoriesCommand.cs" />
+    <Compile Include="SqlCommands\ChangeShowcaseDatesCommand.cs" />
+    <Compile Include="SqlCommands\DeleteCallTrackingPhonesCommand.cs" />
+    <Compile Include="SqlCommands\DeleteCommunityByIdCommand.cs" />
+    <Compile Include="SqlCommands\DisconnectCallTrackingPhonesCommand.cs" />
+    <Compile Include="SqlCommands\GetAdditionalInfoCommand.cs" />
+    <Compile Include="SqlCommands\GetAddressTypesCommand.cs" />
+    <Compile Include="SqlCommands\GetAllByOwnerTypeCommand.cs" />
+    <Compile Include="SqlCommands\GetAllByOwnerTypeWithPagingCommand.cs" />
+    <Compile Include="SqlCommands\GetAllCallTrackingPhonesCommand.cs" />
+    <Compile Include="SqlCommands\GetCallTrackingGridCommand.cs" />
+    <Compile Include="SqlCommands\GetCitiesCommand.cs" />
+    <Compile Include="SqlCommands\GetCityByIdCommand.cs" />
+    <Compile Include="SqlCommands\GetCommunityByIdCommand.cs" />
+    <Compile Include="SqlCommands\GetCommunityByUserCommand.cs" />
+    <Compile Include="SqlCommands\GetCommunityGridCommand.cs" />
+    <Compile Include="SqlCommands\GetCommunityPhonesCommand.cs" />
+    <Compile Include="SqlCommands\GetContactTypesCommand.cs" />
+    <Compile Include="SqlCommands\GetCountiesCommand.cs" />
+    <Compile Include="SqlCommands\GetCountiesServedByIdCommand.cs" />
+    <Compile Include="SqlCommands\GetCountriesCommand.cs" />
+    <Compile Include="SqlCommands\GetCountryByIdCommand.cs" />
+    <Compile Include="SqlCommands\GetDefaultAmenitiesCommand.cs" />
+    <Compile Include="SqlCommands\GetEmailTypesCommand.cs" />
+    <Compile Include="SqlCommands\GetFloorPlanCommand.cs" />
+    <Compile Include="SqlCommands\GetHouseCommand.cs" />
+    <Compile Include="SqlCommands\GetOwnerByIdCommand.cs" />
+    <Compile Include="SqlCommands\GetPhoneTypesCommand.cs" />
+    <Compile Include="SqlCommands\GetSeoMetaDataCommand.cs" />
+    <Compile Include="SqlCommands\GetServiceProviderByIdCommand.cs" />
+    <Compile Include="SqlCommands\GetServiceProviderGridCommand.cs" />
+    <Compile Include="SqlCommands\GetSpecHomeCommand.cs" />
+    <Compile Include="SqlCommands\GetStateByIdCommand.cs" />
+    <Compile Include="SqlCommands\GetStatesCommand.cs" />
+    <Compile Include="SqlCommands\GetUnprocessedCommunityImagesCommand.cs" />
+    <Compile Include="SqlCommands\GetUnprocessedImagesCommand.cs" />
+    <Compile Include="SqlCommands\GetUsableCitiesByStateIdCommand.cs" />
+    <Compile Include="SqlCommands\GetUsableCitiesCommand.cs" />
+    <Compile Include="SqlCommands\GetUsableCitiesForServicesCommand.cs" />
+    <Compile Include="SqlCommands\GetUsableCountriesCommand.cs" />
+    <Compile Include="SqlCommands\GetUsableStatesCommand.cs" />
+    <Compile Include="SqlCommands\GetUsableStatesForServicesCommand.cs" />
+    <Compile Include="SqlCommands\IsUserCommunityCommand.cs" />
+    <Compile Include="SqlCommands\IsUsersServiceCommand.cs" />
+    <Compile Include="SqlCommands\SaveAdditionInfoCommand.cs" />
+    <Compile Include="SqlCommands\SaveCallTrackingPhonesCommand.cs" />
+    <Compile Include="SqlCommands\SaveCommunityCommand.cs" />
+    <Compile Include="SqlCommands\SaveDefaultAmenities.cs" />
+    <Compile Include="SqlCommands\SaveFloorPlanCommand.cs" />
+    <Compile Include="SqlCommands\SaveHouseCommand.cs" />
+    <Compile Include="SqlCommands\SaveNewCommunityCommand.cs" />
+    <Compile Include="SqlCommands\SaveNewServiceProviderCommand.cs" />
+    <Compile Include="SqlCommands\SaveOwnerCommand.cs" />
+    <Compile Include="SqlCommands\SaveSeoMetaDataCommand.cs" />
+    <Compile Include="SqlCommands\SaveServiceProviderCommand.cs" />
+    <Compile Include="SqlCommands\SaveSpecHomeCommand.cs" />
+    <Compile Include="SqlCommands\ThreeParamGenericGetCommand.cs" />
+    <Compile Include="SqlCommands\UpdateImageCommand.cs" />
+    <Compile Include="SqlCommands\ValidateCallTrackingPhonesCommand.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MSLivingChoices.Entities.Admin\MSLivingChoices.Entities.Admin.csproj">
+      <Project>{c406e2df-6f95-416b-9379-c31adbd4c7e2}</Project>
+      <Name>MSLivingChoices.Entities.Admin</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

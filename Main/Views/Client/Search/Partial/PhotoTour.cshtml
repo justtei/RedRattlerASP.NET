@@ -1,0 +1,7 @@
+﻿<script id="photo-tour" type="text/html">
+    <div class="owl-carousel owl-dots-bottom-center list" data-nav-arrow="true" data-nav-dots="false" data-items="1" data-md-items="1" data-sm-items="1" data-xs-items="1" data-xx-items="1" data-space="0" data-bind="foreach: images, style: {left: active().listOffset}">
+        <div class="item">
+            <img class="img-fluid" alt="" data-bind="src: src, linkNode: $data, click: $parent.moveTo, event: { load: $parent.handleLoad, error: $parent.handleError }, attr: { 'data-sqc': sqc } , css: { active: sqc === $parent.active().sqc }">
+        </div>
+    </div>
+</script>

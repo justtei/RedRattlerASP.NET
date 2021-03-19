@@ -1,0 +1,469 @@
+<?xml version="1.0"?>
+<Project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <ProjectGuid>{3A298115-6F6F-47CE-8750-4EEF94500FC4}</ProjectGuid>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <AssemblyName>MSLivingChoices.Mvc.Uipc.Admin</AssemblyName>
+    <OutputType>Library</OutputType>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <OutputPath>bin\Debug\</OutputPath>
+    <DebugSymbols>true</DebugSymbols>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <Optimize>false</Optimize>
+    <WarningLevel>4</WarningLevel>
+    <DebugType>full</DebugType>
+    <ErrorReport>prompt</ErrorReport>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <OutputPath>bin\Release\</OutputPath>
+    <DebugSymbols>false</DebugSymbols>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <WarningLevel>4</WarningLevel>
+    <DebugType>pdbonly</DebugType>
+    <ErrorReport>prompt</ErrorReport>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
+    <Reference Include="MSLivingChoices.Entities.Admin">
+      <HintPath>.\MSLivingChoices.Mvc.Uipc.AdminReferences\MSLivingChoices.Entities.Admin.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="MSLivingChoices.Localization">
+      <HintPath>.\MSLivingChoices.Mvc.Uipc.AdminReferences\MSLivingChoices.Localization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc">
+      <HintPath>.\MSLivingChoices.Mvc.Uipc.AdminReferences\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="MSLivingChoices.Mvc.Uipc">
+      <HintPath>.\MSLivingChoices.Mvc.Uipc.AdminReferences\MSLivingChoices.Mvc.Uipc.dll</HintPath>
+    </Reference>
+    <Reference Include="UserManagementSystem.Shared.Entities">
+      <HintPath>.\MSLivingChoices.Mvc.Uipc.AdminReferences\UserManagementSystem.Shared.Entities.dll</HintPath>
+    </Reference>
+    <Reference Include="MSLivingChoices.Bcs.Admin">
+      <HintPath>.\MSLivingChoices.Mvc.Uipc.AdminReferences\MSLivingChoices.Bcs.Admin.dll</HintPath>
+    </Reference>
+    <Reference Include="MSLivingChoices.Bcs">
+      <HintPath>.\MSLivingChoices.Mvc.Uipc.AdminReferences\MSLivingChoices.Bcs.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>.\MSLivingChoices.Mvc.Uipc.AdminReferences\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="MSLivingChoices.Configuration">
+      <HintPath>.\MSLivingChoices.Mvc.Uipc.AdminReferences\MSLivingChoices.Configuration.dll</HintPath>
+    </Reference>
+    <Reference Include="MSLivingChoices.Utilities">
+      <HintPath>.\MSLivingChoices.Mvc.Uipc.AdminReferences\MSLivingChoices.Utilities.dll</HintPath>
+    </Reference>
+    <Reference Include="netstandard" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <AutoGen>false</AutoGen>
+      <DesignTimeSharedInput>false</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="MSLivingChoices.Mvc.Uipc.HttpHandlers\ShortenedRouteHandler.cs">
+      <AutoGen>false</AutoGen>
+      <DesignTimeSharedInput>false</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="MSLivingChoices.Mvc.Uipc.Admin.ViewModels\FilterForCommunityGridVm.cs">
+      <AutoGen>false</AutoGen>
+      <DesignTimeSharedInput>false</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="MSLivingChoices.Mvc.Uipc.Admin.ModelBinders\UtilsForBinding.cs">
+      <AutoGen>false</AutoGen>
+      <DesignTimeSharedInput>false</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="MSLivingChoices.Mvc.Uipc.Admin.ViewModels\FilterForServiceProviderGridVm.cs">
+      <AutoGen>false</AutoGen>
+      <DesignTimeSharedInput>false</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="MSLivingChoices.Mvc.Uipc.Admin.ViewModels\GridVm_T_.cs">
+      <AutoGen>false</AutoGen>
+      <DesignTimeSharedInput>false</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="MSLivingChoices.Mvc.Uipc.Admin.ViewModels\OfficeHoursVm.cs">
+      <AutoGen>false</AutoGen>
+      <DesignTimeSharedInput>false</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="MSLivingChoices.Mvc.Uipc.Admin.ViewModels\OwnerForGridVm.cs">
+      <AutoGen>false</AutoGen>
+      <DesignTimeSharedInput>false</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="MSLivingChoices.Mvc.Uipc.Admin.ViewModels\OwnerGridVm_T_.cs">
+      <AutoGen>false</AutoGen>
+      <DesignTimeSharedInput>false</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="MSLivingChoices.Mvc.Uipc.Admin.ViewModels\PhoneListVm.cs">
+      <AutoGen>false</AutoGen>
+      <DesignTimeSharedInput>false</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="MSLivingChoices.Mvc.Uipc.Admin.ViewModels\PhoneVm.cs">
+      <AutoGen>false</AutoGen>
+      <DesignTimeSharedInput>false</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="MSLivingChoices.Mvc.Uipc.Admin.ViewModels\EditServiceProviderVm.cs">
+      <AutoGen>false</AutoGen>
+      <DesignTimeSharedInput>false</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="MSLivingChoices.Mvc.Uipc.Admin.Helpers\ConverterHelpers.cs">
+      <AutoGen>false</AutoGen>
+      <DesignTimeSharedInput>false</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="MSLivingChoices.Mvc.Uipc.Admin.ViewModels\PagingVm.cs">
+      <AutoGen>false</AutoGen>
+      <DesignTimeSharedInput>false</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="MSLivingChoices.Mvc.Uipc.Admin.ViewModels\ServiceProviderForGridVm.cs">
+      <AutoGen>false</AutoGen>
+      <DesignTimeSharedInput>false</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="MSLivingChoices.Mvc.Uipc.Admin.ViewModels\ServiceProviderGridVm.cs">
+      <AutoGen>false</AutoGen>
+      <DesignTimeSharedInput>false</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="MSLivingChoices.Mvc.Uipc.Admin.ViewModels\ImageListVm.cs">
+      <AutoGen>false</AutoGen>
+      <DesignTimeSharedInput>false</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="MSLivingChoices.Mvc.Uipc.Admin.ViewModels\ImagePreviewVm.cs">
+      <AutoGen>false</AutoGen>
+      <DesignTimeSharedInput>false</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="MSLivingChoices.Mvc.Uipc.Admin.ViewModels\ImageVm.cs">
+      <AutoGen>false</AutoGen>
+      <DesignTimeSharedInput>false</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="MSLivingChoices.Mvc.Uipc.Admin.ViewModels\NewServiceProviderVm.cs">
+      <AutoGen>false</AutoGen>
+      <DesignTimeSharedInput>false</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="MSLivingChoices.Mvc.Uipc.Admin.ViewModels\Common\CheckBoxVm.cs">
+      <AutoGen>false</AutoGen>
+      <DesignTimeSharedInput>false</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="MSLivingChoices.Mvc.Uipc.Admin.ViewModels\UploadImageVm.cs">
+      <AutoGen>false</AutoGen>
+      <DesignTimeSharedInput>false</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="MSLivingChoices.Mvc.Uipc.Admin.ViewModels\Common\JsonVm.cs">
+      <AutoGen>false</AutoGen>
+      <DesignTimeSharedInput>false</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="MSLivingChoices.Mvc.Uipc.Admin.ViewModels\Common\KeyValuePairVm_TK, TV_.cs">
+      <AutoGen>false</AutoGen>
+      <DesignTimeSharedInput>false</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="MSLivingChoices.Mvc.Uipc.Admin.ViewModels\Common\SearchSelectListItemVm.cs">
+      <AutoGen>false</AutoGen>
+      <DesignTimeSharedInput>false</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="MSLivingChoices.Mvc.Uipc.Admin.ViewModels\Common\SeoMetadataVm.cs">
+      <AutoGen>false</AutoGen>
+      <DesignTimeSharedInput>false</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="MSLivingChoices.Mvc.Uipc.Admin.ViewModels\NewOwnerVm.cs">
+      <AutoGen>false</AutoGen>
+      <DesignTimeSharedInput>false</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="MSLivingChoices.Mvc.Uipc.Admin.ViewModels\OwnerVm.cs">
+      <AutoGen>false</AutoGen>
+      <DesignTimeSharedInput>false</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="MSLivingChoices.Mvc.Uipc.Admin.ViewModels\Common\SeoVm.cs">
+      <AutoGen>false</AutoGen>
+      <DesignTimeSharedInput>false</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="MSLivingChoices.Mvc.Uipc.Admin.ViewModels\AdditionalInfoTypesVm.cs">
+      <AutoGen>false</AutoGen>
+      <DesignTimeSharedInput>false</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="MSLivingChoices.Mvc.Uipc.Admin.Helpers\DisplayHelpers.cs">
+      <AutoGen>false</AutoGen>
+      <DesignTimeSharedInput>false</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="MSLivingChoices.Mvc.Uipc.Admin.ViewModels\AmenityVm.cs">
+      <AutoGen>false</AutoGen>
+      <DesignTimeSharedInput>false</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="MSLivingChoices.Mvc.Uipc.Admin.Helpers\JsHelper.cs">
+      <AutoGen>false</AutoGen>
+      <DesignTimeSharedInput>false</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="MSLivingChoices.Mvc.Uipc.Admin.ViewModels\CallTrackingPhoneVm.cs">
+      <AutoGen>false</AutoGen>
+      <DesignTimeSharedInput>false</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="MSLivingChoices.Mvc.Uipc.Admin.ViewModels\ContactVm.cs">
+      <AutoGen>false</AutoGen>
+      <DesignTimeSharedInput>false</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="MSLivingChoices.Mvc.Uipc.Admin.ViewModels\CouponVm.cs">
+      <AutoGen>false</AutoGen>
+      <DesignTimeSharedInput>false</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="MSLivingChoices.Mvc.Uipc.Admin.ViewModels\EditAmenitiesVm.cs">
+      <AutoGen>false</AutoGen>
+      <DesignTimeSharedInput>false</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="MSLivingChoices.Mvc.Uipc.Admin.Helpers\MslcUrlBuilder.cs">
+      <AutoGen>false</AutoGen>
+      <DesignTimeSharedInput>false</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="MSLivingChoices.Mvc.Uipc.Admin.Helpers\RenderHelper.cs">
+      <AutoGen>false</AutoGen>
+      <DesignTimeSharedInput>false</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="MSLivingChoices.Mvc.Uipc.Admin.Filters\CallTrackingDetailsPartialValidation.cs">
+      <AutoGen>false</AutoGen>
+      <DesignTimeSharedInput>false</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="MSLivingChoices.Mvc.Uipc.Admin.Filters\EditCommunityPartialValidation.cs">
+      <AutoGen>false</AutoGen>
+      <DesignTimeSharedInput>false</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="MSLivingChoices.Mvc.Uipc.HttpHandlers\ShortenedUrlHandler.cs">
+      <AutoGen>false</AutoGen>
+      <DesignTimeSharedInput>false</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="MSLivingChoices.Mvc.Uipc.Admin.ViewModels\ChangePasswordVm.cs">
+      <AutoGen>false</AutoGen>
+      <DesignTimeSharedInput>false</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="MSLivingChoices.Mvc.Uipc.Admin.ViewModels\LogInVm.cs">
+      <AutoGen>false</AutoGen>
+      <DesignTimeSharedInput>false</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="MSLivingChoices.Mvc.Uipc.Admin.ViewModels\UserVm.cs">
+      <AutoGen>false</AutoGen>
+      <DesignTimeSharedInput>false</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="MSLivingChoices.Mvc.Uipc.Admin.Filters\PartialValidation.cs">
+      <AutoGen>false</AutoGen>
+      <DesignTimeSharedInput>false</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="MSLivingChoices.Mvc.Uipc.Admin.Attributes\CallTrackingListValidationAttribute.cs">
+      <AutoGen>false</AutoGen>
+      <DesignTimeSharedInput>false</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="MSLivingChoices.Mvc.Uipc.Admin.ViewModels\AddressValidationItemVm.cs">
+      <AutoGen>false</AutoGen>
+      <DesignTimeSharedInput>false</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="MSLivingChoices.Mvc.Uipc.Admin.ViewModels\EmailListVm.cs">
+      <AutoGen>false</AutoGen>
+      <DesignTimeSharedInput>false</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="MSLivingChoices.Mvc.Uipc.Admin.Attributes\CustomUrlAttribute.cs">
+      <AutoGen>false</AutoGen>
+      <DesignTimeSharedInput>false</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="MSLivingChoices.Mvc.Uipc.Admin.ViewModels\AddressValidationVm.cs">
+      <AutoGen>false</AutoGen>
+      <DesignTimeSharedInput>false</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="MSLivingChoices.Mvc.Uipc.Admin.ViewModels\EmailVm.cs">
+      <AutoGen>false</AutoGen>
+      <DesignTimeSharedInput>false</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="MSLivingChoices.Mvc.Uipc.Admin.ViewModels\AddressVm.cs">
+      <AutoGen>false</AutoGen>
+      <DesignTimeSharedInput>false</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="MSLivingChoices.Mvc.Uipc.Admin.ViewModels\MeasureBoundaryVm_T_.cs">
+      <AutoGen>false</AutoGen>
+      <DesignTimeSharedInput>false</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="MSLivingChoices.Mvc.Uipc.Admin.ViewModels\MeasureBoundaryVm_T, M_.cs">
+      <AutoGen>false</AutoGen>
+      <DesignTimeSharedInput>false</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="MSLivingChoices.Mvc.Uipc.Admin.ViewModels\CityVm.cs">
+      <AutoGen>false</AutoGen>
+      <DesignTimeSharedInput>false</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="MSLivingChoices.Mvc.Uipc.Admin.ViewModels\CountryVm.cs">
+      <AutoGen>false</AutoGen>
+      <DesignTimeSharedInput>false</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="MSLivingChoices.Mvc.Uipc.Admin.Attributes\DateRangeAttribute.cs">
+      <AutoGen>false</AutoGen>
+      <DesignTimeSharedInput>false</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="MSLivingChoices.Mvc.Uipc.Admin.ViewModels\LocationVm.cs">
+      <AutoGen>false</AutoGen>
+      <DesignTimeSharedInput>false</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="MSLivingChoices.Mvc.Uipc.Admin.ViewModels\StateVm.cs">
+      <AutoGen>false</AutoGen>
+      <DesignTimeSharedInput>false</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="MSLivingChoices.Mvc.Uipc.Admin.MappingExtentions\EmailExtentions.cs">
+      <AutoGen>false</AutoGen>
+      <DesignTimeSharedInput>false</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="MSLivingChoices.Mvc.Uipc.Admin.Attributes\DisplayNameHelper.cs">
+      <AutoGen>false</AutoGen>
+      <DesignTimeSharedInput>false</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="MSLivingChoices.Mvc.Uipc.Admin.ViewModels\CommunityCallTrackingPhonesVm.cs">
+      <AutoGen>false</AutoGen>
+      <DesignTimeSharedInput>false</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="MSLivingChoices.Mvc.Uipc.Admin.ViewModelsProviders\AdminViewModelsProvider.cs">
+      <AutoGen>false</AutoGen>
+      <DesignTimeSharedInput>false</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="MSLivingChoices.Mvc.Uipc.Admin.Attributes\NumberNotGreaterThanAttribute.cs">
+      <AutoGen>false</AutoGen>
+      <DesignTimeSharedInput>false</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="MSLivingChoices.Mvc.Uipc.Admin.Attributes\OptionalSHCCategoriesAttribute.cs">
+      <AutoGen>false</AutoGen>
+      <DesignTimeSharedInput>false</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="MSLivingChoices.Mvc.Uipc.Admin.MappingExtentions\CallTrackingExtentions.cs">
+      <AutoGen>false</AutoGen>
+      <DesignTimeSharedInput>false</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="MSLivingChoices.Mvc.Uipc.Admin.MappingExtentions\GridEtentions.cs">
+      <AutoGen>false</AutoGen>
+      <DesignTimeSharedInput>false</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="MSLivingChoices.Mvc.Uipc.Admin.Attributes\RequiredCheckBoxListAttribute.cs">
+      <AutoGen>false</AutoGen>
+      <DesignTimeSharedInput>false</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="MSLivingChoices.Mvc.Uipc.Admin.MappingExtentions\ImageExtensions.cs">
+      <AutoGen>false</AutoGen>
+      <DesignTimeSharedInput>false</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="MSLivingChoices.Mvc.Uipc.Admin.Attributes\RequiredOnDemand.cs">
+      <AutoGen>false</AutoGen>
+      <DesignTimeSharedInput>false</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="MSLivingChoices.Mvc.Uipc.Admin.Attributes\UrlAttribute.cs">
+      <AutoGen>false</AutoGen>
+      <DesignTimeSharedInput>false</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="MSLivingChoices.Mvc.Uipc.Admin.ViewModels\CommunityDetailsVm.cs">
+      <AutoGen>false</AutoGen>
+      <DesignTimeSharedInput>false</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="MSLivingChoices.Mvc.Uipc.Admin.MappingExtentions\OwnerExtentions.cs">
+      <AutoGen>false</AutoGen>
+      <DesignTimeSharedInput>false</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="MSLivingChoices.Mvc.Uipc.Admin.Attributes\WeekRangeAttribute.cs">
+      <AutoGen>false</AutoGen>
+      <DesignTimeSharedInput>false</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="MSLivingChoices.Mvc.Uipc.Admin.Attributes\RestrictCollectionLengthAttributes\RestricCommunityUnitImageCollectionLength.cs">
+      <AutoGen>false</AutoGen>
+      <DesignTimeSharedInput>false</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="MSLivingChoices.Mvc.Uipc.Admin.Attributes\RestrictCollectionLengthAttributes\RestrictCollectionLength.cs">
+      <AutoGen>false</AutoGen>
+      <DesignTimeSharedInput>false</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="MSLivingChoices.Mvc.Uipc.Admin.Attributes\RestrictCollectionLengthAttributes\RestrictCommunityImageCollectionLength.cs">
+      <AutoGen>false</AutoGen>
+      <DesignTimeSharedInput>false</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="MSLivingChoices.Mvc.Uipc.Admin.MappingExtentions\PhoneExtentions.cs">
+      <AutoGen>false</AutoGen>
+      <DesignTimeSharedInput>false</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="MSLivingChoices.Mvc.Uipc.Admin.ViewModels\CommunityServiceVm.cs">
+      <AutoGen>false</AutoGen>
+      <DesignTimeSharedInput>false</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="MSLivingChoices.Mvc.Uipc.Admin.Attributes\RestrictCollectionLengthAttributes\RestrictCommunityUnitCollectionLength.cs">
+      <AutoGen>false</AutoGen>
+      <DesignTimeSharedInput>false</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="MSLivingChoices.Mvc.Uipc.Admin.ViewModels\EditCommunityVm.cs">
+      <AutoGen>false</AutoGen>
+      <DesignTimeSharedInput>false</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="MSLivingChoices.Mvc.Uipc.Admin.Attributes\RestrictCollectionLengthAttributes\RestrictImageCollectionLength.cs">
+      <AutoGen>false</AutoGen>
+      <DesignTimeSharedInput>false</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="MSLivingChoices.Mvc.Uipc.Admin.Attributes\RestrictCollectionLengthAttributes\RestrictLogoImageCollectionLength.cs">
+      <AutoGen>false</AutoGen>
+      <DesignTimeSharedInput>false</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="MSLivingChoices.Mvc.Uipc.Admin.Attributes\RestrictCollectionLengthAttributes\RestrictServiceProviderImageCollectionLength.cs">
+      <AutoGen>false</AutoGen>
+      <DesignTimeSharedInput>false</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="MSLivingChoices.Mvc.Uipc.Admin.MappingExtentions\CommonExtentions.cs">
+      <AutoGen>false</AutoGen>
+      <DesignTimeSharedInput>false</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="MSLivingChoices.Mvc.Uipc.Admin.ViewModels\FloorPlanVm.cs">
+      <AutoGen>false</AutoGen>
+      <DesignTimeSharedInput>false</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="MSLivingChoices.Mvc.Uipc.Admin.ViewModels\HouseVm.cs">
+      <AutoGen>false</AutoGen>
+      <DesignTimeSharedInput>false</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="MSLivingChoices.Mvc.Uipc.Admin.ViewModels\ListingDetailsVm.cs">
+      <AutoGen>false</AutoGen>
+      <DesignTimeSharedInput>false</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="MSLivingChoices.Mvc.Uipc.Admin.MappingExtentions\RepopulateExtentions.cs">
+      <AutoGen>false</AutoGen>
+      <DesignTimeSharedInput>false</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="MSLivingChoices.Mvc.Uipc.Admin.MappingExtentions\CommunityExtentions.cs">
+      <AutoGen>false</AutoGen>
+      <DesignTimeSharedInput>false</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="MSLivingChoices.Mvc.Uipc.Admin.ModelBinders\CommunityGridFilterModelBinder.cs">
+      <AutoGen>false</AutoGen>
+      <DesignTimeSharedInput>false</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="MSLivingChoices.Mvc.Uipc.Admin.ModelBinders\DoubleModelBinder.cs">
+      <AutoGen>false</AutoGen>
+      <DesignTimeSharedInput>false</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="MSLivingChoices.Mvc.Uipc.Admin.ModelBinders\ServiceProviderGridFilterModelBinder.cs">
+      <AutoGen>false</AutoGen>
+      <DesignTimeSharedInput>false</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="MSLivingChoices.Mvc.Uipc.Admin.ViewModels\NewCommunityVm.cs">
+      <AutoGen>false</AutoGen>
+      <DesignTimeSharedInput>false</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="MSLivingChoices.Mvc.Uipc.Admin.ViewModels\SpecHomeVm.cs">
+      <AutoGen>false</AutoGen>
+      <DesignTimeSharedInput>false</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="MSLivingChoices.Mvc.Uipc.Admin.ViewModels\CallTrackingPhoneForGridVm.cs">
+      <AutoGen>false</AutoGen>
+      <DesignTimeSharedInput>false</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="MSLivingChoices.Mvc.Uipc.Admin.ViewModels\CommunityForGridVm.cs">
+      <AutoGen>false</AutoGen>
+      <DesignTimeSharedInput>false</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="MSLivingChoices.Mvc.Uipc.Admin.ViewModels\CommunityGridVm.cs">
+      <AutoGen>false</AutoGen>
+      <DesignTimeSharedInput>false</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

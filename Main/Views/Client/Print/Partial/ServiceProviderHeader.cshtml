@@ -1,0 +1,16 @@
+﻿@model MSLivingChoices.Mvc.Uipc.Client.ViewModels.ServiceProviderDetailsVm
+
+<div class="row">
+    <div class="col-any-20">
+        <h1 class="name">
+            @Model.Seo.Header
+        </h1>
+    </div>
+
+    @if (!string.IsNullOrWhiteSpace(Model.Seo.CanonicalUrl))
+    {
+        <div class="col-any-4 txt-right">
+            <img src="@("https://api.qrserver.com/v1/create-qr-code/?size=90x90&data=" + Model.Seo.CanonicalUrl)"/>
+        </div>
+    }
+</div>

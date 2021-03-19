@@ -1,0 +1,38 @@
+﻿@model MSLivingChoices.Mvc.Uipc.Client.ViewModels.ServiceProviderPrintDirectionVm
+
+@{
+    Layout = "~/Views/Client/Shared/_PrintLayout.cshtml";
+}
+
+@section scripts
+{
+    @if (Model.ServiceProvider.DisplayProperties.Map)
+    {
+        <script type="text/javascript">
+            mslc.resolve(['lib/jQuery', 'lib/ko', 'client/controls/maps/printDirection'], function($, ko, PrintDirectionMap) {
+                var $target = $('[data-container="map"]'),
+                    data = {
+                        startLatitude: @Model.StartLatitude,
+                        startLongitude: @Model.StartLongitude,
+                        endLatitude: @Model.ServiceProvider.Address.Latitude,
+                        endLongitude: @Model.ServiceProvider.Address.Longitude,
+                        endAddress: '@Html.Raw(Model.ServiceProvider.Address.ToString())'
+                    },
+                    model = new PrintDirectionMap(data, $target);
+
+                ko.applyBindings(model, $target[0]);
+            }, 'init-print-servce-provider-direction');
+        </script>
+    }
+}
+
+<div class="row details">
+    @{ Html.RenderPartial("~/Views/Client/Print/Partial/ServiceProviderHeader.cshtml", Model); }
+
+    @{ Html.RenderPartial("~/Views/Client/Print/Partial/ServiceProviderInfo.cshtml", Model); }
+    
+    @if (Model.ServiceProvider.DisplayProperties.Map)
+    {
+        Html.RenderPartial("~/Views/Client/Print/Partial/Map.cshtml");
+    }
+</div>

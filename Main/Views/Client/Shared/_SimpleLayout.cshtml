@@ -1,0 +1,26 @@
+﻿@model MSLivingChoices.Mvc.Uipc.Client.ViewModels.SearchVm
+
+@{
+    Layout = "~/Views/Client/Shared/_PageLayout.cshtml";
+}
+
+@section scripts
+{
+    @if (IsSectionDefined("scripts"))
+    {
+        @RenderSection("Scripts")
+    }
+}
+
+<div class="head-search-bar">
+    <div class="container">
+        <div class="row">
+            @{ Html.RenderPartial("~/Views/Client/Partial/SearchBarForm.cshtml"); }
+        </div>
+    </div>
+</div>
+@{ Html.RenderPartial("~/Views/Client/Partial/Breadcrumbs.cshtml", new ViewDataDictionary(Model.Breadcrumbs)); }
+
+<div class="ind-s content">
+    @RenderBody()
+</div>

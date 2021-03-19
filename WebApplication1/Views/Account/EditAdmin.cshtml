@@ -1,0 +1,77 @@
+﻿@using UserManagementSystem.Localization
+@using UserManagementSystem.Web.Helpers
+@using UserManagementSystem.Web.Models
+@model EditAdminViewModel
+@{
+    ViewBag.Title = StaticContent.Tlt_EditAdmin;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section scripts
+{
+    @Url.Script("jquery/jquery.validate.min.js")
+    @Url.Script("jquery/jquery.validate.unobtrusive.min.js")
+}
+<h2>@StaticContent.Tlt_EditAdmin</h2>
+<p>@StaticContent.WtrMrk_Edit</p>
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary(true, @ErrorMessages.UnsuccessfulEdit, new { @class = "alert alert-block alert-error" })
+    <fieldset>
+        <legend>@StaticContent.Lgd_Edit</legend>
+        @Html.HiddenFor(model => model.Id)
+        <div class="control-group">
+            <div class="control-label">
+                @Html.LabelFor(model => model.PrimaryEmail)
+                <span class="asterisk">*</span>
+            </div>
+            <div class="controls">
+                @Html.TextBoxFor(model => model.PrimaryEmail)
+                @Html.ValidationMessageFor(model => model.PrimaryEmail)
+                @Html.ValidationMessage(ModelErrorKey.UnsuccesessfulPrimaryEmail.ToString())
+            </div>
+        </div>
+        <div class="control-group">
+            <div class="control-label">
+                @Html.LabelFor(model => model.FirstName)
+                <span class="asterisk">*</span>
+            </div>
+            <div class="controls">
+                @Html.TextBoxFor(model => model.FirstName)
+                @Html.ValidationMessageFor(model => model.FirstName)
+            </div>
+        </div>
+        <div class="control-group">
+            <div class="control-label">
+                @Html.LabelFor(model => model.LastName)
+                <span class="asterisk">*</span>
+            </div>
+            <div class="controls">
+                @Html.TextBoxFor(model => model.LastName)
+                @Html.ValidationMessageFor(model => model.LastName)
+            </div>
+        </div>
+        @if (User.Identity.Name != Model.PrimaryEmail)
+        {
+            <div class="control-label">
+                @Html.LabelFor(model => model.IsActive)
+            </div>
+            <div class="controls">
+            <label class="radio">
+                @Html.RadioButtonFor(model => model.IsActive, true)
+                @StaticContent.RdBtn_Active
+                <br />
+                @Html.RadioButtonFor(model => model.IsActive, false)
+                @StaticContent.RdBtn_BlockLogin
+            </label>
+        </div>
+        }
+        else
+        {
+            @Html.HiddenFor(model => model.IsActive)
+        }
+        
+        <div class="form-actions">
+            <input type="submit" value="@StaticContent.Btn_Save" class="btn btn-primary" />
+        </div>
+    </fieldset>
+}

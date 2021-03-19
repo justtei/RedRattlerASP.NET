@@ -1,0 +1,127 @@
+<?xml version="1.0"?>
+<Project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <ProjectGuid>{9E758E71-F779-4A95-BAC1-01FABA3DEC0A}</ProjectGuid>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <AssemblyName>MSLivingChoices.Bcs.Admin</AssemblyName>
+    <OutputType>Library</OutputType>
+    <RootNamespace>MSLivingChoices</RootNamespace>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <OutputPath>bin\Debug\</OutputPath>
+    <DebugSymbols>true</DebugSymbols>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <Optimize>false</Optimize>
+    <WarningLevel>4</WarningLevel>
+    <DebugType>full</DebugType>
+    <ErrorReport>prompt</ErrorReport>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <OutputPath>bin\Release\</OutputPath>
+    <DebugSymbols>false</DebugSymbols>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <WarningLevel>4</WarningLevel>
+    <DebugType>pdbonly</DebugType>
+    <ErrorReport>prompt</ErrorReport>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="MSLivingChoices.IDacs">
+      <HintPath>.\MSLivingChoices.Bcs.AdminReferences\MSLivingChoices.IDacs.dll</HintPath>
+    </Reference>
+    <Reference Include="UserManagementSystem.Shared.Service">
+      <HintPath>.\MSLivingChoices.Bcs.AdminReferences\UserManagementSystem.Shared.Service.dll</HintPath>
+    </Reference>
+    <Reference Include="UserManagementSystem.Shared.Entities">
+      <HintPath>.\MSLivingChoices.Bcs.AdminReferences\UserManagementSystem.Shared.Entities.dll</HintPath>
+    </Reference>
+    <Reference Include="MSLivingChoices.Entities.Admin">
+      <HintPath>.\MSLivingChoices.Bcs.AdminReferences\MSLivingChoices.Entities.Admin.dll</HintPath>
+    </Reference>
+    <Reference Include="EasyNetQ">
+      <HintPath>.\MSLivingChoices.Bcs.AdminReferences\EasyNetQ.dll</HintPath>
+    </Reference>
+    <Reference Include="MSLivingChoices.AddressGeocodingService">
+      <HintPath>.\MSLivingChoices.Bcs.AdminReferences\MSLivingChoices.AddressGeocodingService.dll</HintPath>
+    </Reference>
+    <Reference Include="MSLivingChoices.SqlDacs.Admin">
+      <HintPath>.\MSLivingChoices.Bcs.AdminReferences\MSLivingChoices.SqlDacs.Admin.dll</HintPath>
+    </Reference>
+    <Reference Include="MSLivingChoices.Session">
+      <HintPath>.\MSLivingChoices.Bcs.AdminReferences\MSLivingChoices.Session.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Core" />
+    <Reference Include="MSLivingChoices.MarchexService">
+      <HintPath>.\MSLivingChoices.Bcs.AdminReferences\MSLivingChoices.MarchexService.dll</HintPath>
+    </Reference>
+    <Reference Include="MSLivingChoices.Configuration">
+      <HintPath>.\MSLivingChoices.Bcs.AdminReferences\MSLivingChoices.Configuration.dll</HintPath>
+    </Reference>
+    <Reference Include="MSLivingChoices.Logging">
+      <HintPath>.\MSLivingChoices.Bcs.AdminReferences\MSLivingChoices.Logging.dll</HintPath>
+    </Reference>
+    <Reference Include="MSLivingChoices.Utilities.ImageProcessing">
+      <HintPath>.\MSLivingChoices.Bcs.AdminReferences\MSLivingChoices.Utilities.ImageProcessing.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <AutoGen>false</AutoGen>
+      <DesignTimeSharedInput>false</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="Bcs.Admin\Components\ImageBc.cs">
+      <AutoGen>false</AutoGen>
+      <DesignTimeSharedInput>false</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="Bcs.Admin\Components\OwnerBc.cs">
+      <AutoGen>false</AutoGen>
+      <DesignTimeSharedInput>false</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="Bcs.Admin\AdminDacFactoryClient.cs">
+      <AutoGen>false</AutoGen>
+      <DesignTimeSharedInput>false</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="Bcs.Admin\Components\CallTrackingBc.cs">
+      <AutoGen>false</AutoGen>
+      <DesignTimeSharedInput>false</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="Bcs.Admin\Components\SeoBc.cs">
+      <AutoGen>false</AutoGen>
+      <DesignTimeSharedInput>false</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="Bcs.Admin\Components\AccountBc.cs">
+      <AutoGen>false</AutoGen>
+      <DesignTimeSharedInput>false</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="Bcs.Admin\Components\ItemTypeBc.cs">
+      <AutoGen>false</AutoGen>
+      <DesignTimeSharedInput>false</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="Bcs.Admin\Components\AmenityBc.cs">
+      <AutoGen>false</AutoGen>
+      <DesignTimeSharedInput>false</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="Bcs.Admin\Components\CommunityBc.cs">
+      <AutoGen>false</AutoGen>
+      <DesignTimeSharedInput>false</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="Bcs.Admin\Components\ServiceProviderBc.cs">
+      <AutoGen>false</AutoGen>
+      <DesignTimeSharedInput>false</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="Bcs.Admin\Components\CommunityServiceBc.cs">
+      <AutoGen>false</AutoGen>
+      <DesignTimeSharedInput>false</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="Bcs.Admin\Components\LocationBc.cs">
+      <AutoGen>false</AutoGen>
+      <DesignTimeSharedInput>false</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

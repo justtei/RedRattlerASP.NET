@@ -1,0 +1,41 @@
+﻿@model MSLivingChoices.Mvc.Uipc.Client.ViewModels.ServiceProviderDetailsVm
+
+<div class="row ind-s avoid-break">
+    <div class="col-any-12">
+        @if (Model.ServiceProvider.DisplayProperties.Address)
+        {
+            <address>
+                <span class="address-line" >@Model.ServiceProvider.Address.Line</span>
+                <span class="city" >@Model.ServiceProvider.Address.City</span>
+                <span class="state" >@Model.ServiceProvider.Address.StateCode</span>
+                <span >@Model.ServiceProvider.Address.Zip</span>
+            </address>
+        }
+    </div>
+
+    <div class="col-any-12">
+        <ul class="list-unstyled txt-right">
+            @if (Model.ServiceProvider.DisplayProperties.Phone)
+            {
+                <li class="phone icon-phone" itemtype="phone">
+                    @Model.ServiceProvider.Phone
+                </li>
+            }
+            @if (Model.ServiceProvider.DisplayProperties.WebsiteUrl)
+            {
+                <li>@Model.WebsiteUrl</li>
+            }
+            @if (Model.OfficeHours.Any())
+            {
+                <li>
+                    <ul class="list-unstyled office-hours">
+                        @foreach (var hour in Model.OfficeHours)
+                        {
+                            <li>@hour</li>
+                        }
+                    </ul>
+                </li>
+            }
+        </ul>
+    </div>
+</div>

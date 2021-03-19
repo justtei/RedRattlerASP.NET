@@ -1,0 +1,11 @@
+C:\Users\sra_r\Desktop\SeniorLiving1\MSLivingChoices.Entities.Admin\bin\Release\MSLivingChoices.Entities.Admin.dll
+C:\Users\sra_r\Desktop\SeniorLiving1\MSLivingChoices.Entities.Admin\bin\Release\MSLivingChoices.Entities.Admin.pdb
+C:\Users\sra_r\Desktop\SeniorLiving1\MSLivingChoices.Entities.Admin\obj\Release\MSLivingChoices.Entities.Admin.csproj.CoreCompileInputs.cache
+C:\Users\sra_r\Desktop\SeniorLiving1\MSLivingChoices.Entities.Admin\obj\Release\MSLivingChoices.Entities.Admin.dll
+C:\Users\sra_r\Desktop\SeniorLiving1\MSLivingChoices.Entities.Admin\obj\Release\MSLivingChoices.Entities.Admin.pdb
+C:\Users\Administrator\Desktop\SeniorLiving1\SeniorLiving1\MSLivingChoices.Entities.Admin\bin\Release\MSLivingChoices.Entities.Admin.dll
+C:\Users\Administrator\Desktop\SeniorLiving1\SeniorLiving1\MSLivingChoices.Entities.Admin\bin\Release\MSLivingChoices.Entities.Admin.pdb
+C:\Users\Administrator\Desktop\SeniorLiving1\SeniorLiving1\MSLivingChoices.Entities.Admin\obj\Release\MSLivingChoices.Entities.Admin.csprojAssemblyReference.cache
+C:\Users\Administrator\Desktop\SeniorLiving1\SeniorLiving1\MSLivingChoices.Entities.Admin\obj\Release\MSLivingChoices.Entities.Admin.csproj.CoreCompileInputs.cache
+C:\Users\Administrator\Desktop\SeniorLiving1\SeniorLiving1\MSLivingChoices.Entities.Admin\obj\Release\MSLivingChoices.Entities.Admin.dll
+C:\Users\Administrator\Desktop\SeniorLiving1\SeniorLiving1\MSLivingChoices.Entities.Admin\obj\Release\MSLivingChoices.Entities.Admin.pdb
