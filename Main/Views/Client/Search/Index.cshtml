@@ -24,6 +24,9 @@
         float:right;
         margin-right:5px;
     }
+    .select2-container {
+        width: 100% !important;
+    }
 </style>
 <section class="banner" style="background-image: url('@Url.Content("~/Content/images9/banner-01.jpg")'); background-size: cover;">
     <div class="container">
@@ -86,26 +89,23 @@
                             <div data-bind="with: searchTypes">
                                 <select class="form-control basic-select" id="exampleFormControlSelect2" data-bind="options:items,optionsText:'text',optionsValue:'value',optionsCaption:'Choose...'">
                                     @*<option data-bind=", css: {'active': selected(), 'txt-left': $index() === 0, 'txt-right': $index() === $parent.items.length - 1 , 'txt-center': $index() !== 0 && $index() !== $parent.items.length - 1 }">, event:{ change: $parent.selectItem} , event: {change : $parent.selectItem}
-                <span class="arrow-wrapper">
-                    <span class="arrow"></span>  // selectedValue
-                    <span data-bind="text:text"></span>
-                </span>
-            </option>*@
+                                        <span class="arrow-wrapper">
+                                            <span class="arrow"></span>  // selectedValue
+                                            <span data-bind="text:text"></span>
+                                        </span>
+                                    </option>*@
                                 </select>
-
-
-
                                 <div style="display:none">
                                     <ul class="col-any-20 type-list row-wrap"
                                         data-bind="foreach: items">
                                         <li class="col-any-6"
                                             data-bind="click: $parent.selectItem
-                                   , css: {
-                                       'active': selected()
-                                       , 'txt-left': $index() === 0
-                                       , 'txt-right': $index() === $parent.items.length - 1
-                                       , 'txt-center': $index() !== 0 && $index() !== $parent.items.length - 1 },
-                                        attr: {'id': 'clickOn_' + value}">
+                                                   , css: {
+                                                       'active': selected()
+                                                       , 'txt-left': $index() === 0
+                                                       , 'txt-right': $index() === $parent.items.length - 1
+                                                       , 'txt-center': $index() !== 0 && $index() !== $parent.items.length - 1 },
+                                                        attr: {'id': 'clickOn_' + value}">
                                             <span class="arrow-wrapper">
                                                 <span class="arrow"></span>
                                                 <span data-bind="text: text"></span>
@@ -117,7 +117,7 @@
                            
 
                         </div>
-                        <span class="align-items-center">
+                        <span class="align-items-center px-3">
                             <button class="btn btn-primary btn-md d-flex align-items-center mt-4" type="submit" data-bind="css: { 'in-progress': pending }">
                                 <i class="fas fa-search mr-1"></i>
                                 <span>@StaticContent.Btn_Search</span>

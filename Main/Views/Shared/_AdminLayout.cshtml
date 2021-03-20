@@ -21,7 +21,7 @@
         <div id="overlayBackground">
         </div>
         <div id="overlayImage">
-            <img src="@Url.Content("~/Content/images/loader_overlay.gif")" alt="@StaticContent.Msg_PleaseWait"/>
+            <img src="@Url.Content("~/Content/images/loader_overlay.gif")" alt="@StaticContent.Msg_PleaseWait" />
         </div>
     </div>
     <header>
@@ -30,19 +30,19 @@
                 <div class="container">
                     <ul class="nav">
                         @*<li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">@StaticContent.AdminBar_Community<b class="caret"></b></a>
-            <ul class="dropdown-menu">
-                <li>@Html.ActionLink(StaticContent.AdminBar_All, "Grid", "Community")</li>
-                <li>@Html.ActionLink(StaticContent.AdminBar_NewCommunity, "New", "Community")</li>
-            </ul>
-        </li>*@
-                        @*<li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">@StaticContent.AdminBar_ServiceProviders<b class="caret"></b></a>
-            <ul class="dropdown-menu">
-                <li>@Html.ActionLink(StaticContent.AdminBar_All, "Grid", "ServiceProvider")</li>
-                <li>@Html.ActionLink(StaticContent.AdminBar_NewServiceProvider, "New", "ServiceProvider")</li>
-            </ul>
-        </li>*@
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">@StaticContent.AdminBar_Community<b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    <li>@Html.ActionLink(StaticContent.AdminBar_All, "Grid", "Community")</li>
+                                    <li>@Html.ActionLink(StaticContent.AdminBar_NewCommunity, "New", "Community")</li>
+                                </ul>
+                            </li>
+                                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">@StaticContent.AdminBar_ServiceProviders<b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    <li>@Html.ActionLink(StaticContent.AdminBar_All, "Grid", "ServiceProvider")</li>
+                                    <li>@Html.ActionLink(StaticContent.AdminBar_NewServiceProvider, "New", "ServiceProvider")</li>
+                                </ul>
+                            </li>*@
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">@StaticContent.AdminBar_CallTracking<b class="caret"></b></a>
                             <ul class="dropdown-menu">
@@ -57,54 +57,55 @@
                                     {
                                         type = OwnerType.PropertyManager
                                     }, null)
-                            </li>
-                            <li>
-                                @Html.ActionLink(StaticContent.AdminBar_New, "New", "Owner", new
-                                {
-                                    type = OwnerType.PropertyManager
-                                }, null)
+                                </li>
+                                <li>
+                                    @Html.ActionLink(StaticContent.AdminBar_New, "New", "Owner", new
+                                    {
+                                        type = OwnerType.PropertyManager
+                                    }, null)
+                                </li>
+                            </ul>
                         </li>
-                    </ul>
-                    </li>
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">@StaticContent.AdminBar_Builder<b class="caret"></b></a>
-                        <ul class="dropdown-menu">
-                            <li>
-                                @Html.ActionLink(StaticContent.AdminBar_All, "Grid", "Owner", new
-                                {
-                                    type = OwnerType.Builder
-                                }, null)
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">@StaticContent.AdminBar_Builder<b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    @Html.ActionLink(StaticContent.AdminBar_All, "Grid", "Owner", new
+                                    {
+                                        type = OwnerType.Builder
+                                    }, null)
+                                </li>
+                                <li>
+                                    @Html.ActionLink(StaticContent.AdminBar_New, "New", "Owner", new
+                                    {
+                                        type = OwnerType.Builder
+                                    }, null)
+                                </li>
+                            </ul>
                         </li>
-                        <li>
-                            @Html.ActionLink(StaticContent.AdminBar_New, "New", "Owner", new
-                            {
-                                type = OwnerType.Builder
-                            }, null)
+                        @if (AccountBc.Instance.IsUserInRole(UserManagementSystem.Shared.Entities.Enum.UmsRoles.Admin))
+                        {
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Manage<b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                    <li>
+                        @Html.RouteLink("Categories", "Categories", new
+                        {
+                            controller = "Category",
+                            action = "CategoryList"
+                        })
                     </li>
-                    </ul>
+                    <li>
+                        @Html.RouteLink("Amenities", "Amenities", new
+                        {
+                            controller = "Category",
+                            action = "AmenityList"
+                        })
                     </li>
-                    @if (AccountBc.Instance.IsUserInRole(UserManagementSystem.Shared.Entities.Enum.UmsRoles.Admin))
-                    {
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Manage<b class="caret"></b></a>
-                        <ul class="dropdown-menu">
-                            <li>
-                                @Html.RouteLink("Categories", "Categories", new
-                                {
-                                    controller = "Category",
-                                    action = "CategoryList"
-                                })
-                            </li>
-                            <li>
-                                @Html.RouteLink("Amenities", "Amenities", new
-                                {
-                                    controller = "Category",
-                                    action = "AmenityList"
-                                })
-                            </li>
                     @*<li>@Html.ActionLink("Seo", "Index", "Seo")</li>*@
-                    </ul>
-                    </li>}
+                </ul>
+            </li>
+}
                     </ul>
                     @{ Html.RenderPartial("Partial/_LogIn", ViewModelsProvider.AdminViewModelsProvider.GetUserVm()); }
                 </div>
@@ -115,22 +116,22 @@
         @RenderBody()
         <hr />
         @*<footer>
-            <div class="footer-row-item">
-                &copy;@DateTime.Now.Year @StaticContent.Footer_Copyright
-            </div>
-            <div class="footer-row-item">
-                <a href="https://www.aetsmsoft.com" target="_new">@StaticContent.Footer_AboutNewpoint</a>
-            </div>
-            <div class="footer-row-item">
-                <a href="@Url.Action("PrivacyPolicy", "Client")">@StaticContent.Footer_PrivacyPolicy</a>
-            </div>
-            <div class="footer-row-item">
-                <a href="@Url.Action("TermsOfUse", "Client")">@StaticContent.Footer_TermsOfUse</a>
-            </div>
-            <div class="footer-row-item">
-                <a href="https://www.aetsmsoft.com/#contact">@StaticContent.Footer_ContactUs</a>
-            </div>
-        </footer>*@
+                <div class="footer-row-item">
+                    &copy;@DateTime.Now.Year @StaticContent.Footer_Copyright
+                </div>
+                <div class="footer-row-item">
+                    <a href="https://www.aetsmsoft.com" target="_new">@StaticContent.Footer_AboutNewpoint</a>
+                </div>
+                <div class="footer-row-item">
+                    <a href="@Url.Action("PrivacyPolicy", "Client")">@StaticContent.Footer_PrivacyPolicy</a>
+                </div>
+                <div class="footer-row-item">
+                    <a href="@Url.Action("TermsOfUse", "Client")">@StaticContent.Footer_TermsOfUse</a>
+                </div>
+                <div class="footer-row-item">
+                    <a href="https://www.aetsmsoft.com/#contact">@StaticContent.Footer_ContactUs</a>
+                </div>
+            </footer>*@
     </div>
     @Url.Script("lib/jquery-1.8.2.js")
     @Url.Script("legacy/bootstrap/bootstrap.min.js")
