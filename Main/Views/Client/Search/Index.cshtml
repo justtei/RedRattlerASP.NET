@@ -1,9 +1,14 @@
 ﻿@using MSLivingChoices.Localization
 @model MSLivingChoices.Mvc.Uipc.Client.ViewModels.IndexVm
+
 @{
+    Layout = "~/Views/Client/Shared/_PageLayout.cshtml";
+}
+
+@*@{
     ViewBag.Title = "Index";
     Layout = "~/Views/Client/Shared/_BaseLayout.cshtml";
-}
+}*@
 
 @section scripts
 {
@@ -14,16 +19,19 @@
     </script>
 }
 <style>
-    .help-area{
-        background-color:white;
+    .help-area {
+        background-color: white;
     }
-    .autocomplete{
-        list-style:none;
+
+    .autocomplete {
+        list-style: none;
     }
+
     .txt-right {
-        float:right;
-        margin-right:5px;
+        float: right;
+        margin-right: 5px;
     }
+
     .select2-container {
         width: 100% !important;
     }
@@ -75,7 +83,7 @@
                                         <span class="col-any-18">
                                             <a data-bind="click: function() {return true;},clickBubble:false">
                                                 <span data-bind="text: start"></span><span class="txt-bold" data-bind="text: end"></span>
-                                            </a> 
+                                            </a>
                                         </span>
                                         <span class="col-any-6 txt-right"
                                               data-bind="text: template"></span>
@@ -89,11 +97,11 @@
                             <div data-bind="with: searchTypes">
                                 <select class="form-control basic-select" id="exampleFormControlSelect2" data-bind="options:items,optionsText:'text',optionsValue:'value',optionsCaption:'Choose...'">
                                     @*<option data-bind=", css: {'active': selected(), 'txt-left': $index() === 0, 'txt-right': $index() === $parent.items.length - 1 , 'txt-center': $index() !== 0 && $index() !== $parent.items.length - 1 }">, event:{ change: $parent.selectItem} , event: {change : $parent.selectItem}
-                                        <span class="arrow-wrapper">
-                                            <span class="arrow"></span>  // selectedValue
-                                            <span data-bind="text:text"></span>
-                                        </span>
-                                    </option>*@
+                                            <span class="arrow-wrapper">
+                                                <span class="arrow"></span>  // selectedValue
+                                                <span data-bind="text:text"></span>
+                                            </span>
+                                        </option>*@
                                 </select>
                                 <div style="display:none">
                                     <ul class="col-any-20 type-list row-wrap"
@@ -114,7 +122,7 @@
                                     </ul>
                                 </div>
                             </div>
-                           
+
 
                         </div>
                         <span class="align-items-center px-3">
@@ -285,58 +293,58 @@
     </div>
 </section>
 @*
-<div class="container">
-    <h1 class="txt-center vpad header-brand-blue">@Model.Seo.Header</h1>
-    <i>
-        Senior Living Choices is committed to providing
-        you with the best resources to choose the perfect living community.
-        We help you filter thousands of active adult communities,
-        independent retirement communities, senior living or assisted
-        living communities by location, type, or specific amenities.
-    </i>
-    <p class="ind-s italic">
-        Whether you are just getting ready to retire to an active
-        lifestyle, a senior searching for assisted living options, or a family
-        member helping a loved one, we have the information you need every step of the way.
-    </p>
+    <div class="container">
+        <h1 class="txt-center vpad header-brand-blue">@Model.Seo.Header</h1>
+        <i>
+            Senior Living Choices is committed to providing
+            you with the best resources to choose the perfect living community.
+            We help you filter thousands of active adult communities,
+            independent retirement communities, senior living or assisted
+            living communities by location, type, or specific amenities.
+        </i>
+        <p class="ind-s italic">
+            Whether you are just getting ready to retire to an active
+            lifestyle, a senior searching for assisted living options, or a family
+            member helping a loved one, we have the information you need every step of the way.
+        </p>
+        <div class="arrow-hr">
+            <div class="arrow"></div>
+            <hr />
+        </div>
+        <div class="ind-l vpad index">
+            @{ Html.RenderPartial("~/Views/Client/Search/Partial/IndexTabDescription.cshtml", Model.Result); }
+        </div>
+    </div>
     <div class="arrow-hr">
         <div class="arrow"></div>
         <hr />
     </div>
-    <div class="ind-l vpad index">
-        @{ Html.RenderPartial("~/Views/Client/Search/Partial/IndexTabDescription.cshtml", Model.Result); }
-    </div>
-</div>
-<div class="arrow-hr">
-    <div class="arrow"></div>
-    <hr />
-</div>
-<div class="index-order-wrapper vpad content">
-    <div class="container">
-        <div class="grid-row">
-            <div class="col-any-offset-4 col-any-6">
-                <a href="http://bookorder.realestatebook.com/default.aspx?refer=SLC"
-                   rel="nofollow"
-                   target="_blank"
-                   data-ga="book-order">
-                    <img src="~/Content/images/logo/magazine.png" alt="Treb magazine" />
-                </a>
-            </div>
-            <div class="col-any-14 txt-incr">
-                <div class="row txt-incr txt-black">
-                    Order a Free Senior Living Choices Book
-                </div>
-                <div class="row ind">
-                    <a href="http://bookorder.realestatebook.com/Default.aspx?refer=SLC"
-                       class="btn btn-brand-red order-link"
+    <div class="index-order-wrapper vpad content">
+        <div class="container">
+            <div class="grid-row">
+                <div class="col-any-offset-4 col-any-6">
+                    <a href="http://bookorder.realestatebook.com/default.aspx?refer=SLC"
                        rel="nofollow"
                        target="_blank"
                        data-ga="book-order">
-                        Order
+                        <img src="~/Content/images/logo/magazine.png" alt="Treb magazine" />
                     </a>
+                </div>
+                <div class="col-any-14 txt-incr">
+                    <div class="row txt-incr txt-black">
+                        Order a Free Senior Living Choices Book
+                    </div>
+                    <div class="row ind">
+                        <a href="http://bookorder.realestatebook.com/Default.aspx?refer=SLC"
+                           class="btn btn-brand-red order-link"
+                           rel="nofollow"
+                           target="_blank"
+                           data-ga="book-order">
+                            Order
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
 *@
