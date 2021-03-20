@@ -441,16 +441,15 @@
                                         <div class="d-md-flex d-block mb-0">
                                             <h2>Property Listing</h2>
                                         </div>
-                                        @*<div class="property-view-list d-md-flex d-block mb-0 mt-4 mt-sm-0">
-                        <a class="btn btn-outline mt-md-0 mt-2" href="#"><i class="fas fa-list mr-1"></i> List View</a>
-                        <a class="btn btn-primary mt-md-0 mt-2 ml-sm-2 ml-0" href="#"><i class="fas fa-map-marker-alt mr-1"></i> Map View</a>
-                    </div>*@
+                                        <div class="property-view-list d-md-flex d-block mb-0 mt-4 mt-sm-0">
+                                            <a class="btn btn-outline mt-md-0 mt-2" href="#"><i class="fa fa-list mr-1"></i> List View</a>
+                                            <a class="btn btn-primary mt-md-0 mt-2 ml-sm-2 ml-0" href="#"><i class="fas fa-map-marker-alt mr-1"></i> Map View</a>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-md-12">
-
                                     <div class="widget-title" style="display:inline-block;">
                                         @*<h3 class="text-white mb-0">Refine Your Search</h3>*@
                                     </div>
@@ -577,9 +576,9 @@
                                             <li class="icon-mapview"
                                                 data-qv-action="map"
                                                 data-bind="click: tabs('map'),
-        css: {
-            'active': tab().template === 'map-view' && !!isShow().flag
-            , 'disabled': isLoading() || isInAnimation() }">
+                                                            css: {
+                                                                'active': tab().template === 'map-view' && !!isShow().flag
+                                                                , 'disabled': isLoading() || isInAnimation() }">
                                                 map view
                                             </li>
                                         }
@@ -588,9 +587,9 @@
                                             <li class="icon-square"
                                                 data-qv-action="floor"
                                                 data-bind="click: tabs('floor')
-        , css: {
-           'active': tab().template === 'floor' && !!isShow().flag
-           , 'disabled': isLoading() || isInAnimation() }">
+                                                        , css: {
+                                                           'active': tab().template === 'floor' && !!isShow().flag
+                                                           , 'disabled': isLoading() || isInAnimation() }">
                                                 floor plans
                                             </li>
                                         }
@@ -599,8 +598,8 @@
                                             <li class="icon-home"
                                                 data-qv-action="home"
                                                 data-bind="click: tabs('home')
-        , css: {
-            'active': tab().template === 'home' && !!isShow().flag, 'disabled': isLoading() || isInAnimation() }">
+                                                        , css: {
+                                                            'active': tab().template === 'home' && !!isShow().flag, 'disabled': isLoading() || isInAnimation() }">
                                                 homes
                                             </li>
                                         }
@@ -609,9 +608,9 @@
                                             <li class="icon-spec-home"
                                                 data-qv-action="spechome"
                                                 data-bind="click: tabs('spechome')
-        , css: {
-            'active': tab().template === 'spec-home' && !!isShow().flag
-            , 'disabled': isLoading() || isInAnimation() }">
+                                                            , css: {
+                                                                'active': tab().template === 'spec-home' && !!isShow().flag
+                                                                , 'disabled': isLoading() || isInAnimation() }">
                                                 spec homes
                                             </li>
                                         }
@@ -628,7 +627,6 @@
 
                                 <div class="row">
                                     <div class="col-lg-12 mb-4">
-
                                         <div class="property-list bg-white">
                                             <div class="row no-gutters">
                                                 <div class="col-md-5">
@@ -636,12 +634,12 @@
                                                         @if (community.DisplayProperties.Image)
                                                         {
                                                             <a href="@community.DetailsUrl">
-                                                                @RenderHelper.ThumbnailWithMicrodata(community.Image, "img-fluid");
+                                                                @RenderHelper.ThumbnailWithMicrodata(community.Image, "img-fluid")
                                                             </a>
                                                         }
                                                         <!-- <div class="property-lable">
-                                  <span class="badge badge-md">PET FRIENDLY</span>
-                                </div> -->
+                                                                <span class="badge badge-md">PET FRIENDLY</span>
+                                                            </div> -->
                                                         <div class="property-prize">
                                                             @if (community.DisplayProperties.Price)
                                                             {
