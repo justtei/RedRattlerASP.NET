@@ -1,0 +1,172 @@
+﻿@using MSLivingChoices.Entities.Client.Search.Criteria
+@using MSLivingChoices.Mvc.Uipc.Client.Helpers
+@using MSLivingChoices.Mvc.Uipc.Client.ViewModels
+@using MSLivingChoices.Localization
+
+@model SearchTypeStubSearchVm
+
+@{
+    Layout = "~/Views/Client/Shared/_PageLayout.cshtml";
+}
+
+@section scripts
+{
+    <script type="text/javascript">
+        mslc.resolve(['client/analytics/google'], function (ga) {
+            ga.trackPageView();
+        }, 'ga-tracking');
+    </script>
+}
+<style>
+    .help-area {
+        background-color: white;
+    }
+
+    .autocomplete {
+        list-style: none;
+    }
+
+    .txt-right {
+        float: right;
+        margin-right: 5px;
+    }
+
+    .select2-container {
+        width: 100% !important;
+    }
+</style>
+
+<section class="banner" style="background-image: url('@Url.Content("~/Content/images9/inner-banner-bg.jpg")'); background-size: cover;">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-7">
+                <h1 class="text-white mb-5 text-center">Search Products & Services</h1>
+                <div class="property-search-field">
+                    <form class="row" data-bind="event: { submit: search }" data-search="form">
+                        <div class="col-lg-12 mt-3" data-select="multi" data-bind="event:{outerClick:hideHelpArea }">
+                            <label for="CityState">City / State</label>
+                            <input type="hidden" class="form-control autocomplete-input" data-bind="value: autocompleteLocation" />
+                            <input type="text" id="CityState" class="form-control opacity-input relative" placeholder="@StaticContent.Placeholder_LookupLocation" autocomplete="off" data-bind="textInput: lookupLocation, event: {focus: showHelpArea , click: showHelpArea , keydown: onKeyDown, dblclick: onDoubleClick }" />
+                            <div class="help-area"
+                                 style="display: none"
+                                 data-select="target"
+                                 data-bind="visible: isHelpAreaVisible">
+                                <!-- ko with: messages -->
+                                <div class="col-any-24 message"
+                                     data-bind="visible: isEmptyMessageVisible()">
+                                    You should enter an address
+                                </div>
+                                <div class="col-any-24 message"
+                                     data-bind="visible: isErrorMessageVisible(), text: errorMessage">
+                                </div>
+                                <div class="col-any-24 message"
+                                     data-bind="visible: isErrorMessageVisible() && $parent.autocomplete.length()">
+                                    Suggestions:
+                                </div>
+                                <!-- /ko -->
+                                <ul class="autocomplete" data-bind="visible: isTemplatesVisible(), foreach: currentTemplates()">
+                                    <li>
+                                        <span class="col-any-12"
+                                              data-bind="text: template"></span>
+                                        <span class="col-any-12 txt-right" onclick="">
+                                            <a data-bind="href:'#',text: lookupLocation"></a>
+                                            @*href: url,*@
+                                        </span>
+                                    </li>
+                                </ul>
+                                <!-- ko with: autocomplete -->
+                                <ul class="autocomplete"
+                                    data-bind="visible: $root.isAutocompleteVisible(), foreach: list">
+                                    <li data-bind="click: $root.onAutocompleteClick
+                                                   , event: { mouseover: function() { $parent.select($index()) } }
+                                                   , css: { active: $index() === $parent.index() }">
+                                        <span class="col-any-18">
+                                            <a data-bind="click: function() {return true;},clickBubble:false">
+                                                <span data-bind="text: start"></span><span class="txt-bold" data-bind="text: end"></span>
+                                            </a>
+                                        </span>
+                                        <span class="col-any-6 txt-right"
+                                              data-bind="text: template"></span>
+                                    </li>
+                                </ul>
+                                <!-- /ko -->
+                            </div>
+                        </div>
+                        <div style="display:none;">
+                            <label for="exampleInputName2">Housing Type</label>
+                            <div data-bind="with: searchTypes">
+                                <select class="form-control basic-select" id="exampleFormControlSelect2" data-bind="options:items,optionsText:'text',optionsValue:'value',optionsCaption:'Choose...'">
+                                </select>
+                                <div style="display:none">
+                                    <ul class="col-any-20 type-list row-wrap"
+                                        data-bind="foreach: items">
+                                        <li class="col-any-6"
+                                            data-bind="click: $parent.selectItem
+                                                   , css: {
+                                                       'active': selected()
+                                                       , 'txt-left': $index() === 0
+                                                       , 'txt-right': $index() === $parent.items.length - 1
+                                                       , 'txt-center': $index() !== 0 && $index() !== $parent.items.length - 1 },
+                                                        attr: {'id': 'clickOn_' + value}">
+                                            <span class="arrow-wrapper">
+                                                <span class="arrow"></span>
+                                                <span data-bind="text: text"></span>
+                                            </span>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 mt-3">
+                            <span class="align-items-center">
+                                <button class="btn btn-primary btn-md d-flex align-items-center mt-4" type="submit" data-bind="css: { 'in-progress': pending }">
+                                    <i class="fas fa-search mr-1"></i>
+                                    <span>@StaticContent.Btn_Search</span>
+                                </button>
+                            </span>
+                        </div>
+
+
+                        @*<div class="col-lg-6 mt-3">
+                            <span class="align-items-center px-3">
+                                <button class="btn btn-primary btn-md d-flex align-items-center mt-4" type="submit" data-bind="css: { 'in-progress': pending }">
+                                    <i class="fas fa-search mr-1"></i>
+                                    <span>@StaticContent.Btn_Search</span>
+                                </button>
+                            </span>
+                            </div>*@
+                    </form>
+                    <div class="mt-3">
+                        <span>
+                            Unsure what housing is right for you or your loved one?
+                        </span>
+                        <a href="#" style="font-weight: 600;">
+                            Visit the Senior Living Choices and Types Page.
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-10 mt-2">
+                <div class="col-md-11">
+                    <p class="text-center text-white mt-3" style="font-size: 24px; font-weight: 600; line-height: 1.4;">
+                        Senior Living Choices is commited to providing you with the best resources
+                        to choose the perfect living community. Our steps to browse platform allows
+                        you to filter through thousands of 55+ active adult homes, independant living comunities,
+                        senior apparments, or assisted living communities, by location, care type, or specific anemities
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="space-ptb">
+    <div class="container">
+        <div class="row justify-content-center product-services">
+            <div class="col-lg-10 text-center px-md-5 px-4">
+                <h5 class="mb-3">You will find resources and services such as in-home care, home health care, estate planning, financial planning, senior locator and senior moving services, realtors, medical facilities, pharmacies, local community services and more. </h5>
+                <h5 class="mb-3">Browse or search our products and services to find the best solution to fit all your senior or active adult needs.</h5>
+            </div>
+        </div>
+    </div>
+</section>

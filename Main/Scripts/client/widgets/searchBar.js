@@ -1,4 +1,4 @@
-﻿mslc.define('client/widgets/searchBar',
+mslc.define('client/widgets/searchBar',
     [
         'lib/jQuery'
         , 'lib/ko'
@@ -86,9 +86,18 @@
             }
 
             function onAutocompleteSelect(newValue) {
+
                 if (!util.isNullOrUndef(newValue) && !util.isNullOrEmpty(newValue.lookupLocation)) {
                     isUserInputAction = false;
                     self.lookupLocation(newValue.lookupLocation);
+                }
+            }
+
+           function onDefaultValueSelect(lookupLocation) {
+                if (!util.isNullOrEmpty(lookupLocation)) {
+                    isUserInputAction = false;
+                    self.lookupLocation(lookupLocation);
+                    self.isHelpAreaVisible(false);
                 }
             }
 
@@ -127,6 +136,11 @@
 
             function onAutocompleteClick() {
                 $form.submit();
+            }
+
+            function onAutocompleteClickWithoutRedirect() {
+                self.autocomplete.clear();
+                self.isHelpAreaVisible(false);
             }
 
             function showHelpArea() {
@@ -242,6 +256,8 @@
             this.getCriteria = getCriteria;
             this.getAutocomplete = getAutocomplete;
             this.search = search;
+            this.onDefaultValueSelect = onDefaultValueSelect;
+            this.onAutocompleteClickWithoutRedirect = onAutocompleteClickWithoutRedirect;
 
             //#endregion
 

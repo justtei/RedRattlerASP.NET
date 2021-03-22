@@ -91,6 +91,7 @@ function submitLeadForm ()
                 sendCoupon(data.ConsumerEmail, data.ConsumerFullName);
                 clearLeadForm(form);
             }
+
             enableSubmitButton();
             showSubmitResult(result.success, result.message);
         }).fail(function ()
@@ -99,9 +100,13 @@ function submitLeadForm ()
             showSubmitResult(false);
         });
     }
+
     // prevent default behaviour
     return false;
 }
+
+
+
 var getLeadFormData = function(form)
 {
     var data =
@@ -117,8 +122,10 @@ var getLeadFormData = function(form)
         LookingFor: form.find('[name*=LookingFor]').val(),
         ConsumerMessage: form.find('[name*=ConsumerMessage]').val()
     };
+
     return data;
 };
+
 function closeLeadForm(dialog)
 {
     //reset validation
@@ -130,9 +137,11 @@ function closeLeadForm(dialog)
         errormessages.empty();
         errormessages.addClass("field-validation-valid");
         errormessages.removeClass("field-validation-error");
+
         clearLeadForm(form);
     }
 }
+
 function clearLeadForm(leadForm)
 {
     //clear inputs

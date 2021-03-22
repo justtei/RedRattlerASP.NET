@@ -6,3 +6,11 @@ C:\Users\Administrator\Desktop\SeniorLiving1\SeniorLiving1\MSLivingChoices.Loggi
 C:\Users\Administrator\Desktop\SeniorLiving1\SeniorLiving1\MSLivingChoices.Logging\obj\Debug\MSLivingChoices.Logging.csproj.CopyComplete
 C:\Users\Administrator\Desktop\SeniorLiving1\SeniorLiving1\MSLivingChoices.Logging\obj\Debug\MSLivingChoices.Logging.dll
 C:\Users\Administrator\Desktop\SeniorLiving1\SeniorLiving1\MSLivingChoices.Logging\obj\Debug\MSLivingChoices.Logging.pdb
+C:\Users\sra_r\Source\Repos\RedRattlerASP.NET\MSLivingChoices.Logging\bin\Debug\MSLivingChoices.Logging.dll
+C:\Users\sra_r\Source\Repos\RedRattlerASP.NET\MSLivingChoices.Logging\bin\Debug\MSLivingChoices.Logging.pdb
+C:\Users\sra_r\Source\Repos\RedRattlerASP.NET\MSLivingChoices.Logging\bin\Debug\log4net.dll
+C:\Users\sra_r\Source\Repos\RedRattlerASP.NET\MSLivingChoices.Logging\obj\Debug\MSLivingChoices.Logging.csprojAssemblyReference.cache
+C:\Users\sra_r\Source\Repos\RedRattlerASP.NET\MSLivingChoices.Logging\obj\Debug\MSLivingChoices.Logging.csproj.CoreCompileInputs.cache
+C:\Users\sra_r\Source\Repos\RedRattlerASP.NET\MSLivingChoices.Logging\obj\Debug\MSLivingChoices.Logging.csproj.CopyComplete
+C:\Users\sra_r\Source\Repos\RedRattlerASP.NET\MSLivingChoices.Logging\obj\Debug\MSLivingChoices.Logging.dll
+C:\Users\sra_r\Source\Repos\RedRattlerASP.NET\MSLivingChoices.Logging\obj\Debug\MSLivingChoices.Logging.pdb

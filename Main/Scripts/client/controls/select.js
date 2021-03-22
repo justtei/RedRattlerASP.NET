@@ -1,4 +1,4 @@
-﻿mslc.define('client/controls/select',
+mslc.define('client/controls/select',
     [
         'lib/ko'
         , 'client/models/ko/option'

@@ -211,6 +211,11 @@ namespace Main.Controllers
 		[CompetitiveFormating]
 		public ActionResult SearchTypeStub(SearchTypeStubSearchVm searchVm)
 		{
+			if(searchVm.PageType == PageType.ServiceProvidersByType)
+            {
+				ClientViewModelsProvider.GetIndexSearchVm();
+				return base.View("~/Views/Client/Search/SearchTypeServiceProviders.cshtml", ClientViewModelsProvider.GetSearchTypeSearchVm(searchVm));
+            }
 			return base.View("~/Views/Client/Search/SearchType.cshtml", ClientViewModelsProvider.GetSearchTypeSearchVm(searchVm));
 		}
 

@@ -615,11 +615,11 @@
                                                 spec homes
                                             </li>
                                         }
-                                        <li class="pull-right">
+                                        @*<li class="pull-right">
                                             <a href="@community.DetailsUrl" itemprop="url">
                                                 view details >>
                                             </a>
-                                        </li>
+                                        </li>*@
                                         <li class="nanobar" data-bind="linknode: $data">
                                             <div class="bar"></div>
                                         </li>
@@ -635,23 +635,24 @@
                                                     <div class="property-image h-100 bg-overlay-gradient-04">
                                                         @if (community.DisplayProperties.Image)
                                                         {
-                                                            <a href="@community.DetailsUrl">
-                                                                @RenderHelper.ThumbnailWithMicrodata(community.Image, "img-fluid");
-                                                            </a>
+                                                            @RenderHelper.ThumbnailWithMicrodata(community.Image, "img-fluid");
+                                                        }
+
+                                                        @if (community.DisplayProperties.Price)
+                                                        {
+                                                            <div class="property-prize">
+                                                                <span class="badge badge-md">@community.Price</span>
+                                                            </div>
+                                                        }
+                                                        @if (community.Beds.IsValued)
+                                                        {
+                                                            <div class="property-room">
+                                                                <span class="badge badge-md"><i class="fas fa-bed fa-1x text-white mr-1"></i> @community.Beds.Value</span>
+                                                            </div>
                                                         }
                                                         <!-- <div class="property-lable">
-                                  <span class="badge badge-md">PET FRIENDLY</span>
-                                </div> -->
-                                                        <div class="property-prize">
-                                                            @if (community.DisplayProperties.Price)
-                                                            {
-                                                                <span class="badge badge-md">@community.Price</span>
-                                                            }
-
-                                                        </div>
-                                                        <div class="property-room">
-                                                            @*<span class="badge badge-md"><i class="fas fa-bed fa-1x text-white mr-1"></i> 2-3</span>*@
-                                                        </div>
+      <span class="badge badge-md">PET FRIENDLY</span>
+    </div> -->
                                                     </div>
                                                 </div>
                                                 <div class="col-md-7">
@@ -669,6 +670,7 @@
                                                                     @community.Phone
                                                                 </li>
                                                             }
+                                                            <li class="property-address mb-1"><i class="fas fa-building text-primary mr-1"></i> Housing Provided: <a href="#">55+ Community  •  Apartments</a> </li>
                                                         </ul>
                                                         <p></p>
                                                         <p>
@@ -687,7 +689,7 @@
                                                                 <span itemprop="postalCode">@community.Address.Zip</span>
                                                             </address>
                                                         </p>
-                                                        <div class="mb-3">
+                                                        <div class="mb-3 h5">
                                                             <a href="@community.DetailsUrl">Read More <i class="fas fa-angle-right"></i></a>
                                                         </div>
                                                         <a class="btn btn-outline btn-sm mb-1 mr-2 ml-0 mt-1" href="@community.DetailsUrl">View Profile</a>
@@ -749,7 +751,7 @@
 
         }
 
-        @if (Model.DisplayProperties.NearbyCategories || Model.DisplayProperties.NearbyCities)
+        @*@if (Model.DisplayProperties.NearbyCategories || Model.DisplayProperties.NearbyCities)
         {
             <div class="row">
                 <div class="col-6 text-center">
@@ -792,10 +794,10 @@
                     }
                 </div>
             </div>
-        }
+        }*@
 
     </div>
-    <div class="col-7">
+    <!--<div class="col-7">-->
         @*@if (Model.DisplayProperties.BookOrder)
             {
                 Html.RenderPartial("~/Views/Client/Search/Partial/Order.cshtml");
@@ -806,7 +808,7 @@
                     @{ Html.RenderPartial("~/Views/Client/Partial/FeaturedCommunities.cshtml", new ViewDataDictionary(Model.FeaturedCommunities)); }
                 </div>
             }*@
-        @if (Model.DisplayProperties.FeaturedServiceProviders)
+        <!--@if (Model.DisplayProperties.FeaturedServiceProviders)
         {
             <div class="container">
                 <div class="row">
@@ -815,7 +817,7 @@
                     </div>
                 </div>
             </div>
-        }
+        }-->
         @*@if (Model.DisplayProperties.PartnerAds)
             {
                 <div class="ind">
@@ -825,7 +827,7 @@
                     <div id="div-gpt-ad-1355770777438-0" class="ad-300x250"></div>
                 </div>
             }*@
-    </div>
+    <!--</div>-->
 </div>
 <script>
     function GoLikeIt(div) {
