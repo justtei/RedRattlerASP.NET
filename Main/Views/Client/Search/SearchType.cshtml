@@ -34,9 +34,10 @@
 }
 
 <div class="row">
-    <div class="col-any-17">
+    @*<div class="col-any-17">*@
+    <div class="container">
         <div class="clearfix">
-            <h1 class="header-brand-blue inline-block">@Model.Seo.Header</h1>
+            <h1 class="header-brand-blue inline-block" style="text-align: center;">@Model.Seo.Header</h1>
         </div>
 
         <p class="ind">@Model.Seo.MarketCopy</p>
@@ -79,7 +80,9 @@
             </div>
         }
     </div>
-    <div class="col-any-7">
-        @{ Html.RenderPartial("~/Views/Client/Search/Partial/Order.cshtml"); }
+    <div class="container">
+        @*<div class="col-any-7">*@
+            @{ Html.RenderPartial("~/Views/Client/Search/Partial/Order.cshtml"); }
+        @*</div>*@
     </div>
 </div>
