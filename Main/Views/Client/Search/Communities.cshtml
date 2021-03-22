@@ -54,7 +54,7 @@
     </script>
 
     @{ Html.RenderPartial("~/Views/Client/Search/Partial/QuickView.cshtml"); }
-    @{ Html.RenderPartial("~/Views/Client/Search/Partial/MapView.cshtml"); }
+@*    @{ Html.RenderPartial("~/Views/Client/Search/Partial/MapView.cshtml"); }*@
     @{ Html.RenderPartial("~/Views/Client/Search/Partial/SpecHome.cshtml"); }
     @{ Html.RenderPartial("~/Views/Client/Search/Partial/Home.cshtml"); }
     @{ Html.RenderPartial("~/Views/Client/Search/Partial/FloorPlan.cshtml"); }
@@ -318,14 +318,16 @@
         @if (!Model.Result.Any())
         {
             
-            <div class="row">
-                <div class="col-6">
-                    <img alt="No results" src="~/Content/images/stub/no-result.png" />
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6 col-md-6 mb-3">
+                        <img alt="No results" style="width: 100%;" src="~/Content/images/stub/no-result.png" />
+                    </div>
+                    <span class="col-lg-6 col-md-6 mb-3 text-justify d-flex align-items-center">
+                        We could not find any listings in this area or your search filters may be too strict. Please try to clear all filters or
+                        search for nearby locations with listings. Our information is updated daily so please check back soon.
+                    </span>
                 </div>
-                <p class="col-6">
-                    We could not find any listings in this area or your search filters may be too strict. Please try to clear all filters or
-                    search for nearby locations with listings. Our information is updated daily so please check back soon.
-                </p>
             </div>
         }
 
@@ -441,16 +443,15 @@
                                         <div class="d-md-flex d-block mb-0">
                                             <h2>Property Listing</h2>
                                         </div>
-                                        @*<div class="property-view-list d-md-flex d-block mb-0 mt-4 mt-sm-0">
-                        <a class="btn btn-outline mt-md-0 mt-2" href="#"><i class="fas fa-list mr-1"></i> List View</a>
-                        <a class="btn btn-primary mt-md-0 mt-2 ml-sm-2 ml-0" href="#"><i class="fas fa-map-marker-alt mr-1"></i> Map View</a>
-                    </div>*@
+                                        <div class="property-view-list d-md-flex d-block mb-0 mt-4 mt-sm-0">
+                                            <a class="btn btn-outline mt-md-0 mt-2" href="javascript:;" onclick="listShow()"><i class="fa fa-list mr-1"></i> List View</a>
+                                            <a class="btn btn-outline mt-md-0 mt-2 ml-sm-2 ml-0" href="javascript:;" onclick="mapShow()"><i class="fas fa-map-marker-alt mr-1"></i> Map View</a>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-md-12">
-
                                     <div class="widget-title" style="display:inline-block;">
                                         @*<h3 class="text-white mb-0">Refine Your Search</h3>*@
                                     </div>
@@ -472,6 +473,7 @@
                                                 position: absolute;
                                                 z-index: 99;
                                             }
+
                                             .items.single {
                                                 position: absolute;
                                                 z-index: 999;
@@ -480,12 +482,14 @@
                                                 list-style: none;
                                                 display: none;
                                             }
-                                            .items.single li{
-                                                cursor:pointer;
-                                            }
-                                                .items.single li:hover {
-                                                    background:dodgerblue;
+
+                                                .items.single li {
+                                                    cursor: pointer;
                                                 }
+
+                                                    .items.single li:hover {
+                                                        background: dodgerblue;
+                                                    }
                                         </style>
 
                                         @switch (Model.PageType.ToRefineType())
@@ -552,165 +556,177 @@
 
                                 </div>
                             </div>
-                            @foreach (var community in Model.Result)
-                            {
-                                if (community.DisplayProperties.Featured)
+                            <div class="map-container">
+                                <div id="map" style="width:100%; height: 30em;"></div>
+                            </div>
+                            <div id="list_view">
+                                @foreach (var community in Model.Result)
                                 {
-                                    continue;
-                                }
+                                    if (community.DisplayProperties.Featured)
+                                    {
+                                        continue;
+                                    }
 
-                                <section data-qv="@community.Id">
-                                    <ul class="control list-inline">
+                                    <section data-qv="@community.Id">
+                                        <ul class="control list-inline">
 
-                                        @if (community.DisplayProperties.QuickView)
-                                        {
-                                            <li class="icon-quickview"
-                                                data-bind="click: tabs('quick'), css: {
-                                                    'active': tab().template === 'quick' && !!isShow().flag
-                                                    , 'disabled': isLoading() || isInAnimation() }"
-                                                data-qv-action="quick">
-                                                quick view
+                                            @if (community.DisplayProperties.QuickView)
+                                            {
+                                                <li class="icon-quickview"
+                                                    data-bind="click: tabs('quick'), css: {
+                                                        'active': tab().template === 'quick' && !!isShow().flag
+                                                        , 'disabled': isLoading() || isInAnimation() }"
+                                                    data-qv-action="quick">
+                                                    quick view
+                                                </li>
+                                            }
+                                            @*@if (community.DisplayProperties.Map)
+                        {
+                            <li class="icon-mapview"
+                                data-qv-action="map"
+                                data-bind="click: tabs('map'),
+                                            css: {
+                                                'active': tab().template === 'map-view' && !!isShow().flag
+                                                , 'disabled': isLoading() || isInAnimation() }">
+                                map view
+                            </li>
+                        }*@
+                                            @if (community.DisplayProperties.FloorPlans)
+                                            {
+                                                <li class="icon-square"
+                                                    data-qv-action="floor"
+                                                    data-bind="click: tabs('floor')
+                                                            , css: {
+                                                               'active': tab().template === 'floor' && !!isShow().flag
+                                                               , 'disabled': isLoading() || isInAnimation() }">
+                                                    floor plans
+                                                </li>
+                                            }
+                                            @if (community.DisplayProperties.Homes)
+                                            {
+                                                <li class="icon-home"
+                                                    data-qv-action="home"
+                                                    data-bind="click: tabs('home')
+                                                            , css: {
+                                                                'active': tab().template === 'home' && !!isShow().flag, 'disabled': isLoading() || isInAnimation() }">
+                                                    homes
+                                                </li>
+                                            }
+                                            @if (community.DisplayProperties.SpecHomes)
+                                            {
+                                                <li class="icon-spec-home"
+                                                    data-qv-action="spechome"
+                                                    data-bind="click: tabs('spechome')
+                                                                , css: {
+                                                                    'active': tab().template === 'spec-home' && !!isShow().flag
+                                                                    , 'disabled': isLoading() || isInAnimation() }">
+                                                    spec homes
+                                                </li>
+                                            }
+                                            <li class="pull-right">
+                                                <a href="@community.DetailsUrl" itemprop="url">
+                                                    view details >>
+                                                </a>
                                             </li>
-                                        }
-                                        @if (community.DisplayProperties.Map)
-                                        {
-                                            <li class="icon-mapview"
-                                                data-qv-action="map"
-                                                data-bind="click: tabs('map'),
-        css: {
-            'active': tab().template === 'map-view' && !!isShow().flag
-            , 'disabled': isLoading() || isInAnimation() }">
-                                                map view
+                                            <li class="nanobar" data-bind="linknode: $data">
+                                                <div class="bar"></div>
                                             </li>
-                                        }
-                                        @if (community.DisplayProperties.FloorPlans)
-                                        {
-                                            <li class="icon-square"
-                                                data-qv-action="floor"
-                                                data-bind="click: tabs('floor')
-        , css: {
-           'active': tab().template === 'floor' && !!isShow().flag
-           , 'disabled': isLoading() || isInAnimation() }">
-                                                floor plans
-                                            </li>
-                                        }
-                                        @if (community.DisplayProperties.Homes)
-                                        {
-                                            <li class="icon-home"
-                                                data-qv-action="home"
-                                                data-bind="click: tabs('home')
-        , css: {
-            'active': tab().template === 'home' && !!isShow().flag, 'disabled': isLoading() || isInAnimation() }">
-                                                homes
-                                            </li>
-                                        }
-                                        @if (community.DisplayProperties.SpecHomes)
-                                        {
-                                            <li class="icon-spec-home"
-                                                data-qv-action="spechome"
-                                                data-bind="click: tabs('spechome')
-        , css: {
-            'active': tab().template === 'spec-home' && !!isShow().flag
-            , 'disabled': isLoading() || isInAnimation() }">
-                                                spec homes
-                                            </li>
-                                        }
-                                        @*<li class="pull-right">
-                                            <a href="@community.DetailsUrl" itemprop="url">
-                                                view details >>
-                                            </a>
-                                        </li>*@
-                                        <li class="nanobar" data-bind="linknode: $data">
-                                            <div class="bar"></div>
-                                        </li>
-                                    </ul>
-                                </section>
+                                        </ul>
+                                    </section>
 
-                                <div class="row">
-                                    <div class="col-lg-12 mb-4">
-
-                                        <div class="property-list bg-white">
-                                            <div class="row no-gutters">
-                                                <div class="col-md-5">
-                                                    <div class="property-image h-100 bg-overlay-gradient-04">
-                                                        @if (community.DisplayProperties.Image)
-                                                        {
-                                                            @RenderHelper.ThumbnailWithMicrodata(community.Image, "img-fluid");
-                                                        }
-
-                                                        @if (community.DisplayProperties.Price)
-                                                        {
-                                                            <div class="property-prize">
-                                                                <span class="badge badge-md">@community.Price</span>
-                                                            </div>
-                                                        }
-                                                        @if (community.Beds.IsValued)
-                                                        {
-                                                            <div class="property-room">
-                                                                <span class="badge badge-md"><i class="fas fa-bed fa-1x text-white mr-1"></i> @community.Beds.Value</span>
-                                                            </div>
-                                                        }
-                                                        <!-- <div class="property-lable">
-      <span class="badge badge-md">PET FRIENDLY</span>
-    </div> -->
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-7">
-                                                    <div class="property-detail p-4">
-                                                        <h3 class="property-title"><a href="@community.DetailsUrl">@(community.DisplayProperties.Name ? community.Name : "View details")</a></h3>
-                                                        <ul class="pl-0">
-                                                            <li class="property-address mb-1">
-                                                                <i class="fas fa-map-marker-alt fa-1x mr-1 text-primary"></i> EXACT -@community.Address.City, @community.Address.StateCode @community.Address.Zip
-                                                            </li>
-
-                                                            @if (community.DisplayProperties.Phone)
+                                    <div class="row">
+                                        <div class="col-lg-12 mb-4">
+                                            <div class="property-list bg-white">
+                                                <div class="row no-gutters">
+                                                    <div class="col-md-5">
+                                                        <div class="property-image h-100 bg-overlay-gradient-04">
+                                                            @if (community.DisplayProperties.Image)
                                                             {
+                                                                <a href="@community.DetailsUrl">
+                                                                    @RenderHelper.ThumbnailWithMicrodata(community.Image, "img-fluid")
+                                                                </a>
+                                                            }
+                                                            <!-- <div class="property-lable">
+                                            <span class="badge badge-md">PET FRIENDLY</span>
+                                        </div> -->
+                                                            <div class="property-prize">
+                                                                @if (community.DisplayProperties.Price)
+                                                                {
+                                                                    <span class="badge badge-md">@community.Price</span>
+                                                                }
+                                                                else
+                                                                {
+                                                                    <span class="badge badge-md">$&nbsp;&nbsp;?</span>
+                                                                }
+                                                            </div>
+                                                            <div class="property-room">
+                                                                @if (community.DisplayProperties.Beds)
+                                                                {
+                                                                    <span class="badge badge-md"><i class="fas fa-bed fa-1x text-white mr-1"></i>@community.Beds</span>
+                                                                }
+                                                                else
+                                                                {
+                                                                    <span class="badge badge-md"><i class="fas fa-bed fa-1x text-white mr-1"></i>?</span>
+                                                                }
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-7">
+                                                        <div class="property-detail p-4">
+                                                            <h3 class="property-title"><a href="@community.DetailsUrl">@(community.DisplayProperties.Name ? community.Name : "View details")</a></h3>
+                                                            <ul class="pl-0">
+                                                                <li class="property-address mb-1">
+                                                                    <i class="fas fa-map-marker-alt fa-1x mr-1 text-primary"></i> EXACT -@community.Address.City, @community.Address.StateCode @community.Address.Zip
+                                                                </li>
+
+                                                                @*@if (community.DisplayProperties.Phone)
+                                            {*@
                                                                 <li class="property-address mb-1">
                                                                     <i class="fas fa-phone-alt fa-1x text-primary mr-1"></i>
                                                                     @community.Phone
                                                                 </li>
+                                                                @*}*@
+                                                            </ul>
+                                                            <p></p>
+                                                            <p>
+                                                                <address class="ind-s" itemprop="address" itemscope itemtype="http://schema.org/PostalAddress">
+                                                                    <span class="address-line">
+                                                                        <span itemprop="streetAddress">@community.Address.Line</span>
+                                                                        @if (community.DisplayProperties.RadiusDesignation)
+                                                                        {
+                                                                            <span class="txt-lower txt-decr txt-brand-blue txt-bold radius-designation"
+                                                                                  data-hint="#radius-designation-hint">@community.SearchRadiusDesignation</span>
+                                                                            }
+                                                                    </span>
+                                                                    <br />
+                                                                    <span class="city" itemprop="addressLocality">@community.Address.City</span>
+                                                                    <span class="state" itemprop="addressRegion">@community.Address.StateCode</span>
+                                                                    <span itemprop="postalCode">@community.Address.Zip</span>
+                                                                </address>
+                                                            </p>
+                                                            <div class="mb-3">
+                                                                <a href="@community.DetailsUrl">Read More <i class="fas fa-angle-right"></i></a>
+                                                            </div>
+                                                            <a class="btn btn-outline btn-sm mb-1 mr-2 ml-0 mt-1" href="@community.DetailsUrl">View Profile</a>
+                                                            @if (community.DisplayProperties.LeadForm)
+                                                            {
+                                                                <button class="btn btn-primary btn-sm ml-0"
+                                                                        data-toggle="lead-form"
+                                                                        data-accessor="attr"
+                                                                        data-listing-id="@community.Id"
+                                                                        data-listing-name="@community.Name"
+                                                                        data-message="@community.GetLeadFormMessage()">
+                                                                    Request Information
+                                                                </button>
                                                             }
-                                                            <li class="property-address mb-1"><i class="fas fa-building text-primary mr-1"></i> Housing Provided: <a href="#">55+ Community  •  Apartments</a> </li>
-                                                        </ul>
-                                                        <p></p>
-                                                        <p>
-                                                            <address class="ind-s" itemprop="address" itemscope itemtype="http://schema.org/PostalAddress">
-                                                                <span class="address-line">
-                                                                    <span itemprop="streetAddress">@community.Address.Line</span>
-                                                                    @if (community.DisplayProperties.RadiusDesignation)
-                                                                    {
-                                                                        <span class="txt-lower txt-decr txt-brand-blue txt-bold radius-designation"
-                                                                              data-hint="#radius-designation-hint">@community.SearchRadiusDesignation</span>
-                                                                        }
-                                                                </span>
-                                                                <br />
-                                                                <span class="city" itemprop="addressLocality">@community.Address.City</span>
-                                                                <span class="state" itemprop="addressRegion">@community.Address.StateCode</span>
-                                                                <span itemprop="postalCode">@community.Address.Zip</span>
-                                                            </address>
-                                                        </p>
-                                                        <div class="mb-3 h5">
-                                                            <a href="@community.DetailsUrl">Read More <i class="fas fa-angle-right"></i></a>
                                                         </div>
-                                                        <a class="btn btn-outline btn-sm mb-1 mr-2 ml-0 mt-1" href="@community.DetailsUrl">View Profile</a>
-                                                        @if (community.DisplayProperties.LeadForm)
-                                                        {
-                                                            <button class="btn btn-primary btn-sm ml-0"
-                                                                    data-toggle="lead-form"
-                                                                    data-accessor="attr"
-                                                                    data-listing-id="@community.Id"
-                                                                    data-listing-name="@community.Name"
-                                                                    data-message="@community.GetLeadFormMessage()">
-                                                                Request Information
-                                                            </button>
-                                                        }
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                            }
+                                }
+                            </div>
                             @if (Model.Paging.Pages.Any())
                             {
                                 <style>
@@ -830,6 +846,21 @@
     <!--</div>-->
 </div>
 <script>
+    var locations = []; 
+    alert(1);
+</script>
+@foreach (var community in Model.Result)
+{
+    <script>
+        var temp = [];
+        temp.push('senior house choice');
+        temp.push(community.address.latitude);
+        temp.push(community.address.longitude);
+        locations.push(temp);
+    </script>
+}
+<script>
+    console.log("234234", locations);
     function GoLikeIt(div) {
         var Ndiv = div.nextElementSibling;
 
@@ -840,4 +871,69 @@
             Ndiv.style.height = 'fit-content';
         }
     }
+
+    function listShow() {
+        $(".map-container").css("display", "none");
+        $("#list_view").css("display", "initial");
+    }
+
+    function mapShow() {
+        $(".map-container").css("display", "initial");
+        $("#list_view").css("display", "none");
+        var locations = [
+            ['Raj Ghat', 42.648608, -101.250925, 1],
+            ['Purana Qila', 38.618174, -91.242686, 2],
+            ['Red Fort', 33.663973, -102.241656, 3],
+            ['India Gate', 43.620585, -105.228609, 4],
+            ['Jantar Mantar', 45.636219, -104.213846, 5],
+            ['Akshardham', 37.622658, -101.277704, 6]
+        ];
+        var map = new google.maps.Map(document.getElementById('map'), {
+            zoom: 5,
+            center: new google.maps.LatLng(40.71383898, -101.312005126),
+            mapTypeId: google.maps.MapTypeId.ROADMAP
+        });
+        var infowindow = new google.maps.InfoWindow();
+        var marker, i;
+        for (i = 0; i < locations.length; i++) {
+            marker = new google.maps.Marker({
+                position: new google.maps.LatLng(locations[i][1], locations[i][2]),
+                map: map
+            });
+            google.maps.event.addListener(marker, 'click', (function (marker, i) {
+                return function () {
+                    infowindow.setContent(locations[i][0]);
+                    infowindow.open(map, marker);
+                }
+            })(marker, i));
+        }
+    }
+
+    @*let map;
+
+    function initMap() {
+        const mapOptions = {
+            zoom: 8,
+            center: { lat: -34.397, lng: 150.644 },
+        };
+        map = new google.maps.Map(document.getElementById("map"), mapOptions);
+        const marker = new google.maps.Marker({
+            // The below line is equivalent to writing:
+            // position: new google.maps.LatLng(-34.397, 150.644)
+            position: { lat: -34.397, lng: 150.644 },
+            map: map,
+        });
+        // You can use a LatLng literal in place of a google.maps.LatLng object when
+        // creating the Marker object. Once the Marker object is instantiated, its
+        // position will be available as a google.maps.LatLng object. In this case,
+        // we retrieve the marker's position using the
+        // google.maps.LatLng.getPosition() method.
+        const infowindow = new google.maps.InfoWindow({
+            content: "<p>Marker Location:" + marker.getPosition() + "</p>",
+        });
+        google.maps.event.addListener(marker, "click", () => {
+            infowindow.open(map, marker);
+        });
+    }*@
+    @*google.maps.event.addDomListener(window, 'load', initialize);*@
 </script>

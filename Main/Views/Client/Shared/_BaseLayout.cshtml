@@ -230,7 +230,10 @@
 
     @Scripts.Render("~/scripts/bundle/lib")
     <script src="~/Scripts/lib/jquery-ui.datepicker.js"></script>
-    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?v=3&sensor=false&client=gme-newpointmediagroup"></script>
+   @* <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&ver=7.0.10.008&#8221"></script>*@
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAHCxrduehCUJNdWjCslL_CTFb9ZykNj7s&callback=initMap&libraries=&v=weekly"
+            async></script>
+
     <script src="~/Scripts/lib/jquery.timepicker.js"></script>
     @Scripts.Render("~/scripts/bundle/client")
 
