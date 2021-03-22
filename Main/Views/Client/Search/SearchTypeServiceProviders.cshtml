@@ -4,11 +4,9 @@
 @using MSLivingChoices.Localization
 
 @model SearchTypeStubSearchVm
-
 @{
     Layout = "~/Views/Client/Shared/_PageLayout.cshtml";
 }
-
 @section scripts
 {
     <script type="text/javascript">
@@ -21,16 +19,13 @@
     .help-area {
         background-color: white;
     }
-
     .autocomplete {
         list-style: none;
     }
-
     .txt-right {
         float: right;
         margin-right: 5px;
     }
-
     .select2-container {
         width: 100% !important;
     }
@@ -86,7 +81,9 @@
                                             </a>
                                         </span>
                                         <span class="col-any-6 txt-right"
-                                              data-bind="text: template"></span>
+                                              data-bind="text: template">
+
+                                        </span>
                                     </li>
                                 </ul>
                                 <!-- /ko -->
@@ -157,7 +154,7 @@
                 </div>
             </div>
         </div>
-    </div>
+   
 </section>
 
 <section class="space-ptb">
