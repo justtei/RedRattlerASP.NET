@@ -1,0 +1,192 @@
+﻿
+@using MSLivingChoices.Localization
+@{
+    Layout = "~/Views/Client/Shared/_PageLayout.cshtml";
+}
+
+@section Scripts
+{
+    <script type="text/javascript">
+        mslc.resolve(['client/analytics/google'], function (ga) {
+            ga.trackPageView();
+        }, 'ga-tracking');
+    </script>
+}
+
+
+<!--=================================
+inner banner -->
+<div class="inner-header">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12 text-center">
+                <h1 class="inner-title text-white">Contact Us</h1>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container contact-us">
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+        <div class="col px-4">
+            <div class="card text-center bg-light border-0 mt-2">
+                <div class="card-body pt-5">
+                    <span><i class="fa fa-map-marker-alt rounded-circle bg-primary text-white mb-3"></i></span>
+                    <h3 class="text-primary">Address</h3>
+                    <p class="card-text">PO Box 34062, Sab Antonio TX, 78265</p>
+                </div>
+            </div>
+        </div>
+        <div class="col px-4">
+            <div class="card text-center bg-light border-0 mt-2">
+                <div class="card-body pt-5">
+                    <span><i class="fa fa-phone rounded-circle bg-primary text-white mb-3"></i></span>
+                    <h3 class="text-primary">Phone</h3>
+                    <p class="card-text">210-867-7202</p>
+                </div>
+            </div>
+        </div>
+        <div class="col px-4">
+            <div class="card text-center bg-light border-0 mt-2">
+                <div class="card-body pt-5">
+                    <span><i class="fas fa-envelope-open-text rounded-circle bg-primary text-white mb-3"></i></span>
+                    <h3 class="text-primary">Email</h3>
+                    <p class="card-text">info@SeniorLivingChoices.com</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row justify-content-center">
+        <div class="col-lg-10">
+            <div class="bg-light p-5 m-5">
+                <h3 class="text-primary">Need Assistance? Please Complete The Contact Form</h3>
+                <form action="#" method="post">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <label for="name" class="form-label">Name:</label>
+                            <div class="input-group mb-3">
+                                <input type="text" class="form-control" placeholder="Your Name">
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <label for="email" class="form-label">Email:</label>
+                            <div class="input-group mb-3">
+                                <input type="text" class="form-control" placeholder="Your Email">
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <label for="phone-number" class="form-label">Phone Number:</label>
+                            <div class="input-group mb-3">
+                                <input type="text" class="form-control" placeholder="Phone">
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <label for="interest" class="form-label">I'm interested in</label>
+                            <div class="input-group mb-3">
+                                <select class="form-control basic-select" id="exampleFormControlSelect2" data-bind="options:items,optionsText:'text',optionsValue:'value',optionsCaption:'Choose...'">
+                                    <option>1</option>
+                                    <option>2</option>
+                                    <option>3</option>
+                                    <option>4</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-lg-12">
+                            <label for="message" class="form-label">Message</label>
+                            <div class="input-group mb-3">
+                                <textarea class="form-control" name="message" cols="30" rows="6" placeholder="Message"></textarea>
+                            </div>
+                        </div>
+                        <button class="btn btn-primary btn-md d-flex align-items-center mt-4 ml-3" type="submit">
+                            <span>Submit</span>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<!--=================================
+inner banner -->
+<!--=================================
+login -->
+<!--<section class="space-ptb">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <p class="mb-5">@PrivacyPolicy.PP_1</p>
+
+                <h4 class="text-secondary mb-4"><span class="step">01</span>@PrivacyPolicy.PP_2</h4>
+                <p>@PrivacyPolicy.PP_3</p>
+                <p>@PrivacyPolicy.PP_4</p>
+                <p class="mb-5">@PrivacyPolicy.PP_5</p>
+
+                <h4 class="text-secondary mb-4"><span class="step">02</span> @PrivacyPolicy.PP_6</h4>
+                <p>@PrivacyPolicy.PP_7</p>
+
+                <h5 class="text-dark mb-3"> @PrivacyPolicy.PP_8</h5>
+                <p class="mb-3">@PrivacyPolicy.PP_9</p>
+                <p class="mb-3">@PrivacyPolicy.PP_10</p>
+                <p class="mb-3">@PrivacyPolicy.PP_11</p>
+                <p class="mb-5">@PrivacyPolicy.PP_12</p>
+
+                <h4 class="text-secondary mb-4"><span class="step">03</span> @PrivacyPolicy.PP_13</h4>
+                <p class="mb-5">@PrivacyPolicy.PP_14</p>
+
+                <h4 class="text-secondary mb-4"><span class="step">04</span> @PrivacyPolicy.PP_15</h4>-->
+                @*<p>@PrivacyPolicy.PP_16&nbsp;<a href="http://www.doubleclick.net/us/corporate/privacy" target="_blank">http://www.doubleclick.net/us/corporate/privacy</a></p>
+                    <p>@PrivacyPolicy.PP_17</p>*@
+                <!--<p class="mb-5">@PrivacyPolicy.PP_18</p>
+                <p class="mb-5">@PrivacyPolicy.PP_19</p>
+                <p class="mb-5">@PrivacyPolicy.PP_20</p>
+
+                <h4 class="text-secondary mb-4"><span class="step">05</span> @PrivacyPolicy.PP_21</h4>
+                <p>@PrivacyPolicy.PP_22</p>
+                <p class="mb-5"> @PrivacyPolicy.PP_23 </p>
+
+                <h4 class="text-secondary mb-4"><span class="step">06</span> @PrivacyPolicy.PP_24</h4>
+                <p>@PrivacyPolicy.PP_25&nbsp;<br></p>
+                <p class="mb-5">@PrivacyPolicy.PP_26</p>
+
+                <h4 class="text-secondary mb-4"><span class="step">07</span> @PrivacyPolicy.PP_27</h4>
+                <p>@PrivacyPolicy.PP_28</p>
+                <p>@PrivacyPolicy.PP_29</p>
+                <p>@PrivacyPolicy.PP_30</p>
+                <p>@PrivacyPolicy.PP_31</p>
+                <p class="mb-5">@PrivacyPolicy.PP_32</p>
+
+                <h4 class="text-secondary mb-4"><span class="step">08</span> @PrivacyPolicy.PP_33</h4>
+                <p>@PrivacyPolicy.PP_34</p>
+                <p>
+                    @PrivacyPolicy.PP_35
+                </p>
+                <p>@PrivacyPolicy.PP_36</p>
+                <p>@PrivacyPolicy.PP_37</p>
+                <p>@PrivacyPolicy.PP_38a  <a href="mailto:info@seniorlivingchoices.com">info@seniorlivingchoices.com</a> </p>
+                <p class="mb-5">@PrivacyPolicy.PP_38b <a href="mailto:info@seniorlivingchoices.com">info@seniorlivingchoices.com</a></p>
+                <p>@PrivacyPolicy.PP_39</p>
+                <p>@PrivacyPolicy.PP_40</p>
+                <h4 class="text-secondary mb-4"><span class="step">09</span> @PrivacyPolicy.PP_41</h4>
+                <p>@PrivacyPolicy.PP_42</p>
+                <p class="mb-5">@PrivacyPolicy.PP_43</p>
+                <h4 class="text-secondary mb-4"><span class="step">10</span> @PrivacyPolicy.PP_44</h4>
+                <p>@PrivacyPolicy.PP_45</p>
+                <p class="mb-5">@PrivacyPolicy.PP_46</p>
+                <h4 class="text-secondary mb-4"><span class="step">11</span> @PrivacyPolicy.PP_47</h4>
+                <p>@PrivacyPolicy.PP_48</p>
+                <p class="mb-5">
+                    @PrivacyPolicy.PP_49
+                </p>
+
+                <h4 class="text-secondary mb-4"><span class="step">12</span> @PrivacyPolicy.PP_50</h4>
+                <p>
+                    @PrivacyPolicy.PP_51 <a href="mailto:info@seniorlivingchoices.com">info@SeniorLivingChoices.com</a>
+                </p>
+                <p class="mb-0">
+                    @PrivacyPolicy.PP_52&nbsp;<a href="mailto:webmaster@seniorlivingchoices.com">webmaster@seniorlivingchoices.com</a>
+                </p>
+            </div>
+        </div>
+    </div>
+</section>-->
+

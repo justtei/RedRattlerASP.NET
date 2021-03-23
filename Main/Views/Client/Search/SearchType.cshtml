@@ -12,14 +12,14 @@
 @section scripts
 {
     <script type="text/javascript">
-        mslc.resolve(['lib/jQuery', 'lib/ko', 'client/controls/maps/states'], function($, ko, StatesMap) {
+       @* mslc.resolve(['lib/jQuery', 'lib/ko', 'client/controls/maps/states'], function($, ko, StatesMap) {
             var $target = $('.map'),
                 model = new StatesMap(null, $target);
 
             ko.applyBindings(model, $target[0]);
-        }, 'google-map-init');
-        
-        mslc.resolve(['client/widgets/googlePublisherTag'], function(gpt) {
+        }, 'google-map-init');*@
+
+        @*mslc.resolve(['client/widgets/googlePublisherTag'], function(gpt) {
             gpt.initSearchResultsSlots({
                 country: '@Model.Criteria.CountryCode()',
                 state: '@Model.Criteria.StateCode()',
@@ -29,10 +29,52 @@
 
         mslc.resolve(['client/analytics/google'], function(ga) {
             ga.trackPageView(@Html.Json(Model.Dimensions));
-        }, 'ga-tracking');
+        }, 'ga-tracking');*@
+    </script>
+    <script type="text/javascript">
+        mslc.resolve([
+                'lib/ko', 'client/widgets/refine', 'client/widgets/refine/aahAac', 'client/widgets/refine/shc'
+            ],
+            function(ko, Refine, AahAac, Shc) {
+                
+            },
+            'init-refine');
+
+        mslc.resolve(['client/widgets/qvInitializer'],
+            function(initQv) {
+               
+            },
+            'init-qv');
+
+        mslc.resolve(['client/widgets/leadForm'],
+            function(leadForm) {
+                
+            },
+            'init-lead-form');
+
+        mslc.resolve(['client/widgets/googlePublisherTag'],
+            function(gpt) {
+               
+            },
+            'init-gpt');
+
+        mslc.resolve(['client/analytics/google'],
+            function(ga) {
+                
+            },
+            'ga-tracking');
+
+        mslc.resolve(['client/widgets/communityUnit'],
+            function() {
+            },
+            'init-community-unit');
+
+        mslc.resolve(['client/ui/hintsManager'],
+            function(hints) {
+            },
+            'init-hints');
     </script>
 }
-
 <div class="row">
     @*<div class="col-any-17">*@
     <div class="container">
@@ -41,11 +83,16 @@
         </div>
 
         <p class="ind">@Model.Seo.MarketCopy</p>
-        
-        <div class="map ind">
-            @{ Html.RenderPartial("~/Views/Client/Controls/Map.cshtml"); }
+
+        <!--<div class="map ind">-->
+        @*@{ Html.RenderPartial("~/Views/Client/Controls/Map.cshtml"); }*@
+        <!--<div id="map" style="width:100%; height: 30em;"></div>
+        </div>-->
+
+        <div class="map-container p-4">
+            <div id="map" style="width:100%; height: 35em;"></div>
         </div>
-        
+
         @if (Model.Result.Any())
         {
             <div class="row vpad-s">
@@ -82,7 +129,40 @@
     </div>
     <div class="container">
         @*<div class="col-any-7">*@
-            @{ Html.RenderPartial("~/Views/Client/Search/Partial/Order.cshtml"); }
+        @{ Html.RenderPartial("~/Views/Client/Search/Partial/Order.cshtml"); }
         @*</div>*@
     </div>
 </div>
+<script>
+    function initMap() {
+        console.log(@Html.Json(Model.Result));
+        var locations = [
+            ['Raj Ghat', 42.648608, -101.250925, 1],
+            ['Purana Qila', 38.618174, -91.242686, 2],
+            ['Red Fort', 33.663973, -102.241656, 3],
+            ['India Gate', 43.620585, -105.228609, 4],
+            ['Jantar Mantar', 45.636219, -104.213846, 5],
+            ['Akshardham', 37.622658, -101.277704, 6]
+        ];
+        var map = new window.google.maps.Map(document.getElementById('map'), {
+            zoom: 5,
+            center: new window.google.maps.LatLng(40.71383898, -101.312005126),
+            mapTypeId: window.google.maps.MapTypeId.ROADMAP
+        });
+        @* var infowindow = new google.maps.InfoWindow();
+        var marker, i;
+        for (i = 0; i < locations.length; i++) {
+            marker = new google.maps.Marker({
+                position: new google.maps.LatLng(locations[i][1], locations[i][2]),
+                map: map
+            });
+            google.maps.event.addListener(marker, 'click', (function (marker, i) {
+                return function () {
+                    infowindow.setContent(locations[i][0]);
+                    infowindow.open(map, marker);
+                }
+            })(marker, i));
+        }*@
+    }
+@*    window.google.maps.event.addDomListener(window, 'load', initialize);*@
+</script>

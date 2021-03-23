@@ -1196,6 +1196,9 @@
     <Content Include="Scripts\react\AvenirNext-Bold.woff" />
     <Content Include="Scripts\react\AvenirNext-DemiBold.woff" />
     <Content Include="Scripts\react\AvenirNext-Regular.woff" />
+    <Content Include="Views\Client\Static\ContactUs.cshtml">
+      <BrowseToURL>~/Views/Client/Static/ContactUS.cshtml</BrowseToURL>
+    </Content>
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

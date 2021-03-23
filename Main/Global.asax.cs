@@ -97,6 +97,12 @@ namespace Main
 				action = "PrivacyPolicy",
 				pageType = PageType.PrivacyPolicy
 			});
+			routes.MapRoute("ContactUs", "contact-us", new
+			{
+				controller = "Client",
+				action = "ContactUs",
+				pageType = PageType.PrivacyPolicy
+			});
 			routes.MapRoute("Ebook", "ebook", new
 			{
 				controller = "Client",

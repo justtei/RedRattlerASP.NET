@@ -87,7 +87,8 @@ NOTE: This file contains all scripts for the actual Template.
     if (owlslider.length > 0) {
       owlslider.each(function () {
         var $this = $(this),
-          $items = ($this.data('items')) ? $this.data('items') : 1,
+         /* $items = ($this.data('items')) ? $this.data('items') : 1,*/
+            $items = 2,
           $loop = ($this.attr('data-loop')) ? $this.data('loop') : true,
           $navdots = ($this.data('nav-dots')) ? $this.data('nav-dots') : false,
           $navarrow = ($this.data('nav-arrow')) ? $this.data('nav-arrow') : false,

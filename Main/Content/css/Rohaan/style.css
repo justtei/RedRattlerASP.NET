@@ -1129,6 +1129,21 @@ button {
 
 }
 
+.property-image .property-featured {
+    position: absolute;
+    right: 0;
+    top: 0;
+    margin: 10px;
+}
+
+.property-image .property-featured span {
+    background: #589694;
+    padding: 10px 15px;
+    color: #ffffff;
+    font-size: 12px;
+    border-radius: 0px;
+}
+
 .property-image .property-prize {
     position: absolute;
     right: 10;
@@ -1338,6 +1353,15 @@ button {
   font-size: 18px;
   font-weight: 400;
   margin-left: 50px;
+}
+
+.contact-us{
+    margin-top: 100px;
+}
+
+.contact-us i{
+    font-size: 16px;
+    padding: 24px;
 }
 
 
