@@ -64,7 +64,9 @@
                                     Suggestions:
                                 </div>
                                 <!-- /ko -->
-                                <ul class="autocomplete" data-bind="visible: isTemplatesVisible(), foreach: currentTemplates()">
+                                <ul class="autocomplete"
+                                    style="position: absolute; background: white; width: 93%; z-index: 9999;"
+                                    data-bind="visible: isTemplatesVisible(), foreach: currentTemplates()">
                                     <li>
                                         <span class="col-any-12"
                                               data-bind="text: template"></span>
@@ -76,6 +78,7 @@
                                 </ul>
                                 <!-- ko with: autocomplete -->
                                 <ul class="autocomplete"
+                                    style="position: absolute; background: white; width: 93%; z-index: 9999;"
                                     data-bind="visible: $root.isAutocompleteVisible(), foreach: list">
                                     <li data-bind="click: $root.onAutocompleteClick
                                                    , event: { mouseover: function() { $parent.select($index()) } }
@@ -147,8 +150,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-lg-10 mt-2">
-            <div class="col-md-11">
+            <div class="col-lg-11">
                 <p class="text-center text-white mt-3" style="font-size: 24px; font-weight: 600; line-height: 1.4;">
                     Senior Living Choices is commited to providing you with the best resources
                     to choose the perfect living community. Our steps to browse platform allows
