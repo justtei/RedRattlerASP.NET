@@ -213,12 +213,6 @@ C:\Users\sra_r\Source\Repos\RedRattlerASP.NET\Main\bin\MSLivingChoices.Entities.
 C:\Users\sra_r\Source\Repos\RedRattlerASP.NET\Main\bin\MSLivingChoices.Logging.pdb
 C:\Users\sra_r\Source\Repos\RedRattlerASP.NET\Main\bin\MSLivingChoices.Mvc.Uipc.Admin.pdb
 C:\Users\sra_r\Source\Repos\RedRattlerASP.NET\Main\bin\MSLivingChoices.SqlDacs.Admin.pdb
-C:\Users\sra_r\Source\Repos\RedRattlerASP.NET\Main\bin\System.Web.Helpers.xml
-C:\Users\sra_r\Source\Repos\RedRattlerASP.NET\Main\bin\System.Web.Mvc.xml
-C:\Users\sra_r\Source\Repos\RedRattlerASP.NET\Main\bin\System.Web.Razor.xml
-C:\Users\sra_r\Source\Repos\RedRattlerASP.NET\Main\bin\System.Web.WebPages.xml
-C:\Users\sra_r\Source\Repos\RedRattlerASP.NET\Main\bin\System.Web.WebPages.Deployment.xml
-C:\Users\sra_r\Source\Repos\RedRattlerASP.NET\Main\bin\System.Web.WebPages.Razor.xml
 C:\Users\sra_r\Source\Repos\RedRattlerASP.NET\Main\obj\Debug\Main.csprojAssemblyReference.cache
 C:\Users\sra_r\Source\Repos\RedRattlerASP.NET\Main\obj\Debug\Main.csproj.CoreCompileInputs.cache
 C:\Users\sra_r\Source\Repos\RedRattlerASP.NET\Main\obj\Debug\Main.csproj.CopyComplete
