@@ -10,7 +10,7 @@
 
 @section scripts
 {
-    @{ Html.RenderPartial("~/Views/Client/Search/Partial/PhotoTour.cshtml"); }
+   @* @{ Html.RenderPartial("~/Views/Client/Search/Partial/PhotoTour.cshtml"); }*@
     @{ Html.RenderPartial("~/Views/Client/Controls/LeadForm/CommunityUnitPopUp.cshtml"); }
 
     <script type="text/javascript" src="https://s7.addthis.com/js/300/addthis_widget.js#pubid=xa-51f632df2d7a5c98"></script>
@@ -118,10 +118,28 @@
 <section class="space-pt" itemscope itemtype="@communityItemType">
     <div class="container">
         <div class="row" id="photo">
-            <div class="col-lg-8 mb-4 mb-md-5 mb-lg-0" data-bind="photoTour: $data">
+            @*<div class="col-lg-7 mb-4 mb-md-5 mb-lg-0" data-bind="photoTour: $data">
 
+            </div>*@
+            <div class="col-lg-7 mb-4 mb-md-5 mb-lg-0">
+                @*<div class="owl-carousel owl-dots-bottom-center list">
+                    @foreach (var Image in Model.Community.Images)
+                    {
+                        <div class="item">
+                            <img class="img-fluid" alt="" src="@Image.Src">
+                        </div>
+                    }
+                </div>*@
+                <div class="owl-carousel owl-dots-bottom-center list" data-nav-arrow="true" data-nav-dots="false" data-items="1" data-md-items="1" data-sm-items="1" data-xs-items="1" data-xx-items="1" data-space="0">
+                    @foreach (var Image in Model.Community.Images)
+                    {
+                        <div class="item">
+                            <img class="img-fluid" alt="" src="@Image.Src">
+                        </div>
+                    }
+                </div>
             </div>
-            <div class="col-lg-4">
+            <div class="col-lg-5">
                 <div class="property-detail p-0">
                     <h2 class="property-title">@Model.Seo.Header</h2>
                     <ul class="pl-0 property-info">
@@ -159,63 +177,64 @@
                         <li class="reviews"><i class="fas fa-star text-primary"></i><i class="fas fa-star text-primary"></i><i class="fas fa-star text-primary"></i><i class="fas fa-star text-primary"></i><i class="fas fa-star-half-alt text-primary"></i><span class="pl-2">(2 customer reviews)</span></li>
                         <li class=""><i class="fas fa-compress-alt text-primary"></i><span>Compare</span></li>
                     </ul>
+                </div>
             </div>
         </div>
-    </div>
         <div class="row justify-content-start mt-4 mt-lg-5">
-        <div class="col-lg-8">
-            <div class="row">
-                <div class="col-lg-4">
-                    <h3>Property Details</h3>
-                </div>
-                <div class="col-lg-8">
-                    <div class="row">
-                        <div class="col-md-6">
-                            <ul class="property-list  list-unstyled mb-0">
-                                @if (Model.Community.Beds.IsValued)
-                                {
-                                    <li>
-                                        <strong class="value icon-bed">
-                                            @Model.Community.Beds.Value
-                                        </strong>
-                                        <span class="unit">
-                                            @Model.Community.Beds.Unit
-                                        </span>
-                                    </li>
-                                }
-                                @if (Model.Community.Bathes.IsValued)
-                                {
-                                    <li>
-                                        <strong class="value icon-bath">
-                                            @Model.Community.Bathes.Value
-                                        </strong>
-                                        <span class="unit">
-                                            @Model.Community.Bathes.Unit
-                                        </span>
-                                    </li>
-                                }
-                                @if (Model.Community.Area.IsValued)
-                                {
-                                    <li>
-                                        <strong class="value icon-square">
-                                            @Model.Community.Area.Value
-                                        </strong>
-                                        <span class="unit">
-                                            @Model.Community.Area.Unit
-                                        </span>
-                                    </li>
-                                }
-                            </ul>
-                        </div>
-                        <div class="col-md-6">
-                            <ul class="property-list list-unstyled mb-0">
-                                @foreach (var service in Model.Community.CommunityServices)
-                                {
-                                    <li><b>@service</b></li>
-                                }
-                            </ul>
-                        </div>
+            <div class="col-lg-7">
+                <div class="row">
+                    <div class="col-lg-4">
+                        <h3>Property Details</h3>
+                    </div>
+                    <div class="col-lg-8">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <ul class="property-list  list-unstyled mb-0">
+                                    @if (Model.Community.Beds.IsValued)
+                                    {
+                                        <li>
+                                            <strong class="value icon-bed">
+                                                @Model.Community.Beds.Value
+                                            </strong>
+                                            <span class="unit">
+                                                @Model.Community.Beds.Unit
+                                            </span>
+                                        </li>
+                                    }
+                                    @if (Model.Community.Bathes.IsValued)
+                                    {
+                                        <li>
+                                            <strong class="value icon-bath">
+                                                @Model.Community.Bathes.Value
+                                            </strong>
+                                            <span class="unit">
+                                                @Model.Community.Bathes.Unit
+                                            </span>
+                                        </li>
+                                    }
+                                    @if (Model.Community.Area.IsValued)
+                                    {
+                                        <li>
+                                            <strong class="value icon-square">
+                                                @Model.Community.Area.Value
+                                            </strong>
+                                            <span class="unit">
+                                                @Model.Community.Area.Unit
+                                            </span>
+                                        </li>
+                                    }
+                                </ul>
+                            </div>
+                            <div class="col-md-6">
+                                <ul class="property-list list-unstyled mb-0">
+                                    @foreach (var service in Model.Community.CommunityServices)
+                                    {
+                                        <li><b>@service</b></li>
+                                    }
+                                </ul>
+                            </div>
 
+                        </div>
                     </div>
                 </div>
             </div>
@@ -243,100 +262,328 @@
                 <div class="col-12">
                     <h3>Features</h3>
                 </div>
-                <div class="col-12">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <style>
-                                ul.property-list li{display:inline-block;margin:20px;}
-                            </style>
-                            <div class="row">
-                                @foreach (var amenity in Model.Community.Amenities)
-                                {
-                                    <div class="col-6">@amenity</div>
-                                }
+                <hr class="my-4 my-md-5">
+                <div class="row">
+                    <div class="col-lg-4">
+                        <h3>Features</h3>
+                    </div>
+                    <div class="col-lg-8">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <style>
+                                    ul.property-list li {
+                                        display: inline-block;
+                                        margin: 20px;
+                                    }
+                                </style>
+                                <div class="row">
+                                    @foreach (var amenity in Model.Community.Amenities)
+                                    {
+                                        <div class="col-6">@amenity</div>
+                                    }
+                                </div>
                             </div>
-                        </div>
-                        <div class="col-md-12">
-                            <div class="row">
-                                @if (Model.Community.DisplayProperties.ApplicationFee)
-                                {
-                                    <div class="col-md-4">
-                                        Fees:
-                                        <b>@Model.ApplicationFee</b>
-                                    </div>
-                                }
-                                @if (Model.Community.DisplayProperties.Deposit)
-                                {
-                                    <div class="col-md-4">
-                                        Deposit:
-                                        <b>@Model.Deposit</b>
-                                    </div>
-                                }
-                                @if (Model.Community.DisplayProperties.PetDeposit)
-                                {
-                                    <div class="co-md-4">
-                                        Pet Deposit:
-                                        <b>@Model.PetDeposit</b>
-                                    </div>
-                                }
+                            <div class="col-md-12">
+                                <div class="row">
+                                    @if (Model.Community.DisplayProperties.ApplicationFee)
+                                    {
+                                        <div class="col-md-4">
+                                            Fees:
+                                            <b>@Model.ApplicationFee</b>
+                                        </div>
+                                    }
+                                    @if (Model.Community.DisplayProperties.Deposit)
+                                    {
+                                        <div class="col-md-4">
+                                            Deposit:
+                                            <b>@Model.Deposit</b>
+                                        </div>
+                                    }
+                                    @if (Model.Community.DisplayProperties.PetDeposit)
+                                    {
+                                        <div class="co-md-4">
+                                            Pet Deposit:
+                                            <b>@Model.PetDeposit</b>
+                                        </div>
+                                    }
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-12">
+                    @*<div class="col-lg-12">
 
 
-                    @if (Model.Community.DisplayProperties.ShcCategories)
-                    {
-                        <hr class="my-4 my-md-5">
-                        <h2 class="header-brand-blue h4">Senior Housing & Care Categories</h2>
-                        <div class="row">
-
-                            @foreach (var category in Model.ShcCategories)
+                            @if (Model.Community.DisplayProperties.ShcCategories)
                             {
-                                <div class="col-md-6">@category</div>
+                                <hr class="my-4 my-md-5">
+                                <h2 class="header-brand-blue h4">Senior Housing & Care Categories</h2>
+                                <div class="row">
+
+                                    @foreach (var category in Model.ShcCategories)
+                                    {
+                                        <div class="col-md-6">@category</div>
+                                    }
+                                </div>
                             }
-                        </div>
-                    }
 
-                    @if (Model.Community.DisplayProperties.FloorPlans)
-                    {
-                        <hr class="my-4 my-md-5" />
-                        <div class="row">
-                            <h4 class="header-brand-blue">Floor Plans</h4>
-                            <div class="col-md-12">
-                                @{ Html.RenderPartial("Details/Partial/FloorPlan", Model.FloorPlans); }
-                            </div>
-                        </div>
-                    }
+                            @if (Model.Community.DisplayProperties.FloorPlans)
+                            {
+                                <hr class="my-4 my-md-5" />
+                                <div class="row">
+                                    <h4 class="header-brand-blue">Floor Plans</h4>
+                                    <div class="col-md-12">
+                                        @{ Html.RenderPartial("Details/Partial/FloorPlan", Model.FloorPlans); }
+                                    </div>
+                                </div>
+                            }
 
-                    @if (Model.Community.DisplayProperties.Homes)
-                    {
-                        <div class="col-md-12">
-                            <h4 class="header-brand-blue">Homes</h4>
+                            @if (Model.Community.DisplayProperties.Homes)
+                            {
+                                <div class="col-md-12">
+                                    <h4 class="header-brand-blue">Homes</h4>
 
-                            @{ Html.RenderPartial("Details/Partial/Home", Model.Homes); }
+                                    @{ Html.RenderPartial("Details/Partial/Home", Model.Homes); }
 
-                        </div>
-                    }
+                                </div>
+                            }
 
-                    @if (Model.Community.DisplayProperties.SpecHomes)
-                    {
-                        <div class="col-md-6">
-                            <h4 class="header-brand-blue">Spec homes</h4>
-                            <div class="col-any-24">
-                                @{ Html.RenderPartial("Details/Partial/SpecHome", Model.SpecHomes); }
-                            </div>
-                        </div>
-                    }
+                            @if (Model.Community.DisplayProperties.SpecHomes)
+                            {
+                                <div class="col-md-6">
+                                    <h4 class="header-brand-blue">Spec homes</h4>
+                                    <div class="col-any-24">
+                                        @{ Html.RenderPartial("Details/Partial/SpecHome", Model.SpecHomes); }
+                                    </div>
+                                </div>
+                            }
+                        </div>*@
                 </div>
             </div>
         </div>
     </div>
+</section>
+<section class="space-pt">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-10">
+                <div class="section-title text-center mb-0">
+                    <h2 class="mb-2">Similar Properties</h2>
+                    <p>Our agency has many specialized areas, but our CUSTOMERS are our real specialty</p>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="owl-carousel owl-dots-bottom-center owl-loaded" data-nav-dots="false" data-nav-arrow="false" data-items="3" data-md-items="2" data-sm-items="1" data-xs-items="1" data-xx-items="1" data-space="30" data-loop="1">
+
+                    <div class="owl-stage-outer">
+                        <div class="owl-stage" style="transform: translate3d(-1140px, 0px, 0px); transition: all 0s ease 0s; width: 2660px;">
+                            <div class="owl-item cloned" style="width: 350px; margin-right: 30px;">
+                                <div class="item">
+                                    <div class="property-list bg-light">
+                                        <div class="property-image h-100 bg-overlay-gradient-04">
+                                            <img alt="Overture Buckhead South" class="img-fluid" itemprop="image" onerror="this.onerror=function() { this.onerror=null; this.src=&quot;https://www.seniorlivingchoices.com/content/images/stub/no-image.png&quot;};this.src=&quot;https://catalog.seniorlivingchoices.com/2017/09/09/21/19/L/f6772cbe-9ee4-43f1-b228-8e964f0487b8.png&quot;" src="https://catalog.seniorlivingchoices.com/2017/09/09/21/19/S/f6772cbe-9ee4-43f1-b228-8e964f0487b8.png" title="Overture Buckhead South">
+                                            @*<div class="property-featured" style="">
+                                                <span class="badge badge-md">FETURED</span>
+                                            </div>*@
+                                            <div class="property-prize">
+                                                <span class="badge badge-md">$1,595 - $3,455</span>
+                                            </div>
+                                            <div class="property-room">
+                                                <span class="badge badge-md"><i class="fas fa-bed fa-1x text-white mr-1"></i> 1 - 2</span>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                    <div class="property-detail bg-light p-4">
+                                        <h5 class="property-title"><a href="http://test.seniorlivingchoices.com/communities/ga/atlanta/overture-buckhead-south-id4932">Overture Buckhead South</a></h5>
+                                        <ul class="pl-0">
+                                            <li class="property-address"><i class="fas fa-map-marker-alt fa-1x mr-1 text-secondary"></i>Atlanta, GA</li>
+                                            <li class="property-address"><i class="fas fa-building fa-1x text-secondary mr-1"></i>55+ Community  •  Apartments</li>
+                                            <li class="property-address"><i class="fas fa-phone-alt text-secondary mr-1"></i> 470-419-3228</li>
+
+                                        </ul>
+
+                                        <button class="btn btn-primary btn-md" data-toggle="lead-form" data-accessor="attr" data-listing-id="4932" data-listing-name="Overture Buckhead South" data-message="Hello, I found your community on Senior Living Choices. Can you please provide more information about Overture Buckhead South community? Thank you.">
+                                            Check Availability
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="owl-item cloned" style="width: 350px; margin-right: 30px;">
+                                <div class="item">
+                                    <div class="property-list bg-light">
+                                        <div class="property-image h-100 bg-overlay-gradient-04">
+                                            <img alt="Overture Buckhead South" class="img-fluid" itemprop="image" onerror="this.onerror=function() { this.onerror=null; this.src=&quot;https://www.seniorlivingchoices.com/content/images/stub/no-image.png&quot;};this.src=&quot;https://catalog.seniorlivingchoices.com/2017/09/09/21/19/L/f6772cbe-9ee4-43f1-b228-8e964f0487b8.png&quot;" src="https://catalog.seniorlivingchoices.com/2017/09/09/21/19/S/f6772cbe-9ee4-43f1-b228-8e964f0487b8.png" title="Overture Buckhead South">
+                                            <div class="property-prize">
+                                                <span class="badge badge-md">$1,595 - $3,455</span>
+                                            </div>
+                                            <div class="property-room">
+                                                <span class="badge badge-md"><i class="fas fa-bed fa-1x text-white mr-1"></i> 1 - 2</span>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                    <div class="property-detail bg-light p-4">
+                                        <h5 class="property-title"><a href="http://test.seniorlivingchoices.com/communities/ga/atlanta/overture-buckhead-south-id4932">Overture Buckhead South</a></h5>
+                                        <ul class="pl-0">
+                                            <li class="property-address"><i class="fas fa-map-marker-alt fa-1x mr-1 text-secondary"></i>Atlanta, GA</li>
+                                            <li class="property-address"><i class="fas fa-building fa-1x text-secondary mr-1"></i>55+ Community  •  Apartments</li>
+                                            <li class="property-address"><i class="fas fa-phone-alt text-secondary mr-1"></i> 470-419-3228</li>
+
+                                        </ul>
+
+                                        <button class="btn btn-primary btn-md" data-toggle="lead-form" data-accessor="attr" data-listing-id="4932" data-listing-name="Overture Buckhead South" data-message="Hello, I found your community on Senior Living Choices. Can you please provide more information about Overture Buckhead South community? Thank you.">
+                                            Check Availability
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="owl-item cloned" style="width: 350px; margin-right: 30px;">
+                                <div class="item">
+                                    <div class="property-list bg-light">
+                                        <div class="property-image h-100 bg-overlay-gradient-04">
+                                            <img alt="Overture Buckhead South" class="img-fluid" itemprop="image" onerror="this.onerror=function() { this.onerror=null; this.src=&quot;https://www.seniorlivingchoices.com/content/images/stub/no-image.png&quot;};this.src=&quot;https://catalog.seniorlivingchoices.com/2017/09/09/21/19/L/f6772cbe-9ee4-43f1-b228-8e964f0487b8.png&quot;" src="https://catalog.seniorlivingchoices.com/2017/09/09/21/19/S/f6772cbe-9ee4-43f1-b228-8e964f0487b8.png" title="Overture Buckhead South">
+                                            <div class="property-prize">
+                                                <span class="badge badge-md">$1,595 - $3,455</span>
+                                            </div>
+                                            <div class="property-room">
+                                                <span class="badge badge-md"><i class="fas fa-bed fa-1x text-white mr-1"></i> 1 - 2</span>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                    <div class="property-detail bg-light p-4">
+                                        <h5 class="property-title"><a href="http://test.seniorlivingchoices.com/communities/ga/atlanta/overture-buckhead-south-id4932">Overture Buckhead South</a></h5>
+                                        <ul class="pl-0">
+                                            <li class="property-address"><i class="fas fa-map-marker-alt fa-1x mr-1 text-secondary"></i>Atlanta, GA</li>
+                                            <li class="property-address"><i class="fas fa-building fa-1x text-secondary mr-1"></i>55+ Community  •  Apartments</li>
+                                            <li class="property-address"><i class="fas fa-phone-alt text-secondary mr-1"></i> 470-419-3228</li>
+
+                                        </ul>
+
+                                        <button class="btn btn-primary btn-md" data-toggle="lead-form" data-accessor="attr" data-listing-id="4932" data-listing-name="Overture Buckhead South" data-message="Hello, I found your community on Senior Living Choices. Can you please provide more information about Overture Buckhead South community? Thank you.">
+                                            Check Availability
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="owl-item active" style="width: 350px; margin-right: 30px;">
+                                <div class="item">
+                                    <div class="property-list bg-light">
+                                        <div class="property-image h-100 bg-overlay-gradient-04">
+                                            <img alt="Overture Buckhead South" class="img-fluid" itemprop="image" onerror="this.onerror=function() { this.onerror=null; this.src=&quot;https://www.seniorlivingchoices.com/content/images/stub/no-image.png&quot;};this.src=&quot;https://catalog.seniorlivingchoices.com/2017/09/09/21/19/L/f6772cbe-9ee4-43f1-b228-8e964f0487b8.png&quot;" src="https://catalog.seniorlivingchoices.com/2017/09/09/21/19/S/f6772cbe-9ee4-43f1-b228-8e964f0487b8.png" title="Overture Buckhead South">
+                                            <div class="property-prize">
+                                                <span class="badge badge-md">$1,595 - $3,455</span>
+                                            </div>
+                                            <div class="property-room">
+                                                <span class="badge badge-md"><i class="fas fa-bed fa-1x text-white mr-1"></i> 1 - 2</span>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                    <div class="property-detail bg-light p-4">
+                                        <h5 class="property-title"><a href="http://test.seniorlivingchoices.com/communities/ga/atlanta/overture-buckhead-south-id4932">Overture Buckhead South</a></h5>
+                                        <ul class="pl-0">
+                                            <li class="property-address"><i class="fas fa-map-marker-alt fa-1x mr-1 text-secondary"></i>Atlanta, GA</li>
+                                            <li class="property-address"><i class="fas fa-building fa-1x text-secondary mr-1"></i>55+ Community  •  Apartments</li>
+                                            <li class="property-address"><i class="fas fa-phone-alt text-secondary mr-1"></i> 470-419-3228</li>
+
+                                        </ul>
+
+                                        <button class="btn btn-primary btn-md" data-toggle="lead-form" data-accessor="attr" data-listing-id="4932" data-listing-name="Overture Buckhead South" data-message="Hello, I found your community on Senior Living Choices. Can you please provide more information about Overture Buckhead South community? Thank you.">
+                                            Check Availability
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </section>
-@*
-        @if (Model.Community.DisplayProperties.Phone)
+
+<script>
+    console.log('aaaa', @Html.Json(Model));
+</script>
+@*@{ Html.RenderPartial("~/Views/Client/Search/Partial/Featured.cshtml"); }*@
+@*@if (((IEnumerable<dynamic>)Model.Result).Where(x => x.DisplayProperties.Featured == true).Count() != 0 && Model.Result != null)
+{
+    <section class="space-pt">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-10">
+                    <div class="section-title text-center">
+                        <h2>Featured Properties</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="owl-carousel owl-dots-bottom-center" data-nav-dots="true" data-items="3" data-md-items="2" data-sm-items="1" data-xs-items="1" data-xx-items="1" data-space="30">
+                        @foreach (var community in Model.Result)
+                        {
+                            if (community.DisplayProperties.Featured)
+                            {
+                                <div class="item">
+                                    <div class="property-list bg-light">
+                                        <div class="property-image h-100 bg-overlay-gradient-04">
+                                            @if (community.DisplayProperties.Image)
+                                            {
+                                                @RenderHelper.ThumbnailWithMicrodata(community.Image, "img-fluid");
+                                            }
+
+                                            @if (community.DisplayProperties.Price)
+                                            {
+                                                <div class="property-prize">
+                                                    <span class="badge badge-md">@community.Price</span>
+                                                </div>
+                                            }
+                                            @if (community.Beds.IsValued)
+                                            {
+                                                <div class="property-room">
+                                                    <span class="badge badge-md"><i class="fas fa-bed fa-1x text-white mr-1"></i> @community.Beds.Value</span>
+                                                </div>
+                                            }
+
+                                        </div>
+                                    </div>
+                                    <div class="property-detail bg-light p-4">
+                                        <h5 class="property-title"><a href="@community.DetailsUrl">@(community.DisplayProperties.Name ? community.Name : "View details")</a></h5>
+                                        <ul class="pl-0">
+                                            <li class="property-address"><i class="fas fa-map-marker-alt fa-1x mr-1 text-secondary"></i>@community.Address.City, @community.Address.StateCode</li>
+                                            <li class="property-address"><i class="fas fa-building fa-1x text-secondary mr-1"></i>55+ Community  •  Apartments</li>
+                                            @if (community.DisplayProperties.Phone)
+                                            {
+
+                                                <li class="property-address"><i class="fas fa-phone-alt text-secondary mr-1"></i> @community.Phone</li>
+                                            }
+
+                                        </ul>
+
+                                        <button class="btn btn-primary btn-md"
+                                                data-toggle="lead-form"
+                                                data-accessor="attr"
+                                                data-listing-id="@community.Id"
+                                                data-listing-name="@community.Name"
+                                                data-message="@community.GetLeadFormMessage()">
+                                            Check Availability
+                                        </button>
+                                    </div>
+                                </div>
+                            }
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+}*@
+
+@* @if (Model.Community.DisplayProperties.Phone)
                                         {
                                             <li><b>Phone:</b> @Model.Community.Phone</li>
                                         }
