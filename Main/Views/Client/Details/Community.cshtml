@@ -118,18 +118,7 @@
 <section class="space-pt" itemscope itemtype="@communityItemType">
     <div class="container">
         <div class="row" id="photo">
-            @*<div class="col-lg-7 mb-4 mb-md-5 mb-lg-0" data-bind="photoTour: $data">
-
-            </div>*@
             <div class="col-lg-7 mb-4 mb-md-5 mb-lg-0">
-                @*<div class="owl-carousel owl-dots-bottom-center list">
-                    @foreach (var Image in Model.Community.Images)
-                    {
-                        <div class="item">
-                            <img class="img-fluid" alt="" src="@Image.Src">
-                        </div>
-                    }
-                </div>*@
                 <div class="owl-carousel owl-dots-bottom-center list" data-nav-arrow="true" data-nav-dots="false" data-items="1" data-md-items="1" data-sm-items="1" data-xs-items="1" data-xx-items="1" data-space="0">
                     @foreach (var Image in Model.Community.Images)
                     {
@@ -188,14 +177,17 @@
                     </div>
                     <div class="col-lg-8">
                         <div class="row">
+                            @if (Model.Community.Beds.IsValued || Model.Community.Bathes.IsValued || Model.Community.Area.IsValued)
+                            {
                             <div class="col-md-6">
                                 <ul class="property-list  list-unstyled mb-0">
                                     @if (Model.Community.Beds.IsValued)
                                     {
                                         <li>
                                             <strong class="value icon-bed">
-                                                @Model.Community.Beds.Value
+                                                 Beds:
                                             </strong>
+                                            <span>@Model.Community.Beds.Value</span>
                                             <span class="unit">
                                                 @Model.Community.Beds.Unit
                                             </span>
@@ -203,21 +195,23 @@
                                     }
                                     @if (Model.Community.Bathes.IsValued)
                                     {
-                                        <li>
-                                            <strong class="value icon-bath">
-                                                @Model.Community.Bathes.Value
-                                            </strong>
-                                            <span class="unit">
-                                                @Model.Community.Bathes.Unit
-                                            </span>
-                                        </li>
+                                <li>
+                                    <strong class="value icon-bath">
+                                        BATHROOMS:
+                                    </strong>
+                                    <span>@Model.Community.Bathes.Value</span>
+                                    <span class="unit">
+                                        @Model.Community.Bathes.Unit
+                                    </span>
+                                </li>
                                     }
                                     @if (Model.Community.Area.IsValued)
                                     {
                                         <li>
                                             <strong class="value icon-square">
-                                                @Model.Community.Area.Value
+                                                AREA:
                                             </strong>
+                                            <span>@Model.Community.Area.Value</span>
                                             <span class="unit">
                                                 @Model.Community.Area.Unit
                                             </span>
@@ -225,15 +219,21 @@
                                     }
                                 </ul>
                             </div>
-                            <div class="col-md-6">
-                                <ul class="property-list list-unstyled mb-0">
-                                    @foreach (var service in Model.Community.CommunityServices)
-                                    {
-                                        <li><b>@service</b></li>
-                                    }
-                                </ul>
-                            </div>
-
+                            }
+                            @if (Model.Community.CommunityServices.Any())
+                            {
+                                <div class="col-md-6">
+                                    <strong class="value icon-square">
+                                        Services:
+                                    </strong>
+                                    <ul class="property-list list-unstyled mb-0">
+                                        @foreach (var service in Model.Community.CommunityServices)
+                                        {
+                                            <li><b>@service</b></li>
+                                        }
+                                    </ul>
+                                </div>
+                            }
                         </div>
                     </div>
                 </div>
@@ -259,9 +259,6 @@
             </div>
             <hr class="my-4 my-md-5">
             <div class="row">
-                <div class="col-12">
-                    <h3>Features</h3>
-                </div>
                 <hr class="my-4 my-md-5">
                 <div class="row">
                     <div class="col-lg-4">
@@ -273,7 +270,7 @@
                                 <style>
                                     ul.property-list li {
                                         display: inline-block;
-                                        margin: 20px;
+                                        margin-left: 20px;
                                     }
                                 </style>
                                 <div class="row">
@@ -288,21 +285,21 @@
                                     @if (Model.Community.DisplayProperties.ApplicationFee)
                                     {
                                         <div class="col-md-4">
-                                            Fees:
+                                            <b>Fees:</b>
                                             <b>@Model.ApplicationFee</b>
                                         </div>
                                     }
                                     @if (Model.Community.DisplayProperties.Deposit)
                                     {
                                         <div class="col-md-4">
-                                            Deposit:
+                                            <b>Deposit:</b>
                                             <b>@Model.Deposit</b>
                                         </div>
                                     }
                                     @if (Model.Community.DisplayProperties.PetDeposit)
                                     {
                                         <div class="co-md-4">
-                                            Pet Deposit:
+                                            <b>Pet Deposit:</b>
                                             <b>@Model.PetDeposit</b>
                                         </div>
                                     }
@@ -384,8 +381,8 @@
                                         <div class="property-image h-100 bg-overlay-gradient-04">
                                             <img alt="Overture Buckhead South" class="img-fluid" itemprop="image" onerror="this.onerror=function() { this.onerror=null; this.src=&quot;https://www.seniorlivingchoices.com/content/images/stub/no-image.png&quot;};this.src=&quot;https://catalog.seniorlivingchoices.com/2017/09/09/21/19/L/f6772cbe-9ee4-43f1-b228-8e964f0487b8.png&quot;" src="https://catalog.seniorlivingchoices.com/2017/09/09/21/19/S/f6772cbe-9ee4-43f1-b228-8e964f0487b8.png" title="Overture Buckhead South">
                                             @*<div class="property-featured" style="">
-                                                <span class="badge badge-md">FETURED</span>
-                                            </div>*@
+            <span class="badge badge-md">FETURED</span>
+        </div>*@
                                             <div class="property-prize">
                                                 <span class="badge badge-md">$1,595 - $3,455</span>
                                             </div>

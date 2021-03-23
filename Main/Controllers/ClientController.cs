@@ -256,5 +256,6 @@ namespace Main.Controllers
 		{
 			return base.View("~/Views/Client/Static/ContactUs.cshtml", ClientViewModelsProvider.GetStaticContent(PageType.PrivacyPolicy));
 		}
+
 	}
 }

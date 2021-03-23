@@ -787,6 +787,7 @@
     <Content Include="Views\AdminAccont\List.cshtml" />
     <Content Include="Views\AdminAccont\LogOn.cshtml" />
     <Content Include="Views\Client\Search\SearchTypeServiceProviders.cshtml" />
+    <Content Include="Views\Client\Static\ContactUs.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
