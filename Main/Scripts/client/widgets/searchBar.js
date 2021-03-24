@@ -58,12 +58,12 @@ mslc.define('client/widgets/searchBar',
 
             function isAutocompleteVisible() {
                 var result = self.autocomplete.length();
-                return result;
+                return (result);
             }
 
             function isTemplatesVisible() {
                 var result = !self.isAutocompleteVisible();
-                return result;
+                return (result);
             }
 
             function currentTemplates() {
@@ -135,7 +135,9 @@ mslc.define('client/widgets/searchBar',
             }
 
             function onAutocompleteClick() {
-                $form.submit();
+                /*$form.submit();*/
+                self.hideHelpArea();
+                self.autocomplete.clear();
             }
 
             function onAutocompleteClickWithoutRedirect() {
@@ -225,6 +227,8 @@ mslc.define('client/widgets/searchBar',
             this.searchTypes = new Select(data.searchTypeList, data.searchType, { stubText: null });
             this.lookupLocation = ko.observable(data.lookupLocation);
             this.templates = data.templates;
+            this.isAutocompleteVisibleFlag = ko.observable(true);
+            this.isTemplatesVisibleFlag = ko.observable(true);
             this.autocomplete = new Autocomplete();
             this.pending = ko.observable(false);
             this.messages = {

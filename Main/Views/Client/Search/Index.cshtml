@@ -80,8 +80,10 @@
                                 <ul class="autocomplete"
                                     style="position: absolute; background: white; width: 93%; z-index: 9999;"
                                     data-bind="visible: $root.isAutocompleteVisible(), foreach: list">
-                                    <li data-bind="click: $root.onAutocompleteClick
-                                                   , event: { mouseover: function() { $parent.select($index()) } }
+                                    <li data-bind="
+                                                    click: $root.onAutocompleteClick
+                                                    , event: { mouseover: function() { $parent.select($index()) } }
+                                                   @*, event: { click: function() { $parent.select($index()) } }*@
                                                    , css: { active: $index() === $parent.index() }">
                                         <span class="col-any-18">
                                             <a data-bind="click: function() {return true;},clickBubble:false">
