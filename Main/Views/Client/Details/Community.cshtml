@@ -171,73 +171,63 @@
         </div>
         <div class="row justify-content-start mt-4 mt-lg-5">
             <div class="col-lg-7">
-                <div class="row">
-                    <div class="col-lg-4">
-                        <h3>Property Details</h3>
-                    </div>
-                    <div class="col-lg-8">
-                        <div class="row">
-                            @if (Model.Community.Beds.IsValued || Model.Community.Bathes.IsValued || Model.Community.Area.IsValued)
-                            {
-                            <div class="col-md-6">
-                                <ul class="property-list  list-unstyled mb-0">
-                                    @if (Model.Community.Beds.IsValued)
-                                    {
-                                        <li>
-                                            <strong class="value icon-bed">
-                                                 Beds:
-                                            </strong>
-                                            <span>@Model.Community.Beds.Value</span>
-                                            <span class="unit">
-                                                @Model.Community.Beds.Unit
-                                            </span>
-                                        </li>
-                                    }
-                                    @if (Model.Community.Bathes.IsValued)
-                                    {
-                                <li>
-                                    <strong class="value icon-bath">
-                                        BATHROOMS:
-                                    </strong>
-                                    <span>@Model.Community.Bathes.Value</span>
-                                    <span class="unit">
-                                        @Model.Community.Bathes.Unit
-                                    </span>
-                                </li>
-                                    }
-                                    @if (Model.Community.Area.IsValued)
-                                    {
-                                        <li>
-                                            <strong class="value icon-square">
-                                                AREA:
-                                            </strong>
-                                            <span>@Model.Community.Area.Value</span>
-                                            <span class="unit">
-                                                @Model.Community.Area.Unit
-                                            </span>
-                                        </li>
-                                    }
-                                </ul>
+                @if (Model.Community.Beds.IsValued || Model.Community.Bathes.IsValued || Model.Community.Area.IsValued)
+                {
+                    <div class="row">
+                        <div class="col-lg-4">
+                            <h3>Property Details</h3>
+                        </div>
+                        <div class="col-lg-8">
+                            <div class="row">
+                                @if (Model.Community.Beds.IsValued || Model.Community.Bathes.IsValued || Model.Community.Area.IsValued)
+                                {
+                                    <div class="col-md-6">
+                                        <ul class="property-list  list-unstyled mb-0">
+                                            @if (Model.Community.Beds.IsValued)
+                                            {
+                                                <li>
+                                                    <strong class="value icon-bed">
+                                                        Beds:
+                                                    </strong>
+                                                    <span>@Model.Community.Beds.Value</span>
+                                                    <span class="unit">
+                                                        @Model.Community.Beds.Unit
+                                                    </span>
+                                                </li>
+                                            }
+                                            @if (Model.Community.Bathes.IsValued)
+                                            {
+                                                <li>
+                                                    <strong class="value icon-bath">
+                                                        BATHROOMS:
+                                                    </strong>
+                                                    <span>@Model.Community.Bathes.Value</span>
+                                                    <span class="unit">
+                                                        @Model.Community.Bathes.Unit
+                                                    </span>
+                                                </li>
+                                            }
+                                            @if (Model.Community.Area.IsValued)
+                                            {
+                                                <li>
+                                                    <strong class="value icon-square">
+                                                        AREA:
+                                                    </strong>
+                                                    <span>@Model.Community.Area.Value</span>
+                                                    <span class="unit">
+                                                        @Model.Community.Area.Unit
+                                                    </span>
+                                                </li>
+                                            }
+                                        </ul>
+                                    </div>
+                                }
+                               
                             </div>
-                            }
-                            @if (Model.Community.CommunityServices.Any())
-                            {
-                                <div class="col-md-6">
-                                    <strong class="value icon-square">
-                                        Services:
-                                    </strong>
-                                    <ul class="property-list list-unstyled mb-0">
-                                        @foreach (var service in Model.Community.CommunityServices)
-                                        {
-                                            <li><b>@service</b></li>
-                                        }
-                                    </ul>
-                                </div>
-                            }
                         </div>
                     </div>
+                }
                 </div>
-            </div>
             <hr class="my-4 my-md-5">
             <div class="row">
                 <div class="col-lg-12">
@@ -257,27 +247,71 @@
                     @*<p class="mb-0">Floor-to-ceiling windows accentuate the panoramic vistas that sweep across the Golden Gate Bridge, the downtown skyline, the artfully lit Bay Bridge and beyond. The floor plan features two bedroom suites, kitchen, living/dining room, two view terraces and ample storage space.</p>*@
                 </div>
             </div>
-            <hr class="my-4 my-md-5">
-            <div class="row">
-                <hr class="my-4 my-md-5">
+            @*<hr class="my-4 my-md-5">*@
+
+
+
+
+            <style>
+                ul.property-list li {
+                    margin-left: 20px;
+                }
+            </style>
+            @if (Model.Community.CommunityServices.Any())
+            {
+                    <div class="row">
+                        <div class="col-lg-4">
+                            <h3>Services</h3>
+                        </div>
+                            <div class="col-lg-8">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <ul class="property-list mb-0 pl-lg-0 pl-3">
+                                            @{int i = 0;}
+                                            @foreach (var service in Model.Community.CommunityServices)
+                                            {
+                                                i++;
+                                                if (i % 2 == 0)
+                                                {
+                                                    <li>@service</li>
+                                                }
+                                            }
+                                        </ul>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <ul class="property-list mb-0 pl-lg-0 pl-3">
+                                            @{int j = 0;}
+                                            @foreach (var service in Model.Community.CommunityServices)
+                                            {
+                                                j++;
+                                                if (j % 2 == 1)
+                                                {
+                                                    <li>@service</li>
+                                                }
+                                            }
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                
+            }
+            <hr />
+
+            @if (Model.Community.Amenities.Any())
+            {
                 <div class="row">
                     <div class="col-lg-4">
                         <h3>Features</h3>
-                    </div>
-                    <div class="col-lg-8">
-                        <div class="row">
-                            <div class="col-md-12">
-                                <style>
-                                    ul.property-list li {
-                                        display: inline-block;
-                                        margin-left: 20px;
-                                    }
-                                </style>
-                                <div class="row">
-                                    @foreach (var amenity in Model.Community.Amenities)
-                                    {
-                                        <div class="col-6">@amenity</div>
-                                    }
+                        <div class="col-lg-8">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <ul class="property-list mb-0 pl-lg-0 pl-3">
+                                        @foreach (var amenity in Model.Community.Amenities)
+                                        {
+                                            <li>@amenity</li>
+                                        }
+                                     </ul>
                                 </div>
                             </div>
                             <div class="col-md-12">
@@ -310,56 +344,56 @@
                     @*<div class="col-lg-12">
 
 
-                            @if (Model.Community.DisplayProperties.ShcCategories)
+                    @if (Model.Community.DisplayProperties.ShcCategories)
+                    {
+                        <hr class="my-4 my-md-5">
+                        <h2 class="header-brand-blue h4">Senior Housing & Care Categories</h2>
+                        <div class="row">
+
+                            @foreach (var category in Model.ShcCategories)
                             {
-                                <hr class="my-4 my-md-5">
-                                <h2 class="header-brand-blue h4">Senior Housing & Care Categories</h2>
-                                <div class="row">
-
-                                    @foreach (var category in Model.ShcCategories)
-                                    {
-                                        <div class="col-md-6">@category</div>
-                                    }
-                                </div>
+                                <div class="col-md-6">@category</div>
                             }
+                        </div>
+                    }
 
-                            @if (Model.Community.DisplayProperties.FloorPlans)
-                            {
-                                <hr class="my-4 my-md-5" />
-                                <div class="row">
-                                    <h4 class="header-brand-blue">Floor Plans</h4>
-                                    <div class="col-md-12">
-                                        @{ Html.RenderPartial("Details/Partial/FloorPlan", Model.FloorPlans); }
-                                    </div>
-                                </div>
-                            }
+                    @if (Model.Community.DisplayProperties.FloorPlans)
+                    {
+                        <hr class="my-4 my-md-5" />
+                        <div class="row">
+                            <h4 class="header-brand-blue">Floor Plans</h4>
+                            <div class="col-md-12">
+                                @{ Html.RenderPartial("Details/Partial/FloorPlan", Model.FloorPlans); }
+                            </div>
+                        </div>
+                    }
 
-                            @if (Model.Community.DisplayProperties.Homes)
-                            {
-                                <div class="col-md-12">
-                                    <h4 class="header-brand-blue">Homes</h4>
+                    @if (Model.Community.DisplayProperties.Homes)
+                    {
+                        <div class="col-md-12">
+                            <h4 class="header-brand-blue">Homes</h4>
 
-                                    @{ Html.RenderPartial("Details/Partial/Home", Model.Homes); }
+                            @{ Html.RenderPartial("Details/Partial/Home", Model.Homes); }
 
-                                </div>
-                            }
+                        </div>
+                    }
 
-                            @if (Model.Community.DisplayProperties.SpecHomes)
-                            {
-                                <div class="col-md-6">
-                                    <h4 class="header-brand-blue">Spec homes</h4>
-                                    <div class="col-any-24">
-                                        @{ Html.RenderPartial("Details/Partial/SpecHome", Model.SpecHomes); }
-                                    </div>
-                                </div>
-                            }
-                        </div>*@
+                    @if (Model.Community.DisplayProperties.SpecHomes)
+                    {
+                        <div class="col-md-6">
+                            <h4 class="header-brand-blue">Spec homes</h4>
+                            <div class="col-any-24">
+                                @{ Html.RenderPartial("Details/Partial/SpecHome", Model.SpecHomes); }
+                            </div>
+                        </div>
+                    }
+                </div>*@
                 </div>
-            </div>
+            }
         </div>
-    </div>
+        </div>
 </section>
-<section class="space-pt">
+<!--<section class="space-pt">
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-lg-10">
@@ -379,11 +413,11 @@
                                 <div class="item">
                                     <div class="property-list bg-light">
                                         <div class="property-image h-100 bg-overlay-gradient-04">
-                                            <img alt="Overture Buckhead South" class="img-fluid" itemprop="image" onerror="this.onerror=function() { this.onerror=null; this.src=&quot;https://www.seniorlivingchoices.com/content/images/stub/no-image.png&quot;};this.src=&quot;https://catalog.seniorlivingchoices.com/2017/09/09/21/19/L/f6772cbe-9ee4-43f1-b228-8e964f0487b8.png&quot;" src="https://catalog.seniorlivingchoices.com/2017/09/09/21/19/S/f6772cbe-9ee4-43f1-b228-8e964f0487b8.png" title="Overture Buckhead South">
+                                            <img alt="Overture Buckhead South" class="img-fluid" itemprop="image" onerror="this.onerror=function() { this.onerror=null; this.src=&quot;https://www.seniorlivingchoices.com/content/images/stub/no-image.png&quot;};this.src=&quot;https://catalog.seniorlivingchoices.com/2017/09/09/21/19/L/f6772cbe-9ee4-43f1-b228-8e964f0487b8.png&quot;" src="https://catalog.seniorlivingchoices.com/2017/09/09/21/19/S/f6772cbe-9ee4-43f1-b228-8e964f0487b8.png" title="Overture Buckhead South">-->
                                             @*<div class="property-featured" style="">
             <span class="badge badge-md">FETURED</span>
         </div>*@
-                                            <div class="property-prize">
+                                            <!--<div class="property-prize">
                                                 <span class="badge badge-md">$1,595 - $3,455</span>
                                             </div>
                                             <div class="property-room">
@@ -501,7 +535,7 @@
             </div>
         </div>
     </div>
-</section>
+</section>-->
 
 <script>
     console.log('aaaa', @Html.Json(Model));

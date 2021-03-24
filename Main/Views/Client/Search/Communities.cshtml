@@ -231,7 +231,7 @@
         </section>*@
     #endregion
 
-    <section class="space-pt">
+    <section style="padding-top:20px;">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-lg-10">
@@ -301,6 +301,7 @@
         </div>
     </section>
 }
+
 @{ Html.RenderPartial("~/Views/Client/Partial/SearchBarForm.cshtml"); }
 @{ Html.RenderPartial("~/Views/Client/Partial/Breadcrumbs.cshtml", new ViewDataDictionary(Model.Breadcrumbs)); }
 <div class="row">
@@ -623,11 +624,6 @@
                                                     spec homes
                                                 </li>
                                             }
-                                            <li class="pull-right">
-                                                <a href="@community.DetailsUrl" itemprop="url">
-                                                    view details >>
-                                                </a>
-                                            </li>
                                             <li class="nanobar" data-bind="linknode: $data">
                                                 <div class="bar"></div>
                                             </li>
@@ -679,13 +675,13 @@
                                                                     <i class="fas fa-map-marker-alt fa-1x mr-1 text-primary"></i> EXACT -@community.Address.City, @community.Address.StateCode @community.Address.Zip
                                                                 </li>
 
-                                                                @*@if (community.DisplayProperties.Phone)
-                                            {*@
+                                                                @if (community.DisplayProperties.Phone)
+                                                                {
                                                                 <li class="property-address mb-1">
                                                                     <i class="fas fa-phone-alt fa-1x text-primary mr-1"></i>
                                                                     @community.Phone
                                                                 </li>
-                                                                @*}*@
+                                                                }
                                                             </ul>
                                                             <p></p>
                                                             <p>
@@ -696,7 +692,7 @@
                                                                         {
                                                                             <span class="txt-lower txt-decr txt-brand-blue txt-bold radius-designation"
                                                                                   data-hint="#radius-designation-hint">@community.SearchRadiusDesignation</span>
-                                                                            }
+                                                                        }
                                                                     </span>
                                                                     <br />
                                                                     <span class="city" itemprop="addressLocality">@community.Address.City</span>

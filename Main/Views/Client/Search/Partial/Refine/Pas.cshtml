@@ -1,4 +1,28 @@
-﻿<form id="refine" data-bind="event: { 'submit': apply }" class=" col-any-16 row-wrap">
+﻿<style>
+    .header {
+        color: #81106A;
+    }
+
+    .btn.btn-brand-red.disabled {
+        background-color: dimgray;
+        color: white;
+    }
+
+    .btn.btn-brand-red {
+        background-color: #81106A;
+        color: white;
+    }
+
+    .header:hover {
+        text-decoration: underline;
+    }
+
+    ul.items.multi.list-col-any-2 {
+        padding: 0;
+        padding-left: 10px;
+    }
+</style>
+<form id="refine" data-bind="event: { 'submit': apply }" class=" col-any-16 row-wrap">
     <ul class="refine"
         data-bind="with: controls">
         <li class="col-any-8"

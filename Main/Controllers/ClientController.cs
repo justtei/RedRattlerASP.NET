@@ -13,7 +13,7 @@ namespace Main.Controllers
 	[ValidateInput(false)]
 	public class ClientController : BaseController
 	{
-		public ClientController()
+		 public ClientController()
 		{
 		}
 
