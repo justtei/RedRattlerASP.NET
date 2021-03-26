@@ -194,14 +194,27 @@
                             <div class="collapse navbar-collapse" id="navbarSupportedContent">
 
                                 <ul class="navbar-nav m-auto">
-                                    @foreach (var searchType in Model.SearchBar.SearchTypeList)
-                                    {
-                                        <li class="nav-item" @(searchType.Selected ? "style=color:#013f7a;" : string.Empty)>
-                                            <a class="nav-link" href="@searchType.UrlValue">
-                                                @searchType.Text
-                                            </a>
-                                        </li>
-                                    }
+                                    @{var searchType = Model.SearchBar.SearchTypeList.Where(x => x.Text == "Senior Housing & Care").FirstOrDefault(); }
+                                    <li class="nav-item" @(searchType.Selected ? "style=color:#013f7a;" : string.Empty)>
+                                        <a class="nav-link" href="@searchType.UrlValue">
+                                            Senior Living Choices & Types
+                                        </a>
+                                    </li>
+                                    @{searchType = Model.SearchBar.SearchTypeList.Where(x => x.Text == "Active Adult Communities").FirstOrDefault(); }
+                                    <li class="nav-item" @(searchType.Selected ? "style=color:#013f7a;" : string.Empty)>
+                                        <a class="nav-link" href="@searchType.UrlValue">
+                                            Housing & Community Listings
+                                        </a>
+                                    </li>
+                                    @{searchType = Model.SearchBar.SearchTypeList.Where(x => x.Text == "Products & Services").FirstOrDefault(); }
+                                    <li class="nav-item" @(searchType.Selected ? "style=color:#013f7a;" : string.Empty)>
+                                        <a class="nav-link" href="@searchType.UrlValue">
+                                            Products & Services
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="/about-us">About Us</a>
+                                    </li>
                                 </ul>
                             </div>
                             <div class="d-flex align-items-center add-listing">

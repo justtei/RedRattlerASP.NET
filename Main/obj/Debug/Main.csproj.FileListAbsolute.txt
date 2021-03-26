@@ -212,3 +212,5 @@ C:\Users\sra_r\Source\Repos\RedRattlerASP.NET\Main\obj\Debug\Main.csproj.CoreCom
 C:\Users\sra_r\Source\Repos\RedRattlerASP.NET\Main\obj\Debug\Main.csproj.CopyComplete
 C:\Users\sra_r\Source\Repos\RedRattlerASP.NET\Main\obj\Debug\Main.dll
 C:\Users\sra_r\Source\Repos\RedRattlerASP.NET\Main\obj\Debug\Main.pdb
+C:\Users\sra_r\Source\Repos\RedRattlerASP.NET\Main\bin\MSLivingChoices.Mvc.Uipc.Client.dll
+C:\Users\sra_r\Source\Repos\RedRattlerASP.NET\Main\bin\MSLivingChoices.Mvc.Uipc.Client.pdb

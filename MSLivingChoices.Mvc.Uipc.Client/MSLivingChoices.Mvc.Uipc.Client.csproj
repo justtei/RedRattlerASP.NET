@@ -1,0 +1,197 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{D1215408-0FE7-4AAE-8BBF-4559DA89F055}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>MSLivingChoices.Mvc.Uipc.Client</RootNamespace>
+    <AssemblyName>MSLivingChoices.Mvc.Uipc.Client</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="MSLivingChoices.Bcs">
+      <HintPath>..\..\..\..\Desktop\SeniorLiving12\Main\bin\MSLivingChoices.Bcs.dll</HintPath>
+    </Reference>
+    <Reference Include="MSLivingChoices.Bcs.Client">
+      <HintPath>..\..\..\..\Desktop\SeniorLiving12\Main\bin\MSLivingChoices.Bcs.Client.dll</HintPath>
+    </Reference>
+    <Reference Include="MSLivingChoices.Configuration">
+      <HintPath>..\..\..\..\Desktop\SeniorLiving12\Main\bin\MSLivingChoices.Configuration.dll</HintPath>
+    </Reference>
+    <Reference Include="MSLivingChoices.Entities.Client">
+      <HintPath>..\Main\bin\MSLivingChoices.Entities.Client.dll</HintPath>
+    </Reference>
+    <Reference Include="MSLivingChoices.Localization">
+      <HintPath>..\..\..\..\Desktop\SeniorLiving12\Main\bin\MSLivingChoices.Localization.dll</HintPath>
+    </Reference>
+    <Reference Include="MSLivingChoices.Mvc.Uipc">
+      <HintPath>..\..\..\..\Desktop\SeniorLiving12\Main\bin\MSLivingChoices.Mvc.Uipc.dll</HintPath>
+    </Reference>
+    <Reference Include="MSLivingChoices.Mvc.Utilities">
+      <HintPath>..\Main\bin\MSLivingChoices.Mvc.Utilities.dll</HintPath>
+    </Reference>
+    <Reference Include="MSLivingChoices.Utilities">
+      <HintPath>..\..\..\..\Desktop\SeniorLiving12\Main\bin\MSLivingChoices.Utilities.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL" />
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Mvc">
+      <HintPath>..\Main\bin\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages">
+      <HintPath>..\Main\bin\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="MSLivingChoices.Mvc.Uipc.Client.Attributes\CustomHandleErrorAttribute.cs" />
+    <Compile Include="MSLivingChoices.Mvc.Uipc.Client.CompetitiveFormatters\Core\CollectionFormatter_TEntity, TLocation_.cs" />
+    <Compile Include="MSLivingChoices.Mvc.Uipc.Client.CompetitiveFormatters\Core\CompetitiveFormatingAttribute.cs" />
+    <Compile Include="MSLivingChoices.Mvc.Uipc.Client.CompetitiveFormatters\Core\Ensure.cs" />
+    <Compile Include="MSLivingChoices.Mvc.Uipc.Client.CompetitiveFormatters\Core\Formatter_TEntity, TLocation_.cs" />
+    <Compile Include="MSLivingChoices.Mvc.Uipc.Client.CompetitiveFormatters\Core\IFormatter_in TLocation_.cs" />
+    <Compile Include="MSLivingChoices.Mvc.Uipc.Client.CompetitiveFormatters\FormatterResolver.cs" />
+    <Compile Include="MSLivingChoices.Mvc.Uipc.Client.CompetitiveFormatters\Formatters\CommunitiesSearchVmFormatter.cs" />
+    <Compile Include="MSLivingChoices.Mvc.Uipc.Client.CompetitiveFormatters\Formatters\CommunityBlockVmFormatter.cs" />
+    <Compile Include="MSLivingChoices.Mvc.Uipc.Client.CompetitiveFormatters\Formatters\CommunityDetailsVmFormatter.cs" />
+    <Compile Include="MSLivingChoices.Mvc.Uipc.Client.CompetitiveFormatters\Formatters\CommunityQuickViewVmFormatter.cs" />
+    <Compile Include="MSLivingChoices.Mvc.Uipc.Client.CompetitiveFormatters\Formatters\CommunityShortVmFormatter.cs" />
+    <Compile Include="MSLivingChoices.Mvc.Uipc.Client.CompetitiveFormatters\Formatters\FloorPlanQuickViewVmFormatter.cs" />
+    <Compile Include="MSLivingChoices.Mvc.Uipc.Client.CompetitiveFormatters\Formatters\FloorPlanVmFormatter.cs" />
+    <Compile Include="MSLivingChoices.Mvc.Uipc.Client.CompetitiveFormatters\Formatters\HomeQuickViewVmFormatter.cs" />
+    <Compile Include="MSLivingChoices.Mvc.Uipc.Client.CompetitiveFormatters\Formatters\HomeVmFormatter.cs" />
+    <Compile Include="MSLivingChoices.Mvc.Uipc.Client.CompetitiveFormatters\Formatters\OwnerVmFormatter.cs" />
+    <Compile Include="MSLivingChoices.Mvc.Uipc.Client.CompetitiveFormatters\Formatters\ServiceProviderBlockVmFormatter.cs" />
+    <Compile Include="MSLivingChoices.Mvc.Uipc.Client.CompetitiveFormatters\Formatters\ServiceProviderDetailsVmFormatter.cs" />
+    <Compile Include="MSLivingChoices.Mvc.Uipc.Client.CompetitiveFormatters\Formatters\ServiceProviderQuickViewVmFormatter.cs" />
+    <Compile Include="MSLivingChoices.Mvc.Uipc.Client.CompetitiveFormatters\Formatters\ServiceProviderShortVmFormatter.cs" />
+    <Compile Include="MSLivingChoices.Mvc.Uipc.Client.CompetitiveFormatters\Formatters\ServiceProvidersSearchVmFormatter.cs" />
+    <Compile Include="MSLivingChoices.Mvc.Uipc.Client.CompetitiveFormatters\Formatters\SpecHomeQuickViewVmFormatter.cs" />
+    <Compile Include="MSLivingChoices.Mvc.Uipc.Client.CompetitiveFormatters\Formatters\SpecHomeVmFormatter.cs" />
+    <Compile Include="MSLivingChoices.Mvc.Uipc.Client.CompetitiveFormatters\OptionsResolver\CommunityDisplayProperties.cs" />
+    <Compile Include="MSLivingChoices.Mvc.Uipc.Client.CompetitiveFormatters\OptionsResolver\DetailsDisplayProperties.cs" />
+    <Compile Include="MSLivingChoices.Mvc.Uipc.Client.CompetitiveFormatters\OptionsResolver\EntityLocation.cs" />
+    <Compile Include="MSLivingChoices.Mvc.Uipc.Client.CompetitiveFormatters\OptionsResolver\FloorPlanDisplayProperties.cs" />
+    <Compile Include="MSLivingChoices.Mvc.Uipc.Client.CompetitiveFormatters\OptionsResolver\HomeDisplayProperties.cs" />
+    <Compile Include="MSLivingChoices.Mvc.Uipc.Client.CompetitiveFormatters\OptionsResolver\OptionsResolver.cs" />
+    <Compile Include="MSLivingChoices.Mvc.Uipc.Client.CompetitiveFormatters\OptionsResolver\OwnerDisplayProperties.cs" />
+    <Compile Include="MSLivingChoices.Mvc.Uipc.Client.CompetitiveFormatters\OptionsResolver\SearchDisplayProperties.cs" />
+    <Compile Include="MSLivingChoices.Mvc.Uipc.Client.CompetitiveFormatters\OptionsResolver\ServiceProviderDisplayProperties.cs" />
+    <Compile Include="MSLivingChoices.Mvc.Uipc.Client.CompetitiveFormatters\OptionsResolver\SpecHomeDisplayProperties.cs" />
+    <Compile Include="MSLivingChoices.Mvc.Uipc.Client.Enums\PageDirection.cs" />
+    <Compile Include="MSLivingChoices.Mvc.Uipc.Client.Enums\PageType.cs" />
+    <Compile Include="MSLivingChoices.Mvc.Uipc.Client.Enums\RefineType.cs" />
+    <Compile Include="MSLivingChoices.Mvc.Uipc.Client.Helpers\Core\FluentRoute.cs" />
+    <Compile Include="MSLivingChoices.Mvc.Uipc.Client.Helpers\Core\FluentUrl.cs" />
+    <Compile Include="MSLivingChoices.Mvc.Uipc.Client.Helpers\DisplayHelper.cs" />
+    <Compile Include="MSLivingChoices.Mvc.Uipc.Client.Helpers\EnumsHelper.cs" />
+    <Compile Include="MSLivingChoices.Mvc.Uipc.Client.Helpers\FluentHelper.cs" />
+    <Compile Include="MSLivingChoices.Mvc.Uipc.Client.Helpers\FluentRouteHelper.cs" />
+    <Compile Include="MSLivingChoices.Mvc.Uipc.Client.Helpers\FluentUrlHelper.cs" />
+    <Compile Include="MSLivingChoices.Mvc.Uipc.Client.Helpers\JsHelper.cs" />
+    <Compile Include="MSLivingChoices.Mvc.Uipc.Client.Helpers\LeadFormMessageHelper.cs" />
+    <Compile Include="MSLivingChoices.Mvc.Uipc.Client.Helpers\LocalizationHelper.cs" />
+    <Compile Include="MSLivingChoices.Mvc.Uipc.Client.Helpers\MslcUrlBuilder.cs" />
+    <Compile Include="MSLivingChoices.Mvc.Uipc.Client.Helpers\RedirectHelper.cs" />
+    <Compile Include="MSLivingChoices.Mvc.Uipc.Client.Helpers\RenderHelper.cs" />
+    <Compile Include="MSLivingChoices.Mvc.Uipc.Client.Helpers\SearchCriteriaVmHelper.cs" />
+    <Compile Include="MSLivingChoices.Mvc.Uipc.Client.Helpers\SeoHelper.cs" />
+    <Compile Include="MSLivingChoices.Mvc.Uipc.Client.HttpModules\UrlModule.cs" />
+    <Compile Include="MSLivingChoices.Mvc.Uipc.Client.HttpModules\UrlProcessingResult.cs" />
+    <Compile Include="MSLivingChoices.Mvc.Uipc.Client.JsSerialization\SearchBarTemplatesJsonConverter.cs" />
+    <Compile Include="MSLivingChoices.Mvc.Uipc.Client.JsSerialization\SearchCriteriaVmJsonConverter.cs" />
+    <Compile Include="MSLivingChoices.Mvc.Uipc.Client.MappingExtentions\CommonExtensions.cs" />
+    <Compile Include="MSLivingChoices.Mvc.Uipc.Client.MappingExtentions\LeadExtensions.cs" />
+    <Compile Include="MSLivingChoices.Mvc.Uipc.Client.MappingExtentions\SearchExtentions.cs" />
+    <Compile Include="MSLivingChoices.Mvc.Uipc.Client.ModelBinders\CommunitiesSearchVmModelBinder.cs" />
+    <Compile Include="MSLivingChoices.Mvc.Uipc.Client.ModelBinders\SearchVmBinder.cs" />
+    <Compile Include="MSLivingChoices.Mvc.Uipc.Client.ModelBinders\ServiceProvidersSearchVmModelBinder.cs" />
+    <Compile Include="MSLivingChoices.Mvc.Uipc.Client.ViewModelsProviders\ClientViewModelsProvider.cs" />
+    <Compile Include="MSLivingChoices.Mvc.Uipc.Client.ViewModels\AddressVm.cs" />
+    <Compile Include="MSLivingChoices.Mvc.Uipc.Client.ViewModels\AutocompleteVm.cs" />
+    <Compile Include="MSLivingChoices.Mvc.Uipc.Client.ViewModels\CommunitiesSearchVm.cs" />
+    <Compile Include="MSLivingChoices.Mvc.Uipc.Client.ViewModels\CommunityBlockVm.cs" />
+    <Compile Include="MSLivingChoices.Mvc.Uipc.Client.ViewModels\CommunityDetailsVm.cs" />
+    <Compile Include="MSLivingChoices.Mvc.Uipc.Client.ViewModels\CommunityPrintDirectionVm.cs" />
+    <Compile Include="MSLivingChoices.Mvc.Uipc.Client.ViewModels\CommunityQuickViewVm.cs" />
+    <Compile Include="MSLivingChoices.Mvc.Uipc.Client.ViewModels\CommunityRefineVm.cs" />
+    <Compile Include="MSLivingChoices.Mvc.Uipc.Client.ViewModels\CommunityShortVm.cs" />
+    <Compile Include="MSLivingChoices.Mvc.Uipc.Client.ViewModels\CouponVm.cs" />
+    <Compile Include="MSLivingChoices.Mvc.Uipc.Client.ViewModels\CrosslinksVm.cs" />
+    <Compile Include="MSLivingChoices.Mvc.Uipc.Client.ViewModels\CustomerInfoVm.cs" />
+    <Compile Include="MSLivingChoices.Mvc.Uipc.Client.ViewModels\FeaturedServicesVm.cs" />
+    <Compile Include="MSLivingChoices.Mvc.Uipc.Client.ViewModels\FloorPlanQuickViewVm.cs" />
+    <Compile Include="MSLivingChoices.Mvc.Uipc.Client.ViewModels\FloorPlanVm.cs" />
+    <Compile Include="MSLivingChoices.Mvc.Uipc.Client.ViewModels\HomeQuickViewVm.cs" />
+    <Compile Include="MSLivingChoices.Mvc.Uipc.Client.ViewModels\HomeVm.cs" />
+    <Compile Include="MSLivingChoices.Mvc.Uipc.Client.ViewModels\ICommunityUnit.cs" />
+    <Compile Include="MSLivingChoices.Mvc.Uipc.Client.ViewModels\ImageVm.cs" />
+    <Compile Include="MSLivingChoices.Mvc.Uipc.Client.ViewModels\IndexVm.cs" />
+    <Compile Include="MSLivingChoices.Mvc.Uipc.Client.ViewModels\LeadConfirmationVm.cs" />
+    <Compile Include="MSLivingChoices.Mvc.Uipc.Client.ViewModels\LeadFormDisplayProperties.cs" />
+    <Compile Include="MSLivingChoices.Mvc.Uipc.Client.ViewModels\LeadFormVm.cs" />
+    <Compile Include="MSLivingChoices.Mvc.Uipc.Client.ViewModels\LinkVm.cs" />
+    <Compile Include="MSLivingChoices.Mvc.Uipc.Client.ViewModels\LookupLocationValidationVm.cs" />
+    <Compile Include="MSLivingChoices.Mvc.Uipc.Client.ViewModels\LookupLocationVm.cs" />
+    <Compile Include="MSLivingChoices.Mvc.Uipc.Client.ViewModels\OwnerVm.cs" />
+    <Compile Include="MSLivingChoices.Mvc.Uipc.Client.ViewModels\PageLinkVm.cs" />
+    <Compile Include="MSLivingChoices.Mvc.Uipc.Client.ViewModels\PageVm.cs" />
+    <Compile Include="MSLivingChoices.Mvc.Uipc.Client.ViewModels\PagingVm.cs" />
+    <Compile Include="MSLivingChoices.Mvc.Uipc.Client.ViewModels\PropertyVm.cs" />
+    <Compile Include="MSLivingChoices.Mvc.Uipc.Client.ViewModels\ResultSetSearchVm_TResult, TSort_.cs" />
+    <Compile Include="MSLivingChoices.Mvc.Uipc.Client.ViewModels\SearchBarSelectListItem.cs" />
+    <Compile Include="MSLivingChoices.Mvc.Uipc.Client.ViewModels\SearchBarVm.cs" />
+    <Compile Include="MSLivingChoices.Mvc.Uipc.Client.ViewModels\SearchCriteriaVm.cs" />
+    <Compile Include="MSLivingChoices.Mvc.Uipc.Client.ViewModels\SearchTypeStubSearchVm.cs" />
+    <Compile Include="MSLivingChoices.Mvc.Uipc.Client.ViewModels\SearchVm.cs" />
+    <Compile Include="MSLivingChoices.Mvc.Uipc.Client.ViewModels\SearchVm_TResult_.cs" />
+    <Compile Include="MSLivingChoices.Mvc.Uipc.Client.ViewModels\SearchWithServicesVm.cs" />
+    <Compile Include="MSLivingChoices.Mvc.Uipc.Client.ViewModels\SeoVm.cs" />
+    <Compile Include="MSLivingChoices.Mvc.Uipc.Client.ViewModels\ServiceProviderBlockVm.cs" />
+    <Compile Include="MSLivingChoices.Mvc.Uipc.Client.ViewModels\ServiceProviderDetailsVm.cs" />
+    <Compile Include="MSLivingChoices.Mvc.Uipc.Client.ViewModels\ServiceProviderPrintDirectionVm.cs" />
+    <Compile Include="MSLivingChoices.Mvc.Uipc.Client.ViewModels\ServiceProviderQuickViewVm.cs" />
+    <Compile Include="MSLivingChoices.Mvc.Uipc.Client.ViewModels\ServiceProviderRefineVm.cs" />
+    <Compile Include="MSLivingChoices.Mvc.Uipc.Client.ViewModels\ServiceProviderShortVm.cs" />
+    <Compile Include="MSLivingChoices.Mvc.Uipc.Client.ViewModels\ServiceProvidersSearchVm.cs" />
+    <Compile Include="MSLivingChoices.Mvc.Uipc.Client.ViewModels\SpecHomeQuickViewVm.cs" />
+    <Compile Include="MSLivingChoices.Mvc.Uipc.Client.ViewModels\SpecHomeVm.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MSLivingChoices.Logging\MSLivingChoices.Logging.csproj">
+      <Project>{de5e0aa4-3455-415d-9a8f-af299bec6f7f}</Project>
+      <Name>MSLivingChoices.Logging</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

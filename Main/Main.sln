@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MSLivingChoices.Entities.Ad
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MSLivingChoices.Logging", "..\MSLivingChoices.Logging\MSLivingChoices.Logging.csproj", "{DE5E0AA4-3455-415D-9A8F-AF299BEC6F7F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MSLivingChoices.Mvc.Uipc.Client", "..\MSLivingChoices.Mvc.Uipc.Client\MSLivingChoices.Mvc.Uipc.Client.csproj", "{D1215408-0FE7-4AAE-8BBF-4559DA89F055}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{DE5E0AA4-3455-415D-9A8F-AF299BEC6F7F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DE5E0AA4-3455-415D-9A8F-AF299BEC6F7F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DE5E0AA4-3455-415D-9A8F-AF299BEC6F7F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D1215408-0FE7-4AAE-8BBF-4559DA89F055}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D1215408-0FE7-4AAE-8BBF-4559DA89F055}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D1215408-0FE7-4AAE-8BBF-4559DA89F055}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D1215408-0FE7-4AAE-8BBF-4559DA89F055}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

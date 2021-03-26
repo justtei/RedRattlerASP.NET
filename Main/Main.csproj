@@ -848,10 +848,6 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\ProjectRefrences\MSLivingChoices.Mvc.Uipc.dll</HintPath>
     </Reference>
-    <Reference Include="MSLivingChoices.Mvc.Uipc.Client, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\ProjectRefrences\MSLivingChoices.Mvc.Uipc.Client.dll</HintPath>
-    </Reference>
     <Reference Include="MSLivingChoices.Mvc.Utilities, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\ProjectRefrences\MSLivingChoices.Mvc.Utilities.dll</HintPath>
@@ -967,6 +963,10 @@
     <ProjectReference Include="..\MSLivingChoices.Mvc.Uipc.Admin\MSLivingChoices.Mvc.Uipc.Admin.csproj">
       <Project>{3c6fce81-8dcd-4138-88f0-99ec17b0210c}</Project>
       <Name>MSLivingChoices.Mvc.Uipc.Admin</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MSLivingChoices.Mvc.Uipc.Client\MSLivingChoices.Mvc.Uipc.Client.csproj">
+      <Project>{d1215408-0fe7-4aae-8bbf-4559da89f055}</Project>
+      <Name>MSLivingChoices.Mvc.Uipc.Client</Name>
     </ProjectReference>
     <ProjectReference Include="..\MSLivingChoices.SqlDacs.Admin\MSLivingChoices.SqlDacs.Admin.csproj">
       <Project>{10764c77-0bbe-415f-b207-b65cc23c509b}</Project>

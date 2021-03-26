@@ -317,10 +317,6 @@ namespace Main.Controllers
 					Data = new { success = true ,message = invalidOperationException.Message}
 				};
 			}
-			return new AllowGetJsonResult()
-			{
-				Data = new { success = true}
-			};
 		}
 	}
 }
