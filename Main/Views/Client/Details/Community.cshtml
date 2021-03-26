@@ -23,7 +23,6 @@
             leadForm.initInline(@Html.Json(ClientViewModelsProvider.GetLeadFormVm(Model)));
             leadForm.initPopUpSharedData(@Html.Json(ClientViewModelsProvider.GetLeadFormVm(Model)));
         });
-
         mslc.resolve(['client/widgets/googlePublisherTag'], function(gpt) {
             gpt.initDetailsSlots({
                 country: '@Model.Criteria.CountryCode()',
