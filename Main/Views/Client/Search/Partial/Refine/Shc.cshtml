@@ -33,7 +33,7 @@
             </div>
             <ul class="items multi list-col-any-2 clk" style="padding-right:10px;"
                 data-bind="foreach: items"
-                data-select="target">
+                data-select="">
                 <li data-bind="css: { 'active': selected }">
                     <label>
                         <input type="checkbox"
@@ -56,7 +56,7 @@
             </div>
             <ul class="items multi list-col-any-2"
                 data-bind="foreach: items"
-                data-select="target">
+                data-select="">
                 <li data-bind="css: { 'active': selected }">
                     <label>
                         <input type="checkbox"
@@ -76,7 +76,7 @@
                 <div data-bind="text: priceCaption"></div>
             </div>
             <div class="items multi pad" style="position: absolute; z-index: 999; background-color: white; padding: 20px;"
-                data-select="target">
+                data-select="">
                 <label class="input-group">
                     <input class="form-control"
                         type="text"
@@ -104,7 +104,7 @@
             </div>
             <ul class="items single"
                 data-bind="foreach: items"
-                data-select="target">
+                data-select="">
                 <li data-bind="css: { 'active': selected }, click: $parent.selectItem, text: formatted"></li>
             </ul>
         </li>
@@ -120,7 +120,7 @@
             </div>
             <ul class="items single"
                 data-bind="foreach: items"
-                data-select="target">
+                data-select="">
                 <li data-bind="css: { 'active': selected }, click: $parent.selectItem, text: formatted"></li>
             </ul>
         </li>

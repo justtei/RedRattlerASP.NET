@@ -24,33 +24,6 @@
     </script>
 }
 
-@*<div class="head-search-bar">
-        <div class="container">
-            <div class="row">
-                @{ Html.RenderPartial("~/Views/Client/Partial/SearchBarForm.cshtml"); }
-                @switch (Model.PageType.ToRefineType())
-                {
-                    case RefineType.SeniorHousing:
-                    {
-                        Html.RenderPartial("~/Views/Client/Search/Partial/Refine/Shc.cshtml");
-                        break;
-                    }
-                    case RefineType.ActiveCommunity:
-                    case RefineType.ActiveHome:
-                    {
-                        Html.RenderPartial("~/Views/Client/Search/Partial/Refine/AacAah.cshtml");
-                        break;
-                    }
-                    case RefineType.Service:
-                    {
-                        Html.RenderPartial("~/Views/Client/Search/Partial/Refine/Pas.cshtml");
-                        break;
-                    }
-                }
-            </div>
-        </div>
-    </div>*@
-
 <div class="inner-header">
     <div class="container">
         <div class="row">
