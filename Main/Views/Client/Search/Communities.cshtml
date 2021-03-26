@@ -62,7 +62,7 @@
     @{ Html.RenderPartial("~/Views/Client/Search/Partial/NearbyPopover.cshtml"); }
     @{ Html.RenderPartial("~/Views/Client/Controls/LeadForm/CommunityUnitPopUp.cshtml"); }
 
-    <script type="text/javascript">
+<script type="text/javascript">
         mslc.resolve([
                 'lib/ko', 'client/widgets/refine', 'client/widgets/refine/aahAac', 'client/widgets/refine/shc'
             ],
@@ -129,7 +129,9 @@
             function(hints) {
             },
             'init-hints');
-    </script>
+
+        console.log('search', @Html.Json(Model));
+</script>
     <style>
         .ssh {
             transition: all ease-in-out .5s;
@@ -254,7 +256,6 @@
                                             {
                                                 @RenderHelper.ThumbnailWithMicrodata(community.Image, "img-fluid");
                                             }
-
                                             @if (community.DisplayProperties.Price)
                                             {
                                                 <div class="property-prize">
@@ -267,7 +268,6 @@
                                                     <span class="badge badge-md"><i class="fas fa-bed fa-1x text-white mr-1"></i> @community.Beds.Value</span>
                                                 </div>
                                             }
-
                                         </div>
                                     </div>
                                     <div class="property-detail bg-light p-4">
@@ -277,7 +277,6 @@
                                             <li class="property-address"><i class="fas fa-building fa-1x text-secondary mr-1"></i>55+ Community  •  Apartments</li>
                                             @if (community.DisplayProperties.Phone)
                                             {
-
                                                 <li class="property-address"><i class="fas fa-phone-alt text-secondary mr-1"></i> @community.Phone</li>
                                             }
 
@@ -340,105 +339,72 @@
                     <div class="row">
                         <div class="col-lg-3">
                             <div class="sidebar">
-                                <div class="widget">
-                                    @*<div class="widget-title">
-                                            <h3 class="text-white mb-0">Senior Living Choices</h3>
-                                        </div>
-                                        <div class="widget-content">
-                                            <p>Learn more about senior housing options, how they differ, and choose the right fit for you.</p>
-                                            <a class="btn btn-primary mt-4" href="#">Learn More</a>
-
-                                        </div>*@
+                                <div class="widget mb-3">
                                     @if (Model.DisplayProperties.BookOrder)
                                     {
                                         Html.RenderPartial("~/Views/Client/Search/Partial/Order.cshtml");
                                     }
                                 </div>
-                               
-                                <!--SENCOND REFINE SEARCH GOES BELOW-->
-                                <!--  <div class="widget mb-0">
-                                    <div class="widget-title">
-                                        <h3 class="text-white mb-0">Property Amenities</h3>
-                                    </div>
-                                    <div class="widget-content">
-                                        <div class="custom-control custom-checkbox">
-                                            <input type="checkbox" class="custom-control-input" id="dateposted11">
-                                            <label class="custom-control-label" for="dateposted11">All Utilities Paid</label>
+                                <form id="refine" data-bind="event: { 'submit': apply }" class=" col-any-16 row-wrap">
+                                    <div class="refine" data-bind="with: controls">
+                                        <div class="widget mb-3">
+                                            <div class="widget-title">
+                                                <h3 class="text-white mb-0">Refine Your Search</h3>
+                                            </div>
+                                            <div class="widget-content">
+                                                <div class="col-any-4"
+                                                     data-bind="with: categories"
+                                                     data-select="multi">
+                                                    <div class="items multi list-col-any-2"
+                                                        data-bind="foreach: items"
+                                                        data-select="">
+                                                        <div class="mb-1" data-bind="css: { 'active': selected }">
+                                                            <div style="position: relative; display: block; padding-left: 1.5rem;">
+                                                                <input type="checkbox" style="position: absolute; left: 0; width: 17px; height: 17px;"
+                                                                       data-bind="checked: selected, css: { 'checked': selected }" />
+                                                                <span style="position: relative; vertical-align: top; top: -3px;" data-bind="text: text, css: { 'checked': selected }"></span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-any-4 submit" style="display: none" data-bind="visible: $data">
+                                                    <button class="btn btn-md btn-primary mt-2" type="submit">
+                                                        <span>Update Search</span>
+                                                    </button>
+                                                </div>
+                                             </div>
                                         </div>
-                                        <div class="custom-control custom-checkbox">
-                                            <input type="checkbox" class="custom-control-input" id="dateposted12">
-                                            <label class="custom-control-label" for="dateposted12">Business Center</label>
+                                        <div class="widget mb-3">
+                                            <div class="widget-title">
+                                                <h3 class="text-white mb-0">Property Amenities</h3>
+                                            </div>
+                                            <div class="widget-content">
+                                                <div class="col-any-4 clk" data-bind="with: amenities" data-select="multi">
+                                                    <div class="items multi list-col-any-2 clk"
+                                                         data-bind="foreach: items"
+                                                         data-select="">
+                                                        <div class="mb-1" data-bind="css: { 'active': selected }">
+                                                            <div style="position: relative; display: block; padding-left: 1.5rem;">
+                                                                <input type="checkbox" style="position: absolute; left: 0; width: 17px; height: 17px;"
+                                                                       data-bind="checked: selected, css: { 'checked': selected }" />
+                                                                <span style="position: relative; vertical-align: top; top: -3px;" data-bind="text: text"></span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-any-4 submit" style="display: none" data-bind="visible: $data">
+                                                    <button class="btn btn-md btn-primary mt-2" type="submit">
+                                                        <span>Update Search</span>
+                                                    </button>
+                                                </div>
+                                            </div>
                                         </div>
-                                        <div class="custom-control custom-checkbox">
-                                            <input type="checkbox" class="custom-control-input" id="dateposted13">
-                                            <label class="custom-control-label" for="dateposted13">Controlled Access Entry</label>
-                                        </div>
-                                        <div class="custom-control custom-checkbox">
-                                            <input type="checkbox" class="custom-control-input" id="dateposted14">
-                                            <label class="custom-control-label" for="dateposted14">Elevator(s)</label>
-                                        </div>
-                                        <div class="custom-control custom-checkbox">
-                                            <input type="checkbox" class="custom-control-input" id="dateposted15">
-                                            <label class="custom-control-label" for="dateposted15">Fitness Center</label>
-                                        </div>
-                                        <div class="custom-control custom-checkbox">
-                                            <input type="checkbox" class="custom-control-input" id="dateposted16">
-                                            <label class="custom-control-label" for="dateposted16">Garage</label>
-                                        </div>
-                                        <div class="custom-control custom-checkbox">
-                                            <input type="checkbox" class="custom-control-input" id="dateposted17">
-                                            <label class="custom-control-label" for="dateposted17">Gated Community</label>
-                                        </div>
-                                        <div class="custom-control custom-checkbox">
-                                            <input type="checkbox" class="custom-control-input" id="dateposted18">
-                                            <label class="custom-control-label" for="dateposted18">Handicap Accessible</label>
-                                        </div>
-                                        <div class="custom-control custom-checkbox">
-                                            <input type="checkbox" class="custom-control-input" id="dateposted19">
-                                            <label class="custom-control-label" for="dateposted19">High Speed Internet</label>
-                                        </div>
-                                        <div class="custom-control custom-checkbox">
-                                            <input type="checkbox" class="custom-control-input" id="dateposted20">
-                                            <label class="custom-control-label" for="dateposted20">Housekeeping</label>
-                                        </div>
-                                        <div class="custom-control custom-checkbox">
-                                            <input type="checkbox" class="custom-control-input" id="dateposted21">
-                                            <label class="custom-control-label" for="dateposted21">Linen Service</label>
-                                        </div>
-                                        <div class="custom-control custom-checkbox">
-                                            <input type="checkbox" class="custom-control-input" id="dateposted22">
-                                            <label class="custom-control-label" for="dateposted22">Maintenance Free</label>
-                                        </div><div class="custom-control custom-checkbox">
-                                            <input type="checkbox" class="custom-control-input" id="dateposted23">
-                                            <label class="custom-control-label" for="dateposted23">Movie Theater</label>
-                                        </div><div class="custom-control custom-checkbox">
-                                            <input type="checkbox" class="custom-control-input" id="dateposted24">
-                                            <label class="custom-control-label" for="dateposted24">Onsite Dog Park</label>
-                                        </div><div class="custom-control custom-checkbox">
-                                            <input type="checkbox" class="custom-control-input" id="dateposted25">
-                                            <label class="custom-control-label" for="dateposted25">Pet Friendly</label>
-                                        </div><div class="custom-control custom-checkbox">
-                                            <input type="checkbox" class="custom-control-input" id="dateposted26">
-                                            <label class="custom-control-label" for="dateposted26">Restaurant Style Dining</label>
-                                        </div><div class="custom-control custom-checkbox">
-                                            <input type="checkbox" class="custom-control-input" id="dateposted27">
-                                            <label class="custom-control-label" for="dateposted27">Social Activities</label>
-                                        </div><div class="custom-control custom-checkbox">
-                                            <input type="checkbox" class="custom-control-input" id="dateposted28">
-                                            <label class="custom-control-label" for="dateposted28">Swimming Pool</label>
-                                        </div><div class="custom-control custom-checkbox">
-                                            <input type="checkbox" class="custom-control-input" id="dateposted29">
-                                            <label class="custom-control-label" for="dateposted29">Transportation Services</label>
-                                        </div>
-                                        <a class="btn btn-primary mt-4" href="#">Update Search</a>
-                                    </div>
-                                </div>
-                                  -->
-                                <!--SENCOND REFINE SEARCH ENDS BELOW-->
+                                     </div>
+                                 </form>
                             </div>
                         </div>
                         <div class="col-lg-9 mt-lg-0 mt-5">
-                            <div class="row mb-5">
+                            <div class="row mb-lg-4 mb-md-3">
                                 <div class="col-lg-12">
                                     <div class="property-filter d-md-flex d-block">
                                         <div class="d-md-flex d-block mb-0">
@@ -449,112 +415,6 @@
                                             <a class="btn btn-outline mt-md-0 mt-2 ml-sm-2 ml-0" href="javascript:;" onclick="mapShow()"><i class="fas fa-map-marker-alt mr-1"></i> Map View</a>
                                         </div>
                                     </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <div class="widget-title" style="display:inline-block;">
-                                        @*<h3 class="text-white mb-0">Refine Your Search</h3>*@
-                                    </div>
-                                    <div class="widget-content" style="display:inline-block;">
-                                        @*<h6>Choose Listing Types</h6>*@
-                                        <style>
-                                            .refine li {
-                                                font-weight: 700;
-                                            }
-
-                                            .list-col-any-2 {
-                                                -webkit-column-count: 2;
-                                                -moz-column-count: 2;
-                                                column-count: 2;
-                                                -webkit-column-gap: 5px;
-                                                -moz-column-gap: 5px;
-                                                column-gap: 5px;
-                                                background: white;
-                                                position: absolute;
-                                                z-index: 99;
-                                            }
-
-                                            .items.single {
-                                                position: absolute;
-                                                z-index: 999;
-                                                background: white;
-                                                padding: 30px;
-                                                list-style: none;
-                                                display: none;
-                                            }
-
-                                                .items.single li {
-                                                    cursor: pointer;
-                                                }
-
-                                                    .items.single li:hover {
-                                                        background: dodgerblue;
-                                                    }
-                                        </style>
-
-                                        @switch (Model.PageType.ToRefineType())
-                                        {
-                                            case RefineType.SeniorHousing:
-                                                {
-                                                    Html.RenderPartial("~/Views/Client/Search/Partial/Refine/Shc.cshtml");
-                                                    break;
-                                                }
-                                            case RefineType.ActiveCommunity:
-                                            case RefineType.ActiveHome:
-                                                {
-                                                    Html.RenderPartial("~/Views/Client/Search/Partial/Refine/AacAah.cshtml");
-                                                    break;
-                                                }
-                                            case RefineType.Service:
-                                                {
-                                                    Html.RenderPartial("~/Views/Client/Search/Partial/Refine/Pas.cshtml");
-                                                    break;
-                                                }
-                                        }
-                                        @*<div class="custom-control custom-checkbox">
-                        <input type="checkbox" class="custom-control-input" id="dateposted1">
-                        <label class="custom-control-label" for="dateposted1">Active Adult Communities 55+</label>
-                    </div>
-                    <div class="custom-control custom-checkbox">
-                        <input type="checkbox" class="custom-control-input" id="dateposted2">
-                        <label class="custom-control-label" for="dateposted2">Senior Apartments</label>
-                    </div>
-                    <div class="custom-control custom-checkbox">
-                        <input type="checkbox" class="custom-control-input" id="dateposted3">
-                        <label class="custom-control-label" for="dateposted3">Homes for sale or rent</label>
-                    </div>
-                    <div class="custom-control custom-checkbox">
-                        <input type="checkbox" class="custom-control-input" id="dateposted4">
-                        <label class="custom-control-label" for="dateposted4">Manufactured Home Communities</label>
-                    </div>
-                    <div class="custom-control custom-checkbox">
-                        <input type="checkbox" class="custom-control-input" id="dateposted5">
-                        <label class="custom-control-label" for="dateposted5">Independent Living</label>
-                    </div>
-                    <div class="custom-control custom-checkbox">
-                        <input type="checkbox" class="custom-control-input" id="dateposted6">
-                        <label class="custom-control-label" for="dateposted6">Assisted Living</label>
-                    </div>
-                    <div class="custom-control custom-checkbox">
-                        <input type="checkbox" class="custom-control-input" id="dateposted7">
-                        <label class="custom-control-label" for="dateposted7">Alzimer’s/Memory Care</label>
-                    </div>
-                    <div class="custom-control custom-checkbox">
-                        <input type="checkbox" class="custom-control-input" id="dateposted8">
-                        <label class="custom-control-label" for="dateposted8">Life Care Communities</label>
-                    </div>
-                    <div class="custom-control custom-checkbox">
-                        <input type="checkbox" class="custom-control-input" id="dateposted9">
-                        <label class="custom-control-label" for="dateposted9">Skilled Nursing Homes</label>
-                    </div>
-                    <div class="custom-control custom-checkbox">
-                        <input type="checkbox" class="custom-control-input" id="dateposted10">
-                        <label class="custom-control-label" for="dateposted10">Physical Rehabilitation Center</label>
-                    </div>
-                    <a class="btn btn-primary mt-4" href="#">Update Search</a>*@
-                                    </div>
-
                                 </div>
                             </div>
                             <div class="map-container" style="display: none;">
@@ -568,70 +428,8 @@
                                         continue;
                                     }
 
-                                    <section data-qv="@community.Id">
-                                        <ul class="control list-inline">
-
-                                            @if (community.DisplayProperties.QuickView)
-                                            {
-                                                <li class="icon-quickview"
-                                                    data-bind="click: tabs('quick'), css: {
-                                                        'active': tab().template === 'quick' && !!isShow().flag
-                                                        , 'disabled': isLoading() || isInAnimation() }"
-                                                    data-qv-action="quick">
-                                                    quick view
-                                                </li>
-                                            }
-                                            @*@if (community.DisplayProperties.Map)
-                        {
-                            <li class="icon-mapview"
-                                data-qv-action="map"
-                                data-bind="click: tabs('map'),
-                                            css: {
-                                                'active': tab().template === 'map-view' && !!isShow().flag
-                                                , 'disabled': isLoading() || isInAnimation() }">
-                                map view
-                            </li>
-                        }*@
-                                            @if (community.DisplayProperties.FloorPlans)
-                                            {
-                                                <li class="icon-square"
-                                                    data-qv-action="floor"
-                                                    data-bind="click: tabs('floor')
-                                                            , css: {
-                                                               'active': tab().template === 'floor' && !!isShow().flag
-                                                               , 'disabled': isLoading() || isInAnimation() }">
-                                                    floor plans
-                                                </li>
-                                            }
-                                            @if (community.DisplayProperties.Homes)
-                                            {
-                                                <li class="icon-home"
-                                                    data-qv-action="home"
-                                                    data-bind="click: tabs('home')
-                                                            , css: {
-                                                                'active': tab().template === 'home' && !!isShow().flag, 'disabled': isLoading() || isInAnimation() }">
-                                                    homes
-                                                </li>
-                                            }
-                                            @if (community.DisplayProperties.SpecHomes)
-                                            {
-                                                <li class="icon-spec-home"
-                                                    data-qv-action="spechome"
-                                                    data-bind="click: tabs('spechome')
-                                                                , css: {
-                                                                    'active': tab().template === 'spec-home' && !!isShow().flag
-                                                                    , 'disabled': isLoading() || isInAnimation() }">
-                                                    spec homes
-                                                </li>
-                                            }
-                                            <li class="nanobar" data-bind="linknode: $data">
-                                                <div class="bar"></div>
-                                            </li>
-                                        </ul>
-                                    </section>
-
                                     <div class="row">
-                                        <div class="col-lg-12 mb-4">
+                                        <div class="col-lg-12 mb-lg-4 mb-md-3">
                                             <div class="property-list bg-white">
                                                 <div class="row no-gutters">
                                                     <div class="col-md-5">
@@ -766,87 +564,8 @@
                     </div>
                 </div>
             </section>
-
-
         }
-
-        @*@if (Model.DisplayProperties.NearbyCategories || Model.DisplayProperties.NearbyCities)
-        {
-            <div class="row">
-                <div class="col-6 text-center">
-                    @if (Model.SearchBar.Crosslinks.Cities.Any())
-                    {
-                        <style>
-                            .vpad-s1 {
-                                -webkit-column-count: 3;
-                                -moz-column-count: 3;
-                                column-count: 3;
-                                -webkit-column-gap: 5px;
-                                -moz-column-gap: 5px;
-                                column-gap: 5px;
-                            }
-                        </style>
-                        <h4 class="header-brand-blue">Nearby Cities</h4>
-                        <ul class="list-col-any-3 vpad-s1">
-                            @foreach (var link in Model.SearchBar.Crosslinks.Cities)
-                            {
-                                <li>
-                                    <a href="@link.Href">@link.InnerText</a>
-                                </li>
-                            }
-                        </ul>
-                    }
-                </div>
-                <div class="col-6 text-center">
-                    @if (Model.SearchBar.Crosslinks.Categories.Any())
-                    {
-
-                        <h4 class="header-brand-blue">Categories</h4>
-                        <ul class="list-unstyled">
-                            @foreach (var link in Model.SearchBar.Crosslinks.Categories)
-                            {
-                                <li>
-                                    <a href="@link.Href">@link.InnerText</a>
-                                </li>
-                            }
-                        </ul>
-                    }
-                </div>
-            </div>
-        }*@
-
     </div>
-    <!--<div class="col-7">-->
-        @*@if (Model.DisplayProperties.BookOrder)
-            {
-                Html.RenderPartial("~/Views/Client/Search/Partial/Order.cshtml");
-            }
-            @if (Model.DisplayProperties.FeaturedCommunities)
-            {
-                <div class="ind-l">
-                    @{ Html.RenderPartial("~/Views/Client/Partial/FeaturedCommunities.cshtml", new ViewDataDictionary(Model.FeaturedCommunities)); }
-                </div>
-            }*@
-        <!--@if (Model.DisplayProperties.FeaturedServiceProviders)
-        {
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-12 text-center">
-                        @{ Html.RenderPartial("~/Views/Client/Partial/FeaturedProviders.cshtml", new ViewDataDictionary(Model.FeaturedServices)); }
-                    </div>
-                </div>
-            </div>
-        }-->
-        @*@if (Model.DisplayProperties.PartnerAds)
-            {
-                <div class="ind">
-                    <div id="div-gpt-ad-1355770323094-0" class="ad-160x600"></div>
-                </div>
-                <div class="ind">
-                    <div id="div-gpt-ad-1355770777438-0" class="ad-300x250"></div>
-                </div>
-            }*@
-    <!--</div>-->
 </div>
 <script>
     function GoLikeIt(div) {
@@ -868,7 +587,6 @@
     function mapShow() {
         $(".map-container").css("display", "initial");
         $("#list_view").css("display", "none");
-        console.log(@Html.Json(Model.Paging));
 
         var communities = @Html.Json(Model.Result);
         var map = new google.maps.Map(document.getElementById('map'), {

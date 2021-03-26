@@ -77,9 +77,7 @@
     <div class="container">
         <div class="row">
             @{ Html.RenderPartial("~/Views/Client/Partial/SearchBarForm.cshtml"); }
-            @* ReSharper disable UnknownCssClass *@
             <div class="addthis_toolbox social col-any-16">
-                @* We should use the previous step link in breadcrumb *@
                 <a class="icon-arrow-follow-back link-txt"
                    href="@Model.Breadcrumbs[Model.Breadcrumbs.Count - 2].Href">Back to Search Results</a>
                 @if (Model.DisplayProperties.SocialButtons)
@@ -93,7 +91,6 @@
                    href="@Model.Community.PrintUrl"
                    target="_blank"></a>
             </div>
-            @* ReSharper restore UnknownCssClass *@
         </div>
     </div>
 </div>
@@ -297,7 +294,7 @@
                             </div>
                             }
                         </div>
-                        <div class="col-md-12">
+                        @*<div class="col-md-12">
                             <div class="row">
                                 @if (Model.Community.DisplayProperties.ApplicationFee)
                                 {
@@ -321,7 +318,7 @@
                                     </div>
                                 }
                             </div>
-                        </div>
+                        </div>*@
                     </div>
                 </div>
             </div>

@@ -9,22 +9,22 @@
     </h4>
     <!-- ko with: lead -->
     <!-- ko if: $parent.displayProperties().moveInDate -->
-    <label class="input-stack">
+    <label class="input-stack" style="width: 100%">
         <span class="ie-placeholder">@Labels.MoveInDate</span>
         <span class="input-group">
             <span class="prepend icon-calendar"></span>
-            <input type="text" 
+            <input type="text"
                    class="form-control"
                    placeholder="@Labels.MoveInDate"
                    data-bind="datepicker: moveInDate" />
         </span>
-        <span class="validation-error-message" 
+        <span class="validation-error-message"
               data-bind="validationMessage: moveInDate">
         </span>
     </label>
     <!-- /ko -->
     <!-- ko with: customer -->
-    <label class="input-stack">
+    <label class="input-stack" style="width: 100%">
         <span class="ie-placeholder">@Labels.Name</span>
         <span class="input-group">
             <span class="prepend icon-name"></span>
@@ -33,11 +33,11 @@
                    placeholder="@Labels.Name"
                    data-bind="value: name" />
         </span>
-        <span class="validation-error-message" 
+        <span class="validation-error-message"
               data-bind="validationMessage: name">
         </span>
     </label>
-    <label class="input-stack">
+    <label class="input-stack" style="width: 100%">
         <span class="ie-placeholder">@Labels.Email</span>
         <span class="input-group">
             <span class="prepend icon-email-at"></span>
@@ -46,43 +46,44 @@
                    placeholder="@Labels.Email"
                    data-bind="value: email" />
         </span>
-        <span class="validation-error-message" 
+        <span class="validation-error-message"
               data-bind="validationMessage: email">
         </span>
     </label>
-    <label class="input-stack">
+    <label class="input-stack" style="width: 100%">
         <span class="ie-placeholder">@Labels.Phone</span>
         <span class="input-group">
             <span class="prepend icon-phone"></span>
-            <input type="text" 
+            <input type="text"
                    class="form-control"
                    placeholder="@Labels.Phone"
                    data-bind="value: phone" />
         </span>
-        <span class="validation-error-message" 
+        <span class="validation-error-message"
               data-bind="validationMessage: phone">
         </span>
     </label>
     <!-- /ko -->
-    <label class="input-stack">
+    <label class="input-stack" style="width: 100%">
+        <span class="ie-placeholder">I'm looking for:</span>
         <span class="input-group">
             @{ Html.RenderPartial("~/Views/Client/Controls/Select.cshtml", "$parent.lookingForChoices"); }
         </span>
     </label>
-    <label class="input-stack">
-        <span class="ie-placeholder">@Labels.Message</span>
+    <label class="input-stack" style="width: 100%">
+        <span class="ie-placeholder">@Labels.Message:</span>
         <span class="input-group">
-            <textarea class="form-control large"
+            <textarea class="form-control large" style="height: 110px;"
                       data-bind="value: message">
             </textarea>
         </span>
-        <span class="validation-error-message" 
+        <span class="validation-error-message"
               data-bind="validationMessage: message">
         </span>
     </label>
     <!-- /ko -->
     <div class="input-stack">
-        <button type="submit" 
+        <button type="submit"
                 class="btn btn-block btn-brand-red"
                 disabled="disabled"
                 data-bind="css: { 'in-progress': isPendingRequest }, disable: false">

@@ -12,7 +12,7 @@
 {
     @{ Html.RenderPartial("~/Views/Client/Search/Partial/PhotoTour.cshtml"); }
 
-    <script type="text/javascript" src="https://s7.addthis.com/js/300/addthis_widget.js#pubid=xa-51f632df2d7a5c98"> </script>
+    <script type="text/javascript" src="https://s7.addthis.com/js/300/addthis_widget.js#pubid=xa-51f632df2d7a5c98"></script>
     <script type="text/javascript">
         mslc.resolve(['lib/ko'], function(ko) {
             ko.applyBindings(@Html.Json(Model.ServiceProvider.Images), document.getElementById('photo'));
@@ -75,28 +75,134 @@
     <div class="container">
         <div class="row">
             @{ Html.RenderPartial("~/Views/Client/Partial/SearchBarForm.cshtml"); }
-            @* ReSharper disable UnknownCssClass *@
-            <div class="addthis_toolbox social col-any-16">
-                @* We should use the previous step link in breadcrumb *@
-                <a class="icon-arrow-follow-back link-txt"
-                    href="@Model.Breadcrumbs[Model.Breadcrumbs.Count - 2].Href">Back to Search Results</a>
-                @if (Model.DisplayProperties.SocialButtons)
-                {
-                    <a class="addthis_button_facebook icon-facebook link-icon"></a>
-                    <a class="addthis_button_twitter icon-twitter link-icon"></a>
-                    <a class="addthis_button_google_plusone_share icon-google link-icon"></a>
-                    <a class="addthis_button_pinterest_share icon-pinterest link-icon"></a>
-                }
-                <a class="icon-print link-icon"
-                   href="@Model.ServiceProvider.PrintUrl"
-                   target="_blank"></a>
-            </div>
-            @* ReSharper restore UnknownCssClass *@
         </div>
     </div>
 </div>
 
 @{ Html.RenderPartial("~/Views/Client/Partial/Breadcrumbs.cshtml", new ViewDataDictionary(Model.Breadcrumbs)); }
+
+<section class="space-pt" itemscope itemtype="http://schema.org/ProfessionalService">
+    <div class="container">
+        <div class="row" id="photo">
+            <div class="col-lg-7 mb-4 mb-md-5 mb-lg-0">
+                <div class="owl-carousel owl-dots-bottom-center list" data-nav-arrow="true" data-nav-dots="false" data-items="1" data-md-items="1" data-sm-items="1" data-xs-items="1" data-xx-items="1" data-space="0">
+                    @foreach (var Image in Model.ServiceProvider.Images)
+                    {
+                        <div class="item">
+                            <img class="img-fluid" alt="" style="height: 400px;" src="@Image.Src">
+                        </div>
+                    }
+                </div>
+            </div>
+            <div class="col-lg-5">
+                <div class="property-detail p-0">
+                    <h2 class="property-title">@Model.Seo.Header</h2>
+                    <ul class="pl-0 property-info">
+                        <li class="">
+                            <i class="fas fa-map-marker-alt fa-1x mr-1 text-primary"></i>
+                            <span>
+                                EXACT - @Model.ServiceProvider.Address.City, @Model.ServiceProvider.Address.StateCode @Model.ServiceProvider.Address.Zip
+                            </span>
+                        </li>
+                        <li class="">
+                            <i class="fas fa-building fa-1x text-primary mr-1"></i><span>
+                                Housing Provided:
+                                <a href="#">55+ Community</a>  •  <a href="#">Apartments</a>
+                            </span>
+                        </li>
+                        <li class="">
+                            <i class="fas fa-phone-alt fa-1x text-primary mr-1"></i><span>
+                                <a href="tel:@(Model.ServiceProvider.Phone)" class="click-to-call" data-phone-number="@(Model.ServiceProvider.Phone)">
+                                    @Model.ServiceProvider.Phone
+                                </a>
+                            </span>
+                        </li>
+                        <li class="">
+                            <p class="mb-0">
+                                <address itemprop="address" itemscope itemtype="http://schema.org/PostalAddress">
+                                    <span class="address-line" itemprop="streetAddress">@Model.ServiceProvider.Address.Line</span> <br />
+                                    <span class="city" itemprop="addressLocality">@Model.ServiceProvider.Address.City</span>
+                                    <span class="state" itemprop="addressRegion">@Model.ServiceProvider.Address.StateCode</span>
+                                    <span itemprop="postalCode">@Model.ServiceProvider.Address.Zip</span>
+                                </address>
+                            </p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="row justify-content-start mt-4 mt-lg-5">
+            <div class="col-md-7">
+                <div class="row">
+                    <div class="col-lg-4">
+                        <h3>Description</h3>
+                    </div>
+                    <div class="col-lg-8 pt-2">
+                        <p>
+                            @if (Model.ServiceProvider.DisplayProperties.Description)
+                            {
+                                @Model.ServiceProvider.Description
+                            }
+                        </p>
+                    </div>
+                </div>
+                <hr class="my-4 my-md-5">
+                <div class="row">
+                    <div class="col-lg-4">
+                        <h3>Service Categories</h3>
+                    </div>
+                    <div class="col-lg-8 pt-2">
+                        <div class="row">
+                            @foreach (var category in Model.ServiceProvider.ServiceCategories)
+                            {
+                                <div class="col-md-12">
+                                    <ul class="property-list mb-0 pl-lg-0 pl-3">
+                                        <li>@category</li>
+                                    </ul>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+                <hr class="my-4 my-md-5">
+                <div class="row">
+                    <div class="col-lg-4">
+                        <h3>Counties Served</h3>
+                    </div>
+                    <div class="col-lg-8 pt-2">
+                        <p class="row">
+                            @foreach (var county in Model.ServiceProvider.CountiesServed)
+                            {
+                                if (county.Equals(Model.ServiceProvider.CountiesServed.First()))
+                                {
+                                    @(county.Name)
+                                }
+                                else if (county.Equals(Model.ServiceProvider.CountiesServed.Last()))
+                                {
+                                    @(" and " + county.Name)
+                                }
+                                else
+                                {
+                                    @(", " + county.Name)
+                                }
+                            }
+                            @(Model.ServiceProvider.CountiesServed.Count > 1 ? "Counties" : "County")
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-5">
+                @if (Model.ServiceProvider.DisplayProperties.LeadForm)
+                {
+                    Html.RenderPartial("~/Views/Client/Controls/LeadForm/DetailsInline.cshtml");
+                }
+            </div>
+        </div>
+    </div>
+
+    
+</section>
+
 
 <div class="ind-s container content">
     <div class="row details"
@@ -167,7 +273,8 @@
                     <a href="@Model.WebsiteUrl"
                        target="_blank"
                        rel="nofollow"
-                       data-service-provider-link-type="Website">Visit @Model.ServiceProvider.Name's Website
+                       data-service-provider-link-type="Website">
+                        Visit @Model.ServiceProvider.Name's Website
                     </a>
                 </div>
             }
@@ -230,7 +337,8 @@
                     <a href="@Model.WebsiteUrl"
                        target="_blank"
                        rel="nofollow"
-                       data-service-provider-link-type="Website">Visit @Model.ServiceProvider.Name's Website
+                       data-service-provider-link-type="Website">
+                        Visit @Model.ServiceProvider.Name's Website
                     </a>
                 </div>
             }
@@ -270,3 +378,7 @@
         </div>
     </div>
 </div>
+
+<script>
+    console.log(@Html.Json(Model));
+</script>
