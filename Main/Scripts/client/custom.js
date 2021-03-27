@@ -226,11 +226,11 @@ NOTE: This file contains all scripts for the actual Template.
   POTENZA.rangesliders = function () {
     $( "#slider-range" ).slider({
       range: true,
-      min: 130,
-      max: 500,
-      values: [ 130, 250 ],
+      min: 0,
+      max: 5000,
+      values: [ 0, 5000 ],
       slide: function( event, ui ) {
-      $( "#amount" ).val( "$" + ui.values[ 0 ] + " - $" + ui.values[ 1 ] );
+          $("#amount").val("$" + ui.values[0] + " - $" + ui.values[1]);
       }
     });
     $( "#amount" ).val( "$" + $( "#slider-range" ).slider( "values", 0 ) +
@@ -241,11 +241,15 @@ NOTE: This file contains all scripts for the actual Template.
    POTENZA.rangesliders = function () {
       $( "#slider-range" ).slider({
         range: true,
-        min: 2500.00,
-        max: 4000.00,
-        values: [ 2500, 3200 ],
-        slide: function( event, ui ) {
-        $( "#amount" ).val( "$" + ui.values[ 0 ] + " - $" + ui.values[ 1 ] );
+        min: 0,
+        max: 4000,
+        values: [ 0, 1800 ],
+          slide: function (event, ui) {
+              $("#amount").val("$" + ui.values[0] + " - $" + ui.values[1]);
+              $("#min_value").val(ui.values[0]);
+              $("#max_value").val(ui.values[1]);
+              $("#min_value").trigger("change");
+              $("#max_value").trigger("change");
         }
       });
       $( "#amount" ).val( "$" + $( "#slider-range" ).slider( "values", 0 ) +
