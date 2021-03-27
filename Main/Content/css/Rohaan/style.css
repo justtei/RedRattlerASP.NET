@@ -1506,4 +1506,24 @@ button {
     margin-right: 5px;
   }
 
+    @media (max-width: 1400px) {
+        .search-bar > li > .arrow-wrapper > span {
+            font-size: 14px !important;
+        }
+
+        .search-bar input{
+            font-size: 15px !important;
+        }
+    }
+
+    @media (max-width: 900px) {
+        .search-bar > li > .arrow-wrapper > span {
+            font-size: 12px !important;
+        }
+
+        .search-bar input {
+            font-size: 15px !important;
+        }
+    }
+
 }

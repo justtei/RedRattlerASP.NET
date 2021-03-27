@@ -256,6 +256,10 @@ namespace Main.Controllers
 		{
 			return base.View("~/Views/Client/Static/ContactUs.cshtml", ClientViewModelsProvider.GetStaticContent(PageType.PrivacyPolicy));
 		}
+		public ActionResult AboutUs()
+		{
+			return base.View("~/Views/Client/Static/AboutUs.cshtml", ClientViewModelsProvider.GetStaticContent(PageType.PrivacyPolicy));
+		}
 
 	}
 }

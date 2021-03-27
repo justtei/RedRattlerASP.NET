@@ -103,6 +103,12 @@ namespace Main
 				action = "ContactUs",
 				pageType = PageType.PrivacyPolicy
 			});
+			routes.MapRoute("AboutUs", "about-us", new
+			{
+				controller = "Client",
+				action = "AboutUs",
+				pageType = PageType.PrivacyPolicy
+			});
 			routes.MapRoute("Ebook", "ebook", new
 			{
 				controller = "Client",
