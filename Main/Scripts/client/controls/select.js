@@ -68,10 +68,11 @@ mslc.define('client/controls/select',
             }
 
 
-            function selectItem(item) {
-                console.log(item);
+            function selectItem(item, event) {
+                select(item.value);
                 select(item.value);
             }
+
             function selectItemmod(item) {
                 console.log(item);
                 
@@ -145,6 +146,7 @@ mslc.define('client/controls/select',
 
             this.select = select;
             this.selectItem = selectItem;
+
             this.update = update;
             this.reset = reset;
 

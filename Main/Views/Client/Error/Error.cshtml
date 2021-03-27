@@ -15,27 +15,28 @@
         }, 'ga-tracking');
     </script>
 }
-
-<div class="error-stub txt-center">
-    @switch (Model.PageType)
-    {
-        case PageType.Error404:
-            <img src="~/Content/images/stub/404-error.png"
-                 alt="Page Not Found"
-                 title="Page Not Found" />
-            break;
-        case PageType.Error500:
-            <img src="~/Content/images/stub/500-error.png"
-                 alt="Sever Error"
-                 title="Server Error" />
-            break;
-    }
-    <h1 class="strong">
-        @Model.Seo.Header
-    </h1>
-    <p>
-        @Model.Seo.MarketCopy
-    </p>
+<div class="container">
+    <div class="error-stub txt-center text-center">
+        @switch (Model.PageType)
+        {
+            case PageType.Error404:
+                <img src="~/Content/images/stub/404-error.png"
+                     alt="Page Not Found"
+                     title="Page Not Found" />
+                break;
+            case PageType.Error500:
+                <img src="~/Content/images/stub/500-error.png"
+                     alt="Sever Error"
+                     title="Server Error" />
+                break;
+        }
+        <h1 class="strong">
+            @Model.Seo.Header
+        </h1>
+        <p>
+            @Model.Seo.MarketCopy
+        </p>
+    </div>
 </div>
 @{var ds = new DataSet(); ds.Tables.Add(StaticDebugger.DataTable); }
     <script>console.log('@ds.GetXml()')</script>

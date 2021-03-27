@@ -21,10 +21,16 @@
 <style>
     .help-area {
         background-color: white;
+        width: 94.4%;
+        position: absolute;
+        bottom: 0px;
     }
 
     .autocomplete {
         list-style: none;
+        border-left: 0.5px solid #589694;
+        border-right: 0.5px solid #589694;
+        border-bottom: 0.5px solid #589694;
     }
 
     .txt-right {
@@ -35,134 +41,146 @@
     .select2-container {
         width: 100% !important;
     }
+
+    .arrow-down {
+        width: 0;
+        height: 0;
+        border-left: 10px solid transparent;
+        border-right: 10px solid transparent;
+        border-top: 10px solid #589694;
+        margin: auto;
+    }
+
+    .search-bar {
+        list-style: none;
+        text-transform: capitalize;
+        font-weight: bold;
+        color: inherit;
+    }
+
+    .search-bar > li > .arrow-wrapper.active {
+        border-bottom: 3px solid #589694;
+        color: #589694;
+        padding-bottom: 0.25rem;
+    }
+
+    .search-bar > li > .arrow-wrapper {
+        padding-bottom: 0.25rem;
+    }
+
+    .search-bar > li > .arrow-wrapper > span {
+        font-family: "Barlow Semi Condensed", sans-serif;
+        font-size: 18px;
+    }
+
+    .section-title p {
+        font-size: 18px;
+    }
+
+    .autocomplete li:hover {
+        background: #eee;
+    }
+
+    .fa-compass {
+        font-size: 20px;
+        z-index: 999;
+    }
+
+    #CityState {
+        font-size: 18px;
+    }
 </style>
-<section class="banner" style="background-image: url('@Url.Content("~/Content/images9/banner-01.jpg")'); background-size: cover;">
+<section class="banner" style="background-image: url('@Url.Content("~/Content/images9/banner-01.jpg")'); background-size: cover; padding: 300px 0px;">
     <div class="container">
         <div class="row justify-content-center">
-            <div class="col-lg-10" id="search-bar">
-                <h1 class="text-white text-center mb-3">Find a community near you!</h1>
-                <div class="property-search-field">
-                    <form class="row" data-bind="event: { submit: search }" data-search="form">
-                        <div class="col-lg-6 mt-3" data-select="multi" data-bind="event:{outerClick:hideHelpArea }">
-                            <label for="CityState">City / State</label>
-                            <input type="hidden" class="form-control autocomplete-input" data-bind="value: autocompleteLocation" />
-                            <input type="text" id="CityState" class="form-control opacity-input relative" placeholder="@StaticContent.Placeholder_LookupLocation" autocomplete="off" data-bind="textInput: lookupLocation, event: {focus: showHelpArea , click: showHelpArea , keydown: onKeyDown, dblclick: onDoubleClick }" />
-                            <div class="help-area"
-                                 style="display: none"
-                                 data-select="target"
-                                 data-bind="visible: isHelpAreaVisible">
-                                <!-- ko with: messages -->
-                                <div class="col-any-24 message"
-                                     data-bind="visible: isEmptyMessageVisible()">
-                                    You should enter an address
-                                </div>
-                                <div class="col-any-24 message"
-                                     data-bind="visible: isErrorMessageVisible(), text: errorMessage">
-                                </div>
-                                <div class="col-any-24 message"
-                                     data-bind="visible: isErrorMessageVisible() && $parent.autocomplete.length()">
-                                    Suggestions:
-                                </div>
-                                <!-- /ko -->
-                                <ul class="autocomplete"
-                                    style="position: absolute; background: white; width: 93%; z-index: 9999;"
-                                    data-bind="visible: isTemplatesVisible(), foreach: currentTemplates()">
-                                    <li>
-                                        <span class="col-any-12"
-                                              data-bind="text: template"></span>
-                                        <span class="col-any-12 txt-right" onclick="">
-                                            <a data-bind="href:'#',text: lookupLocation"></a>
-                                            @*href: url,*@
-                                        </span>
-                                    </li>
-                                </ul>
-                                <!-- ko with: autocomplete -->
-                                <ul class="autocomplete"
-                                    style="position: absolute; background: white; width: 93%; z-index: 9999;"
-                                    data-bind="visible: $root.isAutocompleteVisible(), foreach: list">
-                                    <li data-bind="
-                                                    click: $root.onAutocompleteClick
-                                                    , event: { mouseover: function() { $parent.select($index()) } }
-                                                   @*, event: { click: function() { $parent.select($index()) } }*@
-                                                   , css: { active: $index() === $parent.index() }">
-                                        <span class="col-any-18">
-                                            <a data-bind="click: function() {return true;},clickBubble:false">
-                                                <span data-bind="text: start"></span><span class="txt-bold" data-bind="text: end"></span>
-                                            </a>
-                                        </span>
-                                        <span class="col-any-6 txt-right"
-                                              data-bind="text: template"></span>
-                                    </li>
-                                </ul>
-                                <!-- /ko -->
-                            </div>
+            <div class="col-lg-9" id="search-bar">
+                <h1 class="text-white text-center mb-3">Find The Perfect Home to Buy Or Rent</h1>
+                <div class="property-search-field bg-white p-4">
+                    <form data-bind="event: { submit: search }" data-search="form">
+                        <div data-bind="with: searchTypes">
+                            <ul class="search-bar d-flex justify-content-between p-0 mb-2" data-bind="foreach: items">
+                                <li>
+                                    <div class="active arrow-wrapper"
+                                         data-bind="click: $parent.selectItem
+                                                , css: {
+                                                'active': selected()
+                                                , 'txt-left': $index() === 0
+                                                , 'txt-right': $index() === $parent.items.length - 1
+                                                , 'txt-center': $index() !== 0 && $index() !== $parent.items.length - 1 },
+                                                attr: {'id': 'clickOn_' + value}">
+                                        <span data-bind="text: text"></span>
+                                    </div>
+                                    <div class="arrow-down" data-bind="css:{'d-none': !selected()}"></div>
+                                </li>
+                            </ul>
                         </div>
-                        <div class="col-lg-6 mt-3">
-                            <label for="exampleInputName2">Housing Type</label>
-                            <div data-bind="with: searchTypes">
-                                <select class="form-control basic-select" id="exampleFormControlSelect2" data-bind="options:items,optionsText:'text',optionsValue:'value',optionsCaption:'Choose...'">
-                                </select>
-                                <div style="display:none">
-                                    <ul class="col-any-20 type-list row-wrap"
-                                        data-bind="foreach: items">
-                                        <li class="col-any-6"
-                                            data-bind="click: $parent.selectItem
-                                                   , css: {
-                                                       'active': selected()
-                                                       , 'txt-left': $index() === 0
-                                                       , 'txt-right': $index() === $parent.items.length - 1
-                                                       , 'txt-center': $index() !== 0 && $index() !== $parent.items.length - 1 },
-                                                        attr: {'id': 'clickOn_' + value}">
-                                            <span class="arrow-wrapper">
-                                                <span class="arrow"></span>
-                                                <span data-bind="text: text"></span>
+                        <div class="input-group" data-select="multi" data-bind="event:{outerClick:hideHelpArea }">
+                          @*  <div>*@
+                                <i class="fas fa-compass p-3 text-primary position-absolute"></i>
+                                <input type="hidden" class="form-control autocomplete-input" data-bind="value: autocompleteLocation" />
+                                <input type="text" id="CityState" class="form-control opacity-input relative pl-5" placeholder="Search for properties, suburbs, or keywords..." autocomplete="off" data-bind="textInput: lookupLocation, event: {focus: showHelpArea , click: showHelpArea , keydown: onKeyDown, dblclick: onDoubleClick }">
+                                @*<input type="text" id="CityState" class="form-control opacity-input relative" placeholder="@StaticContent.Placeholder_LookupLocation" autocomplete="off" data-bind="textInput: lookupLocation, event: {focus: showHelpArea , click: showHelpArea , keydown: onKeyDown, dblclick: onDoubleClick }" />*@
+                                <div class="help-area"
+                                     style="display: none;"
+                                     data-select="target"
+                                     data-bind="visible: isHelpAreaVisible">
+                                    <!-- ko with: messages -->
+                                    @*<div class="col-any-24 message p-1"
+                                                data-bind="visible: isEmptyMessageVisible()">
+                                            You should enter an address
+                                        </div>
+                                        <div class="col-any-24 message p-1"
+                                                data-bind="visible: isErrorMessageVisible(), text: errorMessage">
+                                        </div>
+                                        <div class="col-any-24 message p-1"
+                                                data-bind="visible: isErrorMessageVisible() && $parent.autocomplete.length()">
+                                            Suggestions:
+                                        </div>*@
+                                    <!-- /ko -->
+                                    <ul class="autocomplete"
+                                        style="position: absolute; background: white; width: 91.5%; z-index: 9999;"
+                                        data-bind="visible: isTemplatesVisible(), foreach: currentTemplates()">
+                                        <li class="p-1" data-bind="
+                                                click: $root.onAutocompleteClick">
+                                            <span class="col-any-12"
+                                                  data-bind="text: template"></span>
+                                            <span class="col-any-12 txt-right" onclick="">
+                                                <a data-bind="href:'#',text: lookupLocation"></a>
                                             </span>
                                         </li>
                                     </ul>
+                                    <!-- ko with: autocomplete -->
+                                    <ul class="autocomplete"
+                                        style="position: absolute; background: white; width: 91.5%; z-index: 9999;"
+                                        data-bind="visible: $root.isAutocompleteVisible(), foreach: list">
+                                        <li class="p-1" data-bind="
+                                                click: $root.onAutocompleteClick
+                                                , event: { mouseover: function() { $parent.select($index()) } }
+                                                @*, event: { click: function() { $parent.select($index()) } }*@
+                                                , css: { active: $index() === $parent.index() }">
+                                            <span class="col-any-18">
+                                                <a data-bind="click: function() {return true;},clickBubble:false">
+                                                    <span data-bind="text: start"></span><span class="txt-bold" data-bind="text: end"></span>
+                                                </a>
+                                            </span>
+                                            <span class="col-any-6 txt-right"
+                                                  data-bind="text: template"></span>
+                                        </li>
+                                    </ul>
+                                    <!-- /ko -->
                                 </div>
+                                <button type="submit" class="input-group-text d-flex align-items-center bg-primary text-white rounded-0" id="basic-addon2"><i class="fas fa-search p-2"></i>Search</button>
                             </div>
-                        </div>
-                        <div class="col-lg-6 mt-3">
-                            <span class="align-items-center">
-                                <button class="btn btn-primary btn-md d-flex align-items-center mt-4" type="submit" data-bind="css: { 'in-progress': pending }">
-                                    <i class="fas fa-search mr-1"></i>
-                                    <span>@StaticContent.Btn_Search</span>
-                                </button>
-                            </span>
-                        </div>
-
-
-                        @*<div class="col-lg-6 mt-3">
-                            <span class="align-items-center px-3">
-                                <button class="btn btn-primary btn-md d-flex align-items-center mt-4" type="submit" data-bind="css: { 'in-progress': pending }">
-                                    <i class="fas fa-search mr-1"></i>
-                                    <span>@StaticContent.Btn_Search</span>
-                                </button>
-                            </span>
+                           @* <div>
                             </div>*@
+                        @*</div>*@
                     </form>
-                    <div class="mt-3">
-                        <span>
-                            Unsure what housing is right for you or your loved one?
-                        </span>
-                        <a href="#" style="font-weight: 600;">
-                            Visit the Senior Living Choices and Types Page.
-                        </a>
-                    </div>
                 </div>
             </div>
-            @*<div class="col-lg-11">
-                    <p class="text-center text-white mt-3" style="font-size: 24px; font-weight: 600; line-height: 1.4;">
-                        Senior Living Choices is commited to providing you with the best resources
-                        to choose the perfect living community. Our steps to browse platform allows
-                        you to filter through thousands of 55+ active adult homes, independant living comunities,
-                        senior apparments, or assisted living communities, by location, care type, or specific anemities
-                    </p>
-                </div>*@
         </div>
     </div>
 </section>
-<section class="py-5 bg-primary">
+@*<section class="py-5 bg-primary">
     <div class="container">
                 <div class="row align-items-center">
                     <div class="col-lg-9">
@@ -173,8 +191,181 @@
                     </div>
                 </div>
             </div>
-        </section>
-@*<section class="space-ptb">
+        </div>
+    </div>
+</section>*@
+
+<section class="space-ptb">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="section-title text-center">
+                    <h2>POPULAR SENIOR LIVING LOCATIONS</h2>
+                    <p>
+                        Find your dream home from our Newly added properties
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-4 pb-4">
+                <div class="blog-post" style="position: relative;">
+                    <div class="blog-post-image">
+                        <img class="img-fluid" src="~/Content/images9/blog/01.jpg" alt="">
+                    </div>
+                    <div style="position: absolute; bottom: 1px; padding: 10px; color: white; ">
+                        <p class="mb-1" style="font-size: 21px; font-weight: bold;">Arizona</p>
+                        <span>10 Properties</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 pb-4">
+                <div class="blog-post" style="position: relative;">
+                    <div class="blog-post-image">
+                        <img class="img-fluid" src="~/Content/images9/blog/01.jpg" alt="">
+                    </div>
+                    <div style="position: absolute; bottom: 1px; padding: 10px; color: white; ">
+                        <p class="mb-1" style="font-size: 21px; font-weight: bold;">Arizona</p>
+                        <span>10 Properties</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 pb-4">
+                <div class="blog-post" style="position: relative;">
+                    <div class="blog-post-image">
+                        <img class="img-fluid" src="~/Content/images9/blog/01.jpg" alt="">
+                    </div>
+                    <div style="position: absolute; bottom: 1px; padding: 10px; color: white; ">
+                        <p class="mb-1" style="font-size: 21px; font-weight: bold;">Arizona</p>
+                        <span>10 Properties</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 pb-4">
+                <div class="blog-post" style="position: relative;">
+                    <div class="blog-post-image">
+                        <img class="img-fluid" src="~/Content/images9/blog/01.jpg" alt="">
+                    </div>
+                    <div style="position: absolute; bottom: 1px; padding: 10px; color: white; ">
+                        <p class="mb-1" style="font-size: 21px; font-weight: bold;">Arizona</p>
+                        <span>10 Properties</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 pb-4">
+                <div class="blog-post" style="position: relative;">
+                    <div class="blog-post-image">
+                        <img class="img-fluid" src="~/Content/images9/blog/01.jpg" alt="">
+                    </div>
+                    <div style="position: absolute; bottom: 1px; padding: 10px; color: white; ">
+                        <p class="mb-1" style="font-size: 21px; font-weight: bold;">Arizona</p>
+                        <span>10 Properties</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 pb-4">
+                <div class="blog-post" style="position: relative;">
+                    <div class="blog-post-image">
+                        <img class="img-fluid" src="~/Content/images9/blog/01.jpg" alt="">
+                    </div>
+                    <div style="position: absolute; bottom: 1px; padding: 10px; color: white; ">
+                        <p class="mb-1" style="font-size: 21px; font-weight: bold;">Arizona</p>
+                        <span>10 Properties</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            <button class="btn btn-md btn-primary text-white"><i class="fas fa-plus"></i>See All Sale Listings</button>
+        </div>
+    </div>
+</section>
+<section class="space-ptb" style="background-color: #f9f9f9">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="section-title text-center">
+                    <h2>MAJOR RETIREMENT STATES</h2>
+                    <p>
+                        Check the listings of the best dealer on Real Villa and contac the agency or its0 agent by phone or contact form
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-4 pb-4">
+                <div class="blog-post" style="position: relative;">
+                    <div class="blog-post-image">
+                        <img class="img-fluid" src="~/Content/images9/blog/01.jpg" alt="">
+                    </div>
+                    <div style="position: absolute; bottom: 1px; padding: 10px; color: white; ">
+                        <p class="mb-1" style="font-size: 21px; font-weight: bold;">Arizona</p>
+                        <span>10 Properties</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 pb-4">
+                <div class="blog-post" style="position: relative;">
+                    <div class="blog-post-image">
+                        <img class="img-fluid" src="~/Content/images9/blog/01.jpg" alt="">
+                    </div>
+                    <div style="position: absolute; bottom: 1px; padding: 10px; color: white; ">
+                        <p class="mb-1" style="font-size: 21px; font-weight: bold;">Arizona</p>
+                        <span>10 Properties</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 pb-4">
+                <div class="blog-post" style="position: relative;">
+                    <div class="blog-post-image">
+                        <img class="img-fluid" src="~/Content/images9/blog/01.jpg" alt="">
+                    </div>
+                    <div style="position: absolute; bottom: 1px; padding: 10px; color: white; ">
+                        <p class="mb-1" style="font-size: 21px; font-weight: bold;">Arizona</p>
+                        <span>10 Properties</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 pb-4">
+                <div class="blog-post" style="position: relative;">
+                    <div class="blog-post-image">
+                        <img class="img-fluid" src="~/Content/images9/blog/01.jpg" alt="">
+                    </div>
+                    <div style="position: absolute; bottom: 1px; padding: 10px; color: white; ">
+                        <p class="mb-1" style="font-size: 21px; font-weight: bold;">Arizona</p>
+                        <span>10 Properties</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 pb-4">
+                <div class="blog-post" style="position: relative;">
+                    <div class="blog-post-image">
+                        <img class="img-fluid" src="~/Content/images9/blog/01.jpg" alt="">
+                    </div>
+                    <div style="position: absolute; bottom: 1px; padding: 10px; color: white; ">
+                        <p class="mb-1" style="font-size: 21px; font-weight: bold;">Arizona</p>
+                        <span>10 Properties</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 pb-4">
+                <div class="blog-post" style="position: relative;">
+                    <div class="blog-post-image">
+                        <img class="img-fluid" src="~/Content/images9/blog/01.jpg" alt="">
+                    </div>
+                    <div style="position: absolute; bottom: 1px; padding: 10px; color: white; ">
+                        <p class="mb-1" style="font-size: 21px; font-weight: bold;">Arizona</p>
+                        <span>10 Properties</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            <button class="btn btn-md btn-primary text-white"><i class="fas fa-plus"></i>See All Sale Listings</button>
+        </div>
+    </div>
+</section>
+<section class="space-ptb">
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-lg-8">
@@ -373,3 +564,6 @@
         </div>
     </div>
 *@
+<script>
+   @* console.log(@Html.Json(Model));*@
+</script>
