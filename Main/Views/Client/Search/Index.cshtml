@@ -6,9 +6,9 @@
 }
 
 @*@{
-    ViewBag.Title = "Index";
-    Layout = "~/Views/Client/Shared/_BaseLayout.cshtml";
-}*@
+        ViewBag.Title = "Index";
+        Layout = "~/Views/Client/Shared/_BaseLayout.cshtml";
+    }*@
 
 @section scripts
 {
@@ -101,7 +101,6 @@
                             <label for="exampleInputName2">Housing Type</label>
                             <div data-bind="with: searchTypes">
                                 <select class="form-control basic-select" id="exampleFormControlSelect2" data-bind="options:items,optionsText:'text',optionsValue:'value',optionsCaption:'Choose...'">
-
                                 </select>
                                 <div style="display:none">
                                     <ul class="col-any-20 type-list row-wrap"
@@ -141,7 +140,7 @@
                                 </button>
                             </span>
                             </div>*@
-</form>
+                    </form>
                     <div class="mt-3">
                         <span>
                             Unsure what housing is right for you or your loved one?
@@ -152,30 +151,30 @@
                     </div>
                 </div>
             </div>
-            <div class="col-lg-11">
-                <p class="text-center text-white mt-3" style="font-size: 24px; font-weight: 600; line-height: 1.4;">
-                    Senior Living Choices is commited to providing you with the best resources
-                    to choose the perfect living community. Our steps to browse platform allows
-                    you to filter through thousands of 55+ active adult homes, independant living comunities, 
-                    senior apparments, or assisted living communities, by location, care type, or specific anemities
-                </p>
-            </div>
+            @*<div class="col-lg-11">
+                    <p class="text-center text-white mt-3" style="font-size: 24px; font-weight: 600; line-height: 1.4;">
+                        Senior Living Choices is commited to providing you with the best resources
+                        to choose the perfect living community. Our steps to browse platform allows
+                        you to filter through thousands of 55+ active adult homes, independant living comunities,
+                        senior apparments, or assisted living communities, by location, care type, or specific anemities
+                    </p>
+                </div>*@
         </div>
     </div>
 </section>
 <section class="py-5 bg-primary">
     <div class="container">
-        <div class="row align-items-center">
-            <div class="col-lg-9">
-                <h5 class="text-white mb-0">For seniors that choose to "Age in Place" search our in-home and lifestyle services instead. Click here to search for services available in your area.</h5>
+                <div class="row align-items-center">
+                    <div class="col-lg-9">
+                        <h5 class="text-white mb-0">For seniors that choose to "Age in Place" search our in-home and lifestyle services instead. Click here to search for services available in your area.</h5>
+                    </div>
+                    <div class="col-lg-3 text-lg-right mt-3 mt-lg-0">
+                        <a class="btn btn-white" href="/senior-care">Search Products & Services</a>
+                    </div>
+                </div>
             </div>
-            <div class="col-lg-3 text-lg-right mt-3 mt-lg-0">
-                <a class="btn btn-white" href="/senior-care">Search Products & Services</a>
-            </div>
-        </div>
-    </div>
-</section>
-<section class="space-ptb">
+        </section>
+@*<section class="space-ptb">
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-lg-8">
@@ -284,7 +283,7 @@
             </div>
         </div>
     </div>
-</section>
+</section>*@
 <section class="space-ptb bg-light">
     <div class="container">
         <div class="row justify-content-center">
