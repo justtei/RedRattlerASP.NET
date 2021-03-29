@@ -10,9 +10,6 @@ mslc.define('client/controls/select',
         function Select(items, value, options) {
 
             //#region Private
-            console.log(value);
-            console.log(options);
-            console.log(items);
             var self = this,
                 initial = null,
                 innerSelected = ko.observable(),
@@ -74,8 +71,6 @@ mslc.define('client/controls/select',
             }
 
             function selectItemmod(item) {
-                console.log(item);
-                
                 select(item);
             }
             

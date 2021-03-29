@@ -135,13 +135,19 @@ NOTE: This file contains all scripts for the actual Template.
   /*************************
       select2
   *************************/
-  POTENZA.select2 = function () {
+    POTENZA.select2 = function () {
+        consoole.log("asdfasdf");
     if ($('.basic-select').exists()) {
-      var select = jQuery(".basic-select");
-      if (select.length > 0) {
-        $('.basic-select').select2({dropdownCssClass : 'bigdrop'});
-      }
-
+        var select = jQuery(".basic-select");
+        var id = $(".single .active").attr('id').split('_')[1];
+        console.log('id', parseInt(id));
+        if (select.length > 0) {
+            $('.basic-select').select2({ dropdownCssClass: 'bigdrop' });
+            if (!isNaN(parseInt(id))) {
+                $('.basic-select').val(id);
+                $('.basic-select').select2().trigger('change');
+            }
+        }
     }
   };
 
@@ -223,36 +229,40 @@ NOTE: This file contains all scripts for the actual Template.
   //   }
   // };
 
-  POTENZA.rangesliders = function () {
-    $( "#slider-range" ).slider({
-      range: true,
-      min: 0,
-      max: 5000,
-      values: [ 0, 5000 ],
-      slide: function( event, ui ) {
-          $("#amount").val("$" + ui.values[0] + " - $" + ui.values[1]);
-      }
-    });
-    $( "#amount" ).val( "$" + $( "#slider-range" ).slider( "values", 0 ) +
-      " - $" + $( "#slider-range" ).slider( "values", 1 ) );
-  };
-
-
-   POTENZA.rangesliders = function () {
-      $( "#slider-range" ).slider({
-        range: true,
-        min: 0,
-        max: 4000,
-        values: [ 0, 1800 ],
-          slide: function (event, ui) {
+   /* POTENZA.rangesliders = function () {
+        $( "#slider-range" ).slider({
+          range: true,
+          min: min,
+          max: value,
+          values: [ 0, 5000 ],
+          slide: function( event, ui ) {
               $("#amount").val("$" + ui.values[0] + " - $" + ui.values[1]);
-              $("#min_value").val(ui.values[0]);
-              $("#max_value").val(ui.values[1]);
-              $("#min_value").trigger("change");
-              $("#max_value").trigger("change");
-        }
-      });
-      $( "#amount" ).val( "$" + $( "#slider-range" ).slider( "values", 0 ) +
+          }
+        });
+        $( "#amount" ).val( "$" + $( "#slider-range" ).slider( "values", 0 ) +
+          " - $" + $( "#slider-range" ).slider( "values", 1 ) );
+  };*/
+
+
+    POTENZA.rangesliders = function () {
+        var min, max;
+        min = $("#min_value").val() ? parseInt($("#min_value").val()) : 0;
+        max = $("#max_value").val() ? parseInt($("#max_value").val()) : 0;   
+        console.log('min', min, 'max', max);
+        $( "#slider-range" ).slider({
+            range: true,
+            min: 0,
+            max: 4000,
+            values: [ min, max ],
+            slide: function (event, ui) {
+                $("#amount").val("$" + ui.values[0] + " - $" + ui.values[1]);
+                $("#min_value").val(ui.values[0]);
+                $("#max_value").val(ui.values[1]);
+                $("#min_value").trigger("change");
+                $("#max_value").trigger("change");
+            }
+        });
+        $( "#amount" ).val( "$" + $( "#slider-range" ).slider( "values", 0 ) +
         " - $" + $( "#slider-range" ).slider( "values", 1 ) );
     };
 

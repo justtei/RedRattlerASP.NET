@@ -778,6 +778,7 @@
     <Content Include="Views\Client\Search\SearchTypeServiceProviders.cshtml" />
     <Content Include="Views\Client\Static\ContactUs.cshtml" />
     <Content Include="Views\Client\Static\AboutUs.cshtml" />
+    <Content Include="Views\Client\Static\SeniorType.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

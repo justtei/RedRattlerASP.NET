@@ -261,5 +261,10 @@ namespace Main.Controllers
 			return base.View("~/Views/Client/Static/AboutUs.cshtml", ClientViewModelsProvider.GetStaticContent(PageType.PrivacyPolicy));
 		}
 
+		public ActionResult SeniorType()
+		{
+			return base.View("~/Views/Client/Static/Sen.cshtml", ClientViewModelsProvider.GetStaticContent(PageType.PrivacyPolicy));
+		}
+
 	}
 }

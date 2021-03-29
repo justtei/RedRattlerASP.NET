@@ -135,9 +135,13 @@ mslc.define('client/widgets/searchBar',
             }
 
             function onAutocompleteClick() {
-                /*$form.submit();*/
+                console.log("onAutocomplete is clicked");
                 self.hideHelpArea();
                 self.autocomplete.clear();
+            }
+
+            function onTemplateClick(data) {
+                self.lookupLocation(data.lookupLocation);
             }
 
             function onAutocompleteClickWithoutRedirect() {
@@ -254,6 +258,7 @@ mslc.define('client/widgets/searchBar',
             this.onKeyDown = onKeyDown;
             this.onDoubleClick = onDoubleClick;
             this.onAutocompleteClick = onAutocompleteClick;
+            this.onTemplateClick = onTemplateClick;
             this.showHelpArea = showHelpArea;
             this.hideHelpArea = hideHelpArea;
             this.hideMessages = hideMessages;
