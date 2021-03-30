@@ -89,7 +89,7 @@
                                 <!-- /ko -->
                                 <ul class="autocomplete mb-1 p-1"
                                     data-bind="visible: isTemplatesVisible(), foreach: currentTemplates()">
-                                    <li>
+                                    <li data-bind="click: $root.onTemplateClick">
                                         <span data-bind="text: template"></span>
                                         <span class="txt-right" data-bind="text: lookupLocation"></span>
                                     </li>

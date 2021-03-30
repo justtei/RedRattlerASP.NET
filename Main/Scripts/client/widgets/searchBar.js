@@ -68,7 +68,6 @@ mslc.define('client/widgets/searchBar',
 
             function currentTemplates() {
                 var result = self.templates[self.searchTypes.selected.value()];
-                console.log(self.templates[self.searchTypes.selected.value()])
                 return result;
             }
 
@@ -141,6 +140,7 @@ mslc.define('client/widgets/searchBar',
             }
 
             function onTemplateClick(data) {
+                console.log("asdfasfd");
                 self.lookupLocation(data.lookupLocation);
             }
 
