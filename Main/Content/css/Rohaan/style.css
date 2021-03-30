@@ -1364,6 +1364,13 @@ button {
 }
 
 
+.help-area-index {
+    position: absolute;
+    background: white;
+    width: 90%;
+    z-index: 9999;
+}
+
 @media (max-width: 1700px) {
   .navbar-brand{
     width: 170px;
@@ -1410,6 +1417,14 @@ button {
 }
 
 @media (max-width: 991px) {
+
+    .help-area-index {
+        position: absolute;
+        background: white;
+        width: 95%;
+        z-index: 9999;
+    }
+
   .space-ptb {
     padding: 70px 0;
   }
@@ -1506,24 +1521,27 @@ button {
     margin-right: 5px;
   }
 
-    @media (max-width: 1400px) {
-        .search-bar > li > .arrow-wrapper > span {
-            font-size: 14px !important;
-        }
 
-        .search-bar input{
-            font-size: 15px !important;
-        }
+}
+
+
+
+@media (max-width: 1400px) {
+    .search-bar > li > .arrow-wrapper > span {
+        font-size: 14px !important;
     }
 
-    @media (max-width: 900px) {
-        .search-bar > li > .arrow-wrapper > span {
-            font-size: 12px !important;
-        }
+    .search-bar input {
+        font-size: 15px !important;
+    }
+}
 
-        .search-bar input {
-            font-size: 15px !important;
-        }
+@media (max-width: 900px) {
+    .search-bar > li > .arrow-wrapper > span {
+        font-size: 12px !important;
     }
 
+    .search-bar input {
+        font-size: 15px !important;
+    }
 }
