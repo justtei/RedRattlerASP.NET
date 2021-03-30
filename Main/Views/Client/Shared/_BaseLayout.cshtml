@@ -193,28 +193,48 @@
                             </a>
                             <div class="collapse navbar-collapse" id="navbarSupportedContent">
 
+                                <!--<ul class="navbar-nav m-auto">
+                                        @{var searchType = Model.SearchBar.SearchTypeList.Where(x => x.Text == "Senior Housing & Care").FirstOrDefault(); }
+                                        <li class="nav-item" @(searchType.Selected ? "style=color:#013f7a;" : string.Empty)>
+                                            <a class="nav-link" href="@searchType.UrlValue">
+                                                Senior Living Choices & Types
+                                            </a>
+                                        </li>
+                                        @{searchType = Model.SearchBar.SearchTypeList.Where(x => x.Text == "Active Adult Communities").FirstOrDefault(); }
+                                        <li class="nav-item" @(searchType.Selected ? "style=color:#013f7a;" : string.Empty)>
+                                            <a class="nav-link" href="@searchType.UrlValue">
+                                                Housing & Community Listings
+                                            </a>
+                                        </li>
+                                        @{searchType = Model.SearchBar.SearchTypeList.Where(x => x.Text == "Products & Services").FirstOrDefault(); }
+                                        <li class="nav-item" @(searchType.Selected ? "style=color:#013f7a;" : string.Empty)>
+                                            <a class="nav-link" href="@searchType.UrlValue">
+                                                Products & Services
+                                            </a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="@Url.RouteUrl("AboutUs")">About Us</a>-->
+                                @*     <a class="nav-link" href="/about-us">About Us</a>*@
+                                <!--</li>
+                                </ul>-->
                                 <ul class="navbar-nav m-auto">
-                                    @{var searchType = Model.SearchBar.SearchTypeList.Where(x => x.Text == "Senior Housing & Care").FirstOrDefault(); }
-                                    <li class="nav-item" @(searchType.Selected ? "style=color:#013f7a;" : string.Empty)>
-                                        <a class="nav-link" href="@searchType.UrlValue">
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="/senior-type">
                                             Senior Living Choices & Types
                                         </a>
                                     </li>
-                                    @{searchType = Model.SearchBar.SearchTypeList.Where(x => x.Text == "Active Adult Communities").FirstOrDefault(); }
-                                    <li class="nav-item" @(searchType.Selected ? "style=color:#013f7a;" : string.Empty)>
-                                        <a class="nav-link" href="@searchType.UrlValue">
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="/senior-housing">
                                             Housing & Community Listings
                                         </a>
                                     </li>
-                                    @{searchType = Model.SearchBar.SearchTypeList.Where(x => x.Text == "Products & Services").FirstOrDefault(); }
-                                    <li class="nav-item" @(searchType.Selected ? "style=color:#013f7a;" : string.Empty)>
-                                        <a class="nav-link" href="@searchType.UrlValue">
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="senior-care">
                                             Products & Services
                                         </a>
                                     </li>
                                     <li class="nav-item">
-                                       @* <a class="nav-link" href="@Url.RouteUrl("AboutUs")">About Us</a>*@
-                                        <a class="nav-link" href="/about-us">About Us</a>
+                                        <a class="nav-link" href="@Url.RouteUrl("AboutUs")">About Us</a>
                                     </li>
                                 </ul>
                             </div>
@@ -244,7 +264,7 @@
 
     @Scripts.Render("~/scripts/bundle/lib")
     <script src="~/Scripts/lib/jquery-ui.datepicker.js"></script>
-   @* <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&ver=7.0.10.008&#8221"></script>*@
+    @* <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&ver=7.0.10.008&#8221"></script>*@
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAHCxrduehCUJNdWjCslL_CTFb9ZykNj7s&callback=initMap&libraries=&v=weekly"
             async></script>
 
@@ -277,7 +297,6 @@
             }, 'ga-out-links-tracking');
     </script>
     <script>
-
         var select = $('#exampleFormControlSelect2');
         if (select != undefined) {
             select.on('change', function () {

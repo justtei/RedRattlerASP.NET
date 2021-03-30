@@ -87,6 +87,7 @@
             this.priceCaption = null;
             this.amenities = null;
             this.categories = null;
+            this.model = null;
 
             this.formRequest = formRequest;
             this.reset = reset;
@@ -95,6 +96,8 @@
             this.urlSource = remote.get.communitySearchUrl;
 
             function init() {
+                self.model = search;
+                console.log('shc.js model',search);
                 self.bathes = new Select(search.refine.bathes, search.bathes, util.selectFactory(bathName));
                 self.beds = new Select(search.refine.beds, search.beds, util.selectFactory(bedName));
                 self.min = new Numeric(search.minPrice);

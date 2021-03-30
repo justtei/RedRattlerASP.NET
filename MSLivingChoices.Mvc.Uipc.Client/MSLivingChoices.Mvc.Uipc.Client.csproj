@@ -32,28 +32,28 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="MSLivingChoices.Bcs">
-      <HintPath>..\..\..\..\Desktop\SeniorLiving12\Main\bin\MSLivingChoices.Bcs.dll</HintPath>
+      <HintPath>..\Dlls\MSLivingChoices.Bcs.dll</HintPath>
     </Reference>
     <Reference Include="MSLivingChoices.Bcs.Client">
-      <HintPath>..\..\..\..\Desktop\SeniorLiving12\Main\bin\MSLivingChoices.Bcs.Client.dll</HintPath>
+      <HintPath>..\Dlls\MSLivingChoices.Bcs.Client.dll</HintPath>
     </Reference>
     <Reference Include="MSLivingChoices.Configuration">
-      <HintPath>..\..\..\..\Desktop\SeniorLiving12\Main\bin\MSLivingChoices.Configuration.dll</HintPath>
+      <HintPath>..\Dlls\MSLivingChoices.Configuration.dll</HintPath>
     </Reference>
     <Reference Include="MSLivingChoices.Entities.Client">
       <HintPath>..\Main\bin\MSLivingChoices.Entities.Client.dll</HintPath>
     </Reference>
     <Reference Include="MSLivingChoices.Localization">
-      <HintPath>..\..\..\..\Desktop\SeniorLiving12\Main\bin\MSLivingChoices.Localization.dll</HintPath>
+      <HintPath>..\Dlls\MSLivingChoices.Localization.dll</HintPath>
     </Reference>
     <Reference Include="MSLivingChoices.Mvc.Uipc">
-      <HintPath>..\..\..\..\Desktop\SeniorLiving12\Main\bin\MSLivingChoices.Mvc.Uipc.dll</HintPath>
+      <HintPath>..\Dlls\MSLivingChoices.Mvc.Uipc.dll</HintPath>
     </Reference>
     <Reference Include="MSLivingChoices.Mvc.Utilities">
       <HintPath>..\Main\bin\MSLivingChoices.Mvc.Utilities.dll</HintPath>
     </Reference>
     <Reference Include="MSLivingChoices.Utilities">
-      <HintPath>..\..\..\..\Desktop\SeniorLiving12\Main\bin\MSLivingChoices.Utilities.dll</HintPath>
+      <HintPath>..\Dlls\MSLivingChoices.Utilities.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL" />
     <Reference Include="System" />

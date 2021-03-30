@@ -68,7 +68,6 @@ mslc.define('client/widgets/searchBar',
 
             function currentTemplates() {
                 var result = self.templates[self.searchTypes.selected.value()];
-                console.log(self.templates[self.searchTypes.selected.value()])
                 return result;
             }
 
@@ -135,9 +134,14 @@ mslc.define('client/widgets/searchBar',
             }
 
             function onAutocompleteClick() {
-                /*$form.submit();*/
+                console.log("onAutocomplete is clicked");
                 self.hideHelpArea();
                 self.autocomplete.clear();
+            }
+
+            function onTemplateClick(data) {
+                console.log("asdfasfd");
+                self.lookupLocation(data.lookupLocation);
             }
 
             function onAutocompleteClickWithoutRedirect() {
@@ -254,6 +258,7 @@ mslc.define('client/widgets/searchBar',
             this.onKeyDown = onKeyDown;
             this.onDoubleClick = onDoubleClick;
             this.onAutocompleteClick = onAutocompleteClick;
+            this.onTemplateClick = onTemplateClick;
             this.showHelpArea = showHelpArea;
             this.hideHelpArea = hideHelpArea;
             this.hideMessages = hideMessages;

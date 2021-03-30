@@ -47,88 +47,88 @@ inner banner -->
     </div>
 </div>
 
-<div class="container contact-us">
-    <div class="row row-cols-1 row-cols-md-3 g-4">
-        <div class="col px-4">
-            <div class="card text-center bg-light border-0 mt-2">
-                <div class="card-body pt-5">
-                    <span><i class="fa fa-map-marker-alt rounded-circle bg-primary text-white mb-3"></i></span>
-                    <h3 class="text-primary">Address</h3>
-                    <p class="card-text">PO Box 34062, Sab Antonio TX, 78265</p>
-                </div>
-            </div>
-        </div>
-        <div class="col px-4">
-            <div class="card text-center bg-light border-0 mt-2">
-                <div class="card-body pt-5">
-                    <span><i class="fa fa-phone rounded-circle bg-primary text-white mb-3"></i></span>
-                    <h3 class="text-primary">Phone</h3>
-                    <p class="card-text">210-867-7202</p>
-                </div>
-            </div>
-        </div>
-        <div class="col px-4">
-            <div class="card text-center bg-light border-0 mt-2">
-                <div class="card-body pt-5">
-                    <span><i class="fas fa-envelope-open-text rounded-circle bg-primary text-white mb-3"></i></span>
-                    <h3 class="text-primary">Email</h3>
-                    <p class="card-text">info@SeniorLivingChoices.com</p>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="row justify-content-center">
-        <div class="col-lg-10">
-            <div class="bg-light p-5 m-5">
-                <h3 class="text-primary">Need Assistance? Please Complete The Contact Form</h3>
-                <form method="post" id="ContactUs">
-                    <div class="row">
-                        <div class="col-lg-6">
-                            <label for="name" class="form-label">Name:</label>
-                            <div class="input-group mb-3">
-                                <input type="text" class="form-control" placeholder="Your Name" name="Name">
-                            </div>
-                        </div>
-                        <div class="col-lg-6">
-                            <label for="email" class="form-label">Email:</label>
-                            <div class="input-group mb-3">
-                                <input type="text" class="form-control" placeholder="Your Email" name="Email">
-                            </div>
-                        </div>
-                        <div class="col-lg-6">
-                            <label for="phone-number" class="form-label">Phone Number:</label>
-                            <div class="input-group mb-3">
-                                <input type="text" class="form-control" placeholder="Phone" name="PhoneNumber">
-                            </div>
-                        </div>
-                        @*<div class="col-lg-6">
-                            <label for="interest" class="form-label">I'm interested in</label>
-                            <div class="input-group mb-3">
-                                <select class="form-control basic-select" id="exampleFormControlSelect2" data-bind="options:items,optionsText:'text',optionsValue:'value',optionsCaption:'Choose...'">
-                                    <option>1</option>
-                                    <option>2</option>
-                                    <option>3</option>
-                                    <option>4</option>
-                                </select>
-                            </div>
-                        </div>*@
-                        <div class="col-lg-12">
-                            <label for="message" class="form-label">Message</label>
-                            <div class="input-group mb-3">
-                                <textarea class="form-control" name="Message" cols="30" rows="6" placeholder="Message"></textarea>
-                            </div>
-                        </div>
-                        <button class="btn btn-primary btn-md d-flex align-items-center mt-4 ml-3" type="submit">
-                            <span>Submit</span>
-                        </button>
+<section class="space-pt">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-4 mb-4 mb-lg-0">
+                <div class="feature-box text-center bg-light">
+                    <div class="feature-box-icon">
+                        <i class="fas fa-map-marker-alt"></i>
                     </div>
-                </form>
+                    <h4 class="feature-box-title text-primary">Address</h4>
+                    <div class="feature-box-content">
+                        <p class="mb-0">PO Box 34062, San Antonio TX, 78265</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 mb-4 mb-lg-0">
+                <div class="feature-box text-center bg-light">
+                    <div class="feature-box-icon">
+                        <i class="fas fa-phone-alt"></i>
+                    </div>
+                    <h4 class="feature-box-title text-primary">Phone</h4>
+                    <div class="feature-box-content">
+                        <p class="mb-0">210-867-7202</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="feature-box text-center bg-light">
+                    <div class="feature-box-icon">
+                        <i class="fas fa-envelope-open-text"></i>
+                    </div>
+                    <h4 class="feature-box-title text-primary">Email</h4>
+                    <div class="feature-box-content">
+                        <p class="mb-0">info@SeniorLivingChoices.com</p>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-</div>
-<script>
-    function ContactUs() {
+</section>
 
-    }
-</script>
+<section class="space-ptb">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-10">
+                <div class="login bg-light p-4 p-sm-5">
+                    <h3 class="text-primary">Need Assistance? Please Complete The Contact Form</h3>
+                    <form class="mt-4 row">
+                        <div class="form-group col-sm-6">
+                            <label for="exampleInputName">Name</label>
+                            <input type="text" class="form-control" id="exampleInputname" placeholder="Your Name">
+                        </div>
+                        <div class="form-group col-sm-6">
+                            <label for="exampleInputName">Email:</label>
+                            <input type="text" class="form-control" id="exampleInputname" placeholder="Your Email">
+                        </div>
+                        <div class="form-group col-sm-6">
+                            <label for="exampleInputName">Phone Number</label>
+                            <input type="text" class="form-control" id="exampleInputname" placeholder="Phone">
+                        </div>
+                        <div class="form-group col-sm-6">
+                            <label for="exampleInputName">I’m interested in</label>
+                            <select class="form-control" id="exampleFormControlSelect1">
+                                <option>I’m interested in</option>
+                                <option>2</option>
+                                <option>3</option>
+                                <option>4</option>
+                                <option>5</option>
+                            </select>
+                        </div>
+                        <div class="col-12 form-group">
+                            <label for="exampleFormControlTextarea1">Message</label>
+                            <textarea class="form-control" id="exampleFormControlTextarea1" placeholder="Message" rows="3"></textarea>
+                        </div>
+                        <div class="col-6 d-sm-flex align-items-center">
+                            <button type="submit" class="btn btn-primary">Submit</button>
+
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+

@@ -65,7 +65,7 @@
         function init() {
             var defaultoptions = {
                 defaultValue: 0,
-                thousandSeparator: ',',
+                thousandSeparator: '',
                 fractionSeparator: '.',
             };
 

@@ -42,6 +42,10 @@
     .header {
         box-shadow: 0px 0px 0px 0px rgb(27 27 41 / 15%);
     }
+
+    .select2.select2-container.select2-container--default {
+        width: 100% !important;
+    }
 </style>
 @section scripts
 {
@@ -159,7 +163,7 @@
 }
 @if (((IEnumerable<dynamic>)Model.Result).Where(x => x.DisplayProperties.Featured == true).Count() != 0 && Model.Result != null)
 {
-     <section style="padding-top:20px;">
+    <section style="padding-top:20px;">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-lg-10">
@@ -212,7 +216,7 @@
                                         </div>
                                     </div>
                                     <div class="property-detail bg-light p-4">
-                                        <h5 class="property-title"><a href="@community.DetailsUrl">@(community.DisplayProperties.Name ? community.Name : "View details")</a></h5>
+                                        <h5 class="property-title text-truncate"><a href="@community.DetailsUrl">@(community.DisplayProperties.Name ? community.Name : "View details")</a></h5>
                                         <ul class="pl-0">
                                             <li class="property-address"><i class="fas fa-map-marker-alt fa-1x mr-1 text-secondary"></i>@community.Address.City, @community.Address.StateCode</li>
                                             <li class="property-address"><i class="fas fa-building fa-1x text-secondary mr-1"></i>55+ Community  •  Apartments</li>
@@ -248,358 +252,46 @@
 
 @*@{ Html.RenderPartial("~/Views/Client/Partial/SearchBarForm.cshtml"); }
     @{ Html.RenderPartial("~/Views/Client/Partial/Breadcrumbs.cshtml", new ViewDataDictionary(Model.Breadcrumbs)); }*@
-<form id="refine" data-bind="event: { 'submit': apply }" class=" col-any-16 row-wrap">
-    <section class="space-ptb">
-        <div class="container">
-            <div class="row">
-                <div class="col-sm-12">
-                    <div class="section-title">
-                        <h2>Quick Filters</h2>
-                    </div>
-                </div>
+@if (!Model.Result.Any())
+{
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 col-md-6 mb-3">
+                <img alt="No results" style="width: 100%;" src="~/Content/images/stub/no-result.png" />
             </div>
-            <div class="row">
-                <div class="col-lg-5">
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <div class="refine" data-bind="with: controls">
-                                <div class="col-any-4 d-none"
-                                     data-select="multi">
-                                    <div class="tile"
-                                         data-select="caption">
-                                        <span class="header">
-                                            Price
-                                            <i class="icon-arrow-down"></i>
-                                        </span>
-                                        <div data-bind="text: priceCaption"></div>
-                                    </div>
-                                    <div class="items multi pad" style="position: absolute; z-index: 999; background-color: white; padding: 20px;"
-                                         data-select="target">
-                                        <label class="input-group">
-                                            <input class="form-control"
-                                                   id="min_value"
-                                                   type="text"
-                                                   placeholder="Min price"
-                                                   maxlength="10"
-                                                   data-bind="value: min.text" />
-                                        </label>
-                                        <label class="input-group ind-s">
-                                            <input class="form-control"
-                                                   id="max_value"
-                                                   type="text"
-                                                   maxlength="10"
-                                                   placeholder="Max price"
-                                                   data-bind="value: max.text" />
-                                        </label>
-                                    </div>
-                                </div>
-                                <div class="price-range-slider">
-                                    <p class="text-dark">Monthly Price</p>
-                                    <div id="slider-range" class="range-bar ui-slider ui-corner-all ui-slider-horizontal ui-widget ui-widget-content"></div>
-                                    <p class="range-value">
-                                        <input type="text" id="amount" readonly="">
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-7 mt-lg-0 mt-4">
-                    <div class="row d-flex align-items-end">
-                        <div class="col-lg-9" data-bind="with: controls">
-                            <div data-select="single" data-bind="with: beds">
-                                <label for="exampleInputName">Bedrooms</label>
-                                <select class="form-control basic-select item single" id="exampleFormControlSelect2"
-                                        data-bind="options:items, optionsText:'text',optionsValue:'value',optionsCaption:'Choose...'">
-                                </select>
-                                <div class="items single d-none"
-                                     data-bind="foreach: items"
-                                     data-select="">
-                                    <div data-bind="css: { 'active': selected }, click: $parent.selectItem, text: formatted, attr: {'id': 'clickOn_' + value}"></div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-3">
-                            <button class="btn btn-md btn-primary mt-2" type="submit">
-                                <span>Filter</span>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <div class="row">
-        <div class="col-md-12">
-
-            @*<div class="clearfix">
-                    <h1 class="header-brand-blue inline-block">@Model.Seo.Header</h1>
-                </div>
-
-                @if (!Model.Seo.MarketCopy.IsNullOrEmpty())
-                {
-                    <p class="ind">@Model.Seo.MarketCopy</p>
-                }*@
-
-            @if (!Model.Result.Any())
-            {
-
-                <div class="container">
-                    <div class="row">
-                        <div class="col-lg-6 col-md-6 mb-3">
-                            <img alt="No results" style="width: 100%;" src="~/Content/images/stub/no-result.png" />
-                        </div>
-                        <span class="col-lg-6 col-md-6 mb-3 text-justify d-flex align-items-center">
-                            We could not find any listings in this area or your search filters may be too strict. Please try to clear all filters or
-                            search for nearby locations with listings. Our information is updated daily so please check back soon.
-                        </span>
-                    </div>
-                </div>
-            }
-
-            @if (Model.Result.Any())
-            {
-
-                <section class="space-ptb bg-light">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-lg-3">
-                                <div class="sidebar">
-                                    <div class="widget mb-3">
-                                        @if (Model.DisplayProperties.BookOrder)
-                                        {
-                                            Html.RenderPartial("~/Views/Client/Search/Partial/Order.cshtml");
-                                        }
-                                    </div>
-                                    <div class="refine" data-bind="with: controls">
-                                        <div class="widget mb-3">
-                                            <div class="widget-title">
-                                                <h3 class="text-white mb-0">Refine Your Search</h3>
-                                            </div>
-                                            <div class="widget-content">
-                                                <h6>Choose Listing Types</h6>
-                                                <div class="col-any-4"
-                                                     data-bind="with: categories"
-                                                     data-select="multi">
-                                                    <div class="items multi list-col-any-2"
-                                                         data-bind="foreach: items"
-                                                         data-select="">
-                                                        <div class="mb-1" data-bind="css: { 'active': selected }">
-                                                            <div style="position: relative; display: block; padding-left: 1.5rem;">
-                                                                <input type="checkbox" style="position: absolute; left: 0; width: 17px; height: 17px;"
-                                                                       data-bind="checked: selected, css: { 'checked': selected }" />
-                                                                <span style="position: relative; vertical-align: top; top: -3px;" data-bind="text: text, css: { 'checked': selected }"></span>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-any-4 submit" style="display: none" data-bind="visible: $data">
-                                                    <button class="btn btn-md btn-primary mt-2" type="submit">
-                                                        <span>Update Search</span>
-                                                    </button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="widget mb-3">
-                                            <div class="widget-title">
-                                                <h3 class="text-white mb-0">Property Amenities</h3>
-                                            </div>
-                                            <div class="widget-content">
-                                                <div class="col-any-4 clk" data-bind="with: amenities" data-select="multi">
-                                                    <div class="items multi list-col-any-2 clk"
-                                                         data-bind="foreach: items"
-                                                         data-select="">
-                                                        <div class="mb-1" data-bind="css: { 'active': selected }">
-                                                            <div style="position: relative; display: block; padding-left: 1.5rem;">
-                                                                <input type="checkbox" style="position: absolute; left: 0; width: 17px; height: 17px;"
-                                                                       data-bind="checked: selected, css: { 'checked': selected }" />
-                                                                <span style="position: relative; vertical-align: top; top: -3px;" data-bind="text: text"></span>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-any-4 submit" style="display: none" data-bind="visible: $data">
-                                                    <button class="btn btn-md btn-primary mt-2" type="submit">
-                                                        <span>Update Search</span>
-                                                    </button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-9 mt-lg-0 mt-5">
-                                <div class="row mb-lg-4 mb-md-3">
-                                    <div class="col-lg-12">
-                                        <div class="property-filter d-md-flex d-block">
-                                            <div class="d-md-flex d-block mb-0">
-                                                <h2>Property Listing</h2>
-                                            </div>
-                                            <div class="property-view-list d-md-flex d-block mb-0 mt-4 mt-sm-0">
-                                                <a class="btn btn-outline mt-md-0 mt-2" href="javascript:;" onclick="listShow()"><i class="fa fa-list mr-1"></i> List View</a>
-                                                <a class="btn btn-outline mt-md-0 mt-2 ml-sm-2 ml-0" href="javascript:;" onclick="mapShow()"><i class="fas fa-map-marker-alt mr-1"></i> Map View</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="map-container" style="display: none;">
-                                    <div id="map" style="width:100%; height: 30em;"></div>
-                                </div>
-                                <div id="list_view">
-                                    @foreach (var community in Model.Result)
-                                    {
-                                        if (community.DisplayProperties.Featured)
-                                        {
-                                            continue;
-                                        }
-
-                                        <div class="row">
-                                            <div class="col-lg-12 mb-lg-4 mb-md-3">
-                                                <div class="property-list bg-white">
-                                                    <div class="row no-gutters">
-                                                        <div class="col-md-5">
-                                                            <div class="property-image h-100 bg-overlay-gradient-04">
-                                                                @if (community.DisplayProperties.Image)
-                                                                {
-                                                                    <a href="@community.DetailsUrl">
-                                                                        @RenderHelper.ThumbnailWithMicrodata(community.Image, "img-fluid")
-                                                                    </a>
-                                                                }
-                                                                <!-- <div class="property-lable">
-                                                                    <span class="badge badge-md">PET FRIENDLY</span>
-                                                                </div> -->
-                                                                <div class="property-prize">
-                                                                    @if (community.DisplayProperties.Price)
-                                                                    {
-                                                                        <span class="badge badge-md">@community.Price</span>
-                                                                    }
-                                                                    else
-                                                                    {
-                                                                        <span class="badge badge-md">$&nbsp;&nbsp;?</span>
-                                                                    }
-                                                                </div>
-                                                                <div class="property-room">
-                                                                    @if (community.DisplayProperties.Beds)
-                                                                    {
-                                                                        <span class="badge badge-md"><i class="fas fa-bed fa-1x text-white mr-1"></i>@community.Beds</span>
-                                                                    }
-                                                                    else
-                                                                    {
-                                                                        <span class="badge badge-md"><i class="fas fa-bed fa-1x text-white mr-1"></i>?</span>
-                                                                    }
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-md-7">
-                                                            <div class="property-detail p-4">
-                                                                <h3 class="property-title"><a href="@community.DetailsUrl">@(community.DisplayProperties.Name ? community.Name : "View details")</a></h3>
-                                                                <ul class="pl-0">
-                                                                    <li class="property-address mb-1">
-                                                                        <i class="fas fa-map-marker-alt fa-1x mr-1 text-primary"></i> EXACT -@community.Address.City, @community.Address.StateCode @community.Address.Zip
-                                                                    </li>
-
-                                                                    @if (community.DisplayProperties.Phone)
-                                                                    {
-                                                                        <li class="property-address mb-1">
-                                                                            <i class="fas fa-phone-alt fa-1x text-primary mr-1"></i>
-                                                                            @community.Phone
-                                                                        </li>
-                                                                    }
-                                                                    else
-                                                                    {
-                                                                        <li class="property-address mb-1">
-                                                                            <i class="fas fa-phone-alt fa-1x text-primary mr-1"></i>
-                                                                        </li>
-                                                                    }
-                                                                </ul>
-                                                                @*<p>@community.Description</p>*@
-                                                                <p>
-                                                                    <address class="ind-s" itemprop="address" itemscope itemtype="http://schema.org/PostalAddress">
-                                                                        <span class="address-line">
-                                                                            <span itemprop="streetAddress">@community.Address.Line</span>
-                                                                            @if (community.DisplayProperties.RadiusDesignation)
-                                                                            {
-                                                                                <span class="txt-lower txt-decr txt-brand-blue txt-bold radius-designation"
-                                                                                      data-hint="#radius-designation-hint">@community.SearchRadiusDesignation</span>
-                                                                                }
-                                                                        </span>
-                                                                        <br />
-                                                                        <span class="city" itemprop="addressLocality">@community.Address.City</span>
-                                                                        <span class="state" itemprop="addressRegion">@community.Address.StateCode</span>
-                                                                        <span itemprop="postalCode">@community.Address.Zip</span>
-                                                                    </address>
-                                                                </p>
-                                                                <div class="mb-3">
-                                                                    <a href="@community.DetailsUrl">Read More <i class="fas fa-angle-right"></i></a>
-                                                                </div>
-                                                                <a class="btn btn-outline btn-sm mb-1 mr-2 ml-0 mt-1" href="@community.DetailsUrl">View Profile</a>
-                                                                @if (community.DisplayProperties.LeadForm)
-                                                                {
-                                                                    <button class="btn btn-primary btn-sm ml-0"
-                                                                            data-toggle="lead-form"
-                                                                            data-accessor="attr"
-                                                                            data-listing-id="@community.Id"
-                                                                            data-listing-name="@community.Name"
-                                                                            data-message="@community.GetLeadFormMessage()">
-                                                                        Request Information
-                                                                    </button>
-                                                                }
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    }
-                                </div>
-                                @* @if (Model.Paging.Pages.Any())
-                                    {*@
-                                <style>
-                                    .pagination > li.first > a:before {
-                                        content: '<';
-                                    }
-
-                                    .pagination > li.prev > a:before {
-                                        content: '<<';
-                                    }
-
-                                    .pagination > li.next > a:before {
-                                        content: '>';
-                                    }
-
-                                    .pagination > li.last > a:before {
-                                        content: '>>';
-                                    }
-                                </style>
-                                <ul class="pagination mt-4 mb-0">
-                                    @foreach (var page in Model.Paging.Pages)
-                                    {
-                                        @*<li class="page-item @page.Css"><a class="page-link" href="@page.Href">@page.InnerText</a></li>*@
-                                        <li class="page-item @page.Css"><a class="page-link" href="@page.Href">@page.InnerText</a></li>
-                                        @*<li class="@page.Css">
-                                            </li>*@
-                                    }
-                                </ul>
-                                @*  }*@
-                                @*<ul class="pagination mt-4 mb-0">
-                                        <li class="page-item page-prev">
-                                            <span class="page-link">Previous</span>
-                                        </li>
-                                        <li class="page-item"><a class="page-link" href="#">01</a></li>
-                                        <li class="page-item"><a class="page-link" href="#">02</a></li>
-                                        <li class="page-item"><a class="page-link" href="#">03</a></li>
-                                        <li class="page-item page-next">
-                                            <a class="page-link" href="#">Next</a>
-                                        </li>
-                                    </ul>*@
-                            </div>
-                        </div>
-                    </div>
-                </section>
-            }
+            <span class="col-lg-6 col-md-6 mb-3 text-justify d-flex align-items-center">
+                We could not find any listings in this area or your search filters may be too strict. Please try to clear all filters or
+                search for nearby locations with listings. Our information is updated daily so please check back soon.
+            </span>
         </div>
     </div>
-</form>
+}
+
+@if(Model.Result.Any()){
+    switch (Model.PageType.ToRefineType())
+    {
+        case RefineType.SeniorHousing:
+            {
+                Html.RenderPartial("~/Views/Client/Search/Partial/Refine/Shc.cshtml");
+                break;
+            }
+        case RefineType.ActiveCommunity:
+        case RefineType.ActiveHome:
+            {
+                Html.RenderPartial("~/Views/Client/Search/Partial/Refine/AacAah.cshtml");
+                break;
+            }
+        case RefineType.Service:
+            {
+                Html.RenderPartial("~/Views/Client/Search/Partial/Refine/Pas.cshtml");
+                break;
+            }
+    }
+}
+
+
+
+
 <script>
     function GoLikeIt(div) {
         var Ndiv = div.nextElementSibling;
@@ -652,4 +344,4 @@
         }
     }
     console.log(@Html.Json(Model));
-    </script>
+</script>
