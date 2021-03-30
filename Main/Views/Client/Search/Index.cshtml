@@ -22,7 +22,7 @@
     .help-area {
         position: absolute;
         background: white;
-        width: 93%;
+        width: 100%;
         z-index: 9999;
     }
 
@@ -72,7 +72,7 @@
                 <h1 class="text-white text-center mb-3">Find a community near you!</h1>
                 <div class="property-search-field">
                     <form class="row" data-bind="event: { submit: search }" data-search="form">
-                        <div class="col-lg-6 mt-3" data-select="multi" data-bind="event:{outerClick:hideHelpArea }">
+                        <div class="col-lg-6 mt-3 mx-3 p-0" data-select="multi" data-bind="event:{outerClick:hideHelpArea }">
                             <label for="CityState">City / State</label>
                             <input type="hidden" class="form-control autocomplete-input" data-bind="value: autocompleteLocation" />
                             <input type="text" id="CityState" class="form-control opacity-input relative" placeholder="@StaticContent.Placeholder_LookupLocation" autocomplete="off" data-bind="textInput: lookupLocation, event: {focus: showHelpArea , click: showHelpArea , keydown: onKeyDown, dblclick: onDoubleClick }" />
@@ -114,7 +114,7 @@
                                 <!-- /ko -->
                             </div>
                         </div>
-                        <div class="col-lg-6 mt-3">
+                        <div class="col-lg-6 mt-3 mx-3 p-0">
                             <label for="exampleInputName2">Housing Type</label>
                             <div data-bind="with: searchTypes">
                                 <select class="form-control basic-select" id="exampleFormControlSelect2" data-bind="options:items,optionsText:'text',optionsValue:'value',optionsCaption:'Choose...'">
@@ -139,7 +139,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-6 mt-3">
+                        <div class="col-lg-6 mt-3 mx-3 p-0">
                             <span class="align-items-center">
                                 <button class="btn btn-primary btn-md d-flex align-items-center" type="submit" data-bind="css: { 'in-progress': pending }">
                                     <i class="fas fa-search mr-1"></i>

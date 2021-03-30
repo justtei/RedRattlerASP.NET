@@ -136,11 +136,9 @@ NOTE: This file contains all scripts for the actual Template.
       select2
   *************************/
     POTENZA.select2 = function () {
-        consoole.log("asdfasdf");
     if ($('.basic-select').exists()) {
         var select = jQuery(".basic-select");
-        var id = $(".single .active").attr('id').split('_')[1];
-        console.log('id', parseInt(id));
+        if ($('.single .active').exists()) var id = $(".single .active").attr('id').split('_')[1];
         if (select.length > 0) {
             $('.basic-select').select2({ dropdownCssClass: 'bigdrop' });
             if (!isNaN(parseInt(id))) {
