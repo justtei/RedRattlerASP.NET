@@ -9,7 +9,29 @@
         mslc.resolve(['client/analytics/google'], function (ga) {
             ga.trackPageView();
         }, 'ga-tracking');
+
+        $('#ContactUs').submit(function (e) {
+            e.preventDefault();
+            $.ajax({
+                type: 'Post',
+                url: '@Url.Action("ContactUs", "Client")',
+                data: $('#ContactUs').serialize(),
+                success: (res) => {
+                    console.log(res);
+                    if (res.success == true) {
+                        ContactSucceed();
+                    }
+                    else {
+                        alert('Something Went Wrong');
+                    }
+                }
+            });
+        });
+        function ContactSucceed() {
+            // FOR ROMAN TO USE ACCORDINGLY...
+        }
     </script>
+
 }
 
 
@@ -59,27 +81,27 @@ inner banner -->
         <div class="col-lg-10">
             <div class="bg-light p-5 m-5">
                 <h3 class="text-primary">Need Assistance? Please Complete The Contact Form</h3>
-                <form action="#" method="post">
+                <form method="post" id="ContactUs">
                     <div class="row">
                         <div class="col-lg-6">
                             <label for="name" class="form-label">Name:</label>
                             <div class="input-group mb-3">
-                                <input type="text" class="form-control" placeholder="Your Name">
+                                <input type="text" class="form-control" placeholder="Your Name" name="Name">
                             </div>
                         </div>
                         <div class="col-lg-6">
                             <label for="email" class="form-label">Email:</label>
                             <div class="input-group mb-3">
-                                <input type="text" class="form-control" placeholder="Your Email">
+                                <input type="text" class="form-control" placeholder="Your Email" name="Email">
                             </div>
                         </div>
                         <div class="col-lg-6">
                             <label for="phone-number" class="form-label">Phone Number:</label>
                             <div class="input-group mb-3">
-                                <input type="text" class="form-control" placeholder="Phone">
+                                <input type="text" class="form-control" placeholder="Phone" name="PhoneNumber">
                             </div>
                         </div>
-                        <div class="col-lg-6">
+                        @*<div class="col-lg-6">
                             <label for="interest" class="form-label">I'm interested in</label>
                             <div class="input-group mb-3">
                                 <select class="form-control basic-select" id="exampleFormControlSelect2" data-bind="options:items,optionsText:'text',optionsValue:'value',optionsCaption:'Choose...'">
@@ -89,11 +111,11 @@ inner banner -->
                                     <option>4</option>
                                 </select>
                             </div>
-                        </div>
+                        </div>*@
                         <div class="col-lg-12">
                             <label for="message" class="form-label">Message</label>
                             <div class="input-group mb-3">
-                                <textarea class="form-control" name="message" cols="30" rows="6" placeholder="Message"></textarea>
+                                <textarea class="form-control" name="Message" cols="30" rows="6" placeholder="Message"></textarea>
                             </div>
                         </div>
                         <button class="btn btn-primary btn-md d-flex align-items-center mt-4 ml-3" type="submit">
@@ -105,3 +127,8 @@ inner banner -->
         </div>
     </div>
 </div>
+<script>
+    function ContactUs() {
+
+    }
+</script>

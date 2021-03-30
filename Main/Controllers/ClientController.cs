@@ -1,3 +1,4 @@
+using Main.Models;
 using MSLivingChoices.Mvc.Uipc.Client.CompetitiveFormatters.Core;
 using MSLivingChoices.Mvc.Uipc.Client.Enums;
 using MSLivingChoices.Mvc.Uipc.Client.Helpers;
@@ -6,6 +7,7 @@ using MSLivingChoices.Mvc.Uipc.Client.ViewModelsProviders;
 using MSLivingChoices.Mvc.Uipc.Enums;
 using MSLivingChoices.Mvc.Uipc.Results;
 using System;
+using System.Net.Mail;
 using System.Web.Mvc;
 
 namespace Main.Controllers
@@ -50,7 +52,6 @@ namespace Main.Controllers
 		{
 			return new AllowGetJsonResult(MslcUrlBuilder.PagingUrl(searchVm, 1));
 		}
-
 		public ActionResult Ebook()
 		{
 			return base.View("~/Views/Client/Static/Ebook.cshtml", ClientViewModelsProvider.GetStaticContent(PageType.Ebook));
@@ -154,18 +155,15 @@ namespace Main.Controllers
 			}
 			return base.View("~/Views/Client/Print/ServiceProviderDirection.cshtml", result);
 		}
-
 		public ActionResult PrivacyPolicy()
 		{
 			return base.View("~/Views/Client/Static/PrivacyPolicy.cshtml", ClientViewModelsProvider.GetStaticContent(PageType.PrivacyPolicy));
 		}
-
 		[HttpPost]
 		public JsonResult ProcessLead(LeadFormVm leadFormVm)
 		{
 			return new JsonNetResult(ClientViewModelsProvider.ProcessLead(leadFormVm));
 		}
-
 		[HttpGet]
 		public JsonResult ProviderSearchUrl(ServiceProvidersSearchVm searchVm)
 		{
@@ -186,7 +184,6 @@ namespace Main.Controllers
 			}
 			return base.Http301Redirect(result.Seo.CanonicalUrl);
 		}
-
 		[HttpGet]
 		public JsonResult SearchFromBar(LookupLocationVm lookupLocation)
 		{
@@ -256,6 +253,36 @@ namespace Main.Controllers
 		{
 			return base.View("~/Views/Client/Static/ContactUs.cshtml", ClientViewModelsProvider.GetStaticContent(PageType.PrivacyPolicy));
 		}
+		[HttpPost]
+		public ActionResult ContactUs(ContactUs contactUs)
+		{
+			string from = contactUs.Email;
+
+			string to = "kameron.seniorliving@gmail.com";
+
+			string subject = contactUs.Name+" Contacted From Contact Us Form.";
+
+			string message = contactUs.Message;
+
+			SmtpClient objSmtpClient = new SmtpClient();
+			objSmtpClient.UseDefaultCredentials = true;
+			objSmtpClient.Host = "smtp.gmail.com";
+
+			objSmtpClient.Port = 587;
+
+			objSmtpClient.EnableSsl = true;
+			try
+			{
+				objSmtpClient.Send(from, to, subject, message);
+			}
+            catch (Exception ex){
+				return new AllowGetJsonResult(new { success = false,Message = ex.Message } );
+			}
+
+
+			return new AllowGetJsonResult(new { success = true} );
+		}
+
 		public ActionResult AboutUs()
 		{
 			return base.View("~/Views/Client/Static/AboutUs.cshtml", ClientViewModelsProvider.GetStaticContent(PageType.PrivacyPolicy));
