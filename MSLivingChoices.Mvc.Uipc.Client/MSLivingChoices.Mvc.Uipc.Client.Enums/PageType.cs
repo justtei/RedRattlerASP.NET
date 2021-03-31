@@ -27,6 +27,9 @@ namespace MSLivingChoices.Mvc.Uipc.Client.Enums
 		ServiceProviderDetails = 21,
 		PrivacyPolicy = 22,
 		TermsOfUse = 23,
+		ContactUs = 27,
+		AboutUs = 28,
+		SeniorType = 29,
 		Error404 = 24,
 		Error500 = 25,
 		Ebook = 26

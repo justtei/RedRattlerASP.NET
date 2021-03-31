@@ -101,19 +101,19 @@ namespace Main
 			{
 				controller = "Client",
 				action = "ContactUs",
-				pageType = PageType.PrivacyPolicy
+				pageType = PageType.ContactUs
 			});
 			routes.MapRoute("AboutUs", "about-us", new
 			{
 				controller = "Client",
 				action = "AboutUs",
-				pageType = PageType.PrivacyPolicy
+				pageType = PageType.AboutUs
 			});
 			routes.MapRoute("SeniorType", "senior-type", new
 			{
 				controller = "Client",
 				action = "SeniorType",
-				pageType = PageType.PrivacyPolicy
+				pageType = PageType.SeniorType
 			});
 			routes.MapRoute("Ebook", "ebook", new
 			{

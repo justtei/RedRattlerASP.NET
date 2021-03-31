@@ -71,17 +71,17 @@
     }
 }
 
-<div class="head-search-bar">
+<div class="inner-header">
     <div class="container">
         <div class="row">
-            @{ Html.RenderPartial("~/Views/Client/Partial/SearchBarForm.cshtml"); }
+            <div class="col-sm-12 text-center">
+                <h1 class="inner-title text-white">Product & Service Details</h1>
+            </div>
         </div>
     </div>
 </div>
 
-@{ Html.RenderPartial("~/Views/Client/Partial/Breadcrumbs.cshtml", new ViewDataDictionary(Model.Breadcrumbs)); }
-
-<section class="space-pt" itemscope itemtype="http://schema.org/ProfessionalService">
+<section class="space-pt mb-4" itemscope itemtype="http://schema.org/ProfessionalService">
     <div class="container">
         <div class="row" id="photo">
             <div class="col-lg-7 mb-4 mb-md-5 mb-lg-0">
@@ -204,180 +204,7 @@
 </section>
 
 
-<div class="ind-s container content">
-    <div class="row details"
-         itemscope itemtype="http://schema.org/ProfessionalService">
-        <div class="col-any-17">
-            <div class="row">
-                <h1 class="header-brand-blue name col-any-24" itemprop="name">
-                    @Model.Seo.Header
-                </h1>
-            </div>
 
-            <div class="ind">
-                <div class="js-disabled-show">
-                    @RenderHelper.ImageWithMicrodata(Model.ServiceProvider.Image)
-                </div>
-                <div class="js-disabled-hide photo pad-l" id="photo">
-                    <div data-bind="photoTour: $data"></div>
-                </div>
-            </div>
-
-            <div class="row ind-s">
-                <div class="col-any-11">
-                    @if (Model.ServiceProvider.DisplayProperties.Address)
-                    {
-                        <address itemprop="address" itemscope itemtype="http://schema.org/PostalAddress">
-                            <span class="address-line" itemprop="streetAddress">@Model.ServiceProvider.Address.Line</span>
-                            <span class="city" itemprop="addressLocality">@Model.ServiceProvider.Address.City</span>
-                            <span class="state" itemprop="addressRegion">@Model.ServiceProvider.Address.StateCode</span>
-                            <span itemprop="postalCode">@Model.ServiceProvider.Address.Zip</span>
-                        </address>
-                    }
-                </div>
-                <div class="col-any-13">
-                    <ul class="list-unstyled txt-right">
-                        @if (Model.ServiceProvider.DisplayProperties.Phone)
-                        {
-                            <li class="phone icon-phone" itemtype="phone">
-                                <a href="tel:@(Model.ServiceProvider.Phone)" class="click-to-call" data-phone-number="@(Model.ServiceProvider.Phone)">
-                                    @Model.ServiceProvider.Phone
-                                </a>
-                            </li>
-                        }
-                        @if (Model.ServiceProvider.DisplayProperties.PaymentsAccepted)
-                        {
-                            <li>
-                                <span class="txt-black">Payments Accepted:</span>
-                                <span class="txt-black txt-bold">@string.Join(", ", Model.PaymentsAccepted)</span>
-                            </li>
-                        }
-                        @if (Model.OfficeHours.Any())
-                        {
-                            <li>
-                                <ul class="list-unstyled office-hours">
-                                    @foreach (var hour in Model.OfficeHours)
-                                    {
-                                        <li>@hour</li>
-                                    }
-                                </ul>
-                            </li>
-                        }
-                    </ul>
-                </div>
-            </div>
-
-            @if (Model.ServiceProvider.DisplayProperties.WebsiteUrl)
-            {
-                <div class="ind">
-                    <a href="@Model.WebsiteUrl"
-                       target="_blank"
-                       rel="nofollow"
-                       data-service-provider-link-type="Website">
-                        Visit @Model.ServiceProvider.Name's Website
-                    </a>
-                </div>
-            }
-
-            @if (Model.ServiceProvider.DisplayProperties.Description)
-            {
-                <p class="ind">
-                    @Model.ServiceProvider.Description
-                </p>
-            }
-
-            @if (Model.ServiceProvider.DisplayProperties.ServiceCategories)
-            {
-                <div class="ind">
-                    <h4 class="header-brand-blue ">Service Categories</h4>
-                    <ul class="list-col-any-3 ind-s amenities">
-                        @foreach (var category in Model.ServiceProvider.ServiceCategories)
-                        {
-                            <li>@category</li>
-                        }
-                    </ul>
-                </div>
-            }
-
-            @if (Model.ServiceProvider.DisplayProperties.CountiesServed)
-            {
-                <div class="ind">
-                    <h4 class="header-brand-blue ">Counties Served</h4>
-                    <p class="ind-s">
-                        @foreach (var county in Model.ServiceProvider.CountiesServed)
-                        {
-                            if (county.Equals(Model.ServiceProvider.CountiesServed.First()))
-                            {
-                                @(county.Name)
-                            }
-                            else if (county.Equals(Model.ServiceProvider.CountiesServed.Last()))
-                            {
-                                @(" and " + county.Name)
-                            }
-                            else
-                            {
-                                @(", " + county.Name)
-                            }
-                        }
-                        @(Model.ServiceProvider.CountiesServed.Count > 1 ? "Counties" : "County")
-                    </p>
-                </div>
-            }
-
-            @if (Model.ServiceProvider.DisplayProperties.Map)
-            {
-                <div class="ind clearfix map" data-container="map">
-                    @{ Html.RenderPartial("~/Views/Client/Controls/DirectionsMap.cshtml"); }
-                </div>
-            }
-
-            @if (Model.ServiceProvider.DisplayProperties.WebsiteUrl)
-            {
-                <div class="ind">
-                    <a href="@Model.WebsiteUrl"
-                       target="_blank"
-                       rel="nofollow"
-                       data-service-provider-link-type="Website">
-                        Visit @Model.ServiceProvider.Name's Website
-                    </a>
-                </div>
-            }
-        </div>
-        <div class="col-any-7">
-            @if (Model.ServiceProvider.DisplayProperties.LeadForm)
-            {
-                Html.RenderPartial("~/Views/Client/Controls/LeadForm/DetailsInline.cshtml");
-            }
-
-            @if (Model.DisplayProperties.BookOrder)
-            {
-                Html.RenderPartial("~/Views/Client/Search/Partial/Order.cshtml");
-            }
-
-            @if (Model.ServiceProvider.DisplayProperties.Coupon)
-            {
-                <div class="ind">
-                    <h4 class="header-brand-blue">@Model.ServiceProvider.Name Special</h4>
-                    @{ Html.RenderPartial("Details/Partial/Coupon", Model.Coupon); }
-                </div>
-            }
-
-            @if (Model.DisplayProperties.FeaturedProviders)
-            {
-                <div class="ind">
-                    @{ Html.RenderPartial("~/Views/Client/Partial/FeaturedProviders.cshtml", Model.FeaturedServices); }
-                </div>
-            }
-
-            @if (Model.DisplayProperties.PartnerAds)
-            {
-                <div class="ind">
-                    <div id="div-gpt-ad-1355770323094-0" class="ad-160x600"></div>
-                </div>
-            }
-        </div>
-    </div>
-</div>
 
 <script>
     console.log(@Html.Json(Model));
