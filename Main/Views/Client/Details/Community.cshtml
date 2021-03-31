@@ -10,7 +10,7 @@
 
 @section scripts
 {
-   @* @{ Html.RenderPartial("~/Views/Client/Search/Partial/PhotoTour.cshtml"); }*@
+    @* @{ Html.RenderPartial("~/Views/Client/Search/Partial/PhotoTour.cshtml"); }*@
     @{ Html.RenderPartial("~/Views/Client/Controls/LeadForm/CommunityUnitPopUp.cshtml"); }
 
     <script type="text/javascript" src="https://s7.addthis.com/js/300/addthis_widget.js#pubid=xa-51f632df2d7a5c98"></script>
@@ -71,30 +71,6 @@
         </script>
     }
 }
-
-<div class="head-search-bar">
-    <div class="container">
-        <div class="row">
-            @{ Html.RenderPartial("~/Views/Client/Partial/SearchBarForm.cshtml"); }
-            <div class="addthis_toolbox social col-any-16">
-                <a class="icon-arrow-follow-back link-txt"
-                   href="@Model.Breadcrumbs[Model.Breadcrumbs.Count - 2].Href">Back to Search Results</a>
-                @if (Model.DisplayProperties.SocialButtons)
-                {
-                    <a class="addthis_button_facebook icon-facebook link-icon"></a>
-                    <a class="addthis_button_twitter icon-twitter link-icon"></a>
-                    <a class="addthis_button_google_plusone_share icon-google link-icon"></a>
-                    <a class="addthis_button_pinterest_share icon-pinterest link-icon"></a>
-                }
-                <a class="icon-print link-icon"
-                   href="@Model.Community.PrintUrl"
-                   target="_blank"></a>
-            </div>
-        </div>
-    </div>
-</div>
-
-@{ Html.RenderPartial("~/Views/Client/Partial/Breadcrumbs.cshtml", new ViewDataDictionary(Model.Breadcrumbs)); }
 
 @{
     string communityItemType = Model.PageType.ToSearchType() == SearchType.ActiveAdultHomes
@@ -165,63 +141,227 @@
                 </div>
             </div>
         </div>
-        <div class="row justify-content-start mt-4 mt-lg-5">
+        <div class="row justify-content-start my-4 mt-lg-5">
             <div class="col-lg-7">
                 @* @if (Model.Community.Beds.IsValued || Model.Community.Bathes.IsValued || Model.Community.Area.IsValued)
-            {*@
+                    {*@
                 <div class="row">
                     <div class="col-lg-4">
                         <h3>Property Details</h3>
                     </div>
-                    <div class="col-lg-8">
+                    <div class="col-lg-8 pt-1">
                         <div class="row">
-                            @if (Model.Community.Beds.IsValued || Model.Community.Bathes.IsValued || Model.Community.Area.IsValued)
-                            {
-                                <div class="col-md-6">
-                                    <ul class="property-list  list-unstyled mb-0">
-                                        @if (Model.Community.Beds.IsValued)
-                                        {
-                                            <li>
-                                                <strong class="value icon-bed">
-                                                    Beds:
-                                                </strong>
-                                                <span>@Model.Community.Beds.Value</span>
-                                                <span class="unit">
-                                                    @Model.Community.Beds.Unit
-                                                </span>
-                                            </li>
-                                        }
-                                        @if (Model.Community.Bathes.IsValued)
-                                        {
-                                            <li>
-                                                <strong class="value icon-bath">
-                                                    BATHROOMS:
-                                                </strong>
-                                                <span>@Model.Community.Bathes.Value</span>
-                                                <span class="unit">
-                                                    @Model.Community.Bathes.Unit
-                                                </span>
-                                            </li>
-                                        }
-                                        @if (Model.Community.Area.IsValued)
-                                        {
-                                            <li>
-                                                <strong class="value icon-square">
-                                                    AREA:
-                                                </strong>
-                                                <span>@Model.Community.Area.Value</span>
-                                                <span class="unit">
-                                                    @Model.Community.Area.Unit
-                                                </span>
-                                            </li>
-                                        }
-                                    </ul>
+                            <div class="col-md-6">
+                                <div class="property-list  list-unstyled mb-0">
+                                    @if (Model.Community.Bathes.IsValued)
+                                    {
+                                        <div class="py-1">
+                                            <strong class="value icon-bed">
+                                                PropertyID:
+                                            </strong>
+                                            <span>@Model.Community.Bathes.Value</span>
+                                            <span class="unit">
+                                                @Model.Community.Bathes.Unit
+                                            </span>
+                                        </div>
+                                    }
+                                    else
+                                    {
+                                        <div class="py-1">
+                                            <strong class="value icon-bed">
+                                                PropertyID:
+                                            </strong>
+                                        </div>
+                                    }
+                                    @if (Model.Community.Bathes.IsValued)
+                                    {
+                                        <div class="py-1">
+                                            <strong class="value icon-bed">
+                                                Price:
+                                            </strong>
+                                            <span>@Model.Community.Bathes.Value</span>
+                                            <span class="unit">
+                                                @Model.Community.Bathes.Unit
+                                            </span>
+                                        </div>
+                                    }
+                                    else
+                                    {
+                                        <div class="py-1">
+                                            <strong class="value icon-bed">
+                                                Price:
+                                            </strong>
+                                        </div>
+                                    }
+                                    @if (Model.Community.Bathes.IsValued)
+                                    {
+                                        <div class="py-1">
+                                            <strong class="value icon-bed">
+                                                PropertySize:
+                                            </strong>
+                                            <span>@Model.Community.Bathes.Value</span>
+                                            <span class="unit">
+                                                @Model.Community.Bathes.Unit
+                                            </span>
+                                        </div>
+                                    }
+                                    else
+                                    {
+                                        <div class="py-1">
+                                            <strong class="value icon-bed">
+                                                PropertySize:
+                                            </strong>
+                                        </div>
+                                    }
+                                    @if (Model.Community.Bathes.IsValued)
+                                    {
+                                        <div class="py-1">
+                                            <strong class="value icon-bed">
+                                                Beds:
+                                            </strong>
+                                            <span>@Model.Community.Bathes.Value</span>
+                                            <span class="unit">
+                                                @Model.Community.Bathes.Unit
+                                            </span>
+                                        </div>
+                                    }
+                                    else
+                                    {
+                                        <div class="py-1">
+                                            <strong class="value icon-bed">
+                                                Beds:
+                                            </strong>
+                                        </div>
+                                    }
+                                    @if (Model.Community.Bathes.IsValued)
+                                    {
+                                        <div class="py-1">
+                                            <strong class="value icon-bed">
+                                                Bathes:
+                                            </strong>
+                                            <span>@Model.Community.Bathes.Value</span>
+                                            <span class="unit">
+                                                @Model.Community.Bathes.Unit
+                                            </span>
+                                        </div>
+                                    }
+                                    else
+                                    {
+                                        <div class="py-1">
+                                            <strong class="value icon-bed">
+                                                Bathes:
+                                            </strong>
+                                        </div>
+                                    }
                                 </div>
-                            }
-
+                            </div>
+                            <div class="col-md-6">
+                                <div class="property-list  list-unstyled mb-0">
+                                    @if (Model.Community.Beds.IsValued)
+                                    {
+                                        <div class="py-1">
+                                            <strong class="value icon-bed">
+                                                Garage:
+                                            </strong>
+                                            <span>@Model.Community.Beds.Value</span>
+                                            <span class="unit">
+                                                @Model.Community.Beds.Unit
+                                            </span>
+                                        </div>
+                                    }
+                                    else
+                                    {
+                                        <div class="py-1">
+                                            <strong class="value icon-bed">
+                                                Garage:
+                                            </strong>
+                                        </div>
+                                    }
+                                    @if (Model.Community.Beds.IsValued)
+                                    {
+                                        <div class="py-1">
+                                            <strong class="value icon-bed">
+                                                Garage Size:
+                                            </strong>
+                                            <span>@Model.Community.Beds.Value</span>
+                                            <span class="unit">
+                                                @Model.Community.Beds.Unit
+                                            </span>
+                                        </div>
+                                    }
+                                    else
+                                    {
+                                        <div class="py-1">
+                                            <strong class="value icon-bed">
+                                                Garage Size:
+                                            </strong>
+                                        </div>
+                                    }
+                                    @if (Model.Community.Beds.IsValued)
+                                    {
+                                        <div class="py-1">
+                                            <strong class="value icon-bed">
+                                                Year Built:
+                                            </strong>
+                                            <span>@Model.Community.Beds.Value</span>
+                                            <span class="unit">
+                                                @Model.Community.Beds.Unit
+                                            </span>
+                                        </div>
+                                    }
+                                    else
+                                    {
+                                        <div class="py-1">
+                                            <strong class="value icon-bed">
+                                                Year Built:
+                                            </strong>
+                                        </div>
+                                    }
+                                    @if (Model.Community.Beds.IsValued)
+                                    {
+                                        <div class="py-1">
+                                            <strong class="value icon-bed">
+                                                Property Type:
+                                            </strong>
+                                            <span>@Model.Community.Beds.Value</span>
+                                            <span class="unit">
+                                                @Model.Community.Beds.Unit
+                                            </span>
+                                        </div>
+                                    }
+                                    else
+                                    {
+                                        <div class="py-1">
+                                            <strong class="value icon-bed">
+                                                Property Type:
+                                            </strong>
+                                        </div>
+                                    }
+                                    @if (Model.Community.Bathes.IsValued)
+                                    {
+                                        <div class="py-1">
+                                            <strong class="value icon-bed">
+                                                Property Status:
+                                            </strong>
+                                            <span>@Model.Community.Bathes.Value</span>
+                                            <span class="unit">
+                                                @Model.Community.Bathes.Unit
+                                            </span>
+                                        </div>
+                                    }
+                                    else
+                                    {
+                                        <div class="py-1">
+                                            <strong class="value icon-bed">
+                                                Property Status:
+                                            </strong>
+                                        </div>
+                                    }
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    <hr class="my-4 my-md-5">
+                    <hr class="my-3 my-md-5 col-lg-12">
                 </div>
             </div>
             <div class="col-lg-7">
@@ -242,7 +382,7 @@
                         </p>
                         @*<p class="mb-0">Floor-to-ceiling windows accentuate the panoramic vistas that sweep across the Golden Gate Bridge, the downtown skyline, the artfully lit Bay Bridge and beyond. The floor plan features two bedroom suites, kitchen, living/dining room, two view terraces and ample storage space.</p>*@
                     </div>
-                    <hr class="my-4 my-md-5">
+                    <hr class="my-3 my-md-5 col-lg-12">
                 </div>
             </div>
             <style>
@@ -252,74 +392,74 @@
             </style>
             @if (Model.Community.CommunityServices.Any())
             {
-            <div class="col-lg-7">
-                <div class="row">
-                    <div class="col-lg-4">
-                        <h3>Services</h3>
-                    </div>
-                    <div class="col-lg-8 pt-2">
-                        <div class="row">
-                            @foreach (var service in Model.Community.CommunityServices)
-                            {
-                            <div class="col-md-12">
-                                <ul class="property-list mb-0 pl-lg-0 pl-3">
-                                     <li>@service</li>
-                                </ul>
-                            </div>
-                            }
+                <div class="col-lg-7">
+                    <div class="row">
+                        <div class="col-lg-4">
+                            <h3>Services</h3>
                         </div>
+                        <div class="col-lg-8 pt-2">
+                            <div class="row">
+                                @foreach (var service in Model.Community.CommunityServices)
+                                {
+                                    <div class="col-md-12">
+                                        <ul class="property-list mb-0 pl-lg-0 pl-3">
+                                            <li>@service</li>
+                                        </ul>
+                                    </div>
+                                }
+                            </div>
+                        </div>
+                        <hr class="my-3 my-md-5 col-lg-12">
                     </div>
-                    <hr class="my-4 my-md-5">
                 </div>
-            </div>
-             }
+            }
 
             @if (Model.Community.Amenities.Any())
             {
-            <div class="col-lg-7">
-                <div class="row">
-                    <div class="col-lg-4">
-                        <h3>Features</h3>
-                    </div>
-                    <div class="col-lg-8 pt-2">
-                        <div class="row">
-                           @foreach (var amenity in Model.Community.Amenities)
-                            {   
-                            <div class="col-md-6">
-                                <ul class="property-list mb-0 pl-lg-0 pl-3">
-                                    <li>@amenity</li>
-                                </ul>
-                            </div>
-                            }
+                <div class="col-lg-7">
+                    <div class="row">
+                        <div class="col-lg-4">
+                            <h3>Features</h3>
                         </div>
-                        @*<div class="col-md-12">
+                        <div class="col-lg-8 pt-2">
                             <div class="row">
-                                @if (Model.Community.DisplayProperties.ApplicationFee)
+                                @foreach (var amenity in Model.Community.Amenities)
                                 {
-                                    <div class="col-md-4">
-                                        <b>Fees:</b>
-                                        <b>@Model.ApplicationFee</b>
-                                    </div>
-                                }
-                                @if (Model.Community.DisplayProperties.Deposit)
-                                {
-                                    <div class="col-md-4">
-                                        <b>Deposit:</b>
-                                        <b>@Model.Deposit</b>
-                                    </div>
-                                }
-                                @if (Model.Community.DisplayProperties.PetDeposit)
-                                {
-                                    <div class="co-md-4">
-                                        <b>Pet Deposit:</b>
-                                        <b>@Model.PetDeposit</b>
+                                    <div class="col-md-6">
+                                        <ul class="property-list mb-0 pl-lg-0 pl-3">
+                                            <li>@amenity</li>
+                                        </ul>
                                     </div>
                                 }
                             </div>
-                        </div>*@
+                            @*<div class="col-md-12">
+                                    <div class="row">
+                                        @if (Model.Community.DisplayProperties.ApplicationFee)
+                                        {
+                                            <div class="col-md-4">
+                                                <b>Fees:</b>
+                                                <b>@Model.ApplicationFee</b>
+                                            </div>
+                                        }
+                                        @if (Model.Community.DisplayProperties.Deposit)
+                                        {
+                                            <div class="col-md-4">
+                                                <b>Deposit:</b>
+                                                <b>@Model.Deposit</b>
+                                            </div>
+                                        }
+                                        @if (Model.Community.DisplayProperties.PetDeposit)
+                                        {
+                                            <div class="co-md-4">
+                                                <b>Pet Deposit:</b>
+                                                <b>@Model.PetDeposit</b>
+                                            </div>
+                                        }
+                                    </div>
+                                </div>*@
+                        </div>
                     </div>
                 </div>
-            </div>
             }
         </div>
     </div>

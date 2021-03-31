@@ -42,10 +42,6 @@
     .header {
         box-shadow: 0px 0px 0px 0px rgb(27 27 41 / 15%);
     }
-
-    .select2.select2-container.select2-container--default {
-        width: 100% !important;
-    }
 </style>
 @section scripts
 {
@@ -139,8 +135,6 @@
             function(hints) {
             },
             'init-hints');
-
-        console.log('search', @Html.Json(Model));
     </script>
     <style>
         .ssh {
@@ -161,6 +155,8 @@
         ? "http://schema.org/GatedResidenceCommunity"
         : "http://schema.org/Residence";
 }
+
+
 @if (((IEnumerable<dynamic>)Model.Result).Where(x => x.DisplayProperties.Featured == true).Count() != 0 && Model.Result != null)
 {
     <section style="padding-top:20px;">
@@ -250,49 +246,248 @@
     </section>
 }
 
-@*@{ Html.RenderPartial("~/Views/Client/Partial/SearchBarForm.cshtml"); }
-    @{ Html.RenderPartial("~/Views/Client/Partial/Breadcrumbs.cshtml", new ViewDataDictionary(Model.Breadcrumbs)); }*@
-@if (!Model.Result.Any())
-{
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-6 col-md-6 mb-3">
-                <img alt="No results" style="width: 100%;" src="~/Content/images/stub/no-result.png" />
+<div class="row">
+    <div class="col-md-12">
+
+        @if (!Model.Result.Any())
+        {
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6 col-md-6 mb-3">
+                        <img alt="No results" style="width: 100%;" src="~/Content/images/stub/no-result.png" />
+                    </div>
+                    <span class="col-lg-6 col-md-6 mb-3 text-justify d-flex align-items-center">
+                        We could not find any listings in this area or your search filters may be too strict. Please try to clear all filters or
+                        search for nearby locations with listings. Our information is updated daily so please check back soon.
+                    </span>
+                </div>
             </div>
-            <span class="col-lg-6 col-md-6 mb-3 text-justify d-flex align-items-center">
-                We could not find any listings in this area or your search filters may be too strict. Please try to clear all filters or
-                search for nearby locations with listings. Our information is updated daily so please check back soon.
-            </span>
-        </div>
+        }
+
+        @if (Model.Result.Any())
+        {
+            <section class="space-ptb bg-light">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-3">
+                            <div class="sidebar">
+                                <div class="widget">
+                                    @if (Model.DisplayProperties.BookOrder)
+                                    {
+                                        Html.RenderPartial("~/Views/Client/Search/Partial/Order.cshtml");
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-9 mt-lg-0 mt-5">
+                            <div class="row mb-2">
+                                <div class="col-lg-12">
+                                    <div class="property-filter d-md-flex d-block">
+                                        <div class="d-md-flex d-block mb-0">
+                                            <h2>Property Listing</h2>
+                                        </div>
+                                        <div class="property-view-list d-md-flex d-block mb-0 mt-4 mt-sm-0">
+                                            <a class="btn btn-outline mt-md-0 mt-2" href="javascript:;" onclick="listShow()"><i class="fa fa-list mr-1"></i> List View</a>
+                                            <a class="btn btn-outline mt-md-0 mt-2 ml-sm-2 ml-0" href="javascript:;" onclick="mapShow()"><i class="fas fa-map-marker-alt mr-1"></i> Map View</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row mt-3 mb-2">
+                                <div class="col-md-12">
+                                    <style>
+                                        .refine li {
+                                            font-weight: 700;
+                                        }
+
+                                        .list-col-any-2 {
+                                            -webkit-column-count: 2;
+                                            -moz-column-count: 2;
+                                            column-count: 2;
+                                            -webkit-column-gap: 5px;
+                                            -moz-column-gap: 5px;
+                                            column-gap: 5px;
+                                            background: white;
+                                            position: absolute;
+                                            z-index: 99;
+                                        }
+
+                                        .items.single {
+                                            position: absolute;
+                                            z-index: 999;
+                                            background: white;
+                                            padding: 30px;
+                                            list-style: none;
+                                            display: none;
+                                        }
+
+                                            .items.single li {
+                                                cursor: pointer;
+                                            }
+
+                                                .items.single li:hover {
+                                                    background: dodgerblue;
+                                                }
+                                    </style>
+
+                                    @switch (Model.PageType.ToRefineType())
+                                    {
+                                        case RefineType.SeniorHousing:
+                                            {
+                                                Html.RenderPartial("~/Views/Client/Search/Partial/Refine/Shc.cshtml");
+                                                break;
+                                            }
+                                        case RefineType.ActiveCommunity:
+                                        case RefineType.ActiveHome:
+                                            {
+                                                Html.RenderPartial("~/Views/Client/Search/Partial/Refine/AacAah.cshtml");
+                                                break;
+                                            }
+                                        case RefineType.Service:
+                                            {
+                                                Html.RenderPartial("~/Views/Client/Search/Partial/Refine/Pas.cshtml");
+                                                break;
+                                            }
+                                    }
+
+                                </div>
+                            </div>
+                            <div class="map-container" style="display: none;">
+                                <div id="map" style="width:100%; height: 30em;"></div>
+                            </div>
+                            <div id="list_view">
+                                @foreach (var community in Model.Result)
+                                {
+                                    if (community.DisplayProperties.Featured)
+                                    {
+                                        continue;
+                                    }
+
+                                    <div class="row">
+                                        <div class="col-lg-12 mb-lg-4 mb-md-3">
+                                            <div class="property-list bg-white">
+                                                <div class="row no-gutters">
+                                                    <div class="col-md-5">
+                                                        <div class="property-image h-100 bg-overlay-gradient-04">
+                                                            @if (community.DisplayProperties.Image)
+                                                            {
+                                                                <a href="@community.DetailsUrl">
+                                                                    @RenderHelper.ThumbnailWithMicrodata(community.Image, "img-fluid")
+                                                                </a>
+                                                            }
+                                                            <div class="property-prize">
+                                                                @if (community.DisplayProperties.Price)
+                                                                {
+                                                                    <span class="badge badge-md">@community.Price</span>
+                                                                }
+                                                                else
+                                                                {
+                                                                    <span class="badge badge-md">$&nbsp;&nbsp;?</span>
+                                                                }
+                                                            </div>
+                                                            <div class="property-room">
+                                                                @if (community.DisplayProperties.Beds)
+                                                                {
+                                                                    <span class="badge badge-md"><i class="fas fa-bed fa-1x text-white mr-1"></i>@community.Beds</span>
+                                                                }
+                                                                else
+                                                                {
+                                                                    <span class="badge badge-md"><i class="fas fa-bed fa-1x text-white mr-1"></i>?</span>
+                                                                }
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-7">
+                                                        <div class="property-detail p-4">
+                                                            <h3 class="property-title"><a href="@community.DetailsUrl">@(community.DisplayProperties.Name ? community.Name : "View details")</a></h3>
+                                                            <ul class="pl-0">
+                                                                <li class="property-address mb-1">
+                                                                    <i class="fas fa-map-marker-alt fa-1x mr-1 text-primary"></i> EXACT -@community.Address.City, @community.Address.StateCode @community.Address.Zip
+                                                                </li>
+
+                                                                @if (community.DisplayProperties.Phone)
+                                                                {
+                                                                    <li class="property-address mb-1">
+                                                                        <i class="fas fa-phone-alt fa-1x text-primary mr-1"></i>
+                                                                        @community.Phone
+                                                                    </li>
+                                                                }
+                                                                else
+                                                                {
+                                                                    <li class="property-address mb-1">
+                                                                        <i class="fas fa-phone-alt fa-1x text-primary mr-1"></i>
+                                                                    </li>
+                                                                }
+                                                            </ul>
+                                                            @*<p>@community.Description</p>*@
+                                                            <p>
+                                                                <address class="ind-s" itemprop="address" itemscope itemtype="http://schema.org/PostalAddress">
+                                                                    <span class="address-line">
+                                                                        <span itemprop="streetAddress">@community.Address.Line</span>
+                                                                        @if (community.DisplayProperties.RadiusDesignation)
+                                                                        {
+                                                                            <span class="txt-lower txt-decr txt-brand-blue txt-bold radius-designation"
+                                                                                  data-hint="#radius-designation-hint">@community.SearchRadiusDesignation</span>
+                                                                            }
+                                                                    </span>
+                                                                    <br />
+                                                                    <span class="city" itemprop="addressLocality">@community.Address.City</span>
+                                                                    <span class="state" itemprop="addressRegion">@community.Address.StateCode</span>
+                                                                    <span itemprop="postalCode">@community.Address.Zip</span>
+                                                                </address>
+                                                            </p>
+                                                            <div class="mb-3">
+                                                                <a href="@community.DetailsUrl" class="font-weight-bold">Read More <i class="fas fa-angle-right"></i></a>
+                                                            </div>
+                                                            <a class="btn btn-outline btn-sm mb-1 mr-2 ml-0 mt-1" href="@community.DetailsUrl">View Profile</a>
+                                                            @if (community.DisplayProperties.LeadForm)
+                                                            {
+                                                                <button class="btn btn-primary btn-sm ml-0"
+                                                                        data-toggle="lead-form"
+                                                                        data-accessor="attr"
+                                                                        data-listing-id="@community.Id"
+                                                                        data-listing-name="@community.Name">
+                                                                    @*data-message="@community.GetLeadFormMessage()">*@
+                                                                    Request Information
+                                                                </button>
+                                                            }
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                }
+                            </div>
+
+                            <ul class="pagination mt-4 mb-0">
+                                @foreach (var page in Model.Paging.Pages)
+                                {
+                                    if (page.Css == "prev")
+                                    {
+                                        <li class="page-item active"><a class="page-link" href="@page.Href">Previous</a></li>
+                                    }
+                                    if (page.InnerText == "1" || page.InnerText == "2" || page.InnerText == "3")
+                                    {
+                                        <li class="page-item @page.Css"><a class="page-link" href="@page.Href">@page.InnerText</a></li>
+                                    }
+                                    if (page.Css == "next")
+                                    {
+                                        <li class="page-item active"><a class="page-link" href="@page.Href">Next</a></li>
+                                    }
+                                }
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        }
+
     </div>
-}
-
-@if(Model.Result.Any()){
-    switch (Model.PageType.ToRefineType())
-    {
-        case RefineType.SeniorHousing:
-            {
-                Html.RenderPartial("~/Views/Client/Search/Partial/Refine/Shc.cshtml");
-                break;
-            }
-        case RefineType.ActiveCommunity:
-        case RefineType.ActiveHome:
-            {
-                Html.RenderPartial("~/Views/Client/Search/Partial/Refine/AacAah.cshtml");
-                break;
-            }
-        case RefineType.Service:
-            {
-                Html.RenderPartial("~/Views/Client/Search/Partial/Refine/Pas.cshtml");
-                break;
-            }
-    }
-}
-
-
-
-
+</div>
 <script>
+    console.log(@Html.Json(Model.Result));
     function GoLikeIt(div) {
         var Ndiv = div.nextElementSibling;
 
@@ -312,7 +507,6 @@
     function mapShow() {
         $(".map-container").css("display", "initial");
         $("#list_view").css("display", "none");
-
         var communities = @Html.Json(Model.Result);
         var map = new google.maps.Map(document.getElementById('map'), {
             zoom: 10,
@@ -343,5 +537,4 @@
             })(marker, i));
         }
     }
-    console.log(@Html.Json(Model));
 </script>

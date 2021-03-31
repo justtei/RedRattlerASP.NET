@@ -136,18 +136,14 @@ NOTE: This file contains all scripts for the actual Template.
       select2
   *************************/
     POTENZA.select2 = function () {
-    if ($('.basic-select').exists()) {
-        var select = jQuery(".basic-select");
-        if ($('.single .active').exists()) var id = $(".single .active").attr('id').split('_')[1];
-        if (select.length > 0) {
-            $('.basic-select').select2({ dropdownCssClass: 'bigdrop' });
-            if (!isNaN(parseInt(id))) {
-                $('.basic-select').val(id);
-                $('.basic-select').select2().trigger('change');
+        if ($('.basic-select').exists()) {
+            var select = jQuery(".basic-select");
+            if (select.length > 0) {
+                $('.basic-select').select2({ dropdownCssClass: 'bigdrop' });
             }
+
         }
-    }
-  };
+    };
 
   /*************************
       Magnific Popup
@@ -227,11 +223,11 @@ NOTE: This file contains all scripts for the actual Template.
   //   }
   // };
 
-   /* POTENZA.rangesliders = function () {
+    POTENZA.rangesliders = function () {
         $( "#slider-range" ).slider({
           range: true,
-          min: min,
-          max: value,
+          min: 0,
+          max: 5000,
           values: [ 0, 5000 ],
           slide: function( event, ui ) {
               $("#amount").val("$" + ui.values[0] + " - $" + ui.values[1]);
@@ -239,30 +235,8 @@ NOTE: This file contains all scripts for the actual Template.
         });
         $( "#amount" ).val( "$" + $( "#slider-range" ).slider( "values", 0 ) +
           " - $" + $( "#slider-range" ).slider( "values", 1 ) );
-  };*/
+  };
 
-
-    POTENZA.rangesliders = function () {
-        var min, max;
-        min = $("#min_value").val() ? parseInt($("#min_value").val()) : 0;
-        max = $("#max_value").val() ? parseInt($("#max_value").val()) : 0;   
-        console.log('min', min, 'max', max);
-        $( "#slider-range" ).slider({
-            range: true,
-            min: 0,
-            max: 4000,
-            values: [ min, max ],
-            slide: function (event, ui) {
-                $("#amount").val("$" + ui.values[0] + " - $" + ui.values[1]);
-                $("#min_value").val(ui.values[0]);
-                $("#max_value").val(ui.values[1]);
-                $("#min_value").trigger("change");
-                $("#max_value").trigger("change");
-            }
-        });
-        $( "#amount" ).val( "$" + $( "#slider-range" ).slider( "values", 0 ) +
-        " - $" + $( "#slider-range" ).slider( "values", 1 ) );
-    };
 
 /*************************
          Sticky
