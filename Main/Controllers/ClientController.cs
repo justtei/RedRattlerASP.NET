@@ -213,7 +213,15 @@ namespace Main.Controllers
 				ClientViewModelsProvider.GetIndexSearchVm();
 				return base.View("~/Views/Client/Search/SearchTypeServiceProviders.cshtml", ClientViewModelsProvider.GetSearchTypeSearchVm(searchVm));
             }
-			return base.View("~/Views/Client/Search/SearchType.cshtml", ClientViewModelsProvider.GetSearchTypeSearchVm(searchVm));
+			else if(searchVm.PageType == PageType.ShcByType)
+			{
+				ClientViewModelsProvider.GetIndexSearchVm();
+				return base.View("~/Views/Client/Static/SeniorType.cshtml", ClientViewModelsProvider.GetSearchTypeSearchVm(searchVm));
+            }
+            else
+            {
+				return base.View("~/Views/Client/Search/SearchType.cshtml", ClientViewModelsProvider.GetSearchTypeSearchVm(searchVm));
+            }
 		}
 
 		[CompetitiveFormating]
@@ -251,7 +259,7 @@ namespace Main.Controllers
 		}
 		public ActionResult ContactUs()
 		{
-			return base.View("~/Views/Client/Static/ContactUs.cshtml", ClientViewModelsProvider.GetStaticContent(PageType.PrivacyPolicy));
+			return base.View("~/Views/Client/Static/ContactUs.cshtml", ClientViewModelsProvider.GetStaticContent(PageType.ContactUs));
 		}
 		[HttpPost]
 		public ActionResult ContactUs(ContactUs contactUs)
@@ -285,12 +293,12 @@ namespace Main.Controllers
 
 		public ActionResult AboutUs()
 		{
-			return base.View("~/Views/Client/Static/AboutUs.cshtml", ClientViewModelsProvider.GetStaticContent(PageType.PrivacyPolicy));
+			return base.View("~/Views/Client/Static/AboutUs.cshtml", ClientViewModelsProvider.GetStaticContent(PageType.AboutUs));
 		}
 
 		public ActionResult SeniorType()
 		{
-			return base.View("~/Views/Client/Static/Sen.cshtml", ClientViewModelsProvider.GetStaticContent(PageType.PrivacyPolicy));
+			return base.View("~/Views/Client/Static/SeniorType.cshtml", ClientViewModelsProvider.GetStaticContent(PageType.SeniorType));
 		}
 
 	}
