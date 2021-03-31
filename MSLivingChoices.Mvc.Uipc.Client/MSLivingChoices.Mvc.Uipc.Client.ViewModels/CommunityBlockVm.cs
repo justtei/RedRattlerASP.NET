@@ -7,6 +7,7 @@ namespace MSLivingChoices.Mvc.Uipc.Client.ViewModels
 {
 	public class CommunityBlockVm : CommunityShortVm
 	{
+		public string Description { get; set; }
 		public List<string> Amenities
 		{
 			get;

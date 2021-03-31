@@ -1,0 +1,102 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{2DF8CD67-AA32-41F6-9AFB-B15347E7C97E}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>MSLivingChoices.SqlDacs.Client</RootNamespace>
+    <AssemblyName>MSLivingChoices.SqlDacs.Client</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="MSLivingChoices.Entities.Client">
+      <HintPath>..\Main\bin\MSLivingChoices.Entities.Client.dll</HintPath>
+    </Reference>
+    <Reference Include="MSLivingChoices.IDacs">
+      <HintPath>..\Main\bin\MSLivingChoices.IDacs.dll</HintPath>
+    </Reference>
+    <Reference Include="MSLivingChoices.SqlDacs">
+      <HintPath>..\Main\bin\MSLivingChoices.SqlDacs.dll</HintPath>
+    </Reference>
+    <Reference Include="MSLivingChoices.Utilities">
+      <HintPath>..\Main\bin\MSLivingChoices.Utilities.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Components\SqlCommonDac.cs" />
+    <Compile Include="Components\SqlLeadDac.cs" />
+    <Compile Include="Components\SqlLocationDac.cs" />
+    <Compile Include="Components\SqlSearchDac.cs" />
+    <Compile Include="Components\SqlSeoDac.cs" />
+    <Compile Include="Helpers\DataReaderHelper.cs" />
+    <Compile Include="Helpers\DataTableWrapper.cs" />
+    <Compile Include="Helpers\EntityRelatedKeyValueStorage.cs" />
+    <Compile Include="Helpers\KeyValueStorage.cs" />
+    <Compile Include="Helpers\LeadTargetTable.cs" />
+    <Compile Include="Helpers\SearchTypeExtensions.cs" />
+    <Compile Include="Helpers\TableParamsExtensions.cs" />
+    <Compile Include="SqlClientDacFactory.cs" />
+    <Compile Include="SqlCommands\ClientStoredProcedures.cs" />
+    <Compile Include="SqlCommands\GetAddressAutocompleteCommand.cs" />
+    <Compile Include="SqlCommands\GetCommunityByIdCommand.cs" />
+    <Compile Include="SqlCommands\GetCompetitiveItemsCommand.cs" />
+    <Compile Include="SqlCommands\GetCountrySearchStubCommand.cs" />
+    <Compile Include="SqlCommands\GetFloorPlansByCommunityIdCommand.cs" />
+    <Compile Include="SqlCommands\GetHomesByCommunityIdCommand.cs" />
+    <Compile Include="SqlCommands\GetMarketCopyCommand.cs" />
+    <Compile Include="SqlCommands\GetNearbyCitiesCommand.cs" />
+    <Compile Include="SqlCommands\GetServiceByIdCommand.cs" />
+    <Compile Include="SqlCommands\GetSpecHomesByCommunityIdCommand.cs" />
+    <Compile Include="SqlCommands\GetStatesCommand.cs" />
+    <Compile Include="SqlCommands\GetZipAutocompleteCommand.cs" />
+    <Compile Include="SqlCommands\SaveNewLeadCommand.cs" />
+    <Compile Include="SqlCommands\SearchCommunitiesCommand.cs" />
+    <Compile Include="SqlCommands\SearchFeaturedCommunitiesCommand.cs" />
+    <Compile Include="SqlCommands\SearchFeaturedServicesCommand.cs" />
+    <Compile Include="SqlCommands\SearchServiceProvidersCommand.cs" />
+    <Compile Include="SqlCommands\ValidateAddressCommand.cs" />
+    <Compile Include="SqlCommands\ValidateZipCommand.cs" />
+    <Compile Include="Utilities\LeadEventType.cs" />
+    <Compile Include="Utilities\LeadPageType.cs" />
+    <Compile Include="Utilities\LeadUtilities.cs" />
+    <Compile Include="Utilities\LegacyLeadType.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MSLivingChoices.Entities.Admin\MSLivingChoices.Entities.Admin.csproj">
+      <Project>{C406E2DF-6F95-416B-9379-C31ADBD4C7E2}</Project>
+      <Name>MSLivingChoices.Entities.Admin</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

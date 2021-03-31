@@ -214,3 +214,9 @@ C:\Users\sra_r\Source\Repos\RedRattlerASP.NET\Main\obj\Release\Main.dll
 C:\Users\sra_r\Source\Repos\RedRattlerASP.NET\Main\obj\Release\Main.pdb
 C:\Users\sra_r\Source\Repos\RedRattlerASP.NET\Main\bin\MSLivingChoices.Mvc.Uipc.Client.dll
 C:\Users\sra_r\Source\Repos\RedRattlerASP.NET\Main\bin\MSLivingChoices.Mvc.Uipc.Client.pdb
+C:\Users\sra_r\Source\Repos\RedRattlerASP.NET\Main\bin\MSLivingChoices.Bcs.Client.dll
+C:\Users\sra_r\Source\Repos\RedRattlerASP.NET\Main\bin\MSLivingChoices.Entities.Client.dll
+C:\Users\sra_r\Source\Repos\RedRattlerASP.NET\Main\bin\MSLivingChoices.SqlDacs.Client.dll
+C:\Users\sra_r\Source\Repos\RedRattlerASP.NET\Main\bin\MSLivingChoices.Bcs.Client.pdb
+C:\Users\sra_r\Source\Repos\RedRattlerASP.NET\Main\bin\MSLivingChoices.Entities.Client.pdb
+C:\Users\sra_r\Source\Repos\RedRattlerASP.NET\Main\bin\MSLivingChoices.SqlDacs.Client.pdb

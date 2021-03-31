@@ -35,11 +35,11 @@ namespace Main.Controllers
 			}
 			if (!result.ShouldRedirect(result.Community.ListingTypes))
 			{
+
 				return base.View("~/Views/Client/Details/Community.cshtml", result);
 			}
 			return base.Http301Redirect(result.Seo.CanonicalUrl);
 		}
-
 		[CompetitiveFormating]
 		[HttpGet]
 		public JsonResult CommunityQuickView(long communityId, SearchType searchType)
@@ -290,7 +290,7 @@ namespace Main.Controllers
 
 		public ActionResult SeniorType()
 		{
-			return base.View("~/Views/Client/Static/Sen.cshtml", ClientViewModelsProvider.GetStaticContent(PageType.PrivacyPolicy));
+			return base.View("~/Views/Client/Static/SeniorType.cshtml", ClientViewModelsProvider.GetStaticContent(PageType.PrivacyPolicy));
 		}
 
 	}

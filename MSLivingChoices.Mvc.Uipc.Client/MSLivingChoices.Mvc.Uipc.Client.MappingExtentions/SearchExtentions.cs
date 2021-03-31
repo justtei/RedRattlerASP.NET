@@ -179,6 +179,7 @@ namespace MSLivingChoices.Mvc.Uipc.Client.MappingExtentions
 			CommunityBlockVm communityShortVm = community.MapToCommunityShortVm(searchType, viewModel ?? new CommunityBlockVm()) as CommunityBlockVm;
 			if (communityShortVm != null)
 			{
+				communityShortVm.Description = community.Description;
 				communityShortVm.ListingTypes = community.ListingTypes;
 				communityShortVm.Bathes = community.Bathes.BathesCaption();
 				communityShortVm.Beds = community.Beds.BedsCaption();

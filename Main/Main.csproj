@@ -823,17 +823,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\ProjectRefrences\MSLivingChoices.Bcs.Admin.dll</HintPath>
     </Reference>
-    <Reference Include="MSLivingChoices.Bcs.Client, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\ProjectRefrences\MSLivingChoices.Bcs.Client.dll</HintPath>
-    </Reference>
     <Reference Include="MSLivingChoices.Configuration, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\ProjectRefrences\MSLivingChoices.Configuration.dll</HintPath>
-    </Reference>
-    <Reference Include="MSLivingChoices.Entities.Client, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\ProjectRefrences\MSLivingChoices.Entities.Client.dll</HintPath>
     </Reference>
     <Reference Include="MSLivingChoices.IDacs, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -862,10 +854,6 @@
     <Reference Include="MSLivingChoices.SqlDacs, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\MSLivingChoices.SqlDacs.Admin\bin\Debug\MSLivingChoices.SqlDacs.dll</HintPath>
-    </Reference>
-    <Reference Include="MSLivingChoices.SqlDacs.Client, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\ProjectRefrences\MSLivingChoices.SqlDacs.Client.dll</HintPath>
     </Reference>
     <Reference Include="MSLivingChoices.Utilities, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -955,9 +943,17 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\MSLivingChoices.Bcs.Client\MSLivingChoices.Bcs.Client.csproj">
+      <Project>{d950c709-10e8-4e7d-9493-718908b1d5b2}</Project>
+      <Name>MSLivingChoices.Bcs.Client</Name>
+    </ProjectReference>
     <ProjectReference Include="..\MSLivingChoices.Entities.Admin\MSLivingChoices.Entities.Admin.csproj">
       <Project>{c406e2df-6f95-416b-9379-c31adbd4c7e2}</Project>
       <Name>MSLivingChoices.Entities.Admin</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MSLivingChoices.Entities.Client\MSLivingChoices.Entities.Client.csproj">
+      <Project>{67b18905-4190-4e92-a904-ffaa797f1123}</Project>
+      <Name>MSLivingChoices.Entities.Client</Name>
     </ProjectReference>
     <ProjectReference Include="..\MSLivingChoices.Logging\MSLivingChoices.Logging.csproj">
       <Project>{de5e0aa4-3455-415d-9a8f-af299bec6f7f}</Project>
@@ -974,6 +970,10 @@
     <ProjectReference Include="..\MSLivingChoices.SqlDacs.Admin\MSLivingChoices.SqlDacs.Admin.csproj">
       <Project>{10764c77-0bbe-415f-b207-b65cc23c509b}</Project>
       <Name>MSLivingChoices.SqlDacs.Admin</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MSLivingChoices.SqlDacs.Client\MSLivingChoices.SqlDacs.Client.csproj">
+      <Project>{2df8cd67-aa32-41f6-9afb-b15347e7c97e}</Project>
+      <Name>MSLivingChoices.SqlDacs.Client</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
