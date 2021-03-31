@@ -203,7 +203,7 @@
                                                                 <span itemprop="postalCode">@provider.Address.Zip</span>
                                                             </address>
                                                         </p>
-                                                        <div class="mb-3 font-weight-bold">
+                                                        <div class="mb-3">
                                                             <a href="@provider.DetailsUrl">Read More <i class="fas fa-angle-right"></i></a>
                                                         </div>
                                                         <a class="btn btn-outline btn-sm mb-1 mr-2 ml-0 mt-1" href="@provider.DetailsUrl">View Profile</a>
@@ -220,17 +220,17 @@
                                                         }
 
                                                         @* @if (provider.DisplayProperties.ServiceCategories)
-                                                        {
-                                                            <div class="mt-3 mb-3">
-                                                                <h4 class="txt-brand-red">Service Categories</h4>
-                                                                <div class="row">
-                                                                    @foreach (var category in provider.ServiceCategories)
-                                                                    {
-                                                                        <div class="col-6 text-center"><span>@category</span></div>
-                                                                    }
+                                                            {
+                                                                <div class="mt-3 mb-3">
+                                                                    <h4 class="txt-brand-red">Service Categories</h4>
+                                                                    <div class="row">
+                                                                        @foreach (var category in provider.ServiceCategories)
+                                                                        {
+                                                                            <div class="col-6 text-center"><span>@category</span></div>
+                                                                        }
+                                                                    </div>
                                                                 </div>
-                                                            </div>
-                                                        }*@
+                                                            }*@
                                                     </div>
                                                 </div>
                                             </div>
