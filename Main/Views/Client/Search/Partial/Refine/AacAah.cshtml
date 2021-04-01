@@ -9,16 +9,16 @@
         border: 2px solid transparent;
     }
 
-    .btn-primary.disabled, .btn-primary:disabled {
-        background: #589694;
-        color: #ffffff;
-        border: 2px solid transparent;
-    }
+        .btn-primary.disabled, .btn-primary:disabled {
+            background: #589694;
+            color: #ffffff;
+            border: 2px solid transparent;
+        }
 
-    .btn-primary:hover {
-        color: #fff;
-        background-color: #589694;
-    }
+        .btn-primary:hover {
+            color: #fff;
+            background-color: #589694;
+        }
 
     ul.items.multi.list-col-any-2 {
         padding: 0;
@@ -29,10 +29,10 @@
 <form id="refine" data-bind="event: { 'submit': apply }" class=" col-any-16 row-wrap">
     <ul class="refine d-flex justify-content-end align-items-center"
         data-bind="with: controls">
-        <li class="col-any-7"
+        <li class="col-any-7 clk"
             data-bind="with: amenities"
             data-select="multi">
-            <div class="tile"
+            <div class="tile clk"
                  data-select="caption">
                 <span class="header">
                     Care Types & Amenities
@@ -40,7 +40,7 @@
                 </span>
                 <div data-bind="text:caption"></div>
             </div>
-            <ul class="items multi list-col-any-2"
+            <ul class="items multi list-col-any-2 clk" style="padding-right:10px;"
                 data-bind="foreach: items"
                 data-select="target">
                 <li data-bind="css: { 'active': selected }">
@@ -62,7 +62,7 @@
                 </span>
                 <div data-bind="text: priceCaption"></div>
             </div>
-            <div class="items multi pad"
+            <div class="items multi pad" style="position: absolute; z-index: 999; background-color: white; padding: 20px;"
                  data-select="target">
                 <label class="input-group">
                     <span class="prepend">$</span>
@@ -116,20 +116,11 @@
         <li class="col-any-4 submit"
             style="display: none"
             data-bind="visible: $data">
-            <!-- ko if: $root.isEmpty() || !$root.isInitial() -->
             <button class="btn btn-primary btn-md"
                     type="submit"
                     data-bind="css:{ 'disabled': $root.isInitial, 'in-progress': $root.pending }">
                 <span>Apply</span>
             </button>
-            <!-- /ko -->
-            <!-- ko if: !$root.isEmpty() && $root.isInitial() -->
-            <button class="btn btn-primary btn-md"
-                    type="button"
-                    data-bind="click: $root.clear, css: { 'in-progress': $root.pending }">
-                <span>Clear</span>
-            </button>
-            <!-- /ko -->
         </li>
     </ul>
 </form>

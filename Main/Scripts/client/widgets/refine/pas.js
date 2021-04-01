@@ -40,6 +40,7 @@
 
             function init() {
                 self.categories = new Multi(search.refine.serviceCategories, search.serviceCategories, { captionFormatter: format.listCaption });
+                console.log('category', self.categories);
             }
 
             init();
