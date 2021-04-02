@@ -39,6 +39,10 @@ namespace Main.Controllers
 			}
 			return base.Http301Redirect(result.Seo.CanonicalUrl);
 		}
+		public ActionResult BlogDetail()
+		{
+			return base.View("~/Views/Client/Details/Blog.cshtml");
+		}
 
 		[CompetitiveFormating]
 		[HttpGet]

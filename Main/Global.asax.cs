@@ -121,6 +121,12 @@ namespace Main
 				action = "Ebook",
 				pageType = PageType.Ebook
 			});
+			routes.MapRoute("BlogDetail", "blog-details", new
+			{
+				controller = "Client",
+				action = "BlogDetail",
+				pageType = PageType.BlogDetails
+			});
 			PageType.ShcDetails.FluentRoute().State().City()
 				.Name()
 				.DetailsId()

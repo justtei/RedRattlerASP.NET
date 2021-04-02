@@ -473,19 +473,103 @@ button {
 }
 
 /* banner */
-.banner{
-  padding: 150px 0px;
-  background: bottom;
-}
 
-.banner .property-search-field{
+.property-search-field{
   background: #ffffffc7;
   padding: 25px 25px 35px 25px;
 }
 
-/* blog-post */
+#banner-img {
+    padding-top: 450px;
+}
 
-  .blog-post .blog-post-footer {
+#banner-img .overlay {
+    background-color: rgba(0,0,0,.5);
+}
+
+#banner-img .bg {
+    background-position: center;
+}
+
+.bg {
+    opacity: 0;
+    transition: opacity 1s;
+    -webkit-transition: opacity 1s;
+}
+
+.banner {
+    width: 100%;
+    min-height: 30px;
+}
+
+.banner,
+.badge-inner {
+    background-color: #419943
+}
+
+.fill {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 110%;
+    right: 0;
+    bottom: 0;
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+.bg-loaded {
+    opacity: 1;
+}
+
+.bg-fill {
+    background-size: cover !important;
+    background-repeat: no-repeat !important;
+    background-position: 50% 50%;
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    height: 100%;
+    left: -1px;
+    right: -1px;
+    background-color: rgba(0,0,0,0.15);
+    -webkit-transition: opacity .6s, -webkit-transform .3s;
+    transition: opacity .6s, -webkit-transform .3s;
+    -o-transition: transform .3s, opacity .6s;
+    transition: transform .3s, opacity .6s;
+    transition: transform .3s, opacity .6s, -webkit-transform .3s;
+    pointer-events: none;
+}
+
+.banner-layers {
+    max-height: 100%;
+    height: 100%;
+    position: relative;
+}
+
+
+.section {
+    padding: 30px 0;
+    position: relative;
+    min-height: auto;
+    width: 100%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -ms-flex-flow: row;
+    flex-flow: row;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+}
+
+/* blog-post */
+.blog-post .blog-post-footer {
     border-top: 1px solid #eeeeee;
     padding: 12px 0px;
     display: -webkit-box;
@@ -493,7 +577,7 @@ button {
     display: flex;
     align-items: center;
     justify-content: center;
-  }
+}
 
   .blog-post .blog-post-footer .blog-post-time,
   .blog-post .blog-post-footer .blog-post-author,
@@ -1370,6 +1454,10 @@ button {
     background: white;
     width: 90%;
     z-index: 9999;
+}
+
+span.header{
+    cursor: pointer;
 }
 
 @media (max-width: 1700px) {

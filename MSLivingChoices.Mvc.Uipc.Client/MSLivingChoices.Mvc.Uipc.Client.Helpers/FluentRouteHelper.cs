@@ -58,5 +58,10 @@ namespace MSLivingChoices.Mvc.Uipc.Client.Helpers
 		{
 			return route.Section("Zip", "/{zip}", new KeyValuePair<string, object>?(new KeyValuePair<string, object>("zip", "^\\d{5}(-\\d{4})?$|^[a-zA-Z]\\d[a-zA-Z]-\\d[a-zA-Z]\\d$")));
 		}
+
+		public static FluentRoute BlogID(this FluentRoute route)
+		{
+			return route.Section("BlogID", "/{id}", new KeyValuePair<string, object>?(new KeyValuePair<string, object>("id", "^[0-9]{1,}$")));
+		}
 	}
 }
