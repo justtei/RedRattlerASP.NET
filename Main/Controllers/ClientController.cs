@@ -44,6 +44,7 @@ namespace Main.Controllers
 					result.Community.Code += "SHC-";
 
 				ViewBag.SC = ClientViewModelsProvider.GetNewSmililaroFeaturedCommunity(searchVm, id);
+				
 				return base.View("~/Views/Client/Details/Community.cshtml", result);
 			}
 			return base.Http301Redirect(result.Seo.CanonicalUrl);
@@ -246,7 +247,6 @@ namespace Main.Controllers
 				
 				MSLivingChoices.Entities.Client.Search.FeaturedServiceProviderSearchModel searchModel2 = ClientViewModelsProvider.GetNewSmililaroFeaturedServiceProvider(searchVm, id);
 				ViewBag.SC = searchModel2;
-
 				return base.View("~/Views/Client/Details/ServiceProvider.cshtml", result);
 			}
 			return base.Http301Redirect(result.Seo.CanonicalUrl);

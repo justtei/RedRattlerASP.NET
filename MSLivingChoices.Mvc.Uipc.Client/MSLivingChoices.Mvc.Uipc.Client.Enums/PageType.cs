@@ -25,6 +25,7 @@ namespace MSLivingChoices.Mvc.Uipc.Client.Enums
 		AacDetails = 19,
 		AahDetails = 20,
 		ServiceProviderDetails = 21,
+		BlogDetails = 27,
 		PrivacyPolicy = 22,
 		TermsOfUse = 23,
 		ContactUs = 27,

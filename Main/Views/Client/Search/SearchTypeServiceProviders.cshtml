@@ -42,112 +42,114 @@
         color: #dc3545 !important;
     }
 
-    .banner {
-        position: relative;
-    }
-
-    .banner .img-fluid {
-        position: absolute;
-        width: 100%;
+    .fill {
         height: 100%;
-        top: 0px;
     }
-
-
 </style>
-
-@*<section class="banner" style="background-image: url('@Url.Content("~/Content/images9/inner-banner-bg.jpg")'); background-size: cover;">*@
-<section class="banner">
-    <img class="img-fluid" src="@Url.Content("~/Content/images9/banner-02.jpg")" alt="">
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-lg-7" id="search-bar">
-                <h1 class="text-white text-center mb-3">Search Products & Services</h1>
-                <div class="property-search-field p-4">
-                    <form class="row" data-bind="event: { submit: search }" data-search="form">
-                        <div class="col-lg-12 mt-3" style="position: relative; padding:0 2.5%;" data-select="multi" data-bind="event:{outerClick:hideHelpArea }">
-                            <label for="CityState">City / State</label>
-                            <input type="hidden" class="form-control autocomplete-input" data-bind="value: autocompleteLocation" />
-                            <input type="text" id="CityState" class="form-control opacity-input relative" placeholder="Enter City/State" autocomplete="off" data-bind="textInput: lookupLocation, event: {focus: showHelpArea , click: showHelpArea , keydown: onKeyDown, dblclick: onDoubleClick }" />
-                            <div class="help-area-index"
-                                 data-select="target"
-                                 style="display: none; width: 95%;"
-                                 data-bind="visible: isHelpAreaVisible">
-                                <!-- ko with: messages -->
-                                <div class="message"
-                                     data-bind="visible: isEmptyMessageVisible()">
-                                    You should enter an address
-                                </div>
-                                <div class="message"
-                                     data-bind="visible: isErrorMessageVisible(), text: errorMessage">
-                                </div>
-                                <div class="message"
-                                     data-bind="visible: isErrorMessageVisible() && $parent.autocomplete.length()">
-                                    Suggestions:
-                                </div>
-                                <!-- /ko -->
-                                <ul class="autocomplete mb-1 p-1"
-                                    data-bind="visible: isTemplatesVisible(), foreach: currentTemplates()">
-                                    <li data-bind="click: $root.onTemplateClick">
-                                        <span data-bind="text: template"></span>
-                                        <span class="txt-right" data-bind="text: lookupLocation"></span>
-                                    </li>
-                                </ul>
-                                <!-- ko with: autocomplete -->
-                                <ul class="autocomplete mb-1 p-1"
-                                    data-bind="visible: $root.isAutocompleteVisible(), foreach: list">
-                                    <li data-bind="
+<section style="position: relative !important">
+    <div style="height: 450px; touch-action: pan-y;">
+        <div style="left: 0px; transform: translateX(-100%);">
+            <div class="banner" id="banner-img" style="position: absolute; left: 100%;">
+                <div class="fill">
+                    <div class="fill">
+                        <div class="bg fill bg-fill bg-loaded"
+                             style="background-position: top; background-image: url(@Url.Content("~/Content/images9/banner-02.jpg")"></div>
+                    </div>
+                    <div class="banner-layers d-flex align-items-center">
+                        <div class="container">
+                            <div class="row justify-content-center">
+                                <div class="col-lg-7" id="search-bar">
+                                    <h1 class="text-white text-center mb-3">Search Products & Services</h1>
+                                    <div class="property-search-field p-4">
+                                        <form class="row" data-bind="event: { submit: search }" data-search="form">
+                                            <div class="col-lg-12 mt-3" style="position: relative; padding:0 2.5%;" data-select="multi" data-bind="event:{outerClick:hideHelpArea }">
+                                                <label for="CityState">City / State</label>
+                                                <input type="hidden" class="form-control autocomplete-input" data-bind="value: autocompleteLocation" />
+                                                <input type="text" id="CityState" class="form-control opacity-input relative" placeholder="Enter City/State" autocomplete="off" data-bind="textInput: lookupLocation, event: {focus: showHelpArea , click: showHelpArea , keydown: onKeyDown, dblclick: onDoubleClick }" />
+                                                <div class="help-area-index"
+                                                     data-select="target"
+                                                     style="display: none; width: 95%;"
+                                                     data-bind="visible: isHelpAreaVisible">
+                                                    <!-- ko with: messages -->
+                                                    <div class="message"
+                                                         data-bind="visible: isEmptyMessageVisible()">
+                                                        You should enter an address
+                                                    </div>
+                                                    <div class="message"
+                                                         data-bind="visible: isErrorMessageVisible(), text: errorMessage">
+                                                    </div>
+                                                    <div class="message"
+                                                         data-bind="visible: isErrorMessageVisible() && $parent.autocomplete.length()">
+                                                        Suggestions:
+                                                    </div>
+                                                    <!-- /ko -->
+                                                    <ul class="autocomplete mb-1 p-1"
+                                                        data-bind="visible: isTemplatesVisible(), foreach: currentTemplates()">
+                                                        <li data-bind="click: $root.onTemplateClick">
+                                                            <span data-bind="text: template"></span>
+                                                            <span class="txt-right" data-bind="text: lookupLocation"></span>
+                                                        </li>
+                                                    </ul>
+                                                    <!-- ko with: autocomplete -->
+                                                    <ul class="autocomplete mb-1 p-1"
+                                                        data-bind="visible: $root.isAutocompleteVisible(), foreach: list">
+                                                        <li data-bind="
                                                 click: $root.onAutocompleteClick
                                                 , event: { mouseover: function() { $parent.select($index()) } }
                                                 , css: { active: $index() === $parent.index() }">
-                                        <span data-bind="text: start"></span><span class="txt-bold" data-bind="text: end"></span>
-                                        <span class="txt-right" data-bind="text: template"></span>
-                                    </li>
-                                </ul>
-                                <!-- /ko -->
-                            </div>
-                        </div>
-                        <div class="col-lg-6 mt-3 d-none">
-                            <label for="exampleInputName2">Housing Type</label>
-                            <div data-bind="with: searchTypes">
-                                <select class="form-control basic-select" id="exampleFormControlSelect2" data-bind="options:items,optionsText:'text',optionsValue:'value',optionsCaption:'Choose...'">
-                                </select>
-                                <div style="display:none">
-                                    <ul class="type-list row-wrap"
-                                        data-bind="foreach: items">
-                                        <li class=""
-                                            data-bind="click: $parent.selectItem
+                                                            <span data-bind="text: start"></span><span class="txt-bold" data-bind="text: end"></span>
+                                                            <span class="txt-right" data-bind="text: template"></span>
+                                                        </li>
+                                                    </ul>
+                                                    <!-- /ko -->
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6 mt-3 d-none">
+                                                <label for="exampleInputName2">Housing Type</label>
+                                                <div data-bind="with: searchTypes">
+                                                    <select class="form-control basic-select" id="exampleFormControlSelect2" data-bind="options:items,optionsText:'text',optionsValue:'value',optionsCaption:'Choose...'">
+                                                    </select>
+                                                    <div style="display:none">
+                                                        <ul class="type-list row-wrap"
+                                                            data-bind="foreach: items">
+                                                            <li class=""
+                                                                data-bind="click: $parent.selectItem
                                                    , css: {
                                                        'active': selected()
                                                        , 'txt-left': $index() === 0
                                                        , 'txt-right': $index() === $parent.items.length - 1
                                                        , 'txt-center': $index() !== 0 && $index() !== $parent.items.length - 1 },
                                                         attr: {'id': 'clickOn_' + value}">
-                                            <span class="arrow-wrapper">
-                                                <span class="arrow"></span>
-                                                <span data-bind="text: text"></span>
-                                            </span>
-                                        </li>
-                                    </ul>
+                                                                <span class="arrow-wrapper">
+                                                                    <span class="arrow"></span>
+                                                                    <span data-bind="text: text"></span>
+                                                                </span>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6 mt-3" style="padding: 0 2.5%">
+                                                <span class="align-items-center">
+                                                    <button class="btn btn-primary btn-md d-flex align-items-center" type="submit" data-bind="css: { 'in-progress': pending }">
+                                                        <i class="fas fa-search mr-1"></i>
+                                                        <span>@StaticContent.Btn_Search</span>
+                                                    </button>
+                                                </span>
+                                            </div>
+                                        </form>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-6 mt-3" style="padding: 0 2.5%">
-                            <span class="align-items-center">
-                                <button class="btn btn-primary btn-md d-flex align-items-center" type="submit" data-bind="css: { 'in-progress': pending }">
-                                    <i class="fas fa-search mr-1"></i>
-                                    <span>@StaticContent.Btn_Search</span>
-                                </button>
-                            </span>
-                        </div>
-                    </form>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 </section>
 
-<section class="space-ptb">
+<section class="section py-5 bg-white">
     <div class="container">
         <div class="row justify-content-center product-services">
             <div class="col-lg-10 text-center px-md-5 px-4">
