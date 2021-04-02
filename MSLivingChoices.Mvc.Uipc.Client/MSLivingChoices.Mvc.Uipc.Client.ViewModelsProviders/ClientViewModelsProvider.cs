@@ -221,7 +221,12 @@ namespace MSLivingChoices.Mvc.Uipc.Client.ViewModelsProviders
 			searchVm.Breadcrumbs = GetBreadcrumbs(searchVm);
 			return searchVm;
 		}
-
+		public static FeaturedCommunitySearchModel GetNewSmililaroFeaturedCommunity(CommunitiesSearchVm searchVm,long CommunityId)
+		{
+			MSLivingChoices.Entities.Client.Search.FeaturedCommunitySearchModel searchModel2 = searchVm.ToFeaturedCommunitySearchModel();
+			searchModel2 = SearchBc.Instance.SearchFeaturedCommunities(searchModel2, CommunityId);
+			return searchModel2;//.MapToCommunityShortVmList(searchVm.Criteria.SearchType());
+		}
 		public static CommunitiesSearchVm GetCommunitiesSearchVm(CommunitiesSearchVm searchVm)
 		{
 			if (!ValidatePageNumber(searchVm.PageNumber))
@@ -251,7 +256,11 @@ namespace MSLivingChoices.Mvc.Uipc.Client.ViewModelsProviders
 			searchVm.Seo = SeoHelper.GetSeo(searchVm);
 			return searchVm;
 		}
-
+		public static FeaturedServiceProviderSearchModel GetNewSmililaroFeaturedServiceProvider(ServiceProvidersSearchVm searchVm, long CommunityId)
+		{
+			MSLivingChoices.Entities.Client.Search.FeaturedServiceProviderSearchModel searchModel2 = searchVm.ToFeaturedServiceProviderSearchModel();
+			return SearchBc.Instance.SearchFeaturedServiceProviders(searchModel2, CommunityId);
+		}
 		public static ServiceProvidersSearchVm GetServiceProvidersSearchVm(ServiceProvidersSearchVm searchVm)
 		{
 			if (!ValidatePageNumber(searchVm.PageNumber))

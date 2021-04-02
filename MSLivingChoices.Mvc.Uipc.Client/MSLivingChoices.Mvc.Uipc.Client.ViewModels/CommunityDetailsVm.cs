@@ -7,6 +7,7 @@ namespace MSLivingChoices.Mvc.Uipc.Client.ViewModels
 {
 	public class CommunityDetailsVm : SearchWithServicesVm
 	{
+		
 		public List<string> AgeRestrictions
 		{
 			get;

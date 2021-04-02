@@ -92,12 +92,19 @@ namespace MSLivingChoices.Bcs.Client.Components
 			searchModel.Criteria = criteria;
 			return searchModel;
 		}
-
 		public FeaturedCommunitySearchModel SearchFeaturedCommunities(FeaturedCommunitySearchModel searchModel)
 		{
 			SearchCriteria criteria = searchModel.Criteria;
 			searchModel.Criteria = searchModel.Criteria.ToSearchableCriteria();
 			searchModel = this._searchDac.SearchFeaturedCommunities(searchModel);
+			searchModel.Criteria = criteria;
+			return searchModel;
+		}
+		public FeaturedCommunitySearchModel SearchFeaturedCommunities(FeaturedCommunitySearchModel searchModel,long SimilarId)
+		{
+			SearchCriteria criteria = searchModel.Criteria;
+			searchModel.Criteria = searchModel.Criteria.ToSearchableCriteria();
+			searchModel = this._searchDac.SearchFeaturedCommunities(searchModel,SimilarId);
 			searchModel.Criteria = criteria;
 			return searchModel;
 		}
@@ -107,6 +114,14 @@ namespace MSLivingChoices.Bcs.Client.Components
 			SearchCriteria criteria = searchModel.Criteria;
 			searchModel.Criteria = searchModel.Criteria.ToSearchableCriteria();
 			searchModel = this._searchDac.SearchFeaturedServiceProviders(searchModel);
+			searchModel.Criteria = criteria;
+			return searchModel;
+		}
+		public FeaturedServiceProviderSearchModel SearchFeaturedServiceProviders(FeaturedServiceProviderSearchModel searchModel,long SimilarId)
+		{
+			SearchCriteria criteria = searchModel.Criteria;
+			searchModel.Criteria = searchModel.Criteria.ToSearchableCriteria();
+			searchModel = this._searchDac.SearchFeaturedServiceProviders(searchModel,SimilarId);
 			searchModel.Criteria = criteria;
 			return searchModel;
 		}

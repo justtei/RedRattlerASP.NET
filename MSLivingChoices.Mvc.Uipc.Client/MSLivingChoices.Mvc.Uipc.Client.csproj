@@ -34,9 +34,6 @@
     <Reference Include="MSLivingChoices.Bcs">
       <HintPath>..\Dlls\MSLivingChoices.Bcs.dll</HintPath>
     </Reference>
-    <Reference Include="MSLivingChoices.Bcs.Client">
-      <HintPath>..\Dlls\MSLivingChoices.Bcs.Client.dll</HintPath>
-    </Reference>
     <Reference Include="MSLivingChoices.Configuration">
       <HintPath>..\Dlls\MSLivingChoices.Configuration.dll</HintPath>
     </Reference>
@@ -188,6 +185,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\MSLivingChoices.Bcs.Client\MSLivingChoices.Bcs.Client.csproj">
+      <Project>{d950c709-10e8-4e7d-9493-718908b1d5b2}</Project>
+      <Name>MSLivingChoices.Bcs.Client</Name>
+    </ProjectReference>
     <ProjectReference Include="..\MSLivingChoices.Logging\MSLivingChoices.Logging.csproj">
       <Project>{de5e0aa4-3455-415d-9a8f-af299bec6f7f}</Project>
       <Name>MSLivingChoices.Logging</Name>

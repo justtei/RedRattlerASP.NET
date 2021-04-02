@@ -18,7 +18,7 @@ namespace MSLivingChoices.Mvc.Uipc.Client.ViewModels
 			get;
 			set;
 		}
-
+		
 		public string Phone
 		{
 			get;

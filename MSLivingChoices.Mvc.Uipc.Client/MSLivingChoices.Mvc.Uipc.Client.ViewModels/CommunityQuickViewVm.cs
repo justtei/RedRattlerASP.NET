@@ -6,18 +6,12 @@ namespace MSLivingChoices.Mvc.Uipc.Client.ViewModels
 {
 	public class CommunityQuickViewVm : CommunityBlockVm
 	{
+		public String Code { get; set; }
 		public List<string> CommunityServices
 		{
 			get;
 			set;
 		}
-
-		public string Description
-		{
-			get;
-			set;
-		}
-
 		public LeadFormVm LeadForm
 		{
 			get;

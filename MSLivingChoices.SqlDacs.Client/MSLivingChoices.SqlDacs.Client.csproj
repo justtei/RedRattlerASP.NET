@@ -34,9 +34,6 @@
     <Reference Include="MSLivingChoices.Entities.Client">
       <HintPath>..\Main\bin\MSLivingChoices.Entities.Client.dll</HintPath>
     </Reference>
-    <Reference Include="MSLivingChoices.IDacs">
-      <HintPath>..\Main\bin\MSLivingChoices.IDacs.dll</HintPath>
-    </Reference>
     <Reference Include="MSLivingChoices.SqlDacs">
       <HintPath>..\Main\bin\MSLivingChoices.SqlDacs.dll</HintPath>
     </Reference>
@@ -96,6 +93,10 @@
     <ProjectReference Include="..\MSLivingChoices.Entities.Admin\MSLivingChoices.Entities.Admin.csproj">
       <Project>{C406E2DF-6F95-416B-9379-C31ADBD4C7E2}</Project>
       <Name>MSLivingChoices.Entities.Admin</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MSLivingChoices.IDacs.Client\MSLivingChoices.IDacs.csproj">
+      <Project>{a1afeabb-3863-4fbd-b362-b6c1e28773f1}</Project>
+      <Name>MSLivingChoices.IDacs</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

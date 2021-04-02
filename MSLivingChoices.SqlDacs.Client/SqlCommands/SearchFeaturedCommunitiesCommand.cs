@@ -15,11 +15,18 @@ namespace MSLivingChoices.SqlDacs.Client.SqlCommands
 	internal class SearchFeaturedCommunitiesCommand : BaseCommand<FeaturedCommunitySearchModel>
 	{
 		private readonly FeaturedCommunitySearchModel _searchModel;
+		private readonly long SimilarCummunity = -1;
 
 		public SearchFeaturedCommunitiesCommand(FeaturedCommunitySearchModel searchModel)
 		{
 			base.StoredProcedureName = ClientStoredProcedures.SpGetFeaturedCommunities;
 			this._searchModel = searchModel;
+		}
+		public SearchFeaturedCommunitiesCommand(FeaturedCommunitySearchModel searchModel,long SimilarCommunityId)
+		{
+			base.StoredProcedureName = "spGetSimilarCommunities";
+			this._searchModel = searchModel;
+			this.SimilarCummunity = SimilarCommunityId;
 		}
 
 		protected override void CommandBody(SqlCommand command)
@@ -63,12 +70,24 @@ namespace MSLivingChoices.SqlDacs.Client.SqlCommands
 			command.Parameters.Add("@StateCode", SqlDbType.VarChar, 3).Value = this._searchModel.Criteria.StateCode().ValueOrDBNull<string>();
 			command.Parameters.Add("@City", SqlDbType.VarChar, 50).Value = this._searchModel.Criteria.City().ValueOrDBNull<string>();
 			command.Parameters.Add("@MaxCount", SqlDbType.Int).Value = this._searchModel.MaxCount;
+			if(SimilarCummunity != -1)
+            {
+				command.Parameters.Add("@CommunityId", SqlDbType.BigInt).Value = this.SimilarCummunity;
+			}
 			SqlDataReader sqlDataReader = command.ExecuteReader();
 			this._searchModel.Result = new List<Community>();
 			while (sqlDataReader.Read())
 			{
-				Community featuredCommunity = sqlDataReader.GetFeaturedCommunity();
-				this._searchModel.Result.Add(featuredCommunity);
+				if (SimilarCummunity != -1)
+				{
+					Community featuredCommunity = sqlDataReader.GetSimilarCommunity();
+					this._searchModel.Result.Add(featuredCommunity);
+				}
+				else
+				{
+					Community featuredCommunity = sqlDataReader.GetFeaturedCommunity();
+					this._searchModel.Result.Add(featuredCommunity);
+				}
 			}
 		}
 

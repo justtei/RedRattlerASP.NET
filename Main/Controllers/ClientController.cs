@@ -26,7 +26,7 @@ namespace Main.Controllers
 		}
 
 		[CompetitiveFormating]
-		public ActionResult CommunityDetails(long id, PageType pageType)
+		public ActionResult CommunityDetails(long id, PageType pageType,CommunitiesSearchVm searchVm)
 		{
 			CommunityDetailsVm result = ClientViewModelsProvider.GetCommunityDetailsVm(id, pageType);
 			if (result == null)
@@ -35,7 +35,15 @@ namespace Main.Controllers
 			}
 			if (!result.ShouldRedirect(result.Community.ListingTypes))
 			{
+				result.Community.Code = "";
+				if (result.Community.ListingTypes.Contains(MSLivingChoices.Entities.Client.Enums.ListingType.ActiveAdultCommunities))
+					result.Community.Code += "AAC-";
+				if(result.Community.ListingTypes.Contains(MSLivingChoices.Entities.Client.Enums.ListingType.ActiveAdultHomes))
+					result.Community.Code += "AAH-";
+				if (result.Community.ListingTypes.Contains(MSLivingChoices.Entities.Client.Enums.ListingType.SeniorHousingAndCare))
+					result.Community.Code += "SHC-";
 
+				ViewBag.SC = ClientViewModelsProvider.GetNewSmililaroFeaturedCommunity(searchVm, id);
 				return base.View("~/Views/Client/Details/Community.cshtml", result);
 			}
 			return base.Http301Redirect(result.Seo.CanonicalUrl);
@@ -225,7 +233,7 @@ namespace Main.Controllers
 		}
 
 		[CompetitiveFormating]
-		public ActionResult ServiceProviderDetails(long id)
+		public ActionResult ServiceProviderDetails(long id,ServiceProvidersSearchVm searchVm)
 		{
 			ServiceProviderDetailsVm result = ClientViewModelsProvider.GetServiceProviderDetailsVm(id);
 			if (result == null)
@@ -234,6 +242,11 @@ namespace Main.Controllers
 			}
 			if (!result.ShouldRedirect())
 			{
+				result.ServiceProvider.Code = "SP-";
+				
+				MSLivingChoices.Entities.Client.Search.FeaturedServiceProviderSearchModel searchModel2 = ClientViewModelsProvider.GetNewSmililaroFeaturedServiceProvider(searchVm, id);
+				ViewBag.SC = searchModel2;
+
 				return base.View("~/Views/Client/Details/ServiceProvider.cshtml", result);
 			}
 			return base.Http301Redirect(result.Seo.CanonicalUrl);
@@ -298,11 +311,7 @@ namespace Main.Controllers
 
 		public ActionResult SeniorType()
 		{
-<<<<<<< HEAD
-			return base.View("~/Views/Client/Static/SeniorType.cshtml", ClientViewModelsProvider.GetStaticContent(PageType.PrivacyPolicy));
-=======
 			return base.View("~/Views/Client/Static/SeniorType.cshtml", ClientViewModelsProvider.GetStaticContent(PageType.SeniorType));
->>>>>>> d7af5a72fc4c0958ba03e11d59bb33421f43817e
 		}
 
 	}

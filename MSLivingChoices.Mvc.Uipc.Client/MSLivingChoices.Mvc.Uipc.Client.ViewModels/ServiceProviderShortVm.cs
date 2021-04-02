@@ -12,7 +12,7 @@ namespace MSLivingChoices.Mvc.Uipc.Client.ViewModels
 			get;
 			set;
 		}
-
+		public string Description { get; set; }
 		public string BookNumber
 		{
 			get;

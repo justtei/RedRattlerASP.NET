@@ -57,8 +57,16 @@ namespace MSLivingChoices.Mvc.Uipc.Client.Helpers.Core
 
 		public string Url()
 		{
-			VirtualPathData virtualPath = RouteTable.Routes.GetVirtualPath(null, _routeName.ToString(), _routeValues);
-			return ((virtualPath != null) ? (MslcUrlBuilder.BaseUrl + virtualPath.VirtualPath) : string.Empty).ToLower();
+			try
+			{
+				VirtualPathData virtualPath = RouteTable.Routes.GetVirtualPath(null, _routeName.ToString(), _routeValues);
+				return ((virtualPath != null) ? (MslcUrlBuilder.BaseUrl + virtualPath.VirtualPath) : string.Empty).ToLower();
+			}
+            catch
+            {
+				return string.Empty.ToLower();
+
+			}
 		}
 	}
 

@@ -79,10 +79,21 @@ namespace MSLivingChoices.SqlDacs.Client.Components
 			searchFeaturedCommunitiesCommand.Execute();
 			return searchFeaturedCommunitiesCommand.CommandResult;
 		}
-
+		public FeaturedCommunitySearchModel SearchFeaturedCommunities(FeaturedCommunitySearchModel searchModel,long CommunityID)
+		{
+			SearchFeaturedCommunitiesCommand searchFeaturedCommunitiesCommand = new SearchFeaturedCommunitiesCommand(searchModel, CommunityID);
+			searchFeaturedCommunitiesCommand.Execute();
+			return searchFeaturedCommunitiesCommand.CommandResult;
+		}
 		public FeaturedServiceProviderSearchModel SearchFeaturedServiceProviders(FeaturedServiceProviderSearchModel searchModel)
 		{
 			SearchFeaturedServicesCommand searchFeaturedServicesCommand = new SearchFeaturedServicesCommand(searchModel);
+			searchFeaturedServicesCommand.Execute();
+			return searchFeaturedServicesCommand.CommandResult;
+		}
+		public FeaturedServiceProviderSearchModel SearchFeaturedServiceProviders(FeaturedServiceProviderSearchModel searchModel,long SimilarId)
+		{
+			SearchFeaturedServicesCommand searchFeaturedServicesCommand = new SearchFeaturedServicesCommand(searchModel, SimilarId);
 			searchFeaturedServicesCommand.Execute();
 			return searchFeaturedServicesCommand.CommandResult;
 		}

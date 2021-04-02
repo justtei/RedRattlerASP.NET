@@ -30,6 +30,21 @@ namespace MSLivingChoices.SqlDacs.Client.Helpers
 			community.DisplayOptions = GetCommunityDisplayOptions(reader);
 			return community;
 		}
+		public static Community GetSimilarCommunity(this SqlDataReader reader)
+		{
+			Community community = new Community();
+			community.Id = reader.GetValueOrDefault<long>("CommunityId");
+			community.Name = reader.GetValueOrDefault<string>("Name");
+			community.Phone = reader.GetValueOrDefault<string>("Phone");
+			community.PackageId = reader.GetValueOrDefault<int>("PackageTypeId");
+			community.BookNumber = reader.GetValueOrDefault<string>("BookNumber");
+			community.Price = GetPrice(reader);
+			community.Address = GetAddress(reader);
+			community.Images = new List<Image>();
+			community.Images.Add(GetImage(reader));
+			community.DisplayOptions = GetCommunityDisplayOptions(reader,true);
+			return community;
+		}
 
 		public static ServiceProvider GetFeaturedService(this SqlDataReader reader)
 		{
@@ -45,7 +60,20 @@ namespace MSLivingChoices.SqlDacs.Client.Helpers
 			serviceProvider.DisplayOptions = GetServiceDisplayOptions(reader);
 			return serviceProvider;
 		}
-
+		public static ServiceProvider GetFeaturedService(this SqlDataReader reader,bool IsSimilar)
+		{
+			ServiceProvider serviceProvider = new ServiceProvider();
+			serviceProvider.Id = reader.GetValueOrDefault<long>("ServiceId");
+			serviceProvider.Name = reader.GetValueOrDefault<string>("Name");
+			serviceProvider.Phone = reader.GetValueOrDefault<string>("Phone");
+			serviceProvider.PackageId = reader.GetValueOrDefault<int>("PackageTypeId");
+			serviceProvider.BookNumber = reader.GetValueOrDefault<string>("BookNumber");
+			serviceProvider.Address = GetAddress(reader);
+			serviceProvider.Images = new List<Image>();
+			serviceProvider.Images.Add(GetImage(reader));
+			serviceProvider.DisplayOptions = GetServiceDisplayOptions(reader,true);
+			return serviceProvider;
+		}
 		public static Community GetSearchCommunity(this SqlDataReader reader)
 		{
 			Community community = new Community();
@@ -81,6 +109,7 @@ namespace MSLivingChoices.SqlDacs.Client.Helpers
 			{
 				return null;
 			}
+			serviceProvider.Description = reader.GetValueOrDefault<string>("Description");
 			serviceProvider.Name = reader.GetValueOrDefault<string>("Name");
 			serviceProvider.BookNumber = reader.GetValueOrDefault<string>("BookNumber");
 			serviceProvider.SearchResultRadius = reader.GetValueOrDefault<int>("Distance");
@@ -338,12 +367,25 @@ namespace MSLivingChoices.SqlDacs.Client.Helpers
 			}
 			return list;
 		}
-
 		public static CommunityDisplayOptions GetCommunityDisplayOptions(this SqlDataReader reader)
 		{
 			return new CommunityDisplayOptions
 			{
 				Address = reader.GetValueOrDefault<bool>("IsDisplayAddress"),
+				FloorPlans = reader.GetValueOrDefault<bool>("HasFloorPlan"),
+				SpecHomes = reader.GetValueOrDefault<bool>("HasSpecHome"),
+				Homes = reader.GetValueOrDefault<bool>("HasHome"),
+				Website = reader.GetValueOrDefault<bool>("IsDisplayWebsiteURL")
+			};
+		}
+		public static CommunityDisplayOptions GetCommunityDisplayOptions(this SqlDataReader reader,bool IsSimilar)
+		{
+			String test = reader["IsDisplayAddress"].ToString();
+			int Bool = reader.GetValueOrDefault<int>("IsDisplayAddress");
+			
+			return new CommunityDisplayOptions
+			{
+				Address = Bool == 1?true:false,
 				FloorPlans = reader.GetValueOrDefault<bool>("HasFloorPlan"),
 				SpecHomes = reader.GetValueOrDefault<bool>("HasSpecHome"),
 				Homes = reader.GetValueOrDefault<bool>("HasHome"),
@@ -359,7 +401,14 @@ namespace MSLivingChoices.SqlDacs.Client.Helpers
 				Website = reader.GetValueOrDefault<bool>("IsDisplayWebsiteURL")
 			};
 		}
-
+		public static ServiceDisplayOptions GetServiceDisplayOptions(this SqlDataReader reader,bool Issimilar)
+		{
+			return new ServiceDisplayOptions
+			{
+				Address = reader.GetValueOrDefault<int>("IsDisplayAddress") == 1 ? true : false,
+				Website = reader.GetValueOrDefault<bool>("IsDisplayWebsiteURL")
+			};
+		}
 		public static OwnerDisplayOptions GetOwnerDisplayOptions(this SqlDataReader reader)
 		{
 			return new OwnerDisplayOptions

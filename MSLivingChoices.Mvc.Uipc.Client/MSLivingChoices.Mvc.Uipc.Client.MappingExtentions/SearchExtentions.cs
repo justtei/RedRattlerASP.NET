@@ -544,6 +544,7 @@ namespace MSLivingChoices.Mvc.Uipc.Client.MappingExtentions
 			ServiceProviderBlockVm serviceProviderShortVm = serviceProvider.MapToServiceProviderShortVm(viewModel ?? new ServiceProviderBlockVm()) as ServiceProviderBlockVm;
 			if (serviceProviderShortVm != null)
 			{
+				serviceProviderShortVm.Description = serviceProvider.Description;
 				serviceProviderShortVm.CountiesServed = serviceProvider.CountiesServed;
 				serviceProviderShortVm.ServiceCategories = serviceProvider.ServiceCategories;
 				serviceProviderShortVm.Images = (serviceProvider.Images.Any<Image>((Image i) => i.Type == ImageType.Image) ? (

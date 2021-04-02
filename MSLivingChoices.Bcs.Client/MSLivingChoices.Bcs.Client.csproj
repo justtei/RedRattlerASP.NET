@@ -37,9 +37,6 @@
     <Reference Include="MSLivingChoices.Entities.Client">
       <HintPath>..\Main\bin\MSLivingChoices.Entities.Client.dll</HintPath>
     </Reference>
-    <Reference Include="MSLivingChoices.IDacs">
-      <HintPath>..\Main\bin\MSLivingChoices.IDacs.dll</HintPath>
-    </Reference>
     <Reference Include="MSLivingChoices.Utilities">
       <HintPath>..\Main\bin\MSLivingChoices.Utilities.dll</HintPath>
     </Reference>
@@ -62,6 +59,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\MSLivingChoices.IDacs.Client\MSLivingChoices.IDacs.csproj">
+      <Project>{a1afeabb-3863-4fbd-b362-b6c1e28773f1}</Project>
+      <Name>MSLivingChoices.IDacs</Name>
+    </ProjectReference>
     <ProjectReference Include="..\MSLivingChoices.Logging\MSLivingChoices.Logging.csproj">
       <Project>{DE5E0AA4-3455-415D-9A8F-AF299BEC6F7F}</Project>
       <Name>MSLivingChoices.Logging</Name>

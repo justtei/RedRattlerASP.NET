@@ -42,6 +42,14 @@
     .header {
         box-shadow: 0px 0px 0px 0px rgb(27 27 41 / 15%);
     }
+
+    .txt-truncate{
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
 </style>
 @section scripts
 {
@@ -191,24 +199,24 @@
                                                     <span class="badge badge-md">@community.Price</span>
                                                 </div>
                                             }
-                                            else
+                                            @*else
                                             {
                                                 <div class="property-prize">
                                                     <span class="badge badge-md">$&nbsp;?</span>
                                                 </div>
-                                            }
+                                            }*@
                                             @if (community.Beds.IsValued)
                                             {
                                                 <div class="property-room">
                                                     <span class="badge badge-md"><i class="fas fa-bed fa-1x text-white mr-1"></i> @community.Beds.Value</span>
                                                 </div>
                                             }
-                                            else
+                                            @*else
                                             {
                                                 <div class="property-room">
                                                     <span class="badge badge-md"><i class="fas fa-bed fa-1x text-white mr-1"></i> &nbsp;? </span>
                                                 </div>
-                                            }
+                                            }*@
                                         </div>
                                     </div>
                                     <div class="property-detail bg-light p-4">
@@ -380,27 +388,27 @@
                                                                 {
                                                                     <span class="badge badge-md">@community.Price</span>
                                                                 }
-                                                                else
+                                                                @*else
                                                                 {
                                                                     <span class="badge badge-md">$&nbsp;&nbsp;?</span>
-                                                                }
+                                                                }*@
                                                             </div>
                                                             <div class="property-room">
                                                                 @if (community.DisplayProperties.Beds)
                                                                 {
                                                                     <span class="badge badge-md"><i class="fas fa-bed fa-1x text-white mr-1"></i>@community.Beds</span>
                                                                 }
-                                                                else
+                                                                @*else
                                                                 {
                                                                     <span class="badge badge-md"><i class="fas fa-bed fa-1x text-white mr-1"></i>?</span>
-                                                                }
+                                                                }*@
                                                             </div>
                                                         </div>
                                                     </div>
                                                     <div class="col-md-7">
                                                         <div class="property-detail p-4">
-                                                            <h3 class="property-title"><a href="@community.DetailsUrl">@(community.DisplayProperties.Name ? community.Name : "View details")</a></h3>
-                                                            <ul class="pl-0">
+                                                            <h3 class="property-title mb-1"><a href="@community.DetailsUrl">@(community.DisplayProperties.Name ? community.Name : "View details")</a></h3>
+                                                            <ul class="pl-0 mb-1">
                                                                 <li class="property-address mb-1">
                                                                     <i class="fas fa-map-marker-alt fa-1x mr-1 text-primary"></i> EXACT -@community.Address.City, @community.Address.StateCode @community.Address.Zip
                                                                 </li>
@@ -412,29 +420,16 @@
                                                                         @community.Phone
                                                                     </li>
                                                                 }
-                                                                else
+                                                                @*else
                                                                 {
                                                                     <li class="property-address mb-1">
                                                                         <i class="fas fa-phone-alt fa-1x text-primary mr-1"></i>
                                                                     </li>
-                                                                }
+                                                                }*@
                                                             </ul>
                                                             @*<p>@community.Description</p>*@
-                                                            <p>
-                                                                <address class="ind-s" itemprop="address" itemscope itemtype="http://schema.org/PostalAddress">
-                                                                    <span class="address-line">
-                                                                        <span itemprop="streetAddress">@community.Address.Line</span>
-                                                                        @if (community.DisplayProperties.RadiusDesignation)
-                                                                        {
-                                                                            <span class="txt-lower txt-decr txt-brand-blue txt-bold radius-designation"
-                                                                                  data-hint="#radius-designation-hint">@community.SearchRadiusDesignation</span>
-                                                                            }
-                                                                    </span>
-                                                                    <br />
-                                                                    <span class="city" itemprop="addressLocality">@community.Address.City</span>
-                                                                    <span class="state" itemprop="addressRegion">@community.Address.StateCode</span>
-                                                                    <span itemprop="postalCode">@community.Address.Zip</span>
-                                                                </address>
+                                                            <p class="txt-truncate mb-1">
+                                                                @community.Description
                                                             </p>
                                                             <div class="mb-3">
                                                                 <a href="@community.DetailsUrl" class="font-weight-bold">Read More <i class="fas fa-angle-right"></i></a>

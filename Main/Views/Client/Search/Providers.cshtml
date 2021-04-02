@@ -19,6 +19,13 @@
         .refine li {
             font-weight: 700;
         }
+    .txt-truncate {
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
 </style>
 
 @section scripts
@@ -44,11 +51,10 @@
     @{ Html.RenderPartial("Search/Partial/MapView"); }
     @{ Html.RenderPartial("Search/Partial/PhotoTour"); }
 
-    <script type="text/javascript">
+<script type="text/javascript">
         mslc.resolve(['client/widgets/qvInitializer'], function(initQv) {
             initQv(@((int) Model.PageType.ToSearchType()), 'serviceProviderId');
         }, 'init-qv');
-
         mslc.resolve(['client/widgets/leadForm'], function(leadForm) {
             leadForm.initPopUpSharedData(@Html.Json(Model.LeadForm));
         }, 'init-lead-form');
@@ -77,7 +83,7 @@
             ko.applyBindings(refine, document.getElementById("refine"));
             ko.applyBindings(refine, document.getElementById("sort"));
         }, 'init-refine');
-    </script>
+</script>
 }
 <div class="row">
     <div class="col-md-12">
@@ -138,7 +144,6 @@
                                                 </div>
                                             </div>
                                         </form>
-
                                     </div>
                                 </div>
                             </div>
@@ -171,7 +176,7 @@
                                                 </div>
                                                 <div class="col-md-7">
                                                     <div class="property-detail p-4">
-                                                        <h3 class="property-title"><a href="@provider.DetailsUrl">@(provider.DisplayProperties.Name ? provider.Name : "View details")</a></h3>
+                                                        <h3 class="property-title mb-1"><a href="@provider.DetailsUrl">@(provider.DisplayProperties.Name ? provider.Name : "View details")</a></h3>
                                                         <ul class="pl-0">
                                                             <li class="property-address mb-1">
                                                                 @if (provider.DisplayProperties.Address)
@@ -187,8 +192,8 @@
                                                                 }
                                                             </li>
                                                         </ul>
-                                                        <p>
-                                                            <address class="ind-s" itemprop="address" itemscope itemtype="http://schema.org/PostalAddress">
+                                                        <p class="txt-truncate mb-1">
+                                                            @*<address class="ind-s" itemprop="address" itemscope itemtype="http://schema.org/PostalAddress">
                                                                 <span class="address-line">
                                                                     <span itemprop="streetAddress">@provider.Address.Line</span>
                                                                     @if (provider.DisplayProperties.RadiusDesignation)
@@ -201,7 +206,8 @@
                                                                 <span class="city" itemprop="addressLocality">@provider.Address.City</span>
                                                                 <span class="state" itemprop="addressRegion">@provider.Address.StateCode</span>
                                                                 <span itemprop="postalCode">@provider.Address.Zip</span>
-                                                            </address>
+                                                            </address>*@
+                                                           @provider.Description
                                                         </p>
                                                         <div class="mb-3">
                                                             <a href="@provider.DetailsUrl">Read More <i class="fas fa-angle-right"></i></a>

@@ -5,11 +5,7 @@ namespace MSLivingChoices.Mvc.Uipc.Client.ViewModels
 {
 	public class ServiceProviderQuickViewVm : ServiceProviderBlockVm
 	{
-		public string Description
-		{
-			get;
-			set;
-		}
+		public string Code { get; set; }
 
 		public LeadFormVm LeadForm
 		{
