@@ -188,8 +188,8 @@
                                                                     }
                                                                 </li>
                                                             </ul>
-                                                            <p class="mb-1">
-                                                                <address class="ind-s" itemprop="address" itemscope itemtype="http://schema.org/PostalAddress">
+                                                            <p class="txt-truncate mb-1">
+                                                                @*<address class="ind-s" itemprop="address" itemscope itemtype="http://schema.org/PostalAddress">
                                                                     <span class="address-line">
                                                                         <span itemprop="streetAddress">@provider.Address.Line</span>
                                                                         @if (provider.DisplayProperties.RadiusDesignation)
@@ -202,7 +202,8 @@
                                                                     <span class="city" itemprop="addressLocality">@provider.Address.City</span>
                                                                     <span class="state" itemprop="addressRegion">@provider.Address.StateCode</span>
                                                                     <span itemprop="postalCode">@provider.Address.Zip</span>
-                                                                </address>
+                                                                </address>*@
+                                                                @provider.Description
                                                             </p>
                                                             <div class="mb-3">
                                                                 <a href="@provider.DetailsUrl" class="font-weight-bold">Read More <i class="fas fa-angle-right"></i></a>

@@ -23,10 +23,10 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>03/20/2021 03:14:13</publishTime>
     </File>
     <File Include="bin/Main.dll">
-      <publishTime>04/01/2021 22:58:10</publishTime>
+      <publishTime>04/03/2021 01:08:46</publishTime>
     </File>
     <File Include="bin/Main.pdb">
-      <publishTime>04/01/2021 22:58:10</publishTime>
+      <publishTime>04/03/2021 01:08:46</publishTime>
     </File>
     <File Include="bin/Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll">
       <publishTime>09/05/2018 16:10:50</publishTime>
@@ -56,10 +56,10 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>01/06/2021 06:29:11</publishTime>
     </File>
     <File Include="bin/MSLivingChoices.Bcs.Client.dll">
-      <publishTime>04/01/2021 22:58:05</publishTime>
+      <publishTime>04/03/2021 01:08:39</publishTime>
     </File>
     <File Include="bin/MSLivingChoices.Bcs.Client.pdb">
-      <publishTime>04/01/2021 22:58:05</publishTime>
+      <publishTime>04/03/2021 01:08:39</publishTime>
     </File>
     <File Include="bin/MSLivingChoices.Bcs.dll">
       <publishTime>03/20/2021 03:14:13</publishTime>
@@ -86,10 +86,10 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>03/31/2021 04:24:36</publishTime>
     </File>
     <File Include="bin/MSLivingChoices.IDacs.Client.dll">
-      <publishTime>04/01/2021 22:58:00</publishTime>
+      <publishTime>04/03/2021 01:08:35</publishTime>
     </File>
     <File Include="bin/MSLivingChoices.IDacs.Client.pdb">
-      <publishTime>04/01/2021 22:58:00</publishTime>
+      <publishTime>04/03/2021 01:08:35</publishTime>
     </File>
     <File Include="bin/MSLivingChoices.IDacs.dll">
       <publishTime>03/20/2021 03:14:13</publishTime>
@@ -134,13 +134,13 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>03/31/2021 04:24:36</publishTime>
     </File>
     <File Include="bin/MSLivingChoices.Mvc.Uipc.Client.dll">
-      <publishTime>04/01/2021 22:58:07</publishTime>
+      <publishTime>04/03/2021 01:08:42</publishTime>
     </File>
     <File Include="bin/MSLivingChoices.Mvc.Uipc.Client.dll.config">
       <publishTime>01/06/2021 06:29:13</publishTime>
     </File>
     <File Include="bin/MSLivingChoices.Mvc.Uipc.Client.pdb">
-      <publishTime>04/01/2021 22:58:07</publishTime>
+      <publishTime>04/03/2021 01:08:42</publishTime>
     </File>
     <File Include="bin/MSLivingChoices.Mvc.Uipc.dll">
       <publishTime>03/20/2021 03:14:13</publishTime>
@@ -170,10 +170,10 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>03/31/2021 04:24:36</publishTime>
     </File>
     <File Include="bin/MSLivingChoices.SqlDacs.Client.dll">
-      <publishTime>04/01/2021 22:58:02</publishTime>
+      <publishTime>04/03/2021 01:08:37</publishTime>
     </File>
     <File Include="bin/MSLivingChoices.SqlDacs.Client.pdb">
-      <publishTime>04/01/2021 22:58:02</publishTime>
+      <publishTime>04/03/2021 01:08:37</publishTime>
     </File>
     <File Include="bin/MSLivingChoices.SqlDacs.dll">
       <publishTime>03/20/2021 03:14:25</publishTime>
@@ -569,7 +569,7 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>03/21/2021 01:37:02</publishTime>
     </File>
     <File Include="Content/css/Rohaan/style.css">
-      <publishTime>03/31/2021 22:26:03</publishTime>
+      <publishTime>04/02/2021 23:08:23</publishTime>
     </File>
     <File Include="Content/css/Site.css">
       <publishTime>03/21/2021 01:37:02</publishTime>
@@ -1988,7 +1988,7 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>03/21/2021 01:36:57</publishTime>
     </File>
     <File Include="Scripts/client/widgets/refine/pas.js">
-      <publishTime>03/21/2021 01:36:57</publishTime>
+      <publishTime>04/02/2021 23:08:23</publishTime>
     </File>
     <File Include="Scripts/client/widgets/refine/shc.js">
       <publishTime>03/31/2021 22:26:04</publishTime>
@@ -3397,8 +3397,11 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
     <File Include="Views/Client/Controls/Select.cshtml">
       <publishTime>01/15/2021 11:28:48</publishTime>
     </File>
+    <File Include="Views/Client/Details/Blog.cshtml">
+      <publishTime>04/02/2021 23:08:23</publishTime>
+    </File>
     <File Include="Views/Client/Details/Community.cshtml">
-      <publishTime>04/01/2021 22:54:38</publishTime>
+      <publishTime>04/03/2021 01:02:17</publishTime>
     </File>
     <File Include="Views/Client/Details/Partial/Coupon.cshtml">
       <publishTime>01/15/2021 11:28:50</publishTime>
@@ -3413,7 +3416,7 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>01/15/2021 11:28:50</publishTime>
     </File>
     <File Include="Views/Client/Details/ServiceProvider.cshtml">
-      <publishTime>03/31/2021 22:26:04</publishTime>
+      <publishTime>04/03/2021 01:03:50</publishTime>
     </File>
     <File Include="Views/Client/Error/Error.cshtml">
       <publishTime>03/30/2021 22:07:46</publishTime>
@@ -3485,7 +3488,7 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>03/31/2021 23:00:26</publishTime>
     </File>
     <File Include="Views/Client/Search/Index.cshtml">
-      <publishTime>03/31/2021 22:47:06</publishTime>
+      <publishTime>04/02/2021 23:43:28</publishTime>
     </File>
     <File Include="Views/Client/Search/Partial/Featured.cshtml">
       <publishTime>03/25/2021 00:51:50</publishTime>
@@ -3518,10 +3521,10 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>01/15/2021 11:28:50</publishTime>
     </File>
     <File Include="Views/Client/Search/Partial/Refine/AacAah.cshtml">
-      <publishTime>03/31/2021 22:26:04</publishTime>
+      <publishTime>04/02/2021 23:08:23</publishTime>
     </File>
     <File Include="Views/Client/Search/Partial/Refine/Pas.cshtml">
-      <publishTime>03/30/2021 22:07:46</publishTime>
+      <publishTime>04/02/2021 23:08:23</publishTime>
     </File>
     <File Include="Views/Client/Search/Partial/Refine/Shc.cshtml">
       <publishTime>04/01/2021 15:37:08</publishTime>
@@ -3530,13 +3533,13 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>01/15/2021 11:28:52</publishTime>
     </File>
     <File Include="Views/Client/Search/Providers.cshtml">
-      <publishTime>03/31/2021 23:57:04</publishTime>
+      <publishTime>04/03/2021 00:50:55</publishTime>
     </File>
     <File Include="Views/Client/Search/SearchType.cshtml">
       <publishTime>03/31/2021 22:26:06</publishTime>
     </File>
     <File Include="Views/Client/Search/SearchTypeServiceProviders.cshtml">
-      <publishTime>03/31/2021 22:26:04</publishTime>
+      <publishTime>04/03/2021 00:12:11</publishTime>
     </File>
     <File Include="Views/Client/Shared/Partial/NoScript.cshtml">
       <publishTime>01/15/2021 11:28:52</publishTime>
@@ -3557,7 +3560,7 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>03/30/2021 22:07:46</publishTime>
     </File>
     <File Include="Views/Client/Static/AboutUs.cshtml">
-      <publishTime>03/30/2021 22:07:47</publishTime>
+      <publishTime>04/02/2021 23:08:23</publishTime>
     </File>
     <File Include="Views/Client/Static/ContactUs.cshtml">
       <publishTime>03/30/2021 22:13:30</publishTime>
@@ -3569,7 +3572,7 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>03/31/2021 22:26:04</publishTime>
     </File>
     <File Include="Views/Client/Static/SeniorType.cshtml">
-      <publishTime>03/31/2021 22:26:04</publishTime>
+      <publishTime>04/02/2021 23:08:23</publishTime>
     </File>
     <File Include="Views/Client/Static/TermsOfUse.cshtml">
       <publishTime>03/31/2021 22:26:04</publishTime>

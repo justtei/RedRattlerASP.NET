@@ -43,7 +43,7 @@ namespace Main.Controllers
 				if (result.Community.ListingTypes.Contains(MSLivingChoices.Entities.Client.Enums.ListingType.SeniorHousingAndCare))
 					result.Community.Code += "SHC-";
 
-				ViewBag.SC = ClientViewModelsProvider.GetNewSmililaroFeaturedCommunity(searchVm, id);
+				ViewBag.SC = ClientViewModelsProvider.GetNewSmililarCommunity(searchVm, id);
 				
 				return base.View("~/Views/Client/Details/Community.cshtml", result);
 			}
@@ -244,9 +244,7 @@ namespace Main.Controllers
 			if (!result.ShouldRedirect())
 			{
 				result.ServiceProvider.Code = "SP-";
-				
-				MSLivingChoices.Entities.Client.Search.FeaturedServiceProviderSearchModel searchModel2 = ClientViewModelsProvider.GetNewSmililaroFeaturedServiceProvider(searchVm, id);
-				ViewBag.SC = searchModel2;
+				ViewBag.SC = ClientViewModelsProvider.GetNewSmililarServiceProvider(searchVm, id); ;
 				return base.View("~/Views/Client/Details/ServiceProvider.cshtml", result);
 			}
 			return base.Http301Redirect(result.Seo.CanonicalUrl);

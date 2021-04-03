@@ -534,7 +534,8 @@ namespace MSLivingChoices.Mvc.Uipc.Client.MappingExtentions
 		internal static ServiceProviderBlockVm MapToServiceProviderBlockVm(this ServiceProvider serviceProvider)
 		{
 			ServiceProviderBlockVm serviceProviderBlockVm = serviceProvider.MapToServiceProviderBlockVm(null);
-			serviceProviderBlockVm.ServiceCategories = serviceProviderBlockVm.ServiceCategories.Take<string>(SearchExtentions.Config.SearchAmenitiesListMaxCount).ToList<string>();
+			if(serviceProviderBlockVm.ServiceCategories != null)
+				serviceProviderBlockVm.ServiceCategories = serviceProviderBlockVm.ServiceCategories.Take<string>(SearchExtentions.Config.SearchAmenitiesListMaxCount).ToList<string>();
 			serviceProviderBlockVm.Images = serviceProviderBlockVm.Images.TakeExceptFirst<ImageVm>(SearchExtentions.Config.AdditionalImagesMaxCount).ToList<ImageVm>();
 			return serviceProviderBlockVm;
 		}
