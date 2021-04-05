@@ -117,6 +117,13 @@
                             </span>
                         </li>
                         <li class="">
+                            <i class="fas fa-phone-alt fa-1x text-primary mr-1"></i><span>
+                                <a href="tel:@(Model.Community.Phone)" class="click-to-call" data-phone-number="@(Model.Community.Phone)">
+                                    @Model.Community.Phone
+                                </a>
+                            </span>
+                        </li>
+                        <li class="">
                             <p class="mb-0">
                                 <address itemprop="address" itemscope itemtype="http://schema.org/PostalAddress">
                                     <span class="address-line" itemprop="streetAddress">@Model.Community.Address.Line</span> <br />
@@ -136,7 +143,6 @@
                         </li>
                         <li class="sqft"><b>$6,500/Sqft</b></li>
                         <li class="reviews"><i class="fas fa-star text-primary"></i><i class="fas fa-star text-primary"></i><i class="fas fa-star text-primary"></i><i class="fas fa-star text-primary"></i><i class="fas fa-star-half-alt text-primary"></i><span class="pl-2">(2 customer reviews)</span></li>
-                        <li class=""><i class="fas fa-compress-alt text-primary"></i><span>Compare</span></li>
                     </ul>
                 </div>
             </div>

@@ -23,7 +23,6 @@
             function formRequest() {
                 var current = util.invoke(self.controls.formRequest);
                 current.sortType = self.sort.selected.value();
-
                 return util.extend(initial, current);
             }
 

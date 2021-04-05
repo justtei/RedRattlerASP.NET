@@ -1,13 +1,13 @@
 ﻿mslc.define('client/widgets/refine/aahAac',
     [
-          'lib/ko'
+        'lib/ko'
         , 'client/controls/select'
         , 'client/controls/multi'
         , 'client/controls/numeric'
         , 'client/util'
         , 'client/services/remote'
     ],
-    function(ko, Select, Multi, Numeric, util, remote) {
+    function (ko, Select, Multi, Numeric, util, remote) {
         'use strict';
 
         function AacAAhRefine(search) {
@@ -17,7 +17,9 @@
             var self = this
                 , bedName = 'Beds'
                 , bathName = 'Baths'
-                , maxPriceCaptionLength = 19;
+                , maxPriceCaptionLength = 19
+                , maxMultiLength = 11
+                , multiFormat = "{0} {1} more";
 
             function formatPrice() {
                 var caption = null
@@ -44,7 +46,8 @@
                     minPrice: self.min.value(),
                     maxPrice: self.max.value(),
                     beds: self.beds.selected.value(),
-                    bathes: self.bathes.selected.value()
+                    bathes: self.bathes.selected.value(),
+                    shcCategories: self.categories.selected.values()
                 };
             }
 
@@ -54,6 +57,7 @@
                 self.min.value(null);
                 self.max.value(null);
                 self.amenities.reset();
+                self.categories.reset();
             }
 
             function isInitial() {
@@ -61,7 +65,8 @@
                     && self.bathes.isInitial()
                     && self.min.isInitial()
                     && self.max.isInitial()
-                    && self.amenities.isInitial();
+                    && self.amenities.isInitial()
+                    && self.categories.isInitial();
             }
 
             function isEmpty() {
@@ -69,7 +74,8 @@
                     && self.bathes.selected.value() === null
                     && self.min.value() === null
                     && self.max.value() === null
-                    && !self.amenities.selected.values().length;
+                    && !self.amenities.selected.values().length
+                    && !self.categories.selected.values().length;
             }
 
             //#endregion
@@ -80,7 +86,7 @@
             this.max = null;
             this.priceCaption = null;
             this.amenities = null;
-
+            this.categories = null;
             this.formRequest = formRequest;
             this.reset = reset;
             this.isInitial = isInitial;
@@ -93,6 +99,7 @@
                 self.min = new Numeric(search.minPrice);
                 self.max = new Numeric(search.maxPrice);
                 self.amenities = new Multi(search.refine.amenities, search.amenities, { captionFormatter: util.listCaption });
+                self.categories = new Multi(search.refine.shcCategories, search.shcCategories, util.multiFactory(maxMultiLength, multiFormat));
 
                 self.priceCaption = ko.computed(formatPrice);
             }

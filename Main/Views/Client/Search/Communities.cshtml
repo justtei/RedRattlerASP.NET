@@ -59,13 +59,13 @@
         </section>
     </script>
 
-    @{ Html.RenderPartial("~/Views/Client/Search/Partial/QuickView.cshtml"); }
-    @*    @{ Html.RenderPartial("~/Views/Client/Search/Partial/MapView.cshtml"); }*@
+@*    @{ Html.RenderPartial("~/Views/Client/Search/Partial/QuickView.cshtml"); }
+    @{ Html.RenderPartial("~/Views/Client/Search/Partial/MapView.cshtml"); }
     @{ Html.RenderPartial("~/Views/Client/Search/Partial/SpecHome.cshtml"); }
     @{ Html.RenderPartial("~/Views/Client/Search/Partial/Home.cshtml"); }
     @{ Html.RenderPartial("~/Views/Client/Search/Partial/FloorPlan.cshtml"); }
     @{ Html.RenderPartial("~/Views/Client/Search/Partial/PhotoTour.cshtml"); }
-    @{ Html.RenderPartial("~/Views/Client/Search/Partial/NearbyPopover.cshtml"); }
+    @{ Html.RenderPartial("~/Views/Client/Search/Partial/NearbyPopover.cshtml"); }*@
     @{ Html.RenderPartial("~/Views/Client/Controls/LeadForm/CommunityUnitPopUp.cshtml"); }
 
     <script type="text/javascript">
@@ -310,6 +310,8 @@
                                             background: white;
                                             position: absolute;
                                             z-index: 99;
+                                            border: 0.1px solid #cfcfcf;
+                                            background: #fdfdfd;
                                         }
 
                                         .items.single {
@@ -321,13 +323,13 @@
                                             display: none;
                                         }
 
-                                            .items.single li {
-                                                cursor: pointer;
-                                            }
+                                        .items.single li {
+                                            cursor: pointer;
+                                        }
 
-                                                .items.single li:hover {
-                                                    background: dodgerblue;
-                                                }
+                                        .items.single li:hover {
+                                            background: dodgerblue;
+                                        }
                                     </style>
 
                                     @switch (Model.PageType.ToRefineType())
@@ -487,7 +489,7 @@
     </div>
 </div>
 <script>
-    console.log(@Html.Json(Model.Result));
+    console.log(@Html.Json(Model));
     function GoLikeIt(div) {
         var Ndiv = div.nextElementSibling;
 

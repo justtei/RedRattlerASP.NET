@@ -134,13 +134,11 @@ mslc.define('client/widgets/searchBar',
             }
 
             function onAutocompleteClick() {
-                console.log("onAutocomplete is clicked");
                 self.hideHelpArea();
                 self.autocomplete.clear();
             }
 
             function onTemplateClick(data) {
-                console.log("asdfasfd");
                 self.lookupLocation(data.lookupLocation);
             }
 
