@@ -59,6 +59,7 @@ namespace Main.Controllers
 		[HttpGet]
 		public JsonResult CommunitySearchUrl(CommunitiesSearchVm searchVm)
 		{
+			JsonResult result = new AllowGetJsonResult(MslcUrlBuilder.PagingUrl(searchVm, 1));
 			return new AllowGetJsonResult(MslcUrlBuilder.PagingUrl(searchVm, 1));
 		}
 		public ActionResult Ebook()
@@ -270,8 +271,9 @@ namespace Main.Controllers
 		}
 		public ActionResult ContactUs()
 		{
-			return base.View("~/Views/Client/Static/ContactUs.cshtml", ClientViewModelsProvider.GetStaticContent(PageType.ContactUs));
+			return base.View("~/Views/Client/Static/ContactUs.cshtml");
 		}
+
 		[HttpPost]
 		public ActionResult ContactUs(ContactUs contactUs)
 		{
@@ -283,23 +285,24 @@ namespace Main.Controllers
 
 			string message = contactUs.Message;
 
-			SmtpClient objSmtpClient = new SmtpClient();
-			objSmtpClient.UseDefaultCredentials = true;
-			objSmtpClient.Host = "smtp.gmail.com";
+            SmtpClient objSmtpClient = new SmtpClient();
+            objSmtpClient.UseDefaultCredentials = true;
+            objSmtpClient.Host = "smtp.gmail.com";
 
-			objSmtpClient.Port = 587;
+            objSmtpClient.Port = 587;
 
-			objSmtpClient.EnableSsl = true;
-			try
-			{
-				objSmtpClient.Send(from, to, subject, message);
-			}
-            catch (Exception ex){
-				return new AllowGetJsonResult(new { success = false,Message = ex.Message } );
-			}
+            objSmtpClient.EnableSsl = true;
+            try
+            {
+                objSmtpClient.Send(from, to, subject, message);
+            }
+            catch (Exception ex)
+            {
+                return new AllowGetJsonResult(new { success = false, Message = ex.Message });
+            }
 
 
-			return new AllowGetJsonResult(new { success = true} );
+            return new AllowGetJsonResult(new { success = true} );
 		}
 
 		public ActionResult AboutUs()

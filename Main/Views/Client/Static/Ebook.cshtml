@@ -1,7 +1,134 @@
-﻿@{
-    Layout = "~/Views/Client/Shared/_SimpleLayout.cshtml";
+﻿@using MSLivingChoices.Localization
+@{
+    Layout = "~/Views/Client/Shared/_PageLayout.cshtml";
 }
 
-<h1>Ebook edit tool</h1>
+@section Scripts
+{
+    <script type="text/javascript">
 
-<!-- paste your html here -->
+        mslc.resolve(['client/analytics/google'], function (ga) {
+            ga.trackPageView();
+        }, 'ga-tracking');
+
+        $('#ebook').submit(function (e) {
+            e.preventDefault();
+            $.ajax({
+                type: 'Post',
+                url: '@Url.Action("EBook", "Client")',
+                data: $('#ebook').serialize(),
+                success: (res) => {
+                    console.log(res);
+                    if (res.success == true) {
+                        ContactSucceed();
+                    }
+                    else {
+                        alert('Something Went Wrong');
+                    }
+                }
+            });
+        });
+        function ContactSucceed() {
+            // FOR ROMAN TO USE ACCORDINGLY...
+        }
+
+    </script>
+}
+
+<!--=================================
+inner banner -->
+<section class="space-ptb">
+    <div class="container">
+        <div class="row ">
+            <div class="col-lg-8 mb-5 mb-lg-0">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="section-title mb-0">
+                            <h1 class="title mb-4">Order Your Complimentary Senior Living Choices Magazine</h1>
+                            <p>Senior Living Choices is committed to providing you with the best resources to choose the perfect living community.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <form class="mt-4 row">
+                            <div class="form-group col-sm-6">
+                                <input type="text" class="form-control" id="exampleInputname" placeholder="First Name (required)">
+                            </div>
+                            <div class="form-group col-sm-6">
+                                <input type="text" class="form-control" id="exampleInputlastname" placeholder="Last Name (required)">
+                            </div>
+                            <div class="form-group col-sm-6">
+                                <input type="text" class="form-control" id="exampleInputemail" placeholder="Email Address (required)">
+                            </div>
+                            <div class="form-group col-sm-6">
+                                <input type="text" class="form-control" id="exampleInputphone" placeholder="Phone">
+                            </div>
+                            <div class="col-12 form-group">
+                                <select class="form-control">
+                                    <option>Click on the arrow to choose magazine</option>
+                                    <option>NE Texas</option>
+                                    <option>Dallas </option>
+                                    <option>Fort Worth</option>
+                                    <option>E.Texas Hill Country</option>
+                                    <option>Central Texas Metro Atlanta &amp; Surrounding Areas</option>
+                                </select>
+                            </div>
+                            <div class="col-12 form-group">
+                                <input class="form-control" id="exampleFormControlstreet" placeholder="Street Address (required)">
+                            </div>
+                            <div class="col-sm-4 form-group">
+                                <input class="form-control" id="exampleFormControlcity" placeholder="City (required)">
+                            </div>
+                            <div class="col-sm-4 form-group">
+                                <input class="form-control" id="exampleFormControlstate" placeholder="State (required)">
+                            </div>
+                            <div class="col-sm-4 form-group">
+                                <input class="form-control" id="exampleFormControlzipcode" placeholder="Zip Code (required)">
+                            </div>
+                            <div class="col-12 form-group mt-4">
+                                <h5 class="mb-3">I would like to receive more information on:</h5>
+                                <div class="custom-control custom-checkbox mb-3">
+                                    <input type="checkbox" class="custom-control-input" id="dateposted1">
+                                    <label class="custom-control-label" for="dateposted1">Communities</label>
+                                </div>
+                                <div class="custom-control custom-checkbox mb-3">
+                                    <input type="checkbox" class="custom-control-input" id="dateposted2">
+                                    <label class="custom-control-label" for="dateposted2">Home health</label>
+                                </div>
+                                <div class="custom-control custom-checkbox mb-3">
+                                    <input type="checkbox" class="custom-control-input" id="dateposted3">
+                                    <label class="custom-control-label" for="dateposted3">Products and Services</label>
+                                </div>
+                            </div>
+                            <div class="col-12 form-group">
+                                <label class="font-weight-bold mb-4">Would you like us to allow our advertisers from the categories you selected above to send you additional information, and/or to follow up with you?*</label>
+                                <div class="custom-control custom-radio mb-3">
+                                    <input type="radio" id="customRadio1" name="customRadio" class="custom-control-input">
+                                    <label class="custom-control-label" for="customRadio1">Toggle this custom radio</label>
+                                </div>
+                                <div class="custom-control custom-radio mb-3">
+                                    <input type="radio" id="customRadio2" name="customRadio" class="custom-control-input">
+                                    <label class="custom-control-label" for="customRadio2">Or toggle this other custom radio</label>
+                                </div>
+                            </div>
+                            <div class="col-12 form-group">
+                                <textarea class="form-control" id="exampleFormControlTextarea1" placeholder="Questions/Comments" rows="7"></textarea>
+                            </div>
+                            <div class="col-6 d-sm-flex align-items-center">
+                                <button type="submit" class="btn btn-primary">Submit</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 pl-lg-5">
+                <div class="mb-4">
+                    <img class="img-fluid" src="~/Content/images9/shop/03.jpg" alt="">
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+

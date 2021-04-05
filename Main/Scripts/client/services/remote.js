@@ -24,7 +24,7 @@
 
         function actionFactory(type, route) {
             var url = loc.concat(apiUrl, route);
-            return function(data, done, fail, always) {
+            return function (data, done, fail, always) {
                 return aj.request(type, url, data, done, fail, always);
             };
         }

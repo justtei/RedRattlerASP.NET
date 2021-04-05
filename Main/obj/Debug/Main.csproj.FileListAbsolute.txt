@@ -216,6 +216,7 @@ C:\Users\sra_r\Source\Repos\RedRattlerASP.NET\Main\bin\MSLivingChoices.Mvc.Uipc.
 C:\Users\sra_r\Source\Repos\RedRattlerASP.NET\Main\bin\MSLivingChoices.Mvc.Uipc.Client.pdb
 C:\Users\Administrator\Desktop\SeniorLiving1\SeniorLiving1\Main\bin\MSLivingChoices.Mvc.Uipc.Client.dll
 C:\Users\Administrator\Desktop\SeniorLiving1\SeniorLiving1\Main\bin\MSLivingChoices.Mvc.Uipc.Client.pdb
+<<<<<<< HEAD
 C:\Users\sra_r\Source\Repos\RedRattlerASP.NET\Main\bin\MSLivingChoices.SqlDacs.Client.dll
 C:\Users\sra_r\Source\Repos\RedRattlerASP.NET\Main\bin\MSLivingChoices.SqlDacs.Client.pdb
 C:\Users\sra_r\Source\Repos\RedRattlerASP.NET\Main\bin\MSLivingChoices.Bcs.Client.dll
@@ -224,3 +225,9 @@ C:\Users\sra_r\Source\Repos\RedRattlerASP.NET\Main\bin\MSLivingChoices.Bcs.Clien
 C:\Users\sra_r\Source\Repos\RedRattlerASP.NET\Main\bin\MSLivingChoices.Entities.Client.pdb
 C:\Users\sra_r\Source\Repos\RedRattlerASP.NET\Main\bin\MSLivingChoices.IDacs.Client.dll
 C:\Users\sra_r\Source\Repos\RedRattlerASP.NET\Main\bin\MSLivingChoices.IDacs.Client.pdb
+=======
+C:\Users\Administrator\Desktop\seniorlivingchoice\RedRattlerASP.NET\Main\obj\Debug\Main.csprojAssemblyReference.cache
+C:\Users\Administrator\Desktop\seniorlivingchoice\RedRattlerASP.NET\Main\obj\Debug\Main.csproj.CoreCompileInputs.cache
+C:\Users\Administrator\Desktop\seniorlivingchoice\RedRattlerASP.NET\Main\obj\Debug\Main.dll
+C:\Users\Administrator\Desktop\seniorlivingchoice\RedRattlerASP.NET\Main\obj\Debug\Main.pdb
+>>>>>>> 91146859cf669a6e34e3e76e33be666fc5d1a725
