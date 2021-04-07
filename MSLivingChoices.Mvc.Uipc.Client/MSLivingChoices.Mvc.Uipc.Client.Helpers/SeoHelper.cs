@@ -289,6 +289,27 @@ namespace MSLivingChoices.Mvc.Uipc.Client.Helpers
 					seoVm.Description = Description.TermsOfUse;
 					break;
 				}
+				/*case PageType.AboutUs:
+                {
+					seoVm.Title = Title.AboutUs;
+					seoVm.Header = Header.AboutUs;
+					seoVm.Description = Description.AboutUs;
+					break;
+				}
+				case PageType.ContactUs:
+				{
+					seoVm.Title = Title.AboutUs;
+					seoVm.Header = Header.AboutUs;
+					seoVm.Description = Description.AboutUs;
+					break;
+				}
+				case PageType.SeniorType:
+				{
+					seoVm.Title = Title.AboutUs;
+					seoVm.Header = Header.AboutUs;
+					seoVm.Description = Description.AboutUs;
+					break;
+				}*/
 				case PageType.Error404:
 				{
 					seoVm.Title = Title.Error404;

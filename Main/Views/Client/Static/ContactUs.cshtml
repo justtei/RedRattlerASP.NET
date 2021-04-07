@@ -6,44 +6,79 @@
 
 @section Scripts
 {
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.min.js"></script>
     <script type="text/javascript">
-        mslc.resolve(['client/analytics/google'], function (ga) {
-            ga.trackPageView();
-        }, 'ga-tracking');
-
-        $('#ContactUs').submit(function (e) {
-            e.preventDefault();
-
-            var data = {
-                Name: $('#name').val(),
-                Email: $('#email').val(),
-                PhoneNumber: $('#phonenumber').val(),
-                Interest: $('#interest').val(),
-                Message: $('#message').val()
-            };
-
-            $.ajax({
-                type: 'Post',
-                url: '@Url.Action("ContactUs", "Client")',
-                data: { formData: data },
-                success: (res) => {
-                    console.log(res);
-                    if (res.success == true) {
-                        ContactSucceed();
+        $(document).ready(function () {
+            $("#ContactUs").validate({
+                rules: {
+                    Name: {
+                        required: true,
+                        minlength: 3
+                    },
+                    PhoneNumber: {
+                        required: true,
+                    },
+                    Email: {
+                        required: true,
+                        email: true
+                    },
+                    Message: {
+                        required: true,
                     }
-                    else {
-                        alert('Something Went Wrong');
+                },
+                messages: {
+                    Name: {
+                        minlength: "Name should be at least 3 characters"
+                    },
+                    Email: {
+                        email: "Please enter a valid email address."
                     }
+                },
+                submitHandler: function () {
+                    //Serialize the form datas.
+                    var valdata = $("#ContactUs").serialize();
+                    //to get alert popup
+                    alert(valdata);
+                    $.ajax({
+                        url: "@Url.Action("ContactUs", "Client")",
+                        type: "POST",
+                        dataType: 'json',
+                        contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+                        data: valdata,
+                        success: (res) => {
+                            if (res.success == true) {
+                                ContactSucceed();
+                            }
+                            else {
+                                $('div.alert-danger').show();
+                            }
+                        }
+                    });
                 }
             });
         });
+
         function ContactSucceed() {
-            // FOR ROMAN TO USE ACCORDINGLY...
+            $('div.alert-success').show();
         }
     </script>
 
 }
 
+<style>
+    label.error {
+        color: red;
+        font-size: 1rem;
+        display: block;
+        margin-top: 5px;
+    }
+
+    input.error, textarea.error {
+        border: 1px dashed red;
+        font-weight: 300;
+        color: red;
+    }
+</style>
 
 <!--=================================
 inner banner -->
@@ -103,22 +138,27 @@ inner banner -->
             <div class="col-lg-10">
                 <div class="login bg-light p-4 p-sm-5">
                     <h3 class="text-primary">Need Assistance? Please Complete The Contact Form</h3>
+                    <div class="alert alert-success" role="alert" style="display: none; margin-top: 10px;"> <span class="fa fa-check-circle" aria-hidden="true"></span> Form has submitted with successful </div>
+                    <div class="alert alert-danger" role="alert" style="display: none; margin-top: 10px;"> <span class="fa fa-info-circle" aria-hidden="true"></span> Please check your submission </div>
                     <form class="mt-4 row" id="ContactUs">
                         <div class="form-group col-sm-6">
                             <label for="name">Name</label>
-                            <input type="text" class="form-control" id="name" placeholder="Your Name">
+                            <input type="text" class="form-control" id="name" name="Name" data-bind="value:Name, valueUpdate: 'afterkeydown'" placeholder="Your Name">
+                            <span data-bind='visible: Name.hasError, text: Name.validationMessage'> </span>
                         </div>
                         <div class="form-group col-sm-6">
                             <label for="email">Email:</label>
-                            <input type="text" class="form-control" id="email" placeholder="Your Email">
+                            <input type="text" class="form-control" id="email" name="Email" data-bind="value:Email" placeholder="Your Email">
+                            <span data-bind='visible: Email.hasError, text: Email.validationMessage'> </span>
                         </div>
                         <div class="form-group col-sm-6">
                             <label for="phonenumber">Phone Number</label>
-                            <input type="text" class="form-control" id="phonenumber" placeholder="Phone">
+                            <input type="text" class="form-control" id="phonenumber" name="PhoneNumber" data-bind="value:PhoneNumber" placeholder="Phone">
+                            <span data-bind='visible: PhoneNumber.hasError, text: PhoneNumber.validationMessage'> </span>
                         </div>
                         <div class="form-group col-sm-6">
                             <label for="interest">I’m interested in</label>
-                            <select class="form-control" id="interest">
+                            <select class="form-control" id="interest" name="Interest">
                                 <option value="1">I’m interested in Myself</option>
                                 <option value="2">Parent</option>
                                 <option value="3">Relative</option>
@@ -128,7 +168,8 @@ inner banner -->
                         </div>
                         <div class="col-12 form-group">
                             <label for="message">Message</label>
-                            <textarea class="form-control" id="message" placeholder="Message" rows="3"></textarea>
+                            <textarea class="form-control" id="message" name="Message" placeholder="Message" data-bind="value:Message" rows="3"></textarea>
+                            <span data-bind='visible: Message.hasError, text: Message.validationMessage'> </span>
                         </div>
                         <div class="col-6 d-sm-flex align-items-center">
                             <button type="submit" class="btn btn-primary">Submit</button>

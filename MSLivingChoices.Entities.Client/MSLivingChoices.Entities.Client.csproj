@@ -31,8 +31,11 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="MSLivingChoices.Configuration">
+      <HintPath>..\..\..\SeniorLiving1\SeniorLiving1\Main\bin\MSLivingChoices.Configuration.dll</HintPath>
+    </Reference>
     <Reference Include="MSLivingChoices.Utilities">
-      <HintPath>..\MSLivingChoices.Mvc.Uipc.Client\bin\Debug\MSLivingChoices.Utilities.dll</HintPath>
+      <HintPath>..\NewSLNS\MSLivingChoices.Mvc.Uipc.Admin\MSLivingChoices.Mvc.Uipc.AdminReferences\MSLivingChoices.Utilities.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
