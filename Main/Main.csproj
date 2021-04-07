@@ -88,6 +88,7 @@
     <Compile Include="Models\LogInViewModel.cs" />
     <Compile Include="Models\LogOnViewModel.cs" />
     <Compile Include="Models\ModelErrorKey.cs" />
+    <Compile Include="Models\Order.cs" />
     <Compile Include="Models\PhoneViewModel.cs" />
     <Compile Include="Models\PublicationViewModel.cs" />
     <Compile Include="Models\UserGridOptionsViewModel.cs" />

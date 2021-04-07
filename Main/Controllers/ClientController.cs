@@ -66,8 +66,36 @@ namespace Main.Controllers
 		{
 			return base.View("~/Views/Client/Static/Ebook.cshtml", ClientViewModelsProvider.GetStaticContent(PageType.Ebook));
 		}
+        [HttpPost]
+        public ActionResult Ebook(Order ord)
+        {
+			string from = ord.Email;
 
-		[CompetitiveFormating]
+			string to = "kameron.seniorliving@gmail.com";
+
+			string subject = ord.FirstName+" "+ord.LastName + " Contacted From ORDER PAGE.";
+
+			string message = (ord.chkPAS?"BOOK REQUIRED PRODUCT AND SERVICES \n":"")+(ord.chkHomeHealth? "BOOK REQUIRED HOME HEALTH \n" : "")+ (ord.chkCommunities ? "BOOK REQUIRED COMMUNITIES \n" : "") +ord.Phone==""?ord.Phone+"\n":""+ "\n \n"+ord.ExtraMessage+"\n \n \n"+(ord.rad=="Yes"?"USER WOULD LOVE IF WE CAN CONTACT HIM VIA"+ord.Phone+" OR VIA "+ord.Email+"\n":"")+ "\n\n\n"+ord.street+"\n"+ord.state+"\n"+ord.zip;
+
+			SmtpClient objSmtpClient = new SmtpClient();
+			objSmtpClient.UseDefaultCredentials = true;
+			objSmtpClient.Host = "smtp.gmail.com";
+			objSmtpClient.Port = 587;
+
+			objSmtpClient.EnableSsl = true;
+			try
+			{
+				objSmtpClient.Send(from, to, subject, message);
+			}
+			catch (Exception ex)
+			{
+				return new AllowGetJsonResult(new { success = false, Message = ex.Message });
+			}
+
+
+			return new AllowGetJsonResult(new { success = true });
+        }
+        [CompetitiveFormating]
 		[HttpGet]
 		public JsonResult FloorPlansQuickView(long communityId, SearchType searchType)
 		{
@@ -271,7 +299,7 @@ namespace Main.Controllers
 		}
 		public ActionResult ContactUs()
 		{
-			return base.View("~/Views/Client/Static/ContactUs.cshtml");
+			return base.View("~/Views/Client/Static/ContactUs.cshtml", ClientViewModelsProvider.GetStaticContent(PageType.AboutUs));
 		}
 
 		[HttpPost]

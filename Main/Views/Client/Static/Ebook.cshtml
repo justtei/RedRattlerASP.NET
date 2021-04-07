@@ -53,67 +53,67 @@ inner banner -->
                     <div class="col-sm-12">
                         <form class="mt-4 row">
                             <div class="form-group col-sm-6">
-                                <input type="text" class="form-control" id="exampleInputname" placeholder="First Name (required)">
+                                <input type="text" class="form-control" id="exampleInputname" placeholder="First Name (required)" name="FirstName">
                             </div>
                             <div class="form-group col-sm-6">
-                                <input type="text" class="form-control" id="exampleInputlastname" placeholder="Last Name (required)">
+                                <input type="text" class="form-control" id="exampleInputlastname" placeholder="Last Name (required)" name="LastName">
                             </div>
                             <div class="form-group col-sm-6">
-                                <input type="text" class="form-control" id="exampleInputemail" placeholder="Email Address (required)">
+                                <input type="text" class="form-control" id="exampleInputemail" placeholder="Email Address (required)" name="Email">
                             </div>
                             <div class="form-group col-sm-6">
-                                <input type="text" class="form-control" id="exampleInputphone" placeholder="Phone">
+                                <input type="text" class="form-control" id="exampleInputphone" placeholder="Phone" name="Phone">
                             </div>
                             <div class="col-12 form-group">
-                                <select class="form-control">
-                                    <option>Click on the arrow to choose magazine</option>
-                                    <option>NE Texas</option>
-                                    <option>Dallas </option>
-                                    <option>Fort Worth</option>
-                                    <option>E.Texas Hill Country</option>
-                                    <option>Central Texas Metro Atlanta &amp; Surrounding Areas</option>
+                                <select class="form-control" name="Magazine">
+                                    <option value="-1">Click on the arrow to choose magazine</option>
+                                    <option value="1">NE Texas</option>
+                                    <option value="2">Dallas </option>
+                                    <option value="1">Fort Worth</option>
+                                    <option value="1">E.Texas Hill Country</option>
+                                    <option value="1">Central Texas Metro Atlanta &amp; Surrounding Areas</option>
                                 </select>
                             </div>
                             <div class="col-12 form-group">
-                                <input class="form-control" id="exampleFormControlstreet" placeholder="Street Address (required)">
+                                <input class="form-control" id="exampleFormControlstreet" placeholder="Street Address (required)" name="street">
                             </div>
                             <div class="col-sm-4 form-group">
-                                <input class="form-control" id="exampleFormControlcity" placeholder="City (required)">
+                                <input class="form-control" id="exampleFormControlcity" placeholder="City (required)" name="city">
                             </div>
                             <div class="col-sm-4 form-group">
-                                <input class="form-control" id="exampleFormControlstate" placeholder="State (required)">
+                                <input class="form-control" id="exampleFormControlstate" placeholder="State (required)" name="state">
                             </div>
                             <div class="col-sm-4 form-group">
-                                <input class="form-control" id="exampleFormControlzipcode" placeholder="Zip Code (required)">
+                                <input class="form-control" id="exampleFormControlzipcode" placeholder="Zip Code (required)" name="zip">
                             </div>
                             <div class="col-12 form-group mt-4">
                                 <h5 class="mb-3">I would like to receive more information on:</h5>
                                 <div class="custom-control custom-checkbox mb-3">
-                                    <input type="checkbox" class="custom-control-input" id="dateposted1">
+                                    <input type="checkbox" class="custom-control-input" id="dateposted1" name="chkCommunities">
                                     <label class="custom-control-label" for="dateposted1">Communities</label>
                                 </div>
                                 <div class="custom-control custom-checkbox mb-3">
-                                    <input type="checkbox" class="custom-control-input" id="dateposted2">
+                                    <input type="checkbox" class="custom-control-input" id="dateposted2" name="chkHomeHealth">
                                     <label class="custom-control-label" for="dateposted2">Home health</label>
                                 </div>
                                 <div class="custom-control custom-checkbox mb-3">
-                                    <input type="checkbox" class="custom-control-input" id="dateposted3">
+                                    <input type="checkbox" class="custom-control-input" id="dateposted3" name="chkPAS">
                                     <label class="custom-control-label" for="dateposted3">Products and Services</label>
                                 </div>
                             </div>
                             <div class="col-12 form-group">
                                 <label class="font-weight-bold mb-4">Would you like us to allow our advertisers from the categories you selected above to send you additional information, and/or to follow up with you?*</label>
                                 <div class="custom-control custom-radio mb-3">
-                                    <input type="radio" id="customRadio1" name="customRadio" class="custom-control-input">
-                                    <label class="custom-control-label" for="customRadio1">Toggle this custom radio</label>
+                                    <input type="radio" id="radyes" name="radyes" value="Yes" class="custom-control-input">
+                                    <label class="custom-control-label" for="customRadio1">Yes</label>
                                 </div>
                                 <div class="custom-control custom-radio mb-3">
-                                    <input type="radio" id="customRadio2" name="customRadio" class="custom-control-input">
-                                    <label class="custom-control-label" for="customRadio2">Or toggle this other custom radio</label>
+                                    <input type="radio" id="radNo" name="radyes" value="No" class="custom-control-input">
+                                    <label class="custom-control-label" for="customRadio2">No</label>
                                 </div>
                             </div>
                             <div class="col-12 form-group">
-                                <textarea class="form-control" id="exampleFormControlTextarea1" placeholder="Questions/Comments" rows="7"></textarea>
+                                <textarea class="form-control" id="ExtraMessage" placeholder="Questions/Comments" rows="7" name="ExtraMessage"></textarea>
                             </div>
                             <div class="col-6 d-sm-flex align-items-center">
                                 <button type="submit" class="btn btn-primary">Submit</button>

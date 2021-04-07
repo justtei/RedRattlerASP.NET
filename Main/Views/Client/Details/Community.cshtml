@@ -110,12 +110,15 @@
                                 EXACT - @Model.Community.Address.City, @Model.Community.Address.StateCode @Model.Community.Address.Zip
                             </span>
                         </li>
+                        @if (Model.ShcCategories.Contains("Active Adult Communities 55+"))
+                        {
                         <li class="">
                             <i class="fas fa-building fa-1x text-primary mr-1"></i><span>
                                 Housing Provided:
                                 <a href="#">55+ Community</a>  •  <a href="#">Apartments</a>
                             </span>
                         </li>
+                        }
                         <li class="">
                             <i class="fas fa-phone-alt fa-1x text-primary mr-1"></i><span>
                                 <a href="tel:@(Model.Community.Phone)" class="click-to-call" data-phone-number="@(Model.Community.Phone)">
@@ -141,8 +144,8 @@
                                 </b>
                             }
                         </li>
-                        <li class="sqft"><b>$6,500/Sqft</b></li>
-                        <li class="reviews"><i class="fas fa-star text-primary"></i><i class="fas fa-star text-primary"></i><i class="fas fa-star text-primary"></i><i class="fas fa-star text-primary"></i><i class="fas fa-star-half-alt text-primary"></i><span class="pl-2">(2 customer reviews)</span></li>
+                        @*<li class="sqft"><b>$6,500/Sqft</b></li>*@
+                        @*<li class="reviews"><i class="fas fa-star text-primary"></i><i class="fas fa-star text-primary"></i><i class="fas fa-star text-primary"></i><i class="fas fa-star text-primary"></i><i class="fas fa-star-half-alt text-primary"></i><span class="pl-2">(2 customer reviews)</span></li>*@
                     </ul>
                 </div>
             </div>
@@ -547,7 +550,10 @@
                 <div class="owl-carousel owl-dots-bottom-center" data-nav-dots="true" data-items="3" data-md-items="2" data-sm-items="1" data-xs-items="1" data-xx-items="1" data-space="30">
                     @foreach (var community in ViewBag.SC)
                     {
-
+                        if (community.Name == null)
+                        {
+                            continue;
+                        }
                             <div class="item">
                                 <div class="property-list bg-light">
                                     <div class="property-image h-100 bg-overlay-gradient-04">

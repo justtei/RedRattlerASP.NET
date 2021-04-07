@@ -69,11 +69,14 @@ namespace MSLivingChoices.SqlDacs.Client.SqlCommands
 			command.Parameters.Add("@CountryCode", SqlDbType.VarChar, 5).Value = this._searchModel.Criteria.CountryCode().ValueOrDBNull<string>();
 			command.Parameters.Add("@StateCode", SqlDbType.VarChar, 3).Value = this._searchModel.Criteria.StateCode().ValueOrDBNull<string>();
 			command.Parameters.Add("@City", SqlDbType.VarChar, 50).Value = this._searchModel.Criteria.City().ValueOrDBNull<string>();
-			command.Parameters.Add("@MaxCount", SqlDbType.Int).Value = this._searchModel.MaxCount;
+			
 			if(SimilarCummunity != -1)
             {
+				command.Parameters.Add("@MaxCount", SqlDbType.Int).Value = this._searchModel.MaxCount + 1;
 				command.Parameters.Add("@CommunityId", SqlDbType.BigInt).Value = this.SimilarCummunity;
 			}
+			else
+				command.Parameters.Add("@MaxCount", SqlDbType.Int).Value = this._searchModel.MaxCount;
 			SqlDataReader sqlDataReader = command.ExecuteReader();
 			this._searchModel.Result = new List<Community>();
 			while (sqlDataReader.Read())
