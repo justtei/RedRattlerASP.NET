@@ -52,6 +52,7 @@
     <Compile Include="IDacs\Admin\Components\ISeoDac.cs" />
     <Compile Include="IDacs\Admin\Components\IServiceProviderDac.cs" />
     <Compile Include="IDacs\Admin\IAdminDacFactory.cs" />
+    <Compile Include="IDacs\Client\Components\EbookOrder.cs" />
     <Compile Include="IDacs\Client\Components\ICommonDac.cs" />
     <Compile Include="IDacs\Client\Components\ILeadDac.cs" />
     <Compile Include="IDacs\Client\Components\ILocationDac.cs" />

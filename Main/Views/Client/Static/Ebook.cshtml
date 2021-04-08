@@ -5,35 +5,85 @@
 
 @section Scripts
 {
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.min.js"></script>
     <script type="text/javascript">
-
-        mslc.resolve(['client/analytics/google'], function (ga) {
-            ga.trackPageView();
-        }, 'ga-tracking');
-
-        $('#ebook').submit(function (e) {
-            e.preventDefault();
-            $.ajax({
-                type: 'Post',
-                url: '@Url.Action("EBook", "Client")',
-                data: $('#ebook').serialize(),
-                success: (res) => {
-                    console.log(res);
-                    if (res.success == true) {
-                        ContactSucceed();
+        $(document).ready(function () {
+            $("#eBook").validate({
+                rules: {
+                    FirstName: {
+                        required: true,
+                    },
+                    LastName: {
+                        required: true,
+                    },
+                    Email: {
+                        required: true,
+                        email: true
+                    },
+                    street: {
+                        required: true,
+                    },
+                    city: {
+                        required: true,
+                    },
+                    state: {
+                        required: true,
+                    },
+                    zip: {
+                        required: true,
                     }
-                    else {
-                        alert('Something Went Wrong');
+                },
+                messages: {
+                    Email: {
+                        email: "Please enter a valid email address."
                     }
+                },
+                submitHandler: function () {
+                    //Serialize the form datas.
+                    var valdata = $("#eBook").serialize();
+                    //to get alert popup
+                    $.ajax({
+                        url: "@Url.Action("Ebook", "Client")",
+                        type: "POST",
+                        dataType: 'json',
+                        contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+                        data: valdata,
+                        success: (res) => {
+                            if (res.success == true) {
+                                ContactSucceed();
+                            }
+                            else {
+                                $('div.alert-danger').show();
+                            }
+                        }
+                    });
                 }
             });
         });
+
         function ContactSucceed() {
-            // FOR ROMAN TO USE ACCORDINGLY...
+            $('div.alert-success').show();
+            $("#eBook")[0].reset();
+            @*$("#eBook").trigger("reset");*@
         }
 
     </script>
 }
+
+<style>
+    label.error {
+        color: red;
+        font-size: 1rem;
+        display: block;
+        margin-top: 5px;
+    }
+
+    input.error, textarea.error {
+        border: 1px dashed red;
+        font-weight: 300;
+        color: red;
+    }
+</style>
 
 <!--=================================
 inner banner -->
@@ -51,21 +101,25 @@ inner banner -->
                 </div>
                 <div class="row">
                     <div class="col-sm-12">
-                        <form class="mt-4 row">
+
+                        <div class="alert alert-success" role="alert" style="display:none; margin-top: 10px;"> <span class="fa fa-check-circle" aria-hidden="true"></span> Form has submitted with successful </div>
+                        <div class="alert alert-danger" role="alert" style="display: none; margin-top: 10px;"> <span class="fa fa-info-circle" aria-hidden="true"></span> Please check your submission </div>
+
+                        <form class="mt-4 row" id="eBook">
                             <div class="form-group col-sm-6">
-                                <input type="text" class="form-control" id="exampleInputname" placeholder="First Name (required)" name="FirstName">
+                                <input type="text" class="form-control" id="firstname" placeholder="First Name (required)" name="FirstName">
                             </div>
                             <div class="form-group col-sm-6">
-                                <input type="text" class="form-control" id="exampleInputlastname" placeholder="Last Name (required)" name="LastName">
+                                <input type="text" class="form-control" id="lastname" placeholder="Last Name (required)" name="LastName">
                             </div>
                             <div class="form-group col-sm-6">
-                                <input type="text" class="form-control" id="exampleInputemail" placeholder="Email Address (required)" name="Email">
+                                <input type="text" class="form-control" id="email" placeholder="Email Address (required)" name="Email">
                             </div>
                             <div class="form-group col-sm-6">
-                                <input type="text" class="form-control" id="exampleInputphone" placeholder="Phone" name="Phone">
+                                <input type="text" class="form-control" id="phone" placeholder="Phone" name="Phone">
                             </div>
                             <div class="col-12 form-group">
-                                <select class="form-control" name="Magazine">
+                                <select class="form-control" name="Magazine" id="Magazine">
                                     <option value="-1">Click on the arrow to choose magazine</option>
                                     <option value="1">NE Texas</option>
                                     <option value="2">Dallas </option>

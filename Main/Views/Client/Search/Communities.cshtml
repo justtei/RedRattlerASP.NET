@@ -464,11 +464,16 @@
                                     {
                                         <li class="page-item active"><a class="page-link" href="@page.Href">Previous</a></li>
                                     }
-                                    if (page.InnerText == "1" || page.InnerText == "2" || page.InnerText == "3")
-                                    {
-                                        <li class="page-item @page.Css"><a class="page-link" href="@page.Href">@page.InnerText</a></li>
-                                    }
-                                    if(page.Css == "next")
+                                }
+                                @foreach (var page in Model.Paging.Pages)
+                                {
+                                    if (page.Css == "prev" || page.Css == "first") { continue; }
+                                    if (page.Css == "next" || page.Css == "last") { break; }
+                                    <li class="page-item @page.Css"><a class="page-link" href="@page.Href">@page.InnerText</a></li>
+                                }
+                                @foreach (var page in Model.Paging.Pages)
+                                { 
+                                    if (page.Css == "next")
                                     {
                                         <li class="page-item active"><a class="page-link" href="@page.Href">Next</a></li>
                                     }

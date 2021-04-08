@@ -85,6 +85,12 @@ namespace Main
 			{
 				controller = "CallTracking|Community|ServiceProvider|Owner|Types"
 			});
+			routes.MapRoute("All", "all", new
+			{
+				controller = "Client",
+				action = "All",
+				pageType = PageType.All
+			});
 			routes.MapRoute("TermsOfUse", "terms-of-use", new
 			{
 				controller = "Client",
