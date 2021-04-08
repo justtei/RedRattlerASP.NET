@@ -43,7 +43,7 @@ namespace MSLivingChoices.Mvc.Uipc.Client.ViewModels
 			set;
 		}
 
-		IAddress MSLivingChoices.Entities.Client.ICommunity.Address
+		IAddress ICommunity.Address
 		{
 			get
 			{
@@ -79,7 +79,7 @@ namespace MSLivingChoices.Mvc.Uipc.Client.ViewModels
 			set;
 		}
 
-		public CommunityShortVm()
+        public CommunityShortVm()
 		{
 		}
 	}

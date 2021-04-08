@@ -50,6 +50,7 @@
     <Compile Include="Address.cs" />
     <Compile Include="Boundary_TValue_.cs" />
     <Compile Include="Community.cs" />
+    <Compile Include="Contact.cs" />
     <Compile Include="County.cs" />
     <Compile Include="Coupon.cs" />
     <Compile Include="Customer.cs" />

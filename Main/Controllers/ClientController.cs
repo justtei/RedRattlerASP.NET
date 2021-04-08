@@ -67,33 +67,33 @@ namespace Main.Controllers
 			return base.View("~/Views/Client/Static/Ebook.cshtml", ClientViewModelsProvider.GetStaticContent(PageType.Ebook));
 		}
         [HttpPost]
-        public ActionResult Ebook(Order ord)
+        public ActionResult Ebook(MSLivingChoices.Mvc.Uipc.Client.MSLivingChoices.Mvc.Uipc.Client.ViewModels.EbookOrder ord)
         {
-			string from = ord.Email;
+			//string from = ord.Email;
 
-			string to = "kameron.seniorliving@gmail.com";
+			//string to = "kameron.seniorliving@gmail.com";
 
-			string subject = ord.FirstName+" "+ord.LastName + " Contacted From ORDER PAGE.";
+			//string subject = ord.FirstName+" "+ord.LastName + " Contacted From ORDER PAGE.";
 
-			string message = (ord.chkPAS?"BOOK REQUIRED PRODUCT AND SERVICES \n":"")+(ord.chkHomeHealth? "BOOK REQUIRED HOME HEALTH \n" : "")+ (ord.chkCommunities ? "BOOK REQUIRED COMMUNITIES \n" : "") +ord.Phone==""?ord.Phone+"\n":""+ "\n \n"+ord.ExtraMessage+"\n \n \n"+(ord.rad=="Yes"?"USER WOULD LOVE IF WE CAN CONTACT HIM VIA"+ord.Phone+" OR VIA "+ord.Email+"\n":"")+ "\n\n\n"+ord.street+"\n"+ord.state+"\n"+ord.zip;
+			//string message = (ord.chkPAS?"BOOK REQUIRED PRODUCT AND SERVICES \n":"")+(ord.chkHomeHealth? "BOOK REQUIRED HOME HEALTH \n" : "")+ (ord.chkCommunities ? "BOOK REQUIRED COMMUNITIES \n" : "") +ord.Phone==""?ord.Phone+"\n":""+ "\n \n"+ord.ExtraMessage+"\n \n \n"+(ord.rad=="Yes"?"USER WOULD LOVE IF WE CAN CONTACT HIM VIA"+ord.Phone+" OR VIA "+ord.Email+"\n":"")+ "\n\n\n"+ord.street+"\n"+ord.state+"\n"+ord.zip;
 
-			SmtpClient objSmtpClient = new SmtpClient();
-			objSmtpClient.UseDefaultCredentials = true;
-			objSmtpClient.Host = "smtp.gmail.com";
-			objSmtpClient.Port = 587;
+			//SmtpClient objSmtpClient = new SmtpClient();
+			//objSmtpClient.UseDefaultCredentials = true;
+			//objSmtpClient.Host = "smtp.gmail.com";
+			//objSmtpClient.Port = 587;
 
-			objSmtpClient.EnableSsl = true;
-			try
-			{
-				objSmtpClient.Send(from, to, subject, message);
-			}
-			catch (Exception ex)
-			{
-				return new AllowGetJsonResult(new { success = false, Message = ex.Message });
-			}
+			//objSmtpClient.EnableSsl = true;
+			//try
+			//{
+			//	objSmtpClient.Send(from, to, subject, message);
+			//}
+			//catch (Exception ex)
+			//{
+			//	return new AllowGetJsonResult(new { success = false, Message = ex.Message });
+			//}
 
 
-			return new AllowGetJsonResult(new { success = true });
+			return new AllowGetJsonResult(new { success = ClientViewModelsProvider.EBook(ord) });
         }
         [CompetitiveFormating]
 		[HttpGet]
@@ -211,6 +211,14 @@ namespace Main.Controllers
 		[CompetitiveFormating]
 		public ActionResult SearchCommunities(CommunitiesSearchVm searchVm)
 		{
+			//{
+			//Value = ActiveAdultHomes
+			//Value = SeniorHousingAndCare
+			// }
+			//{
+			//Value = ActiveAdultCommunities
+			//
+			//}
 			CommunitiesSearchVm result = ClientViewModelsProvider.GetCommunitiesSearchVm(searchVm);
 			if (!result.ValidationResult.IsValid)
 			{
@@ -303,34 +311,9 @@ namespace Main.Controllers
 		}
 
 		[HttpPost]
-		public ActionResult ContactUs(ContactUs contactUs)
+		public ActionResult ContactUs(MSLivingChoices.Mvc.Uipc.Client.MSLivingChoices.Mvc.Uipc.Client.ViewModels.ContactUs contactUs)
 		{
-			string from = contactUs.Email;
-
-			string to = "kameron.seniorliving@gmail.com";
-
-			string subject = contactUs.Name+" Contacted From Contact Us Form.";
-
-			string message = contactUs.Message;
-
-            SmtpClient objSmtpClient = new SmtpClient();
-            objSmtpClient.UseDefaultCredentials = true;
-            objSmtpClient.Host = "smtp.gmail.com";
-
-            objSmtpClient.Port = 587;
-
-            objSmtpClient.EnableSsl = true;
-            try
-            {
-                objSmtpClient.Send(from, to, subject, message);
-            }
-            catch (Exception ex)
-            {
-                return new AllowGetJsonResult(new { success = false, Message = ex.Message });
-            }
-
-
-            return new AllowGetJsonResult(new { success = true} );
+            return new AllowGetJsonResult(new { success = ClientViewModelsProvider.SaveContact(contactUs) } );
 		}
 
 		public ActionResult AboutUs()

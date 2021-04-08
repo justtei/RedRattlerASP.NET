@@ -77,7 +77,6 @@
     <Compile Include="Models\AddressViewModel.cs" />
     <Compile Include="Models\ChangePasswordViewModel.cs" />
     <Compile Include="Models\CommunicationSettingsViewModel.cs" />
-    <Compile Include="Models\ContactUs.cs" />
     <Compile Include="Models\CountryViewModel.cs" />
     <Compile Include="Models\CreateAdminViewModel.cs" />
     <Compile Include="Models\CreateUserViewModel.cs" />

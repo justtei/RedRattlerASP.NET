@@ -12,6 +12,7 @@ using MSLivingChoices.Mvc.Uipc.Client.CompetitiveFormatters.OptionsResolver;
 using MSLivingChoices.Mvc.Uipc.Client.Enums;
 using MSLivingChoices.Mvc.Uipc.Client.Helpers;
 using MSLivingChoices.Mvc.Uipc.Client.MappingExtentions;
+using MSLivingChoices.Mvc.Uipc.Client.MSLivingChoices.Mvc.Uipc.Client.ViewModels;
 using MSLivingChoices.Mvc.Uipc.Client.ViewModels;
 using MSLivingChoices.Mvc.Uipc.Enums;
 using MSLivingChoices.Mvc.Uipc.Helpers;
@@ -46,7 +47,14 @@ namespace MSLivingChoices.Mvc.Uipc.Client.ViewModelsProviders
 			leadConfirmationVm.Message = StaticContent.Txt_LeadConfirmationMessage;
 			return leadConfirmationVm;
 		}
-
+		public static bool SaveContact(ContactUs con)
+        {
+			return CommonBc.Instance.SaveContact(con.MapToContact());
+        }
+		public static bool EBook(EbookOrder eb)
+        {
+			return false;
+        }
 		public static LeadFormVm GetLeadFormVm(CommunityDetailsVm vm)
 		{
 			LeadFormVm leadFormVm = GetLeadFormVm();
@@ -223,7 +231,7 @@ namespace MSLivingChoices.Mvc.Uipc.Client.ViewModelsProviders
 		}
 		public static List<CommunityBlockVm> GetNewSmililarCommunity(CommunitiesSearchVm searchVm,long CommunityId)
 		{
-			MSLivingChoices.Entities.Client.Search.FeaturedCommunitySearchModel searchModel2 = searchVm.ToFeaturedCommunitySearchModel();
+            Entities.Client.Search.FeaturedCommunitySearchModel searchModel2 = searchVm.ToFeaturedCommunitySearchModel();
 			searchModel2 = SearchBc.Instance.SearchFeaturedCommunities(searchModel2, CommunityId);
 			return searchModel2.Result.MapToCommunityBlockVmList(searchVm.Criteria.SearchType());
 		}
@@ -258,7 +266,7 @@ namespace MSLivingChoices.Mvc.Uipc.Client.ViewModelsProviders
 		}
 		public static List<ServiceProviderBlockVm> GetNewSmililarServiceProvider(ServiceProvidersSearchVm searchVm, long CommunityId)
 		{
-			MSLivingChoices.Entities.Client.Search.FeaturedServiceProviderSearchModel searchModel2 = searchVm.ToFeaturedServiceProviderSearchModel();
+			Entities.Client.Search.FeaturedServiceProviderSearchModel searchModel2 = searchVm.ToFeaturedServiceProviderSearchModel();
 			return SearchBc.Instance.SearchFeaturedServiceProviders(searchModel2, CommunityId).Result.MapToServiceProviderBlockVmList();
 		}
 		public static ServiceProvidersSearchVm GetServiceProvidersSearchVm(ServiceProvidersSearchVm searchVm)

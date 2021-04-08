@@ -12,7 +12,7 @@ namespace MSLivingChoices.Mvc.Uipc.Client.ViewModels
 			set;
 		}
 
-		public MSLivingChoices.Mvc.Uipc.Enums.SearchType SearchType
+		public SearchType SearchType
 		{
 			get;
 			set;
@@ -20,7 +20,7 @@ namespace MSLivingChoices.Mvc.Uipc.Client.ViewModels
 
 		public LookupLocationVm()
 		{
-			this.SearchType = MSLivingChoices.Mvc.Uipc.Enums.SearchType.SeniorHousingAndCare;
+			this.SearchType = SearchType.SeniorHousingAndCare;
 			this.LookupLocation = string.Empty;
 		}
 

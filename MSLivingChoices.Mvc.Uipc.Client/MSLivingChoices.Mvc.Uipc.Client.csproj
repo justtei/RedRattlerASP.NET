@@ -37,9 +37,6 @@
     <Reference Include="MSLivingChoices.Configuration">
       <HintPath>..\..\..\SeniorLiving1\SeniorLiving1\Main\bin\MSLivingChoices.Configuration.dll</HintPath>
     </Reference>
-    <Reference Include="MSLivingChoices.Entities.Client">
-      <HintPath>..\Main\bin\MSLivingChoices.Entities.Client.dll</HintPath>
-    </Reference>
     <Reference Include="MSLivingChoices.Localization">
       <HintPath>..\NewSLNS\MSLivingChoices.Mvc.Uipc.Admin\MSLivingChoices.Mvc.Uipc.AdminReferences\MSLivingChoices.Localization.dll</HintPath>
     </Reference>
@@ -142,9 +139,11 @@
     <Compile Include="MSLivingChoices.Mvc.Uipc.Client.ViewModels\CommunityQuickViewVm.cs" />
     <Compile Include="MSLivingChoices.Mvc.Uipc.Client.ViewModels\CommunityRefineVm.cs" />
     <Compile Include="MSLivingChoices.Mvc.Uipc.Client.ViewModels\CommunityShortVm.cs" />
+    <Compile Include="MSLivingChoices.Mvc.Uipc.Client.ViewModels\ContactUs.cs" />
     <Compile Include="MSLivingChoices.Mvc.Uipc.Client.ViewModels\CouponVm.cs" />
     <Compile Include="MSLivingChoices.Mvc.Uipc.Client.ViewModels\CrosslinksVm.cs" />
     <Compile Include="MSLivingChoices.Mvc.Uipc.Client.ViewModels\CustomerInfoVm.cs" />
+    <Compile Include="MSLivingChoices.Mvc.Uipc.Client.ViewModels\EbookOrder.cs" />
     <Compile Include="MSLivingChoices.Mvc.Uipc.Client.ViewModels\FeaturedServicesVm.cs" />
     <Compile Include="MSLivingChoices.Mvc.Uipc.Client.ViewModels\FloorPlanQuickViewVm.cs" />
     <Compile Include="MSLivingChoices.Mvc.Uipc.Client.ViewModels\FloorPlanVm.cs" />
@@ -188,6 +187,10 @@
     <ProjectReference Include="..\MSLivingChoices.Bcs.Client\MSLivingChoices.Bcs.Client.csproj">
       <Project>{d950c709-10e8-4e7d-9493-718908b1d5b2}</Project>
       <Name>MSLivingChoices.Bcs.Client</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MSLivingChoices.Entities.Client\MSLivingChoices.Entities.Client.csproj">
+      <Project>{67b18905-4190-4e92-a904-ffaa797f1123}</Project>
+      <Name>MSLivingChoices.Entities.Client</Name>
     </ProjectReference>
     <ProjectReference Include="..\MSLivingChoices.Logging\MSLivingChoices.Logging.csproj">
       <Project>{de5e0aa4-3455-415d-9a8f-af299bec6f7f}</Project>

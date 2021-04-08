@@ -34,9 +34,6 @@
     <Reference Include="MSLivingChoices.Configuration">
       <HintPath>..\Main\bin\MSLivingChoices.Configuration.dll</HintPath>
     </Reference>
-    <Reference Include="MSLivingChoices.Entities.Client">
-      <HintPath>..\Main\bin\MSLivingChoices.Entities.Client.dll</HintPath>
-    </Reference>
     <Reference Include="MSLivingChoices.Utilities">
       <HintPath>..\Main\bin\MSLivingChoices.Utilities.dll</HintPath>
     </Reference>
@@ -59,6 +56,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\MSLivingChoices.Entities.Client\MSLivingChoices.Entities.Client.csproj">
+      <Project>{67b18905-4190-4e92-a904-ffaa797f1123}</Project>
+      <Name>MSLivingChoices.Entities.Client</Name>
+    </ProjectReference>
     <ProjectReference Include="..\MSLivingChoices.IDacs.Client\MSLivingChoices.IDacs.csproj">
       <Project>{a1afeabb-3863-4fbd-b362-b6c1e28773f1}</Project>
       <Name>MSLivingChoices.IDacs</Name>
@@ -68,7 +69,7 @@
       <Name>MSLivingChoices.Logging</Name>
     </ProjectReference>
     <ProjectReference Include="..\MSLivingChoices.SqlDacs.Client\MSLivingChoices.SqlDacs.Client.csproj">
-      <Project>{2DF8CD67-AA32-41F6-9AFB-B15347E7C97E}</Project>
+      <Project>{2df8cd67-aa32-41f6-9afb-b15347e7c97e}</Project>
       <Name>MSLivingChoices.SqlDacs.Client</Name>
     </ProjectReference>
   </ItemGroup>

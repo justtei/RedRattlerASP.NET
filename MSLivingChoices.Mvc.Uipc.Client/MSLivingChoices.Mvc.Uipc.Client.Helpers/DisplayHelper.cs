@@ -141,7 +141,7 @@ namespace MSLivingChoices.Mvc.Uipc.Client.Helpers
 			return empty;
 		}
 
-		internal static string PriceCaption(this MeasureBoundary<decimal, MSLivingChoices.Entities.Client.Enums.Currency> price, string phone)
+		internal static string PriceCaption(this MeasureBoundary<decimal, Currency> price, string phone)
 		{
 			decimal num;
 			string empty = string.Empty;
@@ -155,7 +155,7 @@ namespace MSLivingChoices.Mvc.Uipc.Client.Helpers
 					}
 					return empty;
 				}
-				string enumLocalizedValue = price.Measure.GetEnumLocalizedValue<MSLivingChoices.Entities.Client.Enums.Currency>();
+				string enumLocalizedValue = price.Measure.GetEnumLocalizedValue<Currency>();
 				if (!price.Min.HasValue || !price.Max.HasValue || !(price.Min.Value != price.Max.Value) || !(price.Min.Value != decimal.Zero) || !(price.Max.Value != decimal.Zero))
 				{
 					decimal num1 = (price.Min.HasValue ? price.Min.Value : price.Max.Value);
@@ -178,7 +178,7 @@ namespace MSLivingChoices.Mvc.Uipc.Client.Helpers
 			return empty;
 		}
 
-		internal static string PriceCaption(this MeasureBoundary<decimal, MSLivingChoices.Entities.Client.Enums.Currency> price)
+		internal static string PriceCaption(this MeasureBoundary<decimal, Currency> price)
 		{
 			return price.PriceCaption(string.Empty);
 		}

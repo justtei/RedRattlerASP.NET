@@ -31,9 +31,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="MSLivingChoices.Entities.Client">
-      <HintPath>..\Main\bin\MSLivingChoices.Entities.Client.dll</HintPath>
-    </Reference>
     <Reference Include="MSLivingChoices.SqlDacs">
       <HintPath>..\Main\bin\MSLivingChoices.SqlDacs.dll</HintPath>
     </Reference>
@@ -77,6 +74,7 @@
     <Compile Include="SqlCommands\GetSpecHomesByCommunityIdCommand.cs" />
     <Compile Include="SqlCommands\GetStatesCommand.cs" />
     <Compile Include="SqlCommands\GetZipAutocompleteCommand.cs" />
+    <Compile Include="SqlCommands\SaveContactCommand.cs" />
     <Compile Include="SqlCommands\SaveNewLeadCommand.cs" />
     <Compile Include="SqlCommands\SearchCommunitiesCommand.cs" />
     <Compile Include="SqlCommands\SearchFeaturedCommunitiesCommand.cs" />
@@ -93,6 +91,10 @@
     <ProjectReference Include="..\MSLivingChoices.Entities.Admin\MSLivingChoices.Entities.Admin.csproj">
       <Project>{C406E2DF-6F95-416B-9379-C31ADBD4C7E2}</Project>
       <Name>MSLivingChoices.Entities.Admin</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MSLivingChoices.Entities.Client\MSLivingChoices.Entities.Client.csproj">
+      <Project>{67b18905-4190-4e92-a904-ffaa797f1123}</Project>
+      <Name>MSLivingChoices.Entities.Client</Name>
     </ProjectReference>
     <ProjectReference Include="..\MSLivingChoices.IDacs.Client\MSLivingChoices.IDacs.csproj">
       <Project>{a1afeabb-3863-4fbd-b362-b6c1e28773f1}</Project>

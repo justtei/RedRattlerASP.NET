@@ -42,7 +42,7 @@ namespace MSLivingChoices.Mvc.Uipc.Client.ViewModels
 			set;
 		}
 
-		public MSLivingChoices.Mvc.Uipc.Client.Enums.PageType PageType
+		public PageType PageType
 		{
 			get;
 			set;

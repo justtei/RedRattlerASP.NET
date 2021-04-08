@@ -3,6 +3,7 @@ using MSLivingChoices.Entities.Client;
 using MSLivingChoices.Entities.Client.Enums;
 using MSLivingChoices.Mvc.Uipc.Client.CompetitiveFormatters.OptionsResolver;
 using MSLivingChoices.Mvc.Uipc.Client.Helpers;
+using MSLivingChoices.Mvc.Uipc.Client.MSLivingChoices.Mvc.Uipc.Client.ViewModels;
 using MSLivingChoices.Mvc.Uipc.Client.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -13,6 +14,17 @@ namespace MSLivingChoices.Mvc.Uipc.Client.MappingExtentions
 {
 	internal static class CommonExtensions
 	{
+		internal static Contact MapToContact(this ContactUs con)
+        {
+			return new Contact() {
+				Email = con.Email,
+				Interest = con.Interest,
+				Message = con.Message,
+				Name = con.Name,
+				PhoneNumber = con.PhoneNumber,
+				Result = false
+			};
+        }
 		internal static PagingVm MapToPagingVm(this ServiceProvidersSearchVm searchVm)
 		{
 			PagingVm pagingVm = MapToCommonPagingVm(searchVm);

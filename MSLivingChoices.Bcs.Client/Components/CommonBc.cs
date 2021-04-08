@@ -4,6 +4,7 @@ using MSLivingChoices.IDacs.Client;
 using MSLivingChoices.IDacs.Client.Components;
 using System;
 using System.Collections.Generic;
+using MSLivingChoices.Entities.Client;
 
 namespace MSLivingChoices.Bcs.Client.Components
 {
@@ -46,6 +47,14 @@ namespace MSLivingChoices.Bcs.Client.Components
 		public Dictionary<int, List<CompetitiveItem>> GetCompetitiveItems(bool takeActiveOnly = true)
 		{
 			return this._commonDac.GetCompetitiveItems(takeActiveOnly);
+		}
+		public bool SaveContact(Contact c)
+        {
+			return this._commonDac.SaveContact(c);
+        }
+		public bool SaveEBook(EbookOrder eb)
+		{
+			return this._commonDac.SaveEbookOrder(eb);
 		}
 	}
 }

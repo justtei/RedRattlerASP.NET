@@ -43,7 +43,7 @@ namespace MSLivingChoices.Mvc.Uipc.Client.ViewModels
 			set;
 		}
 
-		IAddress MSLivingChoices.Entities.Client.IProvider.Address
+		IAddress IProvider.Address
 		{
 			get
 			{

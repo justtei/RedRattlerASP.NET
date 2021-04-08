@@ -25,7 +25,7 @@ namespace MSLivingChoices.Mvc.Uipc.Client.ViewModels
 			set;
 		}
 
-		public Dictionary<MSLivingChoices.Mvc.Uipc.Enums.SearchType, List<AutocompleteVm>> Templates
+		public Dictionary<SearchType, List<AutocompleteVm>> Templates
 		{
 			get;
 			set;
@@ -34,7 +34,7 @@ namespace MSLivingChoices.Mvc.Uipc.Client.ViewModels
 		public SearchBarVm()
 		{
 			this.SearchTypeList = new List<SearchBarSelectListItem>();
-			this.Templates = new Dictionary<MSLivingChoices.Mvc.Uipc.Enums.SearchType, List<AutocompleteVm>>();
+			this.Templates = new Dictionary<SearchType, List<AutocompleteVm>>();
 		}
 	}
 }

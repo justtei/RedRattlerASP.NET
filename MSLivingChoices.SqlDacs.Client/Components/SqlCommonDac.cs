@@ -1,3 +1,4 @@
+using MSLivingChoices.Entities.Client;
 using MSLivingChoices.Entities.Client.DisplayOptions;
 using MSLivingChoices.IDacs.Client.Components;
 using MSLivingChoices.SqlDacs.Client.SqlCommands;
@@ -19,5 +20,11 @@ namespace MSLivingChoices.SqlDacs.Client.Components
 			getCompetitiveItemsCommand.Execute();
 			return getCompetitiveItemsCommand.CommandResult;
 		}
+		public bool SaveContact(Contact c)
+        {
+			SaveContactCommand sc = new SaveContactCommand(c);
+			sc.Execute();
+			return sc.CommandResult.Result;
+        }
 	}
 }
