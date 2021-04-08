@@ -215,8 +215,9 @@ mslc.define('client/widgets/searchBar',
                         self.pending(false);
                     });
                 } else {
-                    self.messages.isEmptyMessageVisible(true);
-                    self.showHelpArea();
+                    window.location = 'all';
+                    /*self.messages.isEmptyMessageVisible(true);*/
+                    /*self.showHelpArea();*/
                 }
 
                 return false;

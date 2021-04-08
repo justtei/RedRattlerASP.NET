@@ -33,6 +33,7 @@ namespace MSLivingChoices.Mvc.Uipc.Client.Enums
 		SeniorType = 29,
 		Error404 = 24,
 		Error500 = 25,
-		Ebook = 26
+		Ebook = 26,
+		All = 30
 	}
 }

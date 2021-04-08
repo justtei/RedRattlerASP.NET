@@ -114,6 +114,12 @@ namespace Main.Controllers
 			return base.View("~/Views/Client/Search/Index.cshtml", ClientViewModelsProvider.GetIndexSearchVm());
 		}
 
+		public ActionResult All()
+		{
+			// Model
+			return base.View("~/Views/Client/Search/All.cshtml", ClientViewModelsProvider.GetStaticContent(PageType.SeniorType));
+		}
+
 		[CompetitiveFormating]
 		[HttpGet]
 		public ActionResult PrintCommunity(long id, PageType pageType)

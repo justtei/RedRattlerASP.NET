@@ -781,6 +781,7 @@
     <Content Include="Views\Client\Static\AboutUs.cshtml" />
     <Content Include="Views\Client\Static\SeniorType.cshtml" />
     <Content Include="Views\Client\Details\Blog.cshtml" />
+    <Content Include="Views\Client\Search\All.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

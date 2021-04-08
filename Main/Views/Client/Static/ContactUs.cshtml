@@ -38,7 +38,6 @@
                     //Serialize the form datas.
                     var valdata = $("#ContactUs").serialize();
                     //to get alert popup
-                    alert(valdata);
                     $.ajax({
                         url: "@Url.Action("ContactUs", "Client")",
                         type: "POST",
@@ -60,6 +59,8 @@
 
         function ContactSucceed() {
             $('div.alert-success').show();
+            $("#ContactUs")[0].reset();
+            @*$("#ContactUs").trigger("reset");*@
         }
     </script>
 
