@@ -26,5 +26,11 @@ namespace MSLivingChoices.SqlDacs.Client.Components
 			sc.Execute();
 			return sc.CommandResult.Result;
         }
+		public bool SaveEbookOrder(EbookOrder eb)
+        {
+			SaveEbookOrderCommand ebc = new SaveEbookOrderCommand(eb);
+			ebc.Execute();
+			return ebc.CommandResult.Result;
+		}
 	}
 }

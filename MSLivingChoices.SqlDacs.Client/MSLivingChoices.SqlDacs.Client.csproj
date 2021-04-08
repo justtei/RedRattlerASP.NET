@@ -75,6 +75,7 @@
     <Compile Include="SqlCommands\GetStatesCommand.cs" />
     <Compile Include="SqlCommands\GetZipAutocompleteCommand.cs" />
     <Compile Include="SqlCommands\SaveContactCommand.cs" />
+    <Compile Include="SqlCommands\SaveEbookOrderCommand.cs" />
     <Compile Include="SqlCommands\SaveNewLeadCommand.cs" />
     <Compile Include="SqlCommands\SearchCommunitiesCommand.cs" />
     <Compile Include="SqlCommands\SearchFeaturedCommunitiesCommand.cs" />

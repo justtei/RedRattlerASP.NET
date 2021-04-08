@@ -51,9 +51,9 @@ namespace MSLivingChoices.Mvc.Uipc.Client.ViewModelsProviders
         {
 			return CommonBc.Instance.SaveContact(con.MapToContact());
         }
-		public static bool EBook(EbookOrder eb)
+		public static bool EBook(MSLivingChoices.Mvc.Uipc.Client.ViewModels.EbookOrder eb)
         {
-			return false;
+			return CommonBc.Instance.SaveEBook(eb.MapToEBook());
         }
 		public static LeadFormVm GetLeadFormVm(CommunityDetailsVm vm)
 		{
