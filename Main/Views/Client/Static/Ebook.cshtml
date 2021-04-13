@@ -8,6 +8,15 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.min.js"></script>
     <script type="text/javascript">
         $(document).ready(function () {
+            $.validator.addMethod('customphone', function (value, element) {
+                return this.optional(element) || /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/.test(value);
+            }, "Please enter a valid phone number");
+            jQuery.validator.addMethod('state', function (state, element) {
+                return this.optional(element) || state.match(/^(A[LKSZRAEP]|C[AOT]|D[EC]|F[LM]|G[ANU]|HI|I[ADLN]|K[SY]|LA|M[ADEHINOPST]|N[CDEHJMVY]|O[HKR]|P[ARW]|RI|S[CD]|T[NX]|UT|V[AIT]|W[AIVY])$/);
+            }, "Please specify a valid state");
+            jQuery.validator.addMethod("zipcode", function (value, element) {
+                return this.optional(element) || /^\d{5}(?:-\d{4})?$/.test(value);
+            }, "Please provide a valid zipcode.");
             $("#eBook").validate({
                 rules: {
                     FirstName: {
@@ -20,18 +29,15 @@
                         required: true,
                         email: true
                     },
+                    Phone: 'customphone',
                     street: {
                         required: true,
                     },
                     city: {
                         required: true,
                     },
-                    state: {
-                        required: true,
-                    },
-                    zip: {
-                        required: true,
-                    }
+                    state: 'state',
+                    zip: 'zipcode'
                 },
                 messages: {
                     Email: {
@@ -105,16 +111,16 @@ inner banner -->
 
                         <form class="mt-4 row" id="eBook">
                             <div class="form-group col-sm-6">
-                                <input type="text" class="form-control" id="firstname" placeholder="First Name (required)" name="FirstName">
+                                <input type="text" class="form-control" id="firstname" placeholder="First Name (required)" minlength="3" maxlength="20" name="FirstName">
                             </div>
                             <div class="form-group col-sm-6">
-                                <input type="text" class="form-control" id="lastname" placeholder="Last Name (required)" name="LastName">
+                                <input type="text" class="form-control" id="lastname" placeholder="Last Name (required)" minlength="3" maxlength="20" name="LastName">
                             </div>
                             <div class="form-group col-sm-6">
                                 <input type="text" class="form-control" id="email" placeholder="Email Address (required)" name="Email">
                             </div>
                             <div class="form-group col-sm-6">
-                                <input type="text" class="form-control" id="phone" placeholder="Phone" name="Phone">
+                                <input type="text" class="form-control" id="phone" placeholder="Phone" name="Phone" required>
                             </div>
                             <div class="col-12 form-group">
                                 <select class="form-control" name="Magazine" id="Magazine">
@@ -133,10 +139,10 @@ inner banner -->
                                 <input class="form-control" id="exampleFormControlcity" placeholder="City (required)" name="city">
                             </div>
                             <div class="col-sm-4 form-group">
-                                <input class="form-control" id="exampleFormControlstate" placeholder="State (required)" name="state">
+                                <input class="form-control" id="exampleFormControlstate" placeholder="State (required)" required name="state">
                             </div>
                             <div class="col-sm-4 form-group">
-                                <input class="form-control" id="exampleFormControlzipcode" placeholder="Zip Code (required)" name="zip">
+                                <input class="form-control" id="exampleFormControlzipcode" placeholder="Zip Code (required)" required name="zip">
                             </div>
                             <div class="col-12 form-group mt-4">
                                 <h5 class="mb-3">I would like to receive more information on:</h5>
