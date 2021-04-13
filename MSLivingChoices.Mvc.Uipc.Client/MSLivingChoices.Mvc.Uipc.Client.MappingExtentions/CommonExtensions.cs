@@ -30,9 +30,9 @@ namespace MSLivingChoices.Mvc.Uipc.Client.MappingExtentions
 			return new Entities.Client.EbookOrder()
 			{
 				Email = con.Email,
-				chkPAS = con.chkPAS,
-				chkCommunities = con.chkCommunities,
-				chkHomeHealth = con.chkHomeHealth,
+				chkPAS = con.chkPAS == "true"?true:false,
+				chkCommunities = con.chkCommunities == "true" ? true : false,
+				chkHomeHealth = con.chkHomeHealth == "true" ? true : false,
 				city = con.city,
 				ExtraMessage = con.ExtraMessage,
 				FirstName = con.FirstName,

@@ -24,7 +24,7 @@ namespace MSLivingChoices.SqlDacs.Client.SqlCommands
             command.Parameters.Add("@FirstName", System.Data.SqlDbType.VarChar).Value = _eb.FirstName;
             command.Parameters.Add("@LastName", System.Data.SqlDbType.VarChar).Value = _eb.LastName;
             command.Parameters.Add("@Email", System.Data.SqlDbType.VarChar).Value = _eb.Email;
-            command.Parameters.Add("@Phone", System.Data.SqlDbType.VarChar).Value = _eb.Phone;
+            command.Parameters.Add("@Phone", System.Data.SqlDbType.VarChar).Value = _eb.Phone == null?"N/A": _eb.Phone;
             command.Parameters.Add("@Magazine", System.Data.SqlDbType.VarChar).Value = _eb.Magazine;
             command.Parameters.Add("@street", System.Data.SqlDbType.VarChar).Value = _eb.street;
             command.Parameters.Add("@city", System.Data.SqlDbType.VarChar).Value = _eb.city;
@@ -33,7 +33,7 @@ namespace MSLivingChoices.SqlDacs.Client.SqlCommands
             command.Parameters.Add("@isCommunities", System.Data.SqlDbType.Bit).Value = _eb.chkCommunities;
             command.Parameters.Add("@isHomeHealth", System.Data.SqlDbType.Bit).Value = _eb.chkHomeHealth;
             command.Parameters.Add("@isPAS", System.Data.SqlDbType.Bit).Value = _eb.chkPAS;
-            command.Parameters.Add("@isContactBack", System.Data.SqlDbType.Bit).Value = _eb.rad;
+            command.Parameters.Add("@isContactBack", System.Data.SqlDbType.Bit).Value = _eb.rad == "Yes" ? true : false;
             command.Parameters.Add("@ExtraMessage", System.Data.SqlDbType.VarChar).Value = _eb.ExtraMessage;
             command.ExecuteNonQuery();
             Result = true;

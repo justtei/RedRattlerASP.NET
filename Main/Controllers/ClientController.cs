@@ -93,7 +93,7 @@ namespace Main.Controllers
 			//}
 
 
-			return new AllowGetJsonResult(new { success = ClientViewModelsProvider.EBook(ord) });
+				return new AllowGetJsonResult(new { success = ClientViewModelsProvider.EBook(ord) });
         }
         [CompetitiveFormating]
 		[HttpGet]

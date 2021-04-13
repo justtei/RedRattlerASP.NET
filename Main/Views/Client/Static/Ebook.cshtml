@@ -60,13 +60,11 @@
                 }
             });
         });
-
         function ContactSucceed() {
             $('div.alert-success').show();
             $("#eBook")[0].reset();
             @*$("#eBook").trigger("reset");*@
         }
-
     </script>
 }
 
@@ -143,16 +141,16 @@ inner banner -->
                             <div class="col-12 form-group mt-4">
                                 <h5 class="mb-3">I would like to receive more information on:</h5>
                                 <div class="custom-control custom-checkbox mb-3">
-                                    <input type="checkbox" class="custom-control-input" id="dateposted1" name="chkCommunities">
-                                    <label class="custom-control-label" for="dateposted1">Communities</label>
+                                    <input type="checkbox" class="custom-control-input" id="chkCommunities" name="chkCommunities" value="true">
+                                    <label class="custom-control-label" for="chkCommunities">Communities</label>
                                 </div>
                                 <div class="custom-control custom-checkbox mb-3">
-                                    <input type="checkbox" class="custom-control-input" id="dateposted2" name="chkHomeHealth">
-                                    <label class="custom-control-label" for="dateposted2">Home health</label>
+                                    <input type="checkbox" class="custom-control-input" id="chkHomeHealth" name="chkHomeHealth" value="true">
+                                    <label class="custom-control-label" for="chkHomeHealth">Home health</label>
                                 </div>
                                 <div class="custom-control custom-checkbox mb-3">
-                                    <input type="checkbox" class="custom-control-input" id="dateposted3" name="chkPAS">
-                                    <label class="custom-control-label" for="dateposted3">Products and Services</label>
+                                    <input type="checkbox" class="custom-control-input" id="chkPAS" name="chkPAS" value="true">
+                                    <label class="custom-control-label" for="chkPAS">Products and Services</label>
                                 </div>
                             </div>
                             <div class="col-12 form-group">

@@ -32,5 +32,5 @@ namespace MSLivingChoices.SqlDacs.Client.Components
 			ebc.Execute();
 			return ebc.CommandResult.Result;
 		}
-	}
+    }
 }
