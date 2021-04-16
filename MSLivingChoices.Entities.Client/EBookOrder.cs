@@ -22,5 +22,6 @@ namespace MSLivingChoices.Entities.Client
         public bool chkPAS { get; set; }
         public String rad { get; set; }
         public String ExtraMessage { get; set; }
+        public bool Result { get; set; }
     }
 }

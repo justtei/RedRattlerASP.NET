@@ -25,6 +25,27 @@ namespace MSLivingChoices.Mvc.Uipc.Client.MappingExtentions
 				Result = false
 			};
         }
+		internal static Entities.Client.EbookOrder MapToEBook(this MSLivingChoices.Mvc.Uipc.Client.ViewModels.EbookOrder con)
+		{
+			return new Entities.Client.EbookOrder()
+			{
+				Email = con.Email,
+				chkPAS = con.chkPAS == "true"?true:false,
+				chkCommunities = con.chkCommunities == "true" ? true : false,
+				chkHomeHealth = con.chkHomeHealth == "true" ? true : false,
+				city = con.city,
+				ExtraMessage = con.ExtraMessage,
+				FirstName = con.FirstName,
+				LastName = con.LastName,
+				Magazine = con.Magazine,
+				Phone = con.Phone,
+				rad = con.rad,
+				state = con.state,
+				street = con.street,
+				zip = con.zip,
+				Result = false
+			};
+		}
 		internal static PagingVm MapToPagingVm(this ServiceProvidersSearchVm searchVm)
 		{
 			PagingVm pagingVm = MapToCommonPagingVm(searchVm);

@@ -9,6 +9,9 @@ using MSLivingChoices.Mvc.Uipc.Results;
 using System;
 using System.Net.Mail;
 using System.Web.Mvc;
+using System.Linq;
+using System.Collections.Generic;
+using MSLivingChoices.Utilities;
 
 namespace Main.Controllers
 {
@@ -93,7 +96,7 @@ namespace Main.Controllers
 			//}
 
 
-			return new AllowGetJsonResult(new { success = ClientViewModelsProvider.EBook(ord) });
+				return new AllowGetJsonResult(new { success = ClientViewModelsProvider.EBook(ord) });
         }
         [CompetitiveFormating]
 		[HttpGet]
@@ -225,7 +228,21 @@ namespace Main.Controllers
 			//Value = ActiveAdultCommunities
 			//
 			//}
+			searchVm.Criteria.Components["SearchType"] = "ActiveAdultHomes";
+			searchVm.SearchBar.SearchType = SearchType.ActiveAdultHomes;
 			CommunitiesSearchVm result = ClientViewModelsProvider.GetCommunitiesSearchVm(searchVm);
+            searchVm.Criteria.Components["SearchType"] = "SeniorHousingAndCare";
+            searchVm.SearchBar.SearchType = SearchType.SeniorHousingAndCare;
+            result.Result.AddRange(ClientViewModelsProvider.GetCommunitiesSearchVm(searchVm).Result);
+            searchVm.Criteria.Components["SearchType"] = "ActiveAdultCommunities";
+            searchVm.SearchBar.SearchType = SearchType.ActiveAdultCommunities;
+            result.Result.AddRange(ClientViewModelsProvider.GetCommunitiesSearchVm(searchVm).Result);
+
+			var MainResult = result.Result.DistinctBy(x => x.Id).ToList();
+
+
+			result.Result = MainResult;
+
 			if (!result.ValidationResult.IsValid)
 			{
 				return base.NotFound();
@@ -299,7 +316,6 @@ namespace Main.Controllers
 		{
 			return new AllowGetJsonResult(ClientViewModelsProvider.GetServiceProviderQuickViewVm(serviceProviderId));
 		}
-
 		[CompetitiveFormating]
 		[HttpGet]
 		public JsonResult SpecHomesQuickView(long communityId, SearchType searchType)
@@ -331,6 +347,5 @@ namespace Main.Controllers
 		{
 			return base.View("~/Views/Client/Static/SeniorType.cshtml", ClientViewModelsProvider.GetStaticContent(PageType.SeniorType));
 		}
-
 	}
 }

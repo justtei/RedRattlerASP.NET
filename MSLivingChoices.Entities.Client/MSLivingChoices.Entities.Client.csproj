@@ -58,6 +58,7 @@
     <Compile Include="DisplayOptions\CompetitiveItem.cs" />
     <Compile Include="DisplayOptions\OwnerDisplayOptions.cs" />
     <Compile Include="DisplayOptions\ServiceDisplayOptions.cs" />
+    <Compile Include="EBookOrder.cs" />
     <Compile Include="Enums\AgeRestriction.cs" />
     <Compile Include="Enums\Area.cs" />
     <Compile Include="Enums\BrandType.cs" />
