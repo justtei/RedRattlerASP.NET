@@ -1,4 +1,5 @@
 using MSLivingChoices.Bcs.Client.Components;
+using MSLivingChoices.Bcs.Components;
 using MSLivingChoices.Configuration;
 using MSLivingChoices.Configuration.Entities.SearchTemplates;
 using MSLivingChoices.Entities.Client;
@@ -202,6 +203,10 @@ namespace MSLivingChoices.Mvc.Uipc.Client.ViewModelsProviders
 			indexVm.Result.Add(SearchType.ActiveAdultHomes, result.OrderByDescending((CityListingsInfo li) => li.AdultHomesCount).Take(countryStubSearchModel.MaxCount).MapToCitiesLinks(SearchType.ActiveAdultHomes, addCounting: false));
 			indexVm.Result.Add(SearchType.SeniorHousingAndCare, result.OrderByDescending((CityListingsInfo li) => li.SeniorHousingCount).Take(countryStubSearchModel.MaxCount).MapToCitiesLinks(SearchType.SeniorHousingAndCare, addCounting: false));
 			indexVm.Result.Add(SearchType.ProductsAndServices, result.OrderByDescending((CityListingsInfo li) => li.ServicesCount).Take(countryStubSearchModel.MaxCount).MapToCitiesLinks(SearchType.ProductsAndServices, addCounting: false));
+			List<KeyValuePair<int, string>> shcCategoriesForCommunity = ItemTypeBc.Instance.GetShcCategoriesForCommunity();
+			List<int> ShcCategories = new List<int>();
+			indexVm.Refine = new CommunityRefineVm();
+			indexVm.Refine.ShcCategories = shcCategoriesForCommunity.MapToSelectListItemList(ShcCategories);
 			return indexVm;
 		}
 
