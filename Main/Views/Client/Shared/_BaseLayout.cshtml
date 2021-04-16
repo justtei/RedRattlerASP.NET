@@ -202,7 +202,7 @@
                                     </li>
                                     @{searchType = Model.SearchBar.SearchTypeList.Where(x => x.Text == "Active Adult Communities").FirstOrDefault(); }
                                     <li class="nav-item" @(searchType.Selected ? "style=color:#013f7a;" : string.Empty)>
-                                        <a class="nav-link" href="/communities/tx">
+                                        <a class="nav-link" href="@Url.RouteUrl("Index")">
                                             Housing & Community Listings
                                         </a>
                                     </li>

@@ -17,7 +17,7 @@
             jQuery.validator.addMethod("zipcode", function (value, element) {
                 return this.optional(element) || /^\d{5}(?:-\d{4})?$/.test(value);
             }, "Please provide a valid zipcode.");
-            $("#eBook").validate({
+            $("#form").validate({
                 rules: {
                     FirstName: {
                         required: true,
@@ -37,7 +37,13 @@
                         required: true,
                     },
                     state: 'state',
-                    zip: 'zipcode'
+                    zip: 'zipcode',
+                    'chk[]': {
+                        required: true,
+                        maxlength: 2,
+                        minlength: 2,
+
+                    }
                 },
                 messages: {
                     Email: {
@@ -149,15 +155,15 @@ inner banner -->
                             <div class="col-12 form-group mt-4">
                                 <h5 class="mb-3">I would like to receive more information on:</h5>
                                 <div class="custom-control custom-checkbox mb-3">
-                                    <input type="checkbox" class="custom-control-input" id="dateposted1" name="chkCommunities">
+                                    <input type="checkbox" class="custom-control-input" id="dateposted1" name="chk[]">
                                     <label class="custom-control-label" for="dateposted1">Communities</label>
                                 </div>
                                 <div class="custom-control custom-checkbox mb-3">
-                                    <input type="checkbox" class="custom-control-input" id="dateposted2" name="chkHomeHealth">
+                                    <input type="checkbox" class="custom-control-input" id="dateposted2" name="chk[]">
                                     <label class="custom-control-label" for="dateposted2">Home health</label>
                                 </div>
                                 <div class="custom-control custom-checkbox mb-3">
-                                    <input type="checkbox" class="custom-control-input" id="dateposted3" name="chkPAS">
+                                    <input type="checkbox" class="custom-control-input" id="dateposted3" name="chk[]">
                                     <label class="custom-control-label" for="dateposted3">Products and Services</label>
                                 </div>
                             </div>
