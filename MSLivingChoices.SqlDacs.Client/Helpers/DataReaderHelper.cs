@@ -98,6 +98,9 @@ namespace MSLivingChoices.SqlDacs.Client.Helpers
 			community.DisplayOptions = GetCommunityDisplayOptions(reader);
 			community.Images = new List<Image>();
 			community.Amenities = new List<string>();
+			String Spltter = reader.GetValueOrDefault<string>("SHC");
+			if(Spltter != null && Spltter != "")
+				community.ShcCategories = Spltter.Split(',').ToList();
 			return community;
 		}
 
