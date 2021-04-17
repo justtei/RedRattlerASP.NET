@@ -193,6 +193,7 @@ namespace MSLivingChoices.Mvc.Uipc.Client.MappingExtentions
 				communityShortVm.SearchRadiusDesignation = (community.SearchResultRadius > 0 ? string.Format(StaticContent.Txt_SearchRadiusDesignation, community.SearchResultRadius) : string.Empty);
 				communityShortVm.PrintUrl = MslcUrlBuilder.PrintUrl(community, searchType);
 				communityShortVm.PrintDirectionBaseUrl = MslcUrlBuilder.PrintDirectionBaseUrl(community, searchType);
+				communityShortVm.SHC = community.ShcCategories;
 			}
 			return communityShortVm;
 		}

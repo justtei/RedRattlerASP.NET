@@ -67,7 +67,7 @@ namespace MSLivingChoices.Mvc.Uipc.Client.ViewModels
 			get;
 			set;
 		}
-
+		public List<String> SHC { get; set; }
 		public CommunityBlockVm()
 		{
 		}
