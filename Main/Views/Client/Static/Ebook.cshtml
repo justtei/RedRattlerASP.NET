@@ -17,7 +17,7 @@
             jQuery.validator.addMethod("zipcode", function (value, element) {
                 return this.optional(element) || /^\d{5}(?:-\d{4})?$/.test(value);
             }, "Please provide a valid zipcode.");
-            $("#form").validate({
+            $("#eBook").validate({
                 rules: {
                     FirstName: {
                         required: true,
@@ -131,6 +131,9 @@ inner banner -->
                             <div class="col-12 form-group">
                                 <select class="form-control" name="Magazine" id="Magazine">
                                     <option value="-1">Click on the arrow to choose magazine</option>
+                                    <option value="1">NE Texas</option>
+                                    <option value="2">Dallas </option>
+                                    <option value="1">Fort Worth</option>
                                     <option value="1">NE Texas</option>
                                     <option value="2">Dallas </option>
                                     <option value="1">Fort Worth</option>

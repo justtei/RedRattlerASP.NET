@@ -206,7 +206,8 @@ namespace MSLivingChoices.Mvc.Uipc.Client.ViewModelsProviders
 			List<KeyValuePair<int, string>> shcCategoriesForCommunity = ItemTypeBc.Instance.GetShcCategoriesForCommunity();
 			List<int> ShcCategories = new List<int>();
 			indexVm.Refine = new CommunityRefineVm();
-			indexVm.Refine.ShcCategories = shcCategoriesForCommunity.MapToSelectListItemList(ShcCategories);
+			indexVm.SearchBar.SHCategories = shcCategoriesForCommunity.MapToSelectListItemList(ShcCategories);
+			//indexVm.Refine.ShcCategories =
 			return indexVm;
 		}
 

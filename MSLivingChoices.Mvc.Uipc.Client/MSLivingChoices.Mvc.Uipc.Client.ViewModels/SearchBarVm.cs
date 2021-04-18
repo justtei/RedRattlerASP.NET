@@ -2,11 +2,13 @@ using MSLivingChoices.Mvc.Uipc.Enums;
 using System;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
+using System.Web.Mvc;
 
 namespace MSLivingChoices.Mvc.Uipc.Client.ViewModels
 {
 	public class SearchBarVm : LookupLocationVm
 	{
+		public List<SelectListItem> SHCategories { get; set; }
 		public CrosslinksVm Crosslinks
 		{
 			get;

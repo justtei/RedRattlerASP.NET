@@ -4,32 +4,38 @@
 
     <style>
         img {
-            max-width: 100%;
+            @*max-width: 100%;*@
+            max-width: 100px;
         }
     </style>
-
-    <table class="table">
+    <table class="table table-borderless">
+        <thead>
             <tr>
-                <td>Floor Plan</td>
-                <td>Layout</td>
-                <td>Price</td>
-                <td>Availability</td>
-                <td>Details</td>
+                <th>Floor Plan</th>
+                <th>Name</th>
+                <th>Layout</th>
+                <th>Price</th>
+                <th>Availability</th>
             </tr>
+        </thead>
+        <tbody>
 
             @foreach (var floor in Model)
             {
                 <tr data-toggle="community-unit" data-unit-id="@floor.Id">
                     <td>
                         <div class="row">
-                            <div class="col-md-4 @(floor.DisplayProperties.Image ? "view-large icon-search" : string.Empty)">
+                            <div class="col-md-12 @(floor.DisplayProperties.Image ? "view-large icon-search" : string.Empty)">
                                 @if (floor.DisplayProperties.Image)
                                 {
                                     @RenderHelper.Thumbnail(floor.Image)
                                 }
                             </div>
-
-                            <div class="col-md-8">
+                        </div>
+                    </td>
+                    <td>
+                        <div class="row">
+                            <div class="col-md-12">
                                 @if (floor.DisplayProperties.Name)
                                 {
                                     <strong>@floor.Name</strong>
@@ -100,7 +106,7 @@
                             <div class="col-md-12 text-center">
                                 @if (floor.DisplayProperties.LeadForm)
                                 {
-                                    <button class="btn btn-block btn-brand-red cropped"
+                                    <button class="btn btn-primary btn-md cropped"
                                             data-toggle="lead-form"
                                             data-accessor="attr"
                                             data-inquiry="@Convert.ToInt32(InquiryType.FloorPlan)"
@@ -143,4 +149,6 @@
                     }
                 </tr>
             }
+
+        </tbody>
     </table>

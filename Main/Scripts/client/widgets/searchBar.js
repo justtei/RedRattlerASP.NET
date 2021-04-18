@@ -194,11 +194,31 @@ mslc.define('client/widgets/searchBar',
                 self.autocomplete.clear();
 
                 if (!util.isNullOrEmpty(self.lookupLocation())) {
-                    self.pending(true);
 
-                    remote.get.searchFromBar(self.getCriteria(), function(response) {
+                    /*$('#shcCategories option:selected').each(function () {
+                        $(this).prop('selected', false);
+                    });
+                    $('#shcCategories').multiselect('refresh');*/
+
+                    self.pending(true);
+                    if (self.getCriteria()['lookupLocation.searchType'] != 4) {
+                        var result = {
+                            'lookupLocation.searchType': 3,
+                            'lookupLocation.lookupLocation': self.lookupLocation()
+                        };
+                    } else {
+                        var result = {
+                            'lookupLocation.searchType': self.searchTypes.selected.value(),
+                            'lookupLocation.lookupLocation': self.lookupLocation()
+                        };
+                    }
+
+                    remote.get.searchFromBar(result, function (response) {
                         if (response.isValid) {
-                            window.location = response.searchUrl;
+                            var shcCat = $("#shcCategories").val();
+                            if (self.getCriteria()['lookupLocation.searchType'] == 4)
+                                window.location = response.searchUrl;
+                            else window.location = shcCat && shcCat.length ? response.searchUrl + "?shc-categories=" + shcCat.join('-') : response.searchUrl;
                         } else {
                             if (response.variants.length) {
                                 self.autocomplete.update(response.variants);
@@ -215,9 +235,8 @@ mslc.define('client/widgets/searchBar',
                         self.pending(false);
                     });
                 } else {
-                    window.location = 'all';
-                    /*self.messages.isEmptyMessageVisible(true);*/
-                    /*self.showHelpArea();*/
+                    self.messages.isEmptyMessageVisible(true);
+                    self.showHelpArea();
                 }
 
                 return false;
@@ -228,6 +247,8 @@ mslc.define('client/widgets/searchBar',
             //#region Interface
 
             this.searchTypes = new Select(data.searchTypeList, data.searchType, { stubText: null });
+            this.shCategories = ko.observable(data.shCategories);
+            this.selectedCategories = ko.observable();
             this.lookupLocation = ko.observable(data.lookupLocation);
             this.templates = data.templates;
             this.isAutocompleteVisibleFlag = ko.observable(true);

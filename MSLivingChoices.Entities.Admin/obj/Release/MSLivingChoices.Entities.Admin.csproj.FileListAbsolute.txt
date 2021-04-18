@@ -15,3 +15,9 @@ C:\Users\sra_r\Source\Repos\RedRattlerASP.NET\MSLivingChoices.Entities.Admin\obj
 C:\Users\sra_r\Source\Repos\RedRattlerASP.NET\MSLivingChoices.Entities.Admin\obj\Release\MSLivingChoices.Entities.Admin.csproj.CoreCompileInputs.cache
 C:\Users\sra_r\Source\Repos\RedRattlerASP.NET\MSLivingChoices.Entities.Admin\obj\Release\MSLivingChoices.Entities.Admin.dll
 C:\Users\sra_r\Source\Repos\RedRattlerASP.NET\MSLivingChoices.Entities.Admin\obj\Release\MSLivingChoices.Entities.Admin.pdb
+C:\Users\Administrator\Desktop\seniorlivingchoice\RedRattlerASP.NET\MSLivingChoices.Entities.Admin\bin\Release\MSLivingChoices.Entities.Admin.dll
+C:\Users\Administrator\Desktop\seniorlivingchoice\RedRattlerASP.NET\MSLivingChoices.Entities.Admin\bin\Release\MSLivingChoices.Entities.Admin.pdb
+C:\Users\Administrator\Desktop\seniorlivingchoice\RedRattlerASP.NET\MSLivingChoices.Entities.Admin\obj\Release\MSLivingChoices.Entities.Admin.csprojAssemblyReference.cache
+C:\Users\Administrator\Desktop\seniorlivingchoice\RedRattlerASP.NET\MSLivingChoices.Entities.Admin\obj\Release\MSLivingChoices.Entities.Admin.csproj.CoreCompileInputs.cache
+C:\Users\Administrator\Desktop\seniorlivingchoice\RedRattlerASP.NET\MSLivingChoices.Entities.Admin\obj\Release\MSLivingChoices.Entities.Admin.dll
+C:\Users\Administrator\Desktop\seniorlivingchoice\RedRattlerASP.NET\MSLivingChoices.Entities.Admin\obj\Release\MSLivingChoices.Entities.Admin.pdb

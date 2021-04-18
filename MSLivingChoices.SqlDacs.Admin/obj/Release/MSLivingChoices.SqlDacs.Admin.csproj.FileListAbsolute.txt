@@ -34,3 +34,15 @@ C:\Users\sra_r\Source\Repos\RedRattlerASP.NET\MSLivingChoices.SqlDacs.Admin\obj\
 C:\Users\sra_r\Source\Repos\RedRattlerASP.NET\MSLivingChoices.SqlDacs.Admin\obj\Release\MSLivingChoices.SqlDacs.Admin.csproj.CopyComplete
 C:\Users\sra_r\Source\Repos\RedRattlerASP.NET\MSLivingChoices.SqlDacs.Admin\obj\Release\MSLivingChoices.SqlDacs.Admin.dll
 C:\Users\sra_r\Source\Repos\RedRattlerASP.NET\MSLivingChoices.SqlDacs.Admin\obj\Release\MSLivingChoices.SqlDacs.Admin.pdb
+C:\Users\Administrator\Desktop\seniorlivingchoice\RedRattlerASP.NET\MSLivingChoices.SqlDacs.Admin\bin\Release\MSLivingChoices.SqlDacs.Admin.dll
+C:\Users\Administrator\Desktop\seniorlivingchoice\RedRattlerASP.NET\MSLivingChoices.SqlDacs.Admin\bin\Release\MSLivingChoices.SqlDacs.Admin.pdb
+C:\Users\Administrator\Desktop\seniorlivingchoice\RedRattlerASP.NET\MSLivingChoices.SqlDacs.Admin\bin\Release\MSLivingChoices.Configuration.dll
+C:\Users\Administrator\Desktop\seniorlivingchoice\RedRattlerASP.NET\MSLivingChoices.SqlDacs.Admin\bin\Release\MSLivingChoices.Entities.Admin.dll
+C:\Users\Administrator\Desktop\seniorlivingchoice\RedRattlerASP.NET\MSLivingChoices.SqlDacs.Admin\bin\Release\MSLivingChoices.IDacs.dll
+C:\Users\Administrator\Desktop\seniorlivingchoice\RedRattlerASP.NET\MSLivingChoices.SqlDacs.Admin\bin\Release\MSLivingChoices.SqlDacs.dll
+C:\Users\Administrator\Desktop\seniorlivingchoice\RedRattlerASP.NET\MSLivingChoices.SqlDacs.Admin\bin\Release\MSLivingChoices.Entities.Admin.pdb
+C:\Users\Administrator\Desktop\seniorlivingchoice\RedRattlerASP.NET\MSLivingChoices.SqlDacs.Admin\obj\Release\MSLivingChoices.SqlDacs.Admin.csprojAssemblyReference.cache
+C:\Users\Administrator\Desktop\seniorlivingchoice\RedRattlerASP.NET\MSLivingChoices.SqlDacs.Admin\obj\Release\MSLivingChoices.SqlDacs.Admin.csproj.CoreCompileInputs.cache
+C:\Users\Administrator\Desktop\seniorlivingchoice\RedRattlerASP.NET\MSLivingChoices.SqlDacs.Admin\obj\Release\MSLivingChoices.SqlDacs.Admin.csproj.CopyComplete
+C:\Users\Administrator\Desktop\seniorlivingchoice\RedRattlerASP.NET\MSLivingChoices.SqlDacs.Admin\obj\Release\MSLivingChoices.SqlDacs.Admin.dll
+C:\Users\Administrator\Desktop\seniorlivingchoice\RedRattlerASP.NET\MSLivingChoices.SqlDacs.Admin\obj\Release\MSLivingChoices.SqlDacs.Admin.pdb

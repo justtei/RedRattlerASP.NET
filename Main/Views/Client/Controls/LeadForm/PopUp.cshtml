@@ -1,6 +1,22 @@
 ﻿@using MSLivingChoices.Localization
 @using MSLivingChoices.Mvc.Uipc.Client.Helpers
 
+
+<style>
+    span.validation-error-message {
+        color: red;
+        font-size: 1rem;
+        display: block;
+        margin-top: 5px;
+    }
+
+    input.validation-error, textarea.validation-error {
+        border: 1px dashed red;
+        font-weight: 300;
+        color: red;
+    }
+</style>
+
 <div class="modal-dialog">
     <div class="modal-content">
         <div class="modal-header">
@@ -53,7 +69,8 @@
                                placeholder="@Placeholders.Name"
                                data-bind="value: name" />
                     </span>
-                    <span class="col-offset-4 col-any-8 validation-error-message"
+                    <span class="col-4"></span>
+                    <span class="col-8 validation-error-message"
                           data-bind="validationMessage: name">
                     </span>
                 </label>
@@ -117,7 +134,7 @@
                     <div class="col-4"></div>
                     <div class="col-8">
                         <button type="submit"
-                                class="btn btn-block btn-brand-red"
+                                class="btn btn-block btn-primary btn-md"
                                 disabled="disabled"
                                 data-bind="css: { 'in-progress': isPendingRequest }, disable: false">
                             <span>
