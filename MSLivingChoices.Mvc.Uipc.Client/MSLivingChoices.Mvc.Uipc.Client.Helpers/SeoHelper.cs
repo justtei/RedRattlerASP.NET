@@ -289,6 +289,13 @@ namespace MSLivingChoices.Mvc.Uipc.Client.Helpers
 					seoVm.Description = Description.TermsOfUse;
 					break;
 				}
+				case PageType.ContactUs:
+				{
+					seoVm.Title = "Contact Us";
+					seoVm.Header = "Contact Senior Living Choices";
+					seoVm.Description = "Need Assistance From Senior Living Choices? Please Complete The Contact Form";
+					break;
+				}
 				/*case PageType.AboutUs:
                 {
 					seoVm.Title = Title.AboutUs;
@@ -296,13 +303,7 @@ namespace MSLivingChoices.Mvc.Uipc.Client.Helpers
 					seoVm.Description = Description.AboutUs;
 					break;
 				}
-				case PageType.ContactUs:
-				{
-					seoVm.Title = Title.AboutUs;
-					seoVm.Header = Header.AboutUs;
-					seoVm.Description = Description.AboutUs;
-					break;
-				}
+
 				case PageType.SeniorType:
 				{
 					seoVm.Title = Title.AboutUs;

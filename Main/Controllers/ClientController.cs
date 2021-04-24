@@ -329,7 +329,7 @@ namespace Main.Controllers
 		}
 		public ActionResult ContactUs()
 		{
-			return base.View("~/Views/Client/Static/ContactUs.cshtml", ClientViewModelsProvider.GetStaticContent(PageType.TermsOfUse));
+			return base.View("~/Views/Client/Static/ContactUs.cshtml", ClientViewModelsProvider.GetStaticContent(PageType.ContactUs));
 		}
 
 		[HttpPost]
