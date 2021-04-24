@@ -72,6 +72,11 @@
         display: none;
     }
 
+    button.multiselect.dropdown-toggle{
+        display: flex;
+        justify-content: space-between;
+    }
+
     .multiselect-container.dropdown-menu.show {
         background: white;
         width: 100%;
@@ -79,21 +84,25 @@
         overflow-x: hidden;
     }
 
+    .dropdown-toggle::after {
+        align-self: center;
+    }
+
     .multiselect-container.dropdown-menu.show li {
         margin: 2px;
     }
 
-        .multiselect-container.dropdown-menu.show li.active {
-            background: #337ab7;
-        }
+    .multiselect-container.dropdown-menu.show li.active {
+        background: #337ab7;
+    }
 
-        .multiselect-container.dropdown-menu.show label.checkbox {
-            font-size: 15px;
-        }
+    .multiselect-container.dropdown-menu.show label.checkbox {
+        font-size: 15px;
+    }
 
-        .multiselect-container.dropdown-menu.show li.active label.checkbox {
-            color: white;
-        }
+    .multiselect-container.dropdown-menu.show li.active label.checkbox {
+        color: white;
+    }
 
     .multiselect-container.dropdown-menu.show label input {
         width: 15px;
@@ -196,33 +205,10 @@
                                                 </div>
                                             </div>
                                             <div class="col-lg-6 mt-3" style="padding:0 2.5%;">
-                                                <label for="exampleInputName2">Housing Type</label>
+                                                <label for="exampleInputName2">Care Type</label>
                                                 <select id="shcCategories" name="framework[]" multiple class="form-control"
                                                         data-bind="options:shCategories, optionsText:'text', optionsValue:'value', value: selectedCategories">
                                                 </select>
-                                                @*<label for="exampleInputName2">Housing Type</label>
-                                                    <div data-bind="with: searchTypes">
-                                                        <select class="form-control basic-select" id="exampleFormControlSelect2" data-bind="options:items,optionsText:'text',optionsValue:'value',optionsCaption:'Choose...'">
-                                                        </select>
-                                                        <div style="display:none">
-                                                            <ul class="type-list row-wrap"
-                                                                data-bind="foreach: items">
-                                                                <li class=""
-                                                                    data-bind="click: $parent.selectItem
-                                                                               , css: {
-                                                                                   'active': selected()
-                                                                                   , 'txt-left': $index() === 0
-                                                                                   , 'txt-right': $index() === $parent.items.length - 1
-                                                                                   , 'txt-center': $index() !== 0 && $index() !== $parent.items.length - 1 },
-                                                                                    attr: {'id': 'clickOn_' + value}">
-                                                                    <span class="arrow-wrapper">
-                                                                        <span class="arrow"></span>
-                                                                        <span data-bind="text: text"></span>
-                                                                    </span>
-                                                                </li>
-                                                            </ul>
-                                                        </div>
-                                                    </div>*@
                                             </div>
                                             <div class="col-lg-6 mt-3" style="padding: 0 2.5%">
                                                 <span class="align-items-center">
@@ -263,117 +249,6 @@
         </div>
     </div>
 </section>
-
-@*<section class="space-ptb">
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-lg-8">
-                    <div class="section-title text-center">
-                        <h2>RETIREMENT LIVING BLOG</h2>
-                        <p>
-                            Learn about retirement planning, explore where to retire, find senior discounts, and discover
-                            how to get the most out of retirement living.
-                        </p>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-4">
-                    <div class="blog-post">
-                        <div class="blog-post-image">
-                            <img class="img-fluid" src="@Url.Content("~/Content/images9/blog/01.jpg")" alt="">
-                        </div>
-                        <div class="blog-post-content">
-                            <div class="blog-post-details">
-                                <div class="blog-post-category">
-                                    <a class="mb-3" href="#"><strong>SENIOR FINANCES</strong></a>
-                                </div>
-                                <div class="blog-post-title">
-                                    <h5><a href="blog-detail">The 5 Best Tax Breaks for Seniors</a></h5>
-                                </div>
-                                <div class="blog-post-description">
-                                    <p class="mb-0">Growing old doesn’t have to mean dealing with the onset of aches and pains</p>
-                                </div>
-                            </div>
-                            <div class="blog-post-footer">
-                                <div class="blog-post-time">
-                                    <a href="#"> <i class="far fa-clock"></i>25 March 2018</a>
-                                </div>
-                                <div class="blog-post-author">
-                                    <span> By <a href="#"> <img class="img-fluid" src="@Url.Content("~/Content/images9/avatar/01.jpg")" alt="">Henriquez  </a> </span>
-                                </div>
-                                <div class="blog-post-comment">
-                                    <a href="#"> <i class="far fa-comment"></i>(0) </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 mt-4 mt-lg-0">
-                    <div class="blog-post">
-                        <div class="blog-post-image">
-                            <img class="img-fluid" src="@Url.Content("~/Content/images9/blog/02.jpg")" alt="">
-                        </div>
-                        <div class="blog-post-content">
-                            <div class="blog-post-details">
-                                <div class="blog-post-category">
-                                    <a class="mb-3" href="#"><strong>RETIREMENT TIPS</strong></a>
-                                </div>
-                                <div class="blog-post-title">
-                                    <h5><a href="blog-detail">7 Reasons to Retire in Virginia...</a></h5>
-                                </div>
-                                <div class="blog-post-description">
-                                    <p class="mb-0">There are LOTS of reason to retire in Virginia, from an abundance of history</p>
-                                </div>
-                            </div>
-                            <div class="blog-post-footer">
-                                <div class="blog-post-time">
-                                    <a href="#"> <i class="far fa-clock"></i>25 March 2018</a>
-                                </div>
-                                <div class="blog-post-author">
-                                    <span> By <a href="#"> <img class="img-fluid" src="@Url.Content("~/Content/images9/avatar/01.jpg")" alt="">Henriquez  </a> </span>
-                                </div>
-                                <div class="blog-post-comment">
-                                    <a href="#"> <i class="far fa-comment"></i>(0) </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 mt-4 mt-lg-0">
-                    <div class="blog-post">
-                        <div class="blog-post-image">
-                            <img class="img-fluid" src="@Url.Content("~/Content/images9/blog/03.jpg")" alt="">
-                        </div>
-                        <div class="blog-post-content">
-                            <div class="blog-post-details">
-                                <div class="blog-post-category">
-                                    <a class="mb-3" href="#"><strong>SENIOR LIFE</strong></a>
-                                </div>
-                                <div class="blog-post-title">
-                                    <h5><a href="blog-detail">The 5 Best Tax Breaks for Seniors</a></h5>
-                                </div>
-                                <div class="blog-post-description">
-                                    <p class="mb-0">Are you having a mid-life crisis? Before you break the bank buying the newest</p>
-                                </div>
-                            </div>
-                            <div class="blog-post-footer">
-                                <div class="blog-post-time">
-                                    <a href="#"> <i class="far fa-clock"></i>25 March 2018</a>
-                                </div>
-                                <div class="blog-post-author">
-                                    <span> By <a href="#"> <img class="img-fluid" src="@Url.Content("~/Content/images9/avatar/01.jpg")" alt="">Henriquez  </a> </span>
-                                </div>
-                                <div class="blog-post-comment">
-                                    <a href="#"> <i class="far fa-comment"></i>(0) </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>*@
 <section class="space-ptb bg-light">
     <div class="container">
         <div class="row justify-content-center">
